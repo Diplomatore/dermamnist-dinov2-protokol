@@ -1,0 +1,50 @@
+{
+ "_aciklama": "Colab veri hücresinin indirme listesi (2026-10-11, deney-yürütücü). MD5 = resmî değer (MedMNIST: medmnist 3.0.2 INFO; DermaMNIST-C: Zenodo 12739457 API). SHA256 + bayt = yerelde doğrulanmış kopyalar (data/data_manifest.json, data/medmnist/indirme_dogrulama.json, data/dermamnist_c/indirme_kaydi_c.json; 224 px SHA256 2026-10-11 yerelde hesaplandı). Hedef alt klasör /content/veri/<alt>; /content/is/data/<alt> buraya sembolik bağdır.",
+ "gruplar": {
+  "medmnist": ["dermamnist.npz", "dermamnist_224.npz"],
+  "dermamnist_c": ["dermamnist_corrected_28.npz", "dermamnist_corrected_224.npz", "DermaMNIST-C.csv"]
+ },
+ "dosyalar": {
+  "dermamnist.npz": {
+   "alt": "medmnist",
+   "url": "https://zenodo.org/records/10519652/files/dermamnist.npz?download=1",
+   "bayt": 19725078,
+   "md5": "0744692d530f8e62ec473284d019b0c7",
+   "sha256": "1a309fec2e33bb6aba88e7d078e5ccbb9736c84a0b415ac197eb3c8fa331e050"
+  },
+  "dermamnist_224.npz": {
+   "alt": "medmnist",
+   "url": "https://zenodo.org/records/10519652/files/dermamnist_224.npz?download=1",
+   "bayt": 1091112502,
+   "md5": "8974907d8e169bef5f5b96bc506ae45d",
+   "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d"
+  },
+  "dermamnist_corrected_28.npz": {
+   "alt": "dermamnist_c",
+   "url": "https://zenodo.org/api/records/12739457/files/dermamnist_corrected_28.npz/content",
+   "bayt": 20698236,
+   "md5": "96e2862980877d45d9cacb5c25de6950",
+   "sha256": "c3d9cbd9008a0dcb76943d5cf38681bdc5166effc79f9e215657b859b9226aa8"
+  },
+  "dermamnist_corrected_224.npz": {
+   "alt": "dermamnist_c",
+   "url": "https://zenodo.org/api/records/12739457/files/dermamnist_corrected_224.npz/content",
+   "bayt": 1131258316,
+   "md5": "84920fb70c83b234c295b6f0d4ae2bc0",
+   "sha256": "f8d80f4fac5a0a1f53256e0c337456a8ab8020828a94a9eb8a1eb8ef5d748486"
+  },
+  "DermaMNIST-C.csv": {
+   "alt": "dermamnist_c",
+   "url": "https://zenodo.org/api/records/12739457/files/DermaMNIST-C.csv/content",
+   "bayt": 747941,
+   "md5": "1c54bc9f483e97a9d7dbbde076a45900",
+   "sha256": "c27194d338986463966e1694d5b49fda933222368f04b316c702ac2e8a0d4f5c"
+  }
+ },
+ "agirliklar": {
+  "_aciklama": "Önağırlıklar: yerel önbellekteki dosyaların SHA256'sı (HF blob adı = SHA256). Colab'da indirilen dosya bunlarla AYNI olmalı; değilse farklı model → DUR.",
+  "timm/vit_base_patch14_dinov2.lvd142m": {"sha256": "55cbb5d887b336d430e649c277b85a1429e724871f9d02ac16203235886d8c7b", "yerel_revizyon": "4685c99dabffe5affac90bd99dbffd25801ae58d"},
+  "timm/vit_small_patch14_dinov2.lvd142m": {"sha256": "04d27f3400d059fc0cfd7d17dd1909a75bf3ea8fb3eeb48b97cb99e57ee20081", "yerel_revizyon": "4610ca143709d58a633b6397a74412c2c3842454"},
+  "torchvision/resnet18-f37072fd.pth": {"sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec"}
+ }
+}

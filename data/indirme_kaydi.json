@@ -1,0 +1,9 @@
+{
+ "28": {"dosya": "dermamnist.npz", "kosumlar": [
+  {"tarih": "2026-10-10T07:08:59", "sure_sn": 193.0, "durum": "indirildi", "kaynak_gunluk": "data/indirme_ilk_kosum.log"},
+  {"tarih": "2026-10-10T07:12", "sure_sn": 2.9, "durum": "onceden_var_md5_dogrulandi", "kaynak_gunluk": "data/indirme_meta.log"}]},
+ "64": {"dosya": "dermamnist_64.npz", "kosumlar": [
+  {"tarih": "2026-10-10T07:12", "durum": "DURDURULDU — Zenodo hızı ~50-300 KB/s; 262144 bayt yarım dosya silindi"}]},
+ "HAM10000_metadata.csv": {"url": "https://dataverse.harvard.edu/api/access/datafile/4338392?format=original"},
+ "dermamnist_split_info.csv": {"url": "https://raw.githubusercontent.com/kakumarabhishek/Corrected-Skin-Image-Datasets/ac655ac5a5b93264c57d69d6d520778d915bfc89/DermaMNIST/DermaMNIST_Analysis/dermamnist_split_info.csv"}
+}

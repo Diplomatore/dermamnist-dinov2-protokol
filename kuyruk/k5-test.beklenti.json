@@ -1,0 +1,149 @@
+{
+ "_aciklama": "ÖN-KAYIT (kuyruk k5-test; K5 resmî test geçişi; deney-yürütücü 2026-10-11, hiçbir k5 koşumundan ÖNCE; koşum sonrası DEĞİŞTİRİLMEZ, devam kuyruklarına BAYT BAYT kopyalanır). Kaynak: hipotezler/K5-ONKAYIT.md §0 P6, §1.",
+ "_notlar": [
+  "K5-ONKAYIT §0 P6 (özdeşlik): argmax 1.003/1.003 aynı ve maks |Δp| ≤ 1e-5; baseline_c için yeniden çıkarım YOK → dosyadan ACC = metrics val_acc/test_acc (±1e-4). Herhangi bir ihlal → DUR, teşhis (a1 kapısı a3'ü başlatmaz; a3'te ihlal olursa k5_cikarim.py test açmadan rc=4).",
+  "Yerel kanıt (2026-10-11, GTX 1650; scratchpad sınaması, ölçüm değil): dört çıkarım yolu (r18, vit_kismi fp16 token yolu, vit_tam, sonda) yerel kaynak koşumlarının tahmin_val.npy'sini BİT BİT yeniden üretti (maks |Δp| = 0). Colab'da aynı L4 sınıfı + aynı torch sürümü + deterministik ayarlar → aynı beklenir.",
+  "Kapı metriği ozdeslik_p_maks_fark (yon min): BİLİNÇLİ OLARAK test metriği DEĞİL — aşama raporları ve defter çıktısı test sayısı göstermez; test sayıları yalnız scripts/k5_test.py --kip test çıktısında (bir kez).",
+  "farkli_seedler_farkli KULLANILMADI: kapı metriği özdeşlik farkıdır (beklenen 0, seed'ler arasında aynı olabilir)."
+ ],
+ "metrik": "ozdeslik_p_maks_fark",
+ "yon": "min",
+ "asama": {
+  "1": {
+   "aciklama": "P6 YÜKLEME ÖZDEŞLİĞİ — 7 kol × 5 seed, yalnız val (test kapalı)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 35
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_gecti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "K5-ONKAYIT §0 P6"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_argmax_oran",
+     "alt": 1.0,
+     "ust": 1.0,
+     "kaynak": "P6: argmax 1.003/1.003"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_p_maks_fark",
+     "alt": 0.0,
+     "ust": 1e-05,
+     "kaynak": "P6: olasılık maks |Δ| ≤ 1e-5"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_val_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "P6/§1 sıra 1: baseline dosyadan ACC = metrics (±1e-4)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "k5_test_kilidi",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "a1 test AÇMAZ"
+    }
+   ]
+  },
+  "3": {
+   "aciklama": "RESMÎ TEST ÇIKARIMI — 7 kol × 5 seed (--test-kilidi-acik); bu kapı yalnız bilgi (son aşama)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 35
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_gecti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "K5-ONKAYIT §0 P6"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_argmax_oran",
+     "alt": 1.0,
+     "ust": 1.0,
+     "kaynak": "P6: argmax 1.003/1.003"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_p_maks_fark",
+     "alt": 0.0,
+     "ust": 1e-05,
+     "kaynak": "P6: olasılık maks |Δ| ≤ 1e-5"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_val_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "P6/§1 sıra 1: baseline dosyadan ACC = metrics (±1e-4)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_test_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "§1 sıra 1: baseline dondurulmuş test_acc"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_test_acc_son_fark",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "§1 sıra 1: tahmin_test_son ikincil satır"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "test_n",
+     "alt": 2005,
+     "ust": 2005,
+     "kaynak": "resmî test (data_manifest)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "test_sonlu",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "olasılıklar sonlu ve toplamı 1"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "k5_test_kilidi",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "a3 satırları --test-kilidi-acik"
+    }
+   ]
+  }
+ }
+}

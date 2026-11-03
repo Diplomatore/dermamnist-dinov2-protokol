@@ -1,0 +1,49 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-5; kart hipotezler/H13.md mtime 2026-10-11 17:52:31, SIRALAMA-TUR5.md 17:51:12). Hiçbir h13_*/h13x_*/h13k_*/rt_h13_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 18:03:23); koşum sonrası DEĞİŞTİRİLMEZ. Üçüncü satır (rapor, karar vermez): rt_h13_sicaklik = sicaklik.py --kaynak-varyant h13_h02c_h10_lpo, aynı katlar. Kaynak: SIRALAMA R-T; H13 ikincil (3)/(8): ECE [0,030; 0,065] (ham), H10 R-T OOF 0,018.",
+ "_notlar": [
+  "Alt 0,010 = R-T görülmemiş (15 kutulu ECE gürültü tabanı altı); üst = H10 ham ECE 0,060 + 0,010 (rt emsali)."
+ ],
+ "metrik": "val_ece",
+ "yon": "min",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — rt_h13_sicaklik s0–4 (CPU)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 5
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.01,
+     "ust": 0.07,
+     "kaynak": "R-T görülmemiş < 0,010; üst = H10 ham ECE 0,060 + 0,010"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "acc_degisim",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "Guo vd. 2017: sıcaklık argmax'ı değiştirmez"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "dengeli_degisim",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "aynı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "T_tamval",
+     "alt": 0.51,
+     "ust": 2.99,
+     "kaynak": "R-T ızgarası [0,5; 3,0]: sınırda T = ızgara yetersiz"
+    }
+   ]
+  }
+ }
+}

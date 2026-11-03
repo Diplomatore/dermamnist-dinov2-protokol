@@ -1,0 +1,10 @@
+{
+  "timm_ad": "vit_base_patch14_dinov2.lvd142m",
+  "img_size": 224,
+  "num_classes_omurga": 0,
+  "bas": "Linear(768,7)",
+  "mod": "kismi",
+  "donuk_blok": 8,
+  "not": "state_dict TAM ağdır; kısmi modda blocks[:donuk_blok] önağırlıkla aynı",
+  "yukleme": "m = timm.create_model(timm_ad, pretrained=False, img_size=224, num_classes=0); m.head = nn.Linear(D, 7); m.load_state_dict(torch.load(best_model.pth))"
+}

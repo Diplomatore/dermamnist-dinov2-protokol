@@ -1,0 +1,25 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: DM-test-nv, T-meta-n, ABL-1, V-baseline-acc, T-baseline-acc, T-C0-baseline-acc, T-C0-baseline-accmaj, C1-baseline-acc, C1-baseline-accmaj, ABL-2, V-h01-acc, T-h01-acc, T-C0-h01-acc, T-C0-h01-accmaj, C1-h01-acc, C1-h01-accmaj, ABL-3, V-h02-acc, T-h02-acc, T-C0-h02-acc, T-C0-h02-accmaj, C1-h02-acc, C1-h02-accmaj, ABL-4, V-h10-acc, T-h10-acc, T-C0-h10-acc, T-C0-h10-accmaj, C1-h10-acc, C1-h10-accmaj, ABL-5, V-h08-acc, T-h08-acc, T-C0-h08-acc, T-C0-h08-accmaj, C1-h08-acc, C1-h08-accmaj, ABL-7, V-h12-acc, T-h12-acc, T-C0-h12-acc, T-C0-h12-accmaj, ABL-8, V-h11-acc, T-h11-acc, T-C0-h11-acc, T-C0-h11-accmaj, T-C0-cogunluk, VAL-tanim-esleme
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Ablasyon: doğrulamada (Doğr.; Colab L4) ve üç değerlendirmede ACC (5 seed ort.); $-$\,taban: çoğunluk tabanına (test 0,669; C 0,7726) göre fark [puan].}\label{tab:ablasyon}
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X ccccccc}
+\toprule
+ & Doğr. & \multicolumn{2}{c}{\begin{tabular}[c]{@{}c@{}}Resmî test\\\relax (n = 2.005)\end{tabular}} & \multicolumn{2}{c}{\begin{tabular}[c]{@{}c@{}}C0\\\relax (n = 1.227)\end{tabular}} & \multicolumn{2}{c}{\begin{tabular}[c]{@{}c@{}}C1\\\relax (n = 1.227)\end{tabular}} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Kol (ebeveyn): fark & ACC & ACC & $-$\,taban & ACC & $-$\,taban & ACC & $-$\,taban \\
+\midrule
+B: rakip, 28 px, sıfırdan & 0,7458 & 0,7395 & +7,06 & 0,8289 & +5,63 & 0,8334 & +6,08 \\
+H01c (B'den): 224 px, DINOv2-B donuk sonda & 0,8223 & 0,8260 & +15,72 & 0,8735 & +10,09 & 0,8755 & +10,29 \\
+H02c (B'den): R18-ImageNet, 224 px, tam ince ayar & 0,8656 & 0,8713 & +20,25 & 0,9102 & +13,76 & 0,9048 & +13,22 \\
+H10 = W (H02c'den): DINOv2-B, son 4 blok & 0,8947 & 0,8940 & +22,51 & 0,9130 & +14,04 & 0,9161 & +14,35 \\
+H08c (H02c'den): eğitimde D4 & 0,8865 & 0,8976 & +22,87 & 0,9252 & +15,26 & 0,9257 & +15,31 \\
+\midrule
+\multicolumn{8}{@{}l}{\textit{Omurga boyutu satırları (betimsel)}} \\
+H12 (H01c'den): DINOv2-S donuk sonda & 0,8187 & 0,8160 & +14,71 & 0,8781 & +10,55 & -- & -- \\
+H11 (H02c'den): DINOv2-S tam ince ayar & 0,8800 & 0,8837 & +21,49 & 0,9180 & +14,54 & -- & -- \\
+\botrule
+\end{tabularx}
+\end{table}

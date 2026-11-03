@@ -1,0 +1,59 @@
+{
+  "zaman": "2026-10-10T07:02:01",
+  "makine": "LAPTOP-SKK5GIC3",
+  "os": "Windows 10 (AMD64)",
+  "python": "3.11.16",
+  "python_yolu": "<PROJE_KOK>\\deney_workspace\\1-8-few-shot-text-classification-for-turkish-a-setfi\\env\\.venv\\Scripts\\python.exe",
+  "gpu": {
+    "nvidia_smi": true,
+    "gpular": [
+      {
+        "ad": "NVIDIA GeForce GTX 1650",
+        "bellek_mb": 4096,
+        "kullanilan_mb": 0,
+        "kullanim_yuzde": 0
+      }
+    ],
+    "surucu": "555.97",
+    "cuda_surucu": null
+  },
+  "torch": {
+    "kurulu": true,
+    "surum": "2.5.1+cu121",
+    "cuda_derlenmis": "12.1",
+    "cuda_kullanilabilir": true,
+    "cihazlar": [
+      "NVIDIA GeForce GTX 1650"
+    ],
+    "mps": false
+  },
+  "kaynak": {
+    "ram_gb": 15.9,
+    "ram_bos_gb": 7.1,
+    "disk_bos_gb": 98.2
+  },
+  "paketler": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.57.6",
+    "datasets": "4.8.5",
+    "sklearn": "1.9.1",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "setfit": "1.2.0",
+    "sentence_transformers": "5.7.0"
+  },
+  "araclar": {
+    "git": true,
+    "uv": true,
+    "conda": false,
+    "pip": true,
+    "ssh": true,
+    "nvcc": false,
+    "docker": false
+  },
+  "karar": {
+    "cikis_kodu": 0,
+    "ozet": "GPU kullanılabilir — GPU-sınıfı işler burada koşabilir"
+  }
+}

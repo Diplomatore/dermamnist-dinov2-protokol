@@ -1,0 +1,78 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-3; kartlar H07/H08/H09 mtime 2026-10-11 04:02/04:03/04:04, SIRALAMA 04:08). Hiçbir h07_*/h08_*/h09_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 04:22); koşum sonrası DEĞİŞTİRİLMEZ. H08/H09 a1 özdeşlik dumanları (augment KAPALI; foreground kosum.py): h08_r18in_ft224_d4kapali_duman, h09_r18in_ft224_renk02kapali_duman (s0, 1 epoch, --ozdeslik-ref runs/20261010-204010_h02_r18in_ft224_duman_s0/metrics.json). Kaynak: H08/H09 öldürme (f), uygulama notu a1; H02 dumanı ilk_adim_loss 1,8524776697158813, val_acc 0,8115653.",
+ "_notlar": [
+  "İki kapalı kol tanım gereği H02 dumanıyla ve birbiriyle bit bit aynıdır → kollar_farkli BU kapıda kullanılmaz (açık kollar tur3 a1'de kollar_farkli + özdeşlik fark > 0 ile sınanır).",
+  "ilk_epoch_loss ve val_acc özdeşliği kartın (f)'sinin genişletmesidir (H05 emsali; kapalı yol bit bit aynıysa bunlar da aynıdır)."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN — augment kapalı özdeşlik, s0 × 1 epoch",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 2
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.62,
+     "ust": 0.9,
+     "kaynak": "H08/H09 a1: alt = çoğunluk tabanı 0,669 − 0,05, üst = H02 tavanı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_ilk_adim_loss_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H08/H09 öldürme (f): kapalı duman ilk_adim_loss = H02 dumanı (bit bit)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_ilk_epoch_loss_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "(f) genişletmesi (H05 emsali)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_val_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "(f) genişletmesi: H02 duman val_acc 0,8115653"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 11180103,
+     "ust": 11180103,
+     "kaynak": "H02/H07/H08/H09 kartları: 11.180.103 (değişmez)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "egitim_sure_sn",
+     "alt": 10,
+     "ust": 300,
+     "kaynak": "H08/H09 a1"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "epoch_sure_ort_sn",
+     "alt": 10,
+     "ust": 90,
+     "kaynak": "H08/H09 öldürme (d): ort. epoch ≤ 90 s"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tepe_gpu_bellek_mb",
+     "alt": 1,
+     "ust": 3900,
+     "kaynak": "GTX 1650 4 GB; H02 1.742 MB"
+    }
+   ]
+  }
+ }
+}

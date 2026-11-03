@@ -1,0 +1,26 @@
+{
+  "run_id": "20261010-195448_ozn_onbellek_b_r224_s0",
+  "varyant": "ozn_onbellek_b_r224",
+  "seed": "0",
+  "etiket": "HAZIRLIK: DINOv2-B CLS öznitelik önbelleği r224 (train+val; seed'den bağımsız, ölçüm değil)",
+  "ebeveyn": null,
+  "hipotez": null,
+  "kuyruk": "on-ozn",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>\\env\\.venv\\Scripts\\python.exe",
+    "varyantlar/dinov2_ozn/ozn_cikar.py",
+    "--model",
+    "b",
+    "--r",
+    "224",
+    "--bs",
+    "32",
+    "--progress-dir",
+    "<WS>\\runs\\20261010-195448_ozn_onbellek_b_r224_s0"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-10-10T19:54:51",
+  "makine": "LAPTOP-SKK5GIC3"
+}

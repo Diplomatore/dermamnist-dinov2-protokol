@@ -1,0 +1,75 @@
+% F1 — Ablasyon zinciri × üç değerlendirme. Veri: figures/data/fig_ablasyon_*.dat
+% (üretici figures/scripts/fig_ablasyon.py; kaynak [T]/[C1] JSON + C1 metrics.json). Sayı gömülü değil.
+\providecommand{\figveri}{figures/data}
+\providecolor{iyiRenk}{RGB}{0,84,159}
+\providecolor{kotuRenk}{RGB}{178,24,43}
+\pgfplotstableread[col sep=tab]{\figveri/fig_ablasyon_not.dat}\ablNot
+% Kol paleti (tur-1, review 7.3): nötr kategorik; iyiRenk/kotuRenk yalnız anlamlılık/karar kodlamasında
+\providecolor{renkB}{RGB}{105,105,105}
+\providecolor{renkH01}{RGB}{160,160,160}
+\providecolor{renkH02}{RGB}{25,25,25}
+\providecolor{renkH08}{RGB}{217,130,0}
+\providecolor{renkH10}{RGB}{118,42,131}
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+\tikzset{kol0/.style={color=renkB},kol1/.style={color=renkH01},kol2/.style={color=renkH02},
+         kol3/.style={color=renkH10},kol4/.style={color=renkH08}}
+\begin{groupplot}[
+  group style={group size=3 by 1, horizontal sep=1.05cm},
+  scale only axis, width=3.15cm, height=4.6cm,
+  xmin=-0.5, xmax=4.5, xtick={0,1,2,3,4},
+  xticklabels={B,H01c,H02c,H10,H08c},
+  xticklabel style={font=\footnotesize, rotate=40, anchor=north east, inner sep=1pt},
+  yticklabel style={font=\footnotesize, /pgf/number format/fixed, /pgf/number format/precision=2},
+  title style={font=\footnotesize, align=center, yshift=-2pt},
+  every tick label/.append style={font=\footnotesize},
+  tick align=outside, tick pos=left, axis line style={thin},
+  ymajorgrids, grid style={gray!20},
+]
+% ---------------- (a) resmî test
+\nextgroupplot[title={(a) Official test\\ (n = 2005, 5 seeds)}, ymin=0.645, ymax=0.925,
+  ylabel={Accuracy}, ylabel style={font=\footnotesize}]
+\addplot[dashed, gray, thick, forget plot] table[x=x, y=test, col sep=tab] {\figveri/fig_ablasyon_taban.dat};
+\pgfplotsinvokeforeach{0,...,4}{
+  \addplot[kol#1, only marks, mark=*, mark size=0.9pt, opacity=0.55, forget plot]
+    table[x=x, y=acc, col sep=tab, restrict expr to domain={\thisrow{k}}{#1:#1}] {\figveri/fig_ablasyon_test_seed.dat};
+  \addplot[kol#1, only marks, mark=diamond*, mark size=2.2pt, line width=1.2pt,
+    error bars/.cd, y dir=both, y explicit, error bar style={line width=1.2pt}, error mark options={rotate=90, mark size=2.5pt}]
+    table[x=x, y=m, y error=s, col sep=tab, restrict expr to domain={\thisrow{k}}{#1:#1}] {\figveri/fig_ablasyon_test_ozet.dat};
+}
+\pgfplotstablegetelem{0}{h10}\of\ablNot\let\notA\pgfplotsretval
+\pgfplotstablegetelem{0}{h08}\of\ablNot\let\notB\pgfplotsretval
+\node[anchor=south east, font=\footnotesize, align=right, fill=white, inner sep=1.5pt] at (rel axis cs:0.97,0.10)
+  {$\Delta$ (pp) [95\% CI]\\\textcolor{renkH10}{H10$-$H02c:}\\\textcolor{renkH10}{\notA}\\\textcolor{renkH08}{H08c$-$H02c:}\\\textcolor{renkH08}{\notB}};
+% ---------------- (b) C0
+\nextgroupplot[title={(b) C0: lesion-disjoint subset,\\ no retraining (n = 1227)}, ymin=0.765, ymax=0.945]
+\addplot[dashed, gray, thick, forget plot] table[x=x, y=c, col sep=tab] {\figveri/fig_ablasyon_taban.dat};
+\pgfplotsinvokeforeach{0,...,4}{
+  \addplot[kol#1, only marks, mark=diamond, mark size=2.2pt, line width=1.2pt,
+    error bars/.cd, y dir=both, y explicit, error bar style={line width=1.2pt}, error mark options={rotate=90, mark size=2.5pt}]
+    table[x=x, y=m, y error=s, col sep=tab, restrict expr to domain={\thisrow{k}}{#1:#1}] {\figveri/fig_ablasyon_c0_ozet.dat};
+}
+\pgfplotstablegetelem{1}{h10}\of\ablNot\let\notA\pgfplotsretval
+\pgfplotstablegetelem{1}{h08}\of\ablNot\let\notB\pgfplotsretval
+\node[anchor=south east, font=\footnotesize, align=right, fill=white, inner sep=1.5pt] at (rel axis cs:0.97,0.10)
+  {$\Delta$ (pp) [95\% CI]\\\textcolor{renkH10}{H10$-$H02c:}\\\textcolor{renkH10}{\notA}\\\textcolor{renkH08}{H08c$-$H02c:}\\\textcolor{renkH08}{\notB}\\mean $\pm$ sd only};
+% ---------------- (c) C1
+\nextgroupplot[title={(c) C1: lesion-disjoint split,\\ retrained (n = 1227)}, ymin=0.765, ymax=0.945]
+\addplot[dashed, gray, thick, forget plot] table[x=x, y=c, col sep=tab] {\figveri/fig_ablasyon_taban.dat};
+\pgfplotsinvokeforeach{0,...,4}{
+  \addplot[kol#1, only marks, mark=*, mark size=0.9pt, opacity=0.55, forget plot]
+    table[x=x, y=acc, col sep=tab, restrict expr to domain={\thisrow{k}}{#1:#1}] {\figveri/fig_ablasyon_c1_seed.dat};
+  \addplot[kol#1, only marks, mark=diamond*, mark size=2.2pt, line width=1.2pt,
+    error bars/.cd, y dir=both, y explicit, error bar style={line width=1.2pt}, error mark options={rotate=90, mark size=2.5pt}]
+    table[x=x, y=m, y error=s, col sep=tab, restrict expr to domain={\thisrow{k}}{#1:#1}] {\figveri/fig_ablasyon_c1_ozet.dat};
+}
+\pgfplotstablegetelem{2}{h10}\of\ablNot\let\notA\pgfplotsretval
+\pgfplotstablegetelem{2}{h08}\of\ablNot\let\notB\pgfplotsretval
+\node[anchor=south east, font=\footnotesize, align=right, fill=white, inner sep=1.5pt] at (rel axis cs:0.97,0.10)
+  {$\Delta$ (pp) [95\% CI]\\\textcolor{renkH10}{H10$-$H02c:}\\\textcolor{renkH10}{\notA}\\\textcolor{renkH08}{H08c$-$H02c:}\\\textcolor{renkH08}{\notB}};
+\end{groupplot}
+\end{tikzpicture}
+\caption{Ablasyon zinciri üç değerlendirmede: (a) resmî test, (b) C0, (c) C1. Elmas: 5 seed ortalaması $\pm$ std; küçük noktalar: seed değerleri (C0'da yok). Kesikli çizgi: çoğunluk sınıfı tabanı; y eksenleri paneller arasında farklıdır.}
+\label{fig:ablasyon}
+\end{figure}

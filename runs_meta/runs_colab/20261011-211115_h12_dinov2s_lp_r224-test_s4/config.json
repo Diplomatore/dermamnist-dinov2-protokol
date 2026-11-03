@@ -1,0 +1,80 @@
+{
+  "run_id": "20261011-211115_h12_dinov2s_lp_r224-test_s4",
+  "varyant": "h12_dinov2s_lp_r224-test",
+  "seed": "4",
+  "etiket": "K5 TEST çıkarımı: h12_dinov2s_lp_r224 s4",
+  "ebeveyn": "20261011-175710_h12_dinov2s_lp_r224_s4",
+  "hipotez": "H12",
+  "kuyruk": "k5-test",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "python",
+    "colab/fp32_kos.py",
+    "varyantlar/k5/k5_cikarim.py",
+    "--tur",
+    "sonda",
+    "--kaynak",
+    "20261011-175710_h12_dinov2s_lp_r224_s4",
+    "--seed",
+    "4",
+    "--test-kilidi-acik",
+    "--out",
+    "/content/is/runs/20261011-211115_h12_dinov2s_lp_r224-test_s4/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-10-11T21:11:17",
+  "makine": "ee658e45c0ed",
+  "k5": {
+    "kaynak_run": "20261011-175710_h12_dinov2s_lp_r224_s4",
+    "kaynak_varyant": "h12_dinov2s_lp_r224",
+    "tur": "sonda",
+    "veri": {
+      "npz": "dermamnist_224.npz",
+      "kok": "/content/is/data/medmnist",
+      "md5": "8974907d8e169bef5f5b96bc506ae45d",
+      "md5_resmi": "8974907d8e169bef5f5b96bc506ae45d",
+      "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d",
+      "bayt": 1091112502
+    },
+    "kaynak_sha256": {
+      "best_model.pth": null,
+      "sonda_agirlik.npz": "e9e3f22662a14874a87b189f09274bf4b275241f2ba17076226283aa58ccb2b6",
+      "tahmin_val.npy": "9a2f38ac033a8d07f1a286c83d341bb5859016893229d322e21491e41e956c2b",
+      "etiket_val.npy": "0a25a91b92c1c4cba4c7b9daa2693c2efee9dae6f5ae0a77042773ba7e929499",
+      "metrics.json": "674d7696bd872cc8142e7ef09ff4db0a177963cdcae417f0a723da571dfa5be0",
+      "config.json": "82ae8f6e499622b9d1ebe018b754025aff5c826945eda31cedcb8c1ecf4cce94"
+    },
+    "ozdeslik_tol": 1e-05,
+    "acc_tol": 0.0001,
+    "test_kilidi_acik": true,
+    "sonda": {
+      "model": "vit_small_patch14_dinov2.lvd142m",
+      "C": 0.1,
+      "kaynak_px": 224,
+      "scaler_ort_maks_fark": 0.0,
+      "ozn_meta_val": {
+        "determinizm_maks_fark": 0.0,
+        "img_s": 477.07,
+        "sure_sn": 16.79
+      }
+    },
+    "tepe_gpu_bellek_mb": 36.1
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 92700,
+    "numpy": "2.1.3",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "makine": "ee658e45c0ed",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

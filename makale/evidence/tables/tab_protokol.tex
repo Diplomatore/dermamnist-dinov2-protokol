@@ -1,0 +1,27 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: SENS-LKB-ozet, SENS-LKB-T-h10-h08-dN, SENS-LKB-T-h10-h08-tabstd, SENS-LKB-C1-K-H10, C1-REV-K-h10-h02-dengeli_acc-lezyon, C1-REV-K-h10-h02-duyarlilik_mel, C1-REV-K-h08-h02-dengeli_acc-lezyon, C1-REV-K-h08-h02-duyarlilik_mel, C1-REV-K-h10-h08-dengeli_acc-lezyon, C1-REV-K-h10-h08-duyarlilik_mel, C1-REV-n-mel, T-AILE2-h10-h02, T-AILE2-h08-h02, T-K-h10-h08-acc, T-K-h10-h02-dS, T-K-h08-h02-dS, T-K-h10-h08-dS, T-K-h10-h02-dN, T-K-h08-h02-dN, T-K-h10-h08-dN, T-K-h10-h02-dSdN, T-K-h08-h02-dSdN, T-K-h10-h08-dSdN, T-K-h10-h02-tab_std_dS_eksi_dN, T-SN-h10-h02, T-K-h08-h02-tab_std_dS_eksi_dN, T-SN-h08-h02, T-K-h10-h08-tab_std_dS_eksi_dN, T-SN-h10-h08, T-K-h10-h02-Spay, T-K-h08-h02-Spay, T-K-h10-h08-Spay, T-C0-K-h10-h02, T-C0-K-h08-h02, T-C0-K-h10-h08, C1-A2-h10-h02, C1-A2-h08-h02, C1-K-h10-h08-acc, C1-K-h10-h02-dengeli_acc, C1-K-h08-h02-dengeli_acc, C1-K-h10-h08-dengeli_acc, T-C0-K0-H10, T-C0-K0-H08, T-C0-KC0, C1-K-H10, C1-K-H08, C1-KC
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{S/N ayrışımı, lezyon-ayrık değerlendirmeler. Mavi kalın: $\Delta$ACC, $\Delta_S$, $\Delta_N$, C0, C1 satırlarında GA sıfırın üstünde. $^{\dagger}$Betimsel, renksiz. $^{\ddagger}$Lezyon-kümeli GA sıfırı kapsar. $^{\S}$Test-sonrası analiz, renksiz.}\label{tab:protokol}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X ccc}
+\toprule
+Ölçü [puan; \%95 GA] & H10 $-$ H02c & H08c $-$ H02c & H10 $-$ H08c$^{\dagger}$ \\
+\midrule
+Resmî test $\Delta$ACC (n = 2.005) & \begin{tabular}[c]{@{}c@{}}\iyi{+2,26}\\\relax [+1,15; +3,30]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+2,62}\\\relax [+1,85; +3,36]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}0,36\\\relax [\textminus{}1,40; +0,70]\end{tabular} \\
+\quad Holm $p$, tek yönlü ($t$; boot) & \begin{tabular}[c]{@{}c@{}}$1{,}1{\times}10^{-4}$\\\relax 0,001\end{tabular} & \begin{tabular}[c]{@{}c@{}}$1{,}9{\times}10^{-5}$\\\relax 0,001\end{tabular} & -- \\
+$\Delta_S$: eğitimde görülmüş lezyon (S, n~=~693) & \begin{tabular}[c]{@{}c@{}}\iyi{+5,43}\\\relax [+3,23; +7,47]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+4,27}\\\relax [+2,56; +5,89]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+1,15\\\relax [\textminus{}0,85; +3,26]\end{tabular} \\
+$\Delta_N$: görülmemiş lezyon (N, n~=~1.312) & \begin{tabular}[c]{@{}c@{}}+0,59\\\relax [\textminus{}0,58; +1,76]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+1,75}\\\relax [+0,91; +2,60]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}1,16$^{\ddagger}$\\\relax [\textminus{}2,33; \textminus{}0,02]\end{tabular} \\
+$\Delta_S - \Delta_N$ (ham; kural nesnesi) & \begin{tabular}[c]{@{}c@{}}+4,83\\\relax [+2,22; +7,18]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+2,52\\\relax [+0,52; +4,32]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+2,31\\\relax [\textminus{}0,08; +4,69]\end{tabular} \\
+$\Delta_S - \Delta_N$ (tabaka-std.; ikincil) & \begin{tabular}[c]{@{}c@{}}+4,50\\\relax [+0,78; +8,06]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+0,89\\\relax [\textminus{}2,04; +3,65]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+3,61$^{\ddagger}$\\\relax [+0,12; +7,23]\end{tabular} \\
+Net ACC kazancının S payı & \%83 & \%56 & -- \\
+C0: C-test alt kümesi, yeniden eğitimsiz & \begin{tabular}[c]{@{}c@{}}+0,28\\\relax [\textminus{}0,83; +1,47]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+1,50}\\\relax [+0,70; +2,28]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}1,22\\\relax [\textminus{}2,36; \textminus{}0,08]\end{tabular} \\
+C1: C bölmesi, yeniden eğitimli & \begin{tabular}[c]{@{}c@{}}+1,12\\\relax [\textminus{}0,05; +2,30]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+2,09}\\\relax [+1,24; +2,97]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}0,96\\\relax [\textminus{}2,10; +0,18]\end{tabular} \\
+\quad Holm $p$, tek yönlü ($t$; boot) & \begin{tabular}[c]{@{}c@{}}0,018\\\relax 0,031\end{tabular} & \begin{tabular}[c]{@{}c@{}}0,018\\\relax 0,001\end{tabular} & -- \\
+\quad C1 $\Delta$ dengeli ACC & \begin{tabular}[c]{@{}c@{}}\iyi{+5,74}\\\relax [+1,21; +10,17]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+9,15}\\\relax [+5,64; +12,78]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}3,41\\\relax [\textminus{}8,30; +1,42]\end{tabular} \\
+\quad C1 $\Delta$ mel duyarlılığı (mel n~=~70)$^{\S}$ & \begin{tabular}[c]{@{}c@{}}+7,14\\\relax [\textminus{}2,11; +16,13]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+6,57\\\relax [+1,52; +12,05]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+0,57\\\relax [\textminus{}8,26; +9,03]\end{tabular} \\
+$K_0$ = resmî $-$ C0 (KÇ$_0$ son sütunda) & \begin{tabular}[c]{@{}c@{}}+1,99\\\relax [+1,06; +2,94]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+1,12\\\relax [+0,40; +1,80]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+0,86\\\relax [\textminus{}0,01; +1,78]\end{tabular} \\
+$K$ = resmî $-$ C1 (KÇ son sütunda) & \begin{tabular}[c]{@{}c@{}}+1,14$^{\ddagger}$\\\relax [+0,04; +2,31]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+0,54\\\relax [\textminus{}0,39; +1,47]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+0,60\\\relax [\textminus{}0,45; +1,68]\end{tabular} \\
+\botrule
+\end{tabularx}
+\end{table}

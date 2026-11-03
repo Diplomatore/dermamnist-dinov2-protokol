@@ -1,0 +1,11 @@
+{
+  "sicaklik": {
+    "protokol": "SIRALAMA R-T",
+    "kaynak_varyant": "h09_r18in_ft224_renk02",
+    "kaynak_dosya": "tahmin_val.npy",
+    "kaynak_kosum": "20261011-082014_h09_r18in_ft224_renk02_s3",
+    "T_izgara": "0.5:3.0:0.01",
+    "secim": "NLL min (eşitlikte küçük T)",
+    "katlar_sha256": "0db03edb377f37e5d5b64281ea9ef9e1c5c13c5441d528166c117b4d5e0e0193"
+  }
+}

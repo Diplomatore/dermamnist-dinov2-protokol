@@ -1,0 +1,12 @@
+{
+  "adim": 3,
+  "adim_toplam": 40,
+  "asama_ad": "sonda",
+  "seed_uyum": 0,
+  "C": 0.01,
+  "loss": 0.4613213539123535,
+  "val_acc_son_uyum": 0.8095712861415753,
+  "val_acc": 0.8095712861415753,
+  "val_acc_eniyi": 0.8095712861415753,
+  "gecen_sn": 20.7
+}

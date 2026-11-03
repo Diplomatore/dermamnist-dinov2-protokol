@@ -1,0 +1,46 @@
+{
+  "k5": {
+    "kaynak_run": "20261012-002530_h02_c1_s1",
+    "kaynak_varyant": "h02_c1",
+    "tur": "r18",
+    "veri": {
+      "npz": "dermamnist_c_resmipiksel_224.npz",
+      "kok": "/content/is/data",
+      "md5": "3e07c0de4b4cf307ba8145ec6db0f964",
+      "sha256": "b9b2db5626be2675647c89b4bd3b1b5d6fd93f5b9404fbb9cdf914aa4c8bbc0d",
+      "bayt": 1507641200,
+      "veri": "c1",
+      "md5_resmi": "3e07c0de4b4cf307ba8145ec6db0f964",
+      "icerik_sha256": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba",
+      "beklenen": "k5_c_bolme_beklenen.json"
+    },
+    "kaynak_sha256": {
+      "best_model.pth": "cc61193aaf4647d0faa4caa04ac20cf4b8c8ff0970b4e7a44a3c28ce7c3f3bda",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "a674b1fba2719d6fb415998acde30b6ff1ce87eb186668d7c7ab73dd3695eba4",
+      "etiket_val.npy": "5d8734f0dbf0c364a8e23b89cbd003b4dabf52594c731317437b740ea2dcfdb8",
+      "metrics.json": "695fc4a253ee6035cd774e97b7e9ae55970432b8cfc8adfd88c58869c8668a50",
+      "config.json": "df4042218307eac4296e4990d0ad70173991803486524ac0353fbb050cb8f775"
+    },
+    "ozdeslik_tol": 1e-05,
+    "acc_tol": 0.0001,
+    "test_kilidi_acik": true,
+    "tepe_gpu_bellek_mb": 933.2
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 92700,
+    "numpy": "2.1.3",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "makine": "a65fcb9985e1",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

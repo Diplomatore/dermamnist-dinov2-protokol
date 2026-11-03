@@ -1,0 +1,316 @@
+varyant,bolum,olcu,alt_kume,sinif,deger_ort,deger_std,n_seed,not
+h08_r18in_ft224_d4_colab,genel,acc,tum,,0.886540,0.003337,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,genel,auc,tum,,0.978233,0.002425,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,genel,dengeli_acc,tum,,0.776266,0.012064,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,genel,makro_f1,tum,,0.794650,0.009745,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,genel,ece15,tum,,0.065386,0.004700,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,genel,nll,tum,,0.421161,0.020638,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,genel,brier,tum,,0.183021,0.004838,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,genel,ort_guven,tum,,0.947176,0.005104,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,genel,tahmin_nv_payi,tum,,0.685743,0.008956,5,secilen epoch (val-AUC)
+h08_r18in_ft224_d4_colab,sinif,duyarlilik,tum,akiec,0.648485,0.069763,5,destek=33
+h08_r18in_ft224_d4_colab,sinif,kesinlik,tum,akiec,0.714595,0.053528,5,tahmin yoksa 0 (zero_division)
+h08_r18in_ft224_d4_colab,sinif,f1,tum,akiec,0.678512,0.054104,5,
+h08_r18in_ft224_d4_colab,sinif,auc_ovr,tum,akiec,0.974408,0.008813,5,
+h08_r18in_ft224_d4_colab,sinif,tahmin_sayisi,tum,akiec,30.000000,3.082207,5,gercek=33
+h08_r18in_ft224_d4_colab,sinif,hata_sayisi,tum,akiec,11.600000,2.302173,5,
+h08_r18in_ft224_d4_colab,sinif,hata_kutlesi_payi,tum,akiec,0.101974,0.020413,5,toplam yanlışların bu gerçek sınıftan gelen payı
+h08_r18in_ft224_d4_colab,sinif,duyarlilik,tum,bcc,0.930769,0.032179,5,destek=52
+h08_r18in_ft224_d4_colab,sinif,kesinlik,tum,bcc,0.832726,0.031381,5,tahmin yoksa 0 (zero_division)
+h08_r18in_ft224_d4_colab,sinif,f1,tum,bcc,0.878479,0.020143,5,
+h08_r18in_ft224_d4_colab,sinif,auc_ovr,tum,bcc,0.996688,0.000867,5,
+h08_r18in_ft224_d4_colab,sinif,tahmin_sayisi,tum,bcc,58.200000,3.271085,5,gercek=52
+h08_r18in_ft224_d4_colab,sinif,hata_sayisi,tum,bcc,3.600000,1.673320,5,
+h08_r18in_ft224_d4_colab,sinif,hata_kutlesi_payi,tum,bcc,0.031749,0.014626,5,toplam yanlışların bu gerçek sınıftan gelen payı
+h08_r18in_ft224_d4_colab,sinif,duyarlilik,tum,bkl,0.756364,0.025226,5,destek=110
+h08_r18in_ft224_d4_colab,sinif,kesinlik,tum,bkl,0.826266,0.026341,5,tahmin yoksa 0 (zero_division)
+h08_r18in_ft224_d4_colab,sinif,f1,tum,bkl,0.789342,0.015413,5,
+h08_r18in_ft224_d4_colab,sinif,auc_ovr,tum,bkl,0.971764,0.004328,5,
+h08_r18in_ft224_d4_colab,sinif,tahmin_sayisi,tum,bkl,100.800000,5.310367,5,gercek=110
+h08_r18in_ft224_d4_colab,sinif,hata_sayisi,tum,bkl,26.800000,2.774887,5,
+h08_r18in_ft224_d4_colab,sinif,hata_kutlesi_payi,tum,bkl,0.235277,0.020604,5,toplam yanlışların bu gerçek sınıftan gelen payı
+h08_r18in_ft224_d4_colab,sinif,duyarlilik,tum,df,0.650000,0.091287,5,destek=12
+h08_r18in_ft224_d4_colab,sinif,kesinlik,tum,df,0.775671,0.098313,5,tahmin yoksa 0 (zero_division)
+h08_r18in_ft224_d4_colab,sinif,f1,tum,df,0.701546,0.070330,5,
+h08_r18in_ft224_d4_colab,sinif,auc_ovr,tum,df,0.993172,0.005528,5,
+h08_r18in_ft224_d4_colab,sinif,tahmin_sayisi,tum,df,10.200000,1.923538,5,gercek=12
+h08_r18in_ft224_d4_colab,sinif,hata_sayisi,tum,df,4.200000,1.095445,5,
+h08_r18in_ft224_d4_colab,sinif,hata_kutlesi_payi,tum,df,0.037115,0.010638,5,toplam yanlışların bu gerçek sınıftan gelen payı
+h08_r18in_ft224_d4_colab,sinif,duyarlilik,tum,mel,0.677477,0.036816,5,destek=111
+h08_r18in_ft224_d4_colab,sinif,kesinlik,tum,mel,0.725098,0.024436,5,tahmin yoksa 0 (zero_division)
+h08_r18in_ft224_d4_colab,sinif,f1,tum,mel,0.699925,0.023218,5,
+h08_r18in_ft224_d4_colab,sinif,auc_ovr,tum,mel,0.951701,0.003791,5,
+h08_r18in_ft224_d4_colab,sinif,tahmin_sayisi,tum,mel,103.800000,6.457554,5,gercek=111
+h08_r18in_ft224_d4_colab,sinif,hata_sayisi,tum,mel,35.800000,4.086563,5,
+h08_r18in_ft224_d4_colab,sinif,hata_kutlesi_payi,tum,mel,0.314377,0.032466,5,toplam yanlışların bu gerçek sınıftan gelen payı
+h08_r18in_ft224_d4_colab,sinif,duyarlilik,tum,nv,0.956483,0.006181,5,destek=671
+h08_r18in_ft224_d4_colab,sinif,kesinlik,tum,nv,0.933192,0.007446,5,tahmin yoksa 0 (zero_division)
+h08_r18in_ft224_d4_colab,sinif,f1,tum,nv,0.944662,0.003065,5,
+h08_r18in_ft224_d4_colab,sinif,auc_ovr,tum,nv,0.972799,0.001665,5,
+h08_r18in_ft224_d4_colab,sinif,tahmin_sayisi,tum,nv,687.800000,8.983318,5,gercek=671
+h08_r18in_ft224_d4_colab,sinif,hata_sayisi,tum,nv,29.200000,4.147288,5,
+h08_r18in_ft224_d4_colab,sinif,hata_kutlesi_payi,tum,nv,0.256653,0.035445,5,toplam yanlışların bu gerçek sınıftan gelen payı
+h08_r18in_ft224_d4_colab,sinif,duyarlilik,tum,vasc,0.814286,0.039123,5,destek=14
+h08_r18in_ft224_d4_colab,sinif,kesinlik,tum,vasc,0.934615,0.036656,5,tahmin yoksa 0 (zero_division)
+h08_r18in_ft224_d4_colab,sinif,f1,tum,vasc,0.870085,0.034928,5,
+h08_r18in_ft224_d4_colab,sinif,auc_ovr,tum,vasc,0.987101,0.008979,5,
+h08_r18in_ft224_d4_colab,sinif,tahmin_sayisi,tum,vasc,12.200000,0.447214,5,gercek=14
+h08_r18in_ft224_d4_colab,sinif,hata_sayisi,tum,vasc,2.600000,0.547723,5,
+h08_r18in_ft224_d4_colab,sinif,hata_kutlesi_payi,tum,vasc,0.022854,0.004822,5,toplam yanlışların bu gerçek sınıftan gelen payı
+h08_r18in_ft224_d4_colab,karisiklik,gercek=akiec|tahmin=akiec,tum,akiec,21.400000,2.302173,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=akiec|tahmin=bcc,tum,akiec,3.000000,1.414214,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=akiec|tahmin=bkl,tum,akiec,3.400000,1.140175,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=akiec|tahmin=df,tum,akiec,0.600000,0.547723,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=akiec|tahmin=mel,tum,akiec,2.600000,1.140175,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=akiec|tahmin=nv,tum,akiec,2.000000,0.707107,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=akiec|tahmin=vasc,tum,akiec,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bcc|tahmin=akiec,tum,bcc,0.400000,0.547723,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bcc|tahmin=bcc,tum,bcc,48.400000,1.673320,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bcc|tahmin=bkl,tum,bcc,0.400000,0.547723,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bcc|tahmin=df,tum,bcc,0.600000,0.547723,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bcc|tahmin=mel,tum,bcc,0.200000,0.447214,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bcc|tahmin=nv,tum,bcc,2.000000,1.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bcc|tahmin=vasc,tum,bcc,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bkl|tahmin=akiec,tum,bkl,4.600000,0.894427,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bkl|tahmin=bcc,tum,bkl,1.800000,0.836660,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bkl|tahmin=bkl,tum,bkl,83.200000,2.774887,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bkl|tahmin=df,tum,bkl,0.800000,0.836660,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bkl|tahmin=mel,tum,bkl,10.200000,2.774887,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bkl|tahmin=nv,tum,bkl,9.400000,1.140175,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=bkl|tahmin=vasc,tum,bkl,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=df|tahmin=akiec,tum,df,1.000000,1.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=df|tahmin=bcc,tum,df,1.200000,0.836660,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=df|tahmin=bkl,tum,df,1.200000,0.836660,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=df|tahmin=df,tum,df,7.800000,1.095445,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=df|tahmin=mel,tum,df,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=df|tahmin=nv,tum,df,0.800000,0.836660,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=df|tahmin=vasc,tum,df,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=mel|tahmin=akiec,tum,mel,1.400000,0.547723,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=mel|tahmin=bcc,tum,mel,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=mel|tahmin=bkl,tum,mel,3.400000,1.516575,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=mel|tahmin=df,tum,mel,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=mel|tahmin=mel,tum,mel,75.200000,4.086563,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=mel|tahmin=nv,tum,mel,30.200000,5.263079,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=mel|tahmin=vasc,tum,mel,0.800000,0.447214,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=nv|tahmin=akiec,tum,nv,1.200000,0.836660,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=nv|tahmin=bcc,tum,nv,3.800000,1.788854,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=nv|tahmin=bkl,tum,nv,9.200000,2.167948,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=nv|tahmin=df,tum,nv,0.400000,0.547723,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=nv|tahmin=mel,tum,nv,14.600000,2.073644,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=nv|tahmin=nv,tum,nv,641.800000,4.147288,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=nv|tahmin=vasc,tum,nv,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=vasc|tahmin=akiec,tum,vasc,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=vasc|tahmin=bcc,tum,vasc,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=vasc|tahmin=bkl,tum,vasc,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=vasc|tahmin=df,tum,vasc,0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=vasc|tahmin=mel,tum,vasc,1.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=vasc|tahmin=nv,tum,vasc,1.600000,0.547723,5,
+h08_r18in_ft224_d4_colab,karisiklik,gercek=vasc|tahmin=vasc,tum,vasc,11.400000,0.547723,5,
+h08_r18in_ft224_d4_colab,cogunluk,nv_disi_ornegin_nv_tahmini,tum,,46.000000,5.700877,5,gerçek≠nv iken tahmin=nv (adet)
+h08_r18in_ft224_d4_colab,cogunluk,hatalarin_nv_tahmini_payi,tum,,0.404234,0.048908,5,
+h08_r18in_ft224_d4_colab,cogunluk,nv_disi_duyarlilik,tum,,0.745181,0.014848,5,nv dışı 332 örnekte doğruluk
+h08_r18in_ft224_d4_colab,cogunluk,nadir3_duyarlilik_ort,tum,,0.704257,0.026206,5,df+vasc+akiec makro duyarlılık
+h08_r18in_ft224_d4_colab,cogunluk,nadir3_hata_orani_havuz,tum,,0.311864,0.028361,5,59 nadir örnek havuzu
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.000,0.067]",0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.000,0.067]",nan,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.000,0.067]",nan,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.067,0.133]",0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.067,0.133]",nan,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.067,0.133]",nan,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.133,0.200]",0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.133,0.200]",nan,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.133,0.200]",nan,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.200,0.267]",0.200000,0.447214,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.200,0.267]",1.000000,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.200,0.267]",0.251964,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.267,0.333]",0.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.267,0.333]",nan,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.267,0.333]",nan,nan,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.333,0.400]",1.800000,1.923538,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.333,0.400]",0.725000,0.320156,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.333,0.400]",0.386970,0.013147,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.400,0.467]",6.600000,2.190890,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.400,0.467]",0.208571,0.159520,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.400,0.467]",0.436510,0.007428,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.467,0.533]",12.200000,1.643168,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.467,0.533]",0.454545,0.132044,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.467,0.533]",0.503625,0.004160,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.533,0.600]",20.000000,3.316625,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.533,0.600]",0.520883,0.164993,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.533,0.600]",0.562653,0.003027,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.600,0.667]",17.800000,3.563706,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.600,0.667]",0.529687,0.053627,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.600,0.667]",0.631338,0.004238,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.667,0.733]",19.800000,4.816638,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.667,0.733]",0.601523,0.163000,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.667,0.733]",0.701700,0.005052,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.733,0.800]",24.800000,4.324350,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.733,0.800]",0.610545,0.028304,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.733,0.800]",0.766202,0.003227,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.800,0.867]",31.400000,3.847077,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.800,0.867]",0.662548,0.054240,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.800,0.867]",0.835953,0.001944,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.867,0.933]",49.600000,3.049590,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.867,0.933]",0.684567,0.029443,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.867,0.933]",0.903289,0.003563,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_sayisi,tum,"(0.933,1.000]",818.800000,13.026895,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_dogruluk,tum,"(0.933,1.000]",0.951200,0.004509,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,kutu_ort_guven,tum,"(0.933,1.000]",0.993936,0.000204,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,guven_eksi_acc,tum,,0.060636,0.007987,5,>0 aşırı güven
+h08_r18in_ft224_d4_colab,kalibrasyon,guven>=0.9_yanlis_adet,tum,,48.800000,6.457554,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,guven>=0.9_adet,tum,,846.600000,14.188023,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,guven>=0.9_dogruluk,tum,,0.942428,0.006780,5,
+h08_r18in_ft224_d4_colab,kalibrasyon,yanlis_nv_tahmin_ort_guven,tum,,0.836735,0.022584,5,
+h08_r18in_ft224_d4_colab,son_epoch,acc,tum,,0.883350,0.003381,5,"son epoch (seçimsiz; baseline 100, H02 30)"
+h08_r18in_ft224_d4_colab,son_epoch,auc,tum,,0.977780,0.002552,5,"son epoch (seçimsiz; baseline 100, H02 30)"
+h08_r18in_ft224_d4_colab,son_epoch,dengeli_acc,tum,,0.776239,0.011306,5,"son epoch (seçimsiz; baseline 100, H02 30)"
+h08_r18in_ft224_d4_colab,son_epoch,makro_f1,tum,,0.792706,0.010896,5,"son epoch (seçimsiz; baseline 100, H02 30)"
+h08_r18in_ft224_d4_colab,son_epoch,ece15,tum,,0.067010,0.005719,5,"son epoch (seçimsiz; baseline 100, H02 30)"
+h08_r18in_ft224_d4_colab,son_epoch,nll,tum,,0.426257,0.013960,5,"son epoch (seçimsiz; baseline 100, H02 30)"
+h08_r18in_ft224_d4_colab,son_epoch,ort_guven,tum,,0.947255,0.003553,5,"son epoch (seçimsiz; baseline 100, H02 30)"
+h08_r18in_ft224_d4_colab,son_epoch,tahmin_nv_payi,tum,,0.680957,0.002442,5,"son epoch (seçimsiz; baseline 100, H02 30)"
+h08_r18in_ft224_d4_colab,son_epoch,duyarlilik,tum,akiec,0.630303,0.069102,5,
+h08_r18in_ft224_d4_colab,son_epoch,duyarlilik,tum,bcc,0.938462,0.021066,5,
+h08_r18in_ft224_d4_colab,son_epoch,duyarlilik,tum,bkl,0.745455,0.018182,5,
+h08_r18in_ft224_d4_colab,son_epoch,duyarlilik,tum,df,0.666667,0.058926,5,
+h08_r18in_ft224_d4_colab,son_epoch,duyarlilik,tum,mel,0.686486,0.028058,5,
+h08_r18in_ft224_d4_colab,son_epoch,duyarlilik,tum,nv,0.952012,0.002449,5,
+h08_r18in_ft224_d4_colab,son_epoch,duyarlilik,tum,vasc,0.814286,0.039123,5,
+h08_r18in_ft224_d4_colab,sizinti,acc,S_lezyon_trainde,,0.844253,0.008950,5,n=348
+h08_r18in_ft224_d4_colab,sizinti,acc,N_lezyon_trainde_yok,,0.909008,0.002315,5,n=655
+h08_r18in_ft224_d4_colab,sizinti,acc_farki_S_eksi_N,tum,,-0.064755,0.009432,5,
+h08_r18in_ft224_d4_colab,sizinti,acc_S_Nagirlikli,tum,,0.887975,0.009150,5,"S sınıf-koşullu ACC, N sınıf oranlarıyla"
+h08_r18in_ft224_d4_colab,sizinti,acc_farki_Nagirlikli_S_eksi_N,tum,,-0.021032,0.009060,5,
+h08_r18in_ft224_d4_colab,sizinti,dengeli_acc,S_lezyon_trainde,,0.811378,0.016131,5,
+h08_r18in_ft224_d4_colab,sizinti,dengeli_acc,N_lezyon_trainde_yok,,0.743222,0.016436,5,
+h08_r18in_ft224_d4_colab,sizinti,nv_payi_gercek,S_lezyon_trainde,,0.508621,,1,
+h08_r18in_ft224_d4_colab,sizinti,nv_payi_gercek,N_lezyon_trainde_yok,,0.754198,,1,
+h08_r18in_ft224_d4_colab,sizinti,ece15,S_lezyon_trainde,,0.091723,0.007993,5,
+h08_r18in_ft224_d4_colab,sizinti,ece15,N_lezyon_trainde_yok,,0.056013,0.005794,5,
+h08_r18in_ft224_d4_colab,sizinti,ort_guven,S_lezyon_trainde,,0.924086,0.007343,5,
+h08_r18in_ft224_d4_colab,sizinti,ort_guven,N_lezyon_trainde_yok,,0.959444,0.005314,5,
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,S_lezyon_trainde,akiec,0.760000,0.114018,5,n=10
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,N_lezyon_trainde_yok,akiec,0.600000,0.077776,5,n=23
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,S_lezyon_trainde,bcc,0.925000,0.018634,5,n=24
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,N_lezyon_trainde_yok,bcc,0.935714,0.046566,5,n=28
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,S_lezyon_trainde,bkl,0.767347,0.030951,5,n=49
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,N_lezyon_trainde_yok,bkl,0.747541,0.039481,5,n=61
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,S_lezyon_trainde,df,0.766667,0.149071,5,n=6
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,N_lezyon_trainde_yok,df,0.533333,0.074536,5,n=6
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,S_lezyon_trainde,mel,0.705263,0.027285,5,n=76
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,N_lezyon_trainde_yok,mel,0.617143,0.077196,5,n=35
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,S_lezyon_trainde,nv,0.922034,0.014624,5,n=177
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,N_lezyon_trainde_yok,nv,0.968826,0.003677,5,n=494
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,S_lezyon_trainde,vasc,0.833333,0.000000,5,n=6
+h08_r18in_ft224_d4_colab,sizinti,duyarlilik,N_lezyon_trainde_yok,vasc,0.800000,0.068465,5,n=8
+h08_r18in_ft224_d4_colab,sizinti,sinif_ici_fark_istatistigi,tum,,-0.021032,,1,"perm p(tek yönlü)=0.9107; 10000 perm, RNG0"
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=confocal,tum,,0.885714,0.063888,5,n=7 S=4
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=confocal,S_lezyon_trainde,,1.000000,0.000000,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=confocal,N_lezyon_trainde_yok,,0.733333,0.149071,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=consensus,tum,,0.908163,0.023931,5,n=98 S=48
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=consensus,S_lezyon_trainde,,0.908333,0.011411,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=consensus,N_lezyon_trainde_yok,,0.908000,0.036332,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=follow_up,tum,,1.000000,0.000000,5,n=357 S=0
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=histo,tum,,0.807763,0.008266,5,n=541 S=296
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=histo,S_lezyon_trainde,,0.831757,0.010522,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|dx_type=histo,N_lezyon_trainde_yok,,0.778776,0.009745,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=rosendahl,tum,,0.778947,0.014744,5,n=228 S=93
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=rosendahl,S_lezyon_trainde,,0.808602,0.015949,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=rosendahl,N_lezyon_trainde_yok,,0.758519,0.022590,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vidir_modern,tum,,0.846243,0.010300,5,n=346 S=227
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vidir_modern,S_lezyon_trainde,,0.855507,0.012224,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vidir_modern,N_lezyon_trainde_yok,,0.828571,0.028866,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vidir_molemax,tum,,0.980729,0.002969,5,n=384 S=3
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vidir_molemax,S_lezyon_trainde,,0.066667,0.149071,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vidir_molemax,N_lezyon_trainde_yok,,0.987927,0.002348,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vienna_dias,tum,,0.937778,0.024343,5,n=45 S=25
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vienna_dias,S_lezyon_trainde,,0.968000,0.033466,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|kaynak=vienna_dias,N_lezyon_trainde_yok,,0.900000,0.035355,5,
+h08_r18in_ft224_d4_colab,kaynak,acc|molemax_disi,tum,,0.828110,0.004654,5,n=619
+h08_r18in_ft224_d4_colab,kaynak,dengeli_acc|molemax_disi,tum,,0.770445,0.015213,5,
+h08_r18in_ft224_d4_colab,sizinti,acc_farki_tabakali_sinif_dxtype_kaynak,tum,,0.056276,0.012796,5,N-ağırlıklı; tabakaların kapsadığı N payı=0.418
+h08_r18in_ft224_d4_colab,sizinti,tabakali_fark_permutasyon,tum,,0.056276,,1,p_tek(S>N)=0.0219; p_iki=0.0448; 10000 perm
+h08_r18in_ft224_d4_colab,sizinti_son_epoch,acc_farki_tabakali_sinif_dxtype_kaynak,tum,,0.050086,0.009446,5,"son epoch (baseline: 100, train_acc=1.0)"
+h08_r18in_ft224_d4_colab,dermamnist_c,acc|C_val_altkumesi,tum,,0.930192,0.004093,5,resmî val'in C-val'de kalan 573 görüntüsü; model resmî train'de eğitildi
+h08_r18in_ft224_d4_colab,dermamnist_c,acc|C_traine_tasinan_val,tum,,0.828372,0.008288,5,n=430
+h08_r18in_ft224_d4_colab,dermamnist_c,dengeli_acc|C_val_altkumesi,tum,,0.753016,0.018072,5,
+h08_r18in_ft224_d4_colab,dermamnist_c,nv_payi|C_val_altkumesi,tum,,0.781850,,1,
+h08_r18in_ft224_d4_colab,dermamnist_c,cogunluk_taban|C_val_altkumesi,tum,,0.781850,,1,
+h08_r18in_ft224_d4_colab,sizinti,sinif_ici_fark_permutasyon_iki_yonlu,tum,,-0.021032,,1,p_iki=0.1685
+h08_r18in_ft224_d4_colab,sizinti_son_epoch,acc,S_lezyon_trainde,,0.838506,0.008229,5,
+h08_r18in_ft224_d4_colab,sizinti_son_epoch,acc,N_lezyon_trainde_yok,,0.907176,0.001991,5,
+h08_r18in_ft224_d4_colab,sizinti_son_epoch,acc_farki_S_eksi_N,tum,,-0.068670,0.008041,5,
+h08_r18in_ft224_d4_colab,seed,en_iyi_epoch,tum,,25.400000,2.880972,5,
+h08_r18in_ft224_d4_colab,seed,ciftli_tahmin_anlasmazligi,tum,,0.073878,0.005609,10,seed çiftleri arasında farklı argmax oranı (10 çift)
+h08_r18in_ft224_d4_colab,seed,val_acc_epoch_maks,tum,,0.886540,0.003337,5,100 epoch içinde en yüksek val_acc (iyimser tavan)
+h08_r18in_ft224_d4_colab,seed,val_acc_maks_epoch,tum,,22.200000,3.271085,5,
+h08_r18in_ft224_d4_colab,seed,val_auc_epoch_maks,tum,,0.979300,0.001658,5,
+h08_r18in_ft224_d4_colab,seed,val_acc_std_epoch5_20,tum,,0.015034,0.002615,5,seçimin düştüğü pencerede epoch-epoch oynaklık
+h08_r18in_ft224_d4_colab,seed,val_acc_secilen±2epoch_aralik,tum,,0.008574,0.004147,5,
+h08_r18in_ft224_d4_colab,seed,train_acc_son_epoch,tum,,nan,nan,5,
+h08_r18in_ft224_d4_colab,seed,val_acc_binom_SE,tum,,0.010014,,1,sqrt(p(1-p)/1003)
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,tum,akiec,7.000000,,1,destek=33
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,S_lezyon_trainde,akiec,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,N_lezyon_trainde_yok,akiec,6.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_dogru_adet,tum,akiec,13.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,tum,bcc,1.000000,,1,destek=52
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,S_lezyon_trainde,bcc,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,N_lezyon_trainde_yok,bcc,0.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_dogru_adet,tum,bcc,44.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,tum,bkl,13.000000,,1,destek=110
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,S_lezyon_trainde,bkl,8.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,N_lezyon_trainde_yok,bkl,5.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_dogru_adet,tum,bkl,71.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,tum,df,3.000000,,1,destek=12
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,S_lezyon_trainde,df,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,N_lezyon_trainde_yok,df,2.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_dogru_adet,tum,df,5.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,tum,mel,19.000000,,1,destek=111
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,S_lezyon_trainde,mel,12.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,N_lezyon_trainde_yok,mel,7.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_dogru_adet,tum,mel,54.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,tum,nv,12.000000,,1,destek=671
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,S_lezyon_trainde,nv,5.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,N_lezyon_trainde_yok,nv,7.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_dogru_adet,tum,nv,618.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,tum,vasc,2.000000,,1,destek=14
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,S_lezyon_trainde,vasc,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,N_lezyon_trainde_yok,vasc,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_dogru_adet,tum,vasc,10.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_adet,tum,,57.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_dogru_adet,tum,,815.000000,,1,
+h08_r18in_ft224_d4_colab,zor,kararsiz_adet,tum,,131.000000,,1,1-4 seed yanlış
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_orani,S_lezyon_trainde,,0.083333,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_orani,N_lezyon_trainde_yok,,0.042748,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=akiec|oy=bcc,tum,akiec,2.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=akiec|oy=bkl,tum,akiec,3.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=akiec|oy=mel,tum,akiec,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=akiec|oy=nv,tum,akiec,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=bcc|oy=nv,tum,bcc,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=bkl|oy=akiec,tum,bkl,2.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=bkl|oy=bcc,tum,bkl,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=bkl|oy=df,tum,bkl,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=bkl|oy=mel,tum,bkl,4.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=bkl|oy=nv,tum,bkl,5.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=df|oy=bcc,tum,df,2.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=df|oy=bkl,tum,df,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=mel|oy=bkl,tum,mel,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=mel|oy=nv,tum,mel,17.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=mel|oy=vasc,tum,mel,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=nv|oy=akiec,tum,nv,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=nv|oy=bcc,tum,nv,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=nv|oy=bkl,tum,nv,6.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=nv|oy=mel,tum,nv,4.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=vasc|oy=mel,tum,vasc,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis|gercek=vasc|oy=nv,tum,vasc,1.000000,,1,
+h08_r18in_ft224_d4_colab,zor,hep_yanlis_ort_guven,tum,,0.849569,,1,
+h08_r18in_ft224_d4_colab,teshis,ens5_acc,tum,,0.888335,,1,"5 seed olasılık ortalaması; teşhis, kart sonucu değil"
+h08_r18in_ft224_d4_colab,teshis,ens5_auc,tum,,0.985295,,1,"5 seed olasılık ortalaması; teşhis, kart sonucu değil"
+h08_r18in_ft224_d4_colab,teshis,ens5_dengeli_acc,tum,,0.784909,,1,"5 seed olasılık ortalaması; teşhis, kart sonucu değil"
+h08_r18in_ft224_d4_colab,teshis,ens5_makro_f1,tum,,0.795857,,1,"5 seed olasılık ortalaması; teşhis, kart sonucu değil"
+h08_r18in_ft224_d4_colab,teshis,ens5_ece15,tum,,0.042950,,1,"5 seed olasılık ortalaması; teşhis, kart sonucu değil"
+h08_r18in_ft224_d4_colab,teshis,onsel_duzeltme_acc,tum,,0.866401,0.009485,5,"p/π_train, τ=1 sabit (Menon 2021); val'de ayar yok; teşhis"
+h08_r18in_ft224_d4_colab,teshis,onsel_duzeltme_dengeli_acc,tum,,0.815097,0.015896,5,"p/π_train, τ=1 sabit (Menon 2021); val'de ayar yok; teşhis"
+h08_r18in_ft224_d4_colab,teshis,onsel_duzeltme_makro_f1,tum,,0.760824,0.023346,5,"p/π_train, τ=1 sabit (Menon 2021); val'de ayar yok; teşhis"
+h08_r18in_ft224_d4_colab,teshis,onsel_duzeltme_auc,tum,,0.971752,0.005914,5,"p/π_train, τ=1 sabit (Menon 2021); val'de ayar yok; teşhis"
+h08_r18in_ft224_d4_colab,teshis,onsel_duzeltme_tahmin_nv_payi,tum,,0.636491,0.016543,5,"p/π_train, τ=1 sabit (Menon 2021); val'de ayar yok; teşhis"

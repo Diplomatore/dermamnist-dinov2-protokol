@@ -1,0 +1,43 @@
+{
+  "run_id": "20261011-214829_h01_c1_duman_s0",
+  "varyant": "h01_c1_duman",
+  "seed": "0",
+  "etiket": "C1 H01: DINOv2-B CLS sonda, C* C-val'de",
+  "ebeveyn": "20261011-125349_h01_dinov2b_lp_r224_colab_s0",
+  "hipotez": "H01",
+  "kuyruk": "k5-c1-A",
+  "asama": 1,
+  "kural": {
+    "nan_kes": true,
+    "ilerleme_zorunlu_sn": 300,
+    "sabit_sn": 300,
+    "min_adim": 8,
+    "alt_sinir": {
+      "val_acc": 0.69
+    }
+  },
+  "komut": [
+    "python",
+    "colab/fp32_kos.py",
+    "varyantlar/k5/c_bolme_sar.py",
+    "--veri",
+    "c1",
+    "--",
+    "varyantlar/dinov2_sonda/sonda.py",
+    "--seed",
+    "0",
+    "--r",
+    "224",
+    "--alt-kume",
+    "256",
+    "--C",
+    "1.0",
+    "--secim-seedleri",
+    "0,1",
+    "--out",
+    "/content/is/runs/20261011-214829_h01_c1_duman_s0/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-10-11T21:48:31",
+  "makine": "ff2944bdf04b"
+}

@@ -1,0 +1,368 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-3; kartlar H07/H08/H09 mtime 2026-10-11 04:02/04:03/04:04, SIRALAMA 04:08). Hiçbir h07_*/h08_*/h09_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 04:22); koşum sonrası DEĞİŞTİRİLMEZ. Tek kuyruk (şef kararı): H08 (dihedral augment) ve H09 (renk augment), ebeveyn h02_r18in_ft224 aynı seed. Kaynak: hipotezler/H08.md, H09.md (öldürme c–g, uygulama notu a1/a2/a3 beklentileri, bütçe), SIRALAMA Tur-3 ortak ön-kayıtlar; H02 a2 ön-uçuşu (val_acc 0,8604/0,8584, 49,4/51,7 s/epoch), H02 a3 (0,8634–0,8704, 48,4–49,1 s/epoch).",
+ "_notlar": [
+  "Kapalı (özdeşlik) dumanlar kuyruk dışında foreground koşuldu (etiket tur3-on, ayrı beklenti); burada a1 = AÇIK dumanlar. ozdeslik_ilk_adim_loss_fark > 0 → açık yol kapalı/H02 yolundan farklı (kart (g) ilk yarısı).",
+  "ikincil_aralik varyant filtresi taşımaz; H08'e özgü anahtarlar (augment_frekans_*, augment_d4, augment_toplam_ornek) yalnız H08 koşumlarında, H09'a özgüler (renk_carpan_*, augment_renk) yalnız H09 koşumlarında bulunur → kurallar doğal olarak kendi koluna uygulanır.",
+  "yon_vs/tavan/sure_orani: referans H02 başka kuyrukta → kullanılamaz. Yerine kartların mutlak bantları (a2 [0,72; 0,90], a3 [0,80; 0,90]; 0,90 = H02 tavanı) + epoch_sure_ort_sn ≤ 90 (öldürme d). Görülmemiş ve ACC kararı 5-seed ortalamasıyla tahlilcide.",
+  "SIRALAMA H09 erteleme kuralı (H09 a3 başlarken bütçe sayacı > 17 GPU-sa → ertele): beklenen ≈ 12,3 (9,8 + H07 ≈ 0,1 + H08 ≈ 2,4) → H09 a3 dahil. Sayaç beklenmedik biçimde > 17 olursa şef H09 a3 satırlarını koşturmaz.",
+  "Canlı kural KURAL_FT (KOMUTLAR §3): nan_kes, 3. epoch'tan sonra val_acc_eniyi ≤ 0,69 → DUR (kart c). Zaman sınırı a1 8 / a2 15 / a3 40 dk."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN — h08_r18in_ft224_d4_duman, h09_r18in_ft224_renk02_duman (s0 × 1 epoch, --ozdeslik-ref H02 dumanı)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 2
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.62,
+     "ust": 0.9,
+     "kaynak": "H08/H09 a1: alt = çoğunluk tabanı − 0,05, üst = H02 tavanı"
+    },
+    {
+     "tur": "kollar_farkli",
+     "kaynak": "plasebo yakalayıcı: dihedral ↔ renk kolları aynı seed'de farklı olmalı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_ilk_adim_loss_fark",
+     "alt": 1e-07,
+     "ust": 10.0,
+     "kaynak": "H08/H09 öldürme (g): açık dumanın ilk_adim_loss'u kapalı (= H02 dumanı, tur3-on'da bit bit doğrulandı) ile aynı OLMAMALI"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "augment_d4",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H08 bayrağı devrede"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "augment_toplam_ornek",
+     "alt": 7007,
+     "ust": 7007,
+     "kaynak": "H08: 1 epoch'ta her train örneğine bir dönüşüm"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "augment_renk",
+     "alt": 0.2,
+     "ust": 0.2,
+     "kaynak": "H09 kart değeri G = 0,2"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 11180103,
+     "ust": 11180103,
+     "kaynak": "H02/H07/H08/H09 kartları: 11.180.103 (değişmez)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "egitim_sure_sn",
+     "alt": 10,
+     "ust": 300,
+     "kaynak": "H08/H09 a1"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "epoch_sure_ort_sn",
+     "alt": 10,
+     "ust": 90,
+     "kaynak": "H08/H09 öldürme (d); şef: epoch ≤ 90 s"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ilk_adim_loss",
+     "alt": 1.5,
+     "ust": 2.6,
+     "kaynak": "≈ ln 7 = 1,95 (H02 s0 dumanı 1,852; augment ilk adım kaybını yalnız biraz oynatır)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tepe_gpu_bellek_mb",
+     "alt": 1,
+     "ust": 3900,
+     "kaynak": "GTX 1650 4 GB"
+    }
+   ]
+  },
+  "2": {
+   "aciklama": "ÖN-UÇUŞ — h08_r18in_ft224_d4_onucus, h09_r18in_ft224_renk02_onucus × s0, s1 × 5 epoch (T_max = 5)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 4
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "H08/H09 a2 (uçtan uca ince ayar; seed bağlı)"
+    },
+    {
+     "tur": "kollar_farkli",
+     "kaynak": "plasebo yakalayıcı (dihedral ↔ renk)"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.72,
+     "ust": 0.9,
+     "kaynak": "H08/H09 a2: alt ≈ rakip testi 0,735 − 0,015, üst = H02 tavanı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "epoch_sure_ort_sn",
+     "alt": 10,
+     "ust": 90,
+     "kaynak": "H08/H09 öldürme (d): ön-uçuşta ort. epoch > 90 s → DUR"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_auc",
+     "alt": 0.88,
+     "ust": 0.99,
+     "kaynak": "H08/H09 a2"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "augment_frekans_maks_sapma",
+     "alt": 0.0,
+     "ust": 0.01,
+     "kaynak": "H08 öldürme (g): 8 dönüşüm frekansı 0,125 ± 0,01"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "augment_toplam_ornek",
+     "alt": 35035,
+     "ust": 35035,
+     "kaynak": "H08: 5 epoch × 7.007"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_b_ort",
+     "alt": 0.99,
+     "ust": 1.01,
+     "kaynak": "H09 öldürme (g) + uygulama notu: çarpan ortalaması ∈ [0,99; 1,01]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_b_min",
+     "alt": 0.8,
+     "ust": 0.85,
+     "kaynak": "H09 uygulama notu: min ∈ [0,80; 0,85] (U[0,8; 1,2])"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_b_max",
+     "alt": 1.15,
+     "ust": 1.2,
+     "kaynak": "H09 uygulama notu: max ∈ [1,15; 1,20]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_c_ort",
+     "alt": 0.99,
+     "ust": 1.01,
+     "kaynak": "H09 öldürme (g) + uygulama notu: çarpan ortalaması ∈ [0,99; 1,01]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_c_min",
+     "alt": 0.8,
+     "ust": 0.85,
+     "kaynak": "H09 uygulama notu: min ∈ [0,80; 0,85] (U[0,8; 1,2])"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_c_max",
+     "alt": 1.15,
+     "ust": 1.2,
+     "kaynak": "H09 uygulama notu: max ∈ [1,15; 1,20]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_s_ort",
+     "alt": 0.99,
+     "ust": 1.01,
+     "kaynak": "H09 öldürme (g) + uygulama notu: çarpan ortalaması ∈ [0,99; 1,01]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_s_min",
+     "alt": 0.8,
+     "ust": 0.85,
+     "kaynak": "H09 uygulama notu: min ∈ [0,80; 0,85] (U[0,8; 1,2])"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_s_max",
+     "alt": 1.15,
+     "ust": 1.2,
+     "kaynak": "H09 uygulama notu: max ∈ [1,15; 1,20]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 11180103,
+     "ust": 11180103,
+     "kaynak": "H02/H07/H08/H09 kartları: 11.180.103 (değişmez)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "n_train",
+     "alt": 7007,
+     "ust": 7007,
+     "kaynak": "resmî split"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tepe_gpu_bellek_mb",
+     "alt": 1,
+     "ust": 3900,
+     "kaynak": "GTX 1650 4 GB"
+    }
+   ]
+  },
+  "3": {
+   "aciklama": "TAM — h08_r18in_ft224_d4 × s0–4 sonra h09_r18in_ft224_renk02 × s0–4 (30 epoch) — bilgi amaçlı (son aşama)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 10
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "H08/H09 a3"
+    },
+    {
+     "tur": "kollar_farkli",
+     "kaynak": "plasebo yakalayıcı"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.8,
+     "ust": 0.9,
+     "kaynak": "H08/H09 a3: alt 0,80 bozuk eğitim alarmı, üst 0,90 = H02 tavanı (gevşetilmez)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_auc",
+     "alt": 0.93,
+     "ust": 0.99,
+     "kaynak": "H08/H09 a3 (> 0,99 görülmemiş)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "epoch_sure_ort_sn",
+     "alt": 10,
+     "ust": 90,
+     "kaynak": "H08/H09 öldürme (d)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "augment_frekans_maks_sapma",
+     "alt": 0.0,
+     "ust": 0.01,
+     "kaynak": "H08 öldürme (g): 8 dönüşüm frekansı 0,125 ± 0,01"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "augment_toplam_ornek",
+     "alt": 210210,
+     "ust": 210210,
+     "kaynak": "H08: 30 epoch × 7.007"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_b_ort",
+     "alt": 0.99,
+     "ust": 1.01,
+     "kaynak": "H09 öldürme (g) + uygulama notu: çarpan ortalaması ∈ [0,99; 1,01]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_b_min",
+     "alt": 0.8,
+     "ust": 0.85,
+     "kaynak": "H09 uygulama notu: min ∈ [0,80; 0,85] (U[0,8; 1,2])"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_b_max",
+     "alt": 1.15,
+     "ust": 1.2,
+     "kaynak": "H09 uygulama notu: max ∈ [1,15; 1,20]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_c_ort",
+     "alt": 0.99,
+     "ust": 1.01,
+     "kaynak": "H09 öldürme (g) + uygulama notu: çarpan ortalaması ∈ [0,99; 1,01]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_c_min",
+     "alt": 0.8,
+     "ust": 0.85,
+     "kaynak": "H09 uygulama notu: min ∈ [0,80; 0,85] (U[0,8; 1,2])"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_c_max",
+     "alt": 1.15,
+     "ust": 1.2,
+     "kaynak": "H09 uygulama notu: max ∈ [1,15; 1,20]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_s_ort",
+     "alt": 0.99,
+     "ust": 1.01,
+     "kaynak": "H09 öldürme (g) + uygulama notu: çarpan ortalaması ∈ [0,99; 1,01]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_s_min",
+     "alt": 0.8,
+     "ust": 0.85,
+     "kaynak": "H09 uygulama notu: min ∈ [0,80; 0,85] (U[0,8; 1,2])"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "renk_carpan_s_max",
+     "alt": 1.15,
+     "ust": 1.2,
+     "kaynak": "H09 uygulama notu: max ∈ [1,15; 1,20]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 11180103,
+     "ust": 11180103,
+     "kaynak": "H02/H07/H08/H09 kartları: 11.180.103 (değişmez)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "n_train",
+     "alt": 7007,
+     "ust": 7007,
+     "kaynak": "resmî split"
+    }
+   ]
+  }
+ }
+}

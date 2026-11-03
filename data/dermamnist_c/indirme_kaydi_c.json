@@ -1,0 +1,45 @@
+{
+  "kaynak": {
+    "zenodo_record": 12739457,
+    "doi": "10.5281/zenodo.12739457",
+    "version": "v1.1",
+    "lisans_kayit": {
+      "id": "cc-by-4.0"
+    }
+  },
+  "dosyalar": {
+    "DermaMNIST-C.csv": {
+      "durum": "mevcut",
+      "bayt": 747941,
+      "md5": "1c54bc9f483e97a9d7dbbde076a45900",
+      "sha256": "c27194d338986463966e1694d5b49fda933222368f04b316c702ac2e8a0d4f5c",
+      "url": "https://zenodo.org/api/records/12739457/files/DermaMNIST-C.csv/content",
+      "md5_resmi": "1c54bc9f483e97a9d7dbbde076a45900",
+      "md5_eslesti": true,
+      "baslangic": "2026-10-10T19:54:48+03:00"
+    },
+    "dermamnist_corrected_28.npz": {
+      "durum": "mevcut",
+      "bayt": 20698236,
+      "md5": "96e2862980877d45d9cacb5c25de6950",
+      "sha256": "c3d9cbd9008a0dcb76943d5cf38681bdc5166effc79f9e215657b859b9226aa8",
+      "url": "https://zenodo.org/api/records/12739457/files/dermamnist_corrected_28.npz/content",
+      "md5_resmi": "96e2862980877d45d9cacb5c25de6950",
+      "md5_eslesti": true,
+      "baslangic": "2026-10-10T19:54:48+03:00"
+    },
+    "dermamnist_corrected_224.npz": {
+      "durum": "indirildi",
+      "bayt": 1131258316,
+      "bu_oturumda_alinan_bayt": 1131258316,
+      "sure_sn": 800.1,
+      "ort_hiz_KBps": 1380.8,
+      "md5": "84920fb70c83b234c295b6f0d4ae2bc0",
+      "sha256": "f8d80f4fac5a0a1f53256e0c337456a8ab8020828a94a9eb8a1eb8ef5d748486",
+      "url": "https://zenodo.org/api/records/12739457/files/dermamnist_corrected_224.npz/content",
+      "md5_resmi": "84920fb70c83b234c295b6f0d4ae2bc0",
+      "md5_eslesti": true,
+      "baslangic": "2026-10-10T19:54:48+03:00"
+    }
+  }
+}

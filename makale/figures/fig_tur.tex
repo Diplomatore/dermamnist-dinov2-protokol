@@ -1,0 +1,63 @@
+% F4 — Seçim döngüsü (yalnız val). Veri: figures/data/fig_tur.dat, fig_tur_enIyi.dat, fig_tur_bolge.dat
+% (üretici figures/scripts/fig_tur.py; kaynak leaderboard.csv + k5_kuru_val_sonuc.json + günlük). Sayı gömülü değil.
+\providecommand{\figveri}{figures/data}
+\providecolor{iyiRenk}{RGB}{0,84,159}
+\providecolor{kotuRenk}{RGB}{178,24,43}
+\providecolor{renkH08}{RGB}{217,130,0}
+\pgfplotstableread[col sep=tab]{\figveri/fig_tur_bolge.dat}\turBolge
+\pgfplotstablegetelem{1}{x0}\of\turBolge\let\bxa\pgfplotsretval
+\pgfplotstablegetelem{1}{x1}\of\turBolge\let\bxb\pgfplotsretval
+\pgfplotstablegetelem{0}{xm}\of\turBolge\let\bxmA\pgfplotsretval
+\pgfplotstablegetelem{0}{lab}\of\turBolge\let\blabA\pgfplotsretval
+\pgfplotstablegetelem{1}{xm}\of\turBolge\let\bxmB\pgfplotsretval
+\pgfplotstablegetelem{1}{lab}\of\turBolge\let\blabB\pgfplotsretval
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  scale only axis, width=11.0cm, height=6.0cm,
+  xmin=-0.5, xmax=5.5, ymin=0.715, ymax=0.94,
+  xtick={0,...,5}, xticklabels={Round 0\\(replication),Round 1,Round 2,Round 3,Round 4,Round 5},
+  xticklabel style={align=center},
+  every tick label/.append style={font=\footnotesize},
+  ylabel={Validation accuracy (5 seeds)}, ylabel style={font=\footnotesize},
+  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+  tick align=outside, tick pos=left, ymajorgrids, grid style={gray!20},
+  table/col sep=tab,
+  legend style={font=\footnotesize, at={(0.99,0.03)}, anchor=south east, fill=white, draw=gray!50, legend columns=2},
+  legend cell align=left,
+]
+% donanım bölgeleri (günlükten)
+\fill[gray!10] (axis cs:\bxa,0.715) rectangle (axis cs:\bxb,0.94);
+\node[font=\footnotesize, text=gray!70!black, anchor=north] at (axis cs:\bxmA,0.938) {\blabA};
+\node[font=\footnotesize, text=gray!70!black, anchor=north] at (axis cs:\bxmB,0.938) {\blabB};
+% en iyi yaşayan kart
+\addplot[black, line width=1.4pt, const plot, forget plot] table[x=x, y=y] {\figveri/fig_tur_enIyi.dat};
+% kartlar: karar türüne göre işaretçi
+\pgfplotsset{kartstil/.style={only marks, line width=1.0pt,
+  error bars/y dir=both, error bars/y explicit, error bars/error bar style={line width=1.0pt},
+  point meta=explicit symbolic,
+  nodes near coords, visualization depends on={value \thisrow{anc}\as\anc}, visualization depends on={\thisrow{kx}\as\kx}, visualization depends on={\thisrow{ky}\as\ky},
+  nodes near coords style={font=\footnotesize, anchor=\anc, xshift=\kx pt, yshift=\ky pt, inner sep=1.2pt, fill=white, fill opacity=0.85, text opacity=1}}}
+\addplot[kartstil, black, mark=square*, mark size=2.2pt]
+  table[x=x, y=m, y error=s, meta=lab, restrict expr to domain={\thisrow{kod}}{0:0}] {\figveri/fig_tur.dat};
+\addlegendentry{rival (replication)}
+\addplot[kartstil, iyiRenk, mark=*, mark size=2.2pt]
+  table[x=x, y=m, y error=s, meta=lab, restrict expr to domain={\thisrow{kod}}{1:1}] {\figveri/fig_tur.dat};
+\addlegendentry{kept}
+\addplot[kartstil, kotuRenk, mark=x, mark size=3.2pt, line width=1.4pt]
+  table[x=x, y=m, y error=s, meta=lab, restrict expr to domain={\thisrow{kod}}{2:2}] {\figveri/fig_tur.dat};
+\addlegendentry{killed}
+\addplot[kartstil, gray, mark=diamond, mark size=2.6pt]
+  table[x=x, y=m, y error=s, meta=lab, restrict expr to domain={\thisrow{kod}}{3:3}] {\figveri/fig_tur.dat};
+\addlegendentry{analysis card}
+\addplot[kartstil, renkH08, mark=triangle*, mark size=2.8pt]
+  table[x=x, y=m, y error=s, meta=lab, restrict expr to domain={\thisrow{kod}}{4:4}] {\figveri/fig_tur.dat};
+\addlegendentry{inspect $\rightarrow$ test candidate}
+\addlegendimage{black, line width=1.4pt}
+\addlegendentry{best surviving card}
+\end{axis}
+\end{tikzpicture}
+\caption{Seçim döngüsü (yalnız doğrulama kümesi): tur başına kart doğrulama ACC'si (5 seed ortalaması $\pm$ std), karar türüne göre işaretçi; siyah basamak: o tura kadar en iyi yaşayan kart. Gri zemin: Colab L4 turları.}
+\label{fig:tur}
+\end{figure}

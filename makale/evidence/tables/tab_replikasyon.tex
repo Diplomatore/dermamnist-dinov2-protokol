@@ -1,0 +1,23 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: LIT-yang2023-acc, LIT-yang2023-auc, LIT-doerrich2025-acc, LIT-doerrich2025-auc, LIT-medeiros2026-acc, REP-kabul-araligi, REP-yerel-test_acc, REP-yerel-test_auc, REP-yerel-test_acc_son, T-baseline-acc, T-baseline-auc, T-baseline_son-acc, REP-L4-test_acc
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Rakip ResNet-18 (28 px) replikasyonu: literatür çıpaları ve iki donanım. Renk kodu yok: bütün satırlar aynı rakibin referans değerleridir.}\label{tab:replikasyon}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X ccc}
+\toprule
+Kaynak / ortam & Test ACC & Test AUC & Test ACC \\
+ & (val-AUC seçimi) & & (son epoch) \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Literatür (bağlam; aynı koşulda üretilmedi)}} \\
+Yang vd.\ 2023, Tablo~3~\cite{yang_2023_medmnistv2} & 0,735 & 0,917 & -- \\
+Doerrich vd.\ 2025, Ek~S4 (ImageNet, sıfır dolgu; 3 seed)~\cite{doerrich_2025_medmnistplus} & 0,7338\,$\pm$\,0,0061 & 0,8835\,$\pm$\,0,0028 & -- \\
+Medeiros 2026, Tablo~2~\cite{medeiros_2026_tta} & 0,742 & -- & -- \\
+Kabul aralığı (ön-kayıtlı) & [0,7218; 0,754] & -- & -- \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Bu çalışma (5 seed)}} \\
+Yerel GTX 1650 (replikasyon kapısı) & 0,7296\,$\pm$\,0,0176 & 0,9148\,$\pm$\,0,0034 & 0,7395\,$\pm$\,0,0076 \\
+Colab L4, FP32 (ana test satırı) & 0,7395\,$\pm$\,0,0053 & 0,9148\,$\pm$\,0,0028 & 0,7364\,$\pm$\,0,0060 \\
+\botrule
+\end{tabularx}
+\end{table}

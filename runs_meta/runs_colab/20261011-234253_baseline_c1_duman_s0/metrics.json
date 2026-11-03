@@ -1,0 +1,32 @@
+{
+  "val_acc": 0.8080279232111692,
+  "val_auc": 0.938515433934697,
+  "val_loss": 0.5656919196248055,
+  "val_dengeli_acc": 0.24670363001659995,
+  "test_acc": 0.7962510187449062,
+  "test_auc": 0.9227870127409962,
+  "test_dengeli_acc": 0.24356129102964547,
+  "val_acc_son": 0.8080279232111692,
+  "val_auc_son": 0.938515433934697,
+  "test_acc_son": 0.7962510187449062,
+  "test_auc_son": 0.9227870127409962,
+  "train_acc": 0.6915398660986001,
+  "train_auc": 0.8959129641230115,
+  "en_iyi_epoch": 3,
+  "epoch_sayisi": 3,
+  "secim_val_auc_farki": 0.0,
+  "egitim_sure_sn": 29.0,
+  "sure_sn": 29.0,
+  "param_sayisi": 11172423,
+  "seed": 0,
+  "cihaz": "cuda:0 / NVIDIA L4",
+  "alt_grup": {
+    "sinif_0": 0.05263157894736842,
+    "sinif_1": 0.4090909090909091,
+    "sinif_2": 0.14,
+    "sinif_3": 0.0,
+    "sinif_4": 0.13636363636363635,
+    "sinif_5": 0.9888392857142857,
+    "sinif_6": 0.0
+  }
+}

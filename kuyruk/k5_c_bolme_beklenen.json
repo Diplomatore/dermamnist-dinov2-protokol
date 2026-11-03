@@ -1,0 +1,8 @@
+{
+ "icerik_sha256": {
+  "28": "d2e3516354424c7372592c5b62d5eb65d95560fd0ceabd03e9a17e233de71ac5",
+  "224": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba"
+ },
+ "yazim": "2026-10-11T21:13:49",
+ "aciklama": "C1 verisi (resmî piksel + C bölmesi) donmuş içerik SHA256'sı; scripts/c_bolme_npz.py --kip c1 --ilk-yapim (şef, resmî test geçişinden SONRA)"
+}

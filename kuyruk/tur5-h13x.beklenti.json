@@ -1,0 +1,79 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-5; kart hipotezler/H13.md mtime 2026-10-11 17:52:31, SIRALAMA-TUR5.md 17:51:12). Hiçbir h13_*/h13x_*/h13k_*/rt_h13_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 18:03:23); koşum sonrası DEĞİŞTİRİLMEZ. İkincil topluluk satırları (betimsel, KARAR VERMEZ; kart ikincil (7), (9), (10), ablasyon (i)): h13x_h02c_h10_op, h13x_t2_h01c, h13x_t3_h10_hom5, h13x_t3_h02c_hom5, h13x_t4_h08c_h10_lpo, h13x_m3_baseline_hom5, h13x_m3_baseline_h02c_lpo, h13x_abl_h10_hom2.",
+ "_notlar": [
+  "Kollar karışık üyelidir → üye sayısı/param kuralları kola özgü olamaz (ikincil_aralik varyant süzgeci yok); yalnız mekanik kurallar.",
+  "Alt 0,70: en zayıf üye baseline_c (Colab rakip, ≈ 0,75) − pay; üst 0,93 = kart görülmemiş ACC eşiği."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — h13x_* (CPU)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 28
+    },
+    {
+     "tur": "kollar_farkli",
+     "kaynak": "plasebo yakalayıcı: farklı üyeler farklı topluluk"
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "üyeler seed'e göre farklı"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.7,
+     "ust": 0.93,
+     "kaynak": "alt = baseline_c ≈ 0,75 − pay; üst = H13 görülmemiş ACC"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "etiket_hizasi",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H13 öldürme (c2)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "seed_denet_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "seed eşlemesi (kola göre kip)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "satir_toplam_maks_sapma",
+     "alt": 0.0,
+     "ust": 1e-06,
+     "kaynak": "H13 öldürme (c4)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kirp",
+     "alt": 1e-12,
+     "ust": 1e-12,
+     "kaynak": "H13 öldürme (d)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "egitim_sure_sn",
+     "alt": 0.0,
+     "ust": 300,
+     "kaynak": "CPU < 5 dk"
+    }
+   ]
+  }
+ }
+}

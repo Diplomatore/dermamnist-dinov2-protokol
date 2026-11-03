@@ -1,0 +1,165 @@
+{
+  "run_id": "20261011-234630_h01_c1_onucus_s0",
+  "varyant": "h01_c1_onucus",
+  "seed": "0",
+  "etiket": "C1 H01: DINOv2-B CLS sonda, C* C-val'de",
+  "ebeveyn": "20261011-125349_h01_dinov2b_lp_r224_colab_s0",
+  "hipotez": "H01",
+  "kuyruk": "k5-c1-A-v3",
+  "asama": 2,
+  "kural": {
+    "nan_kes": true,
+    "ilerleme_zorunlu_sn": 300,
+    "sabit_sn": 300,
+    "min_adim": 8,
+    "alt_sinir": {
+      "val_acc": 0.69
+    }
+  },
+  "komut": [
+    "python",
+    "colab/fp32_kos.py",
+    "varyantlar/k5/c_bolme_sar.py",
+    "--veri",
+    "c1",
+    "--",
+    "varyantlar/dinov2_sonda/sonda.py",
+    "--seed",
+    "0",
+    "--r",
+    "224",
+    "--C",
+    "izgara",
+    "--secim-seedleri",
+    "0,1",
+    "--out",
+    "/content/is/runs/20261011-234630_h01_c1_onucus_s0/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-10-11T23:46:31",
+  "makine": "a65fcb9985e1",
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 92700,
+    "numpy": "2.1.3",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "makine": "a65fcb9985e1",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  },
+  "veri": {
+    "npz": "dermamnist_c_resmipiksel_224.npz",
+    "kok": "/content/is/data",
+    "md5": "3e07c0de4b4cf307ba8145ec6db0f964",
+    "sha256": "b9b2db5626be2675647c89b4bd3b1b5d6fd93f5b9404fbb9cdf914aa4c8bbc0d",
+    "bayt": 1507641200,
+    "veri": "c1",
+    "md5_resmi": "3e07c0de4b4cf307ba8145ec6db0f964",
+    "icerik_sha256": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba",
+    "beklenen": "k5_c_bolme_beklenen.json"
+  },
+  "oznitelik_onbellek": {
+    "dosya": "/content/is/data/oznitelik_c1/dinov2_vitb14_r224.npz",
+    "meta": {
+      "model": "vit_base_patch14_dinov2.lvd142m",
+      "model_kisa": "dinov2_vitb14",
+      "timm": "1.0.30",
+      "torch": "2.11.0+cu130",
+      "agirlik": {
+        "hf_hub_id": "timm/vit_base_patch14_dinov2.lvd142m",
+        "dosya": "model.safetensors",
+        "sha256": "55cbb5d887b336d430e649c277b85a1429e724871f9d02ac16203235886d8c7b",
+        "bayt": 346334872,
+        "hf_revizyon": "4685c99dabffe5affac90bd99dbffd25801ae58d"
+      },
+      "param_omurga": 85724928,
+      "oznitelik": "CLS = forward_features(x)[:,0] (son LayerNorm sonrası)",
+      "oznitelik_boyut": 768,
+      "giris_px": 224,
+      "kaynak_px": 224,
+      "buyutme": "yok (özdeşlik)",
+      "normalizasyon": {
+        "ort": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "olcek": "/255"
+      },
+      "hassasiyet": "fp32 (AMP yok; TF32 kapalı)",
+      "bs": 32,
+      "cihaz": "cuda:0 / NVIDIA L4",
+      "veri": {
+        "npz": "dermamnist_c_resmipiksel_224.npz",
+        "kok": "/content/is/data",
+        "md5": "3e07c0de4b4cf307ba8145ec6db0f964",
+        "sha256": "b9b2db5626be2675647c89b4bd3b1b5d6fd93f5b9404fbb9cdf914aa4c8bbc0d",
+        "bayt": 1507641200,
+        "veri": "c1",
+        "md5_resmi": "3e07c0de4b4cf307ba8145ec6db0f964",
+        "icerik_sha256": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba",
+        "beklenen": "k5_c_bolme_beklenen.json"
+      },
+      "etiket_28_ile_ayni": true,
+      "bolumler": [
+        "train",
+        "val"
+      ],
+      "n": {
+        "train": 8215,
+        "val": 573
+      },
+      "alt_kume": null,
+      "sure_sn": 58.95,
+      "sure_bolum_sn": {
+        "train": 54.76,
+        "val": 3.99
+      },
+      "img_s": 149.08,
+      "tepe_gpu_bellek_mb": 667.8,
+      "determinizm_maks_fark": 0.0,
+      "tarih": "2026-10-11T23:38:51"
+    }
+  },
+  "protokol": {
+    "sonda": "nn.Linear + CE + λ‖W‖², λ=1/(C·N), sapma cezasız",
+    "optimizer": "Adam",
+    "lr": 0.01,
+    "weight_decay": 0.0,
+    "bs": 256,
+    "epoch": 100,
+    "takvim": "CosineAnnealingLR(T_max=epoch)",
+    "baslatma": "W~N(0,0.01²), b=0",
+    "olcekleme": "StandardScaler (yalnız train)",
+    "C_izgara": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "secim": "argmax ort val_acc (seçim seed'leri) → val_auc → küçük C",
+    "secim_seedleri": [
+      0,
+      1
+    ],
+    "lbfgs_denetim": "C_sk=C*/2 (aynı amaç), max_iter 5000",
+    "seed": 0,
+    "cudnn_deterministic": true
+  }
+}

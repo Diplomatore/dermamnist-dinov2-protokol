@@ -1,0 +1,74 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-3; kartlar H07/H08/H09 mtime 2026-10-11 04:02/04:03/04:04, SIRALAMA 04:08). Hiçbir h07_*/h08_*/h09_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 04:22); koşum sonrası DEĞİŞTİRİLMEZ. M3 yan kolu (karar vermez): h07x_baseline_tta8 = rakibin 5 best_model.pth'sine aynı 8 görünümlü TTA (28 px, 0,5/0,5). Kaynak: H07 ikincil (14), SIRALAMA M3; baseline val ACC 0,7396 (seed 0,7079–0,7597), çoğunluk tabanı (val nv payı) 0,669; 28 px bilinen tavan ≈ 0,78 (orkestrasyon K1.5 notu, literatur-cipa).",
+ "_notlar": [
+  "Aralık mekanik alarmdır: alt = çoğunluk tabanı 0,669 (altı = bozuk görünüm/normalizasyon), üst 0,80 (28 px literatür tavanı ≈ 0,78 + pay)."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — h07x_baseline_tta8 s0–4 (foreground, dakikalar)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 5
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "baseline seed'leri farklı"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.669,
+     "ust": 0.8,
+     "kaynak": "çoğunluk tabanı 0,669 ↔ 28 px tavanı ≈ 0,78 (+pay)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_kimlik_maks_fark",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "H07 (c) aynı denetim, rakip kolu"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_kimlik_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H07 (c) aynı denetim, rakip kolu"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "gorunum_arasi_maks_fark",
+     "alt": 0.001,
+     "ust": 1.0,
+     "kaynak": "H07 (d) aynı denetim"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 11172423,
+     "ust": 11172423,
+     "kaynak": "rakip models.ResNet18 (K3 baseline metrics.json)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "giris_cozunurluk",
+     "alt": 28,
+     "ust": 28,
+     "kaynak": "rakip protokolü 28 px"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    }
+   ]
+  }
+ }
+}

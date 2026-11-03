@@ -1,0 +1,65 @@
+{
+  "run_id": "20261011-180724_h13x_h02c_h10_op_s3",
+  "varyant": "h13x_h02c_h10_op",
+  "seed": "3",
+  "etiket": "H13x (7): H10_s ⊕ H02c_s olasılık ortalaması",
+  "ebeveyn": "20261011-163811_h10_dinov2b_k4_ft224_s3",
+  "hipotez": "H13",
+  "kuyruk": "tur5-h13x",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>/env/.venv/Scripts/python.exe",
+    "varyantlar/topluluk/topluluk.py",
+    "--uyeler",
+    "runs_colab/20261011-163811_h10_dinov2b_k4_ft224_s3",
+    "runs_colab/20261011-133112_h02_r18in_ft224_colab_s3",
+    "--birlesim",
+    "olasilik",
+    "--seed-denet",
+    "hepsi",
+    "--seed",
+    "3",
+    "--out",
+    "<WS>\\runs\\20261011-180724_h13x_h02c_h10_op_s3/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-10-11T18:07:24",
+  "makine": "LAPTOP-SKK5GIC3",
+  "donanim": "cpu-birlesim",
+  "topluluk": {
+    "kural": "Σ w_i p_i / satır toplamı",
+    "birlesim": "olasilik",
+    "agirlik": [
+      0.5,
+      0.5
+    ],
+    "kirp": 1e-12,
+    "seed_denet": "hepsi",
+    "kart": "hipotezler/H13.md",
+    "kaynak": "Gontijo-Lopes vd. 2022 (ICLR); Lakshminarayanan vd. 2017"
+  },
+  "uyeler": [
+    {
+      "run_id": "20261011-163811_h10_dinov2b_k4_ft224_s3",
+      "varyant": "h10_dinov2b_k4_ft224",
+      "seed": "3",
+      "ebeveyn": "h02_r18in_ft224_colab:s3",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "9959c1601625ff69b9a70df5a90e5e58b2a888ee3b6568b35f92d4819c925d98",
+      "dizin": "<WS>\\runs_colab\\20261011-163811_h10_dinov2b_k4_ft224_s3",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    },
+    {
+      "run_id": "20261011-133112_h02_r18in_ft224_colab_s3",
+      "varyant": "h02_r18in_ft224_colab",
+      "seed": "3",
+      "ebeveyn": "20261010-234351_h02_r18in_ft224_s3",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "e259d3b30f432fece2e56758b44f25cd7e281eb40c017bd4e3d38951b26ae2f7",
+      "dizin": "<WS>\\runs_colab\\20261011-133112_h02_r18in_ft224_colab_s3",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    }
+  ],
+  "denetim_hatasi": []
+}

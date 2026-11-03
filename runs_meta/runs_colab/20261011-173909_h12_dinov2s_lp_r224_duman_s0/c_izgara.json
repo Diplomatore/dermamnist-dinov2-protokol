@@ -1,0 +1,26 @@
+{
+  "secim_seedleri": [
+    0
+  ],
+  "C_izgara": [
+    1.0
+  ],
+  "secilen_C": 1.0,
+  "ortalama": {
+    "1.0": {
+      "val_acc": 0.609375,
+      "val_auc": 0.7734796150271325
+    }
+  },
+  "uyumlar": [
+    {
+      "seed": 0,
+      "C": 1.0,
+      "val_acc": 0.609375,
+      "val_auc": 0.7734796150271325,
+      "train_amac": 0.28348439931869507,
+      "son_batch_loss": 0.2834852933883667,
+      "sure_sn": 0.35
+    }
+  ]
+}

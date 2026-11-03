@@ -1,0 +1,32 @@
+{
+  "val_acc": 0.7766699900299102,
+  "val_auc": 0.931336238950511,
+  "val_loss": 0.6383583880960941,
+  "val_dengeli_acc": 0.5043074053612695,
+  "test_acc": 0.7596009975062344,
+  "test_auc": 0.9254208141758974,
+  "test_dengeli_acc": 0.500317085977971,
+  "val_acc_son": 0.7676969092721835,
+  "val_auc_son": 0.9249567575402873,
+  "test_acc_son": 0.7576059850374065,
+  "test_auc_son": 0.9246450404166193,
+  "train_acc": 0.8226059654631083,
+  "train_auc": 0.962878868959054,
+  "en_iyi_epoch": 13,
+  "epoch_sayisi": 20,
+  "secim_val_auc_farki": 0.0,
+  "egitim_sure_sn": 461.5,
+  "sure_sn": 461.5,
+  "param_sayisi": 11172423,
+  "seed": 1,
+  "cihaz": "cuda:0 / NVIDIA GeForce GTX 1650",
+  "alt_grup": {
+    "sinif_0": 0.2727272727272727,
+    "sinif_1": 0.7115384615384616,
+    "sinif_2": 0.5,
+    "sinif_3": 0.0,
+    "sinif_4": 0.4864864864864865,
+    "sinif_5": 0.9165424739195231,
+    "sinif_6": 0.6428571428571429
+  }
+}

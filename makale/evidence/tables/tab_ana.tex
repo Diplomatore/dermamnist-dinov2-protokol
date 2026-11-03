@@ -1,0 +1,22 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: T-h01-acc, T-h02-acc, T-h08-acc, T-h10-acc, T-h11-acc, T-h12-acc, T-h01-auc, T-h02-auc, T-h08-auc, T-h10-auc, T-h11-auc, T-h12-auc, T-h01-dengeli_acc, T-h02-dengeli_acc, T-h08-dengeli_acc, T-h10-dengeli_acc, T-h11-dengeli_acc, T-h12-dengeli_acc, T-h01-ece15, T-h02-ece15, T-h08-ece15, T-h10-ece15, T-h11-ece15, T-h12-ece15, T-baseline-acc, T-baseline-auc, T-baseline-dengeli_acc, T-baseline-ece15, T-baseline_son-acc, T-baseline_son-auc, T-baseline_son-dengeli_acc, T-baseline_son-ece15
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Resmî test sonuçları (n = 2.005; 5 seed, ort.\,$\pm$\,std). Kollar arası üstünlük için Tablo~\ref{tab:kiyas} ve Tablo~\ref{tab:protokol}'deki GA'lara bakınız.}\label{tab:ana}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X cccc}
+\toprule
+Kol & ACC & AUC & Dengeli ACC & ECE-15 \\
+\midrule
+B (rakip) & 0,7395\,$\pm$\,0,0053 & 0,9148\,$\pm$\,0,0028 & 0,4353\,$\pm$\,0,0237 & 0,0380\,$\pm$\,0,0234 \\
+H01c & 0,8260\,$\pm$\,0,0004 & 0,9584\,$\pm$\,0,0001 & 0,6382\,$\pm$\,0,0024 & 0,0265\,$\pm$\,0,0004 \\
+H02c & 0,8713\,$\pm$\,0,0041 & 0,9736\,$\pm$\,0,0014 & 0,7200\,$\pm$\,0,0092 & 0,0693\,$\pm$\,0,0076 \\
+H08c & 0,8976\,$\pm$\,0,0027 & 0,9830\,$\pm$\,0,0019 & 0,8041\,$\pm$\,0,0098 & 0,0530\,$\pm$\,0,0013 \\
+H10 (W) & 0,8940\,$\pm$\,0,0033 & 0,9828\,$\pm$\,0,0015 & 0,7803\,$\pm$\,0,0133 & 0,0621\,$\pm$\,0,0027 \\
+H11 & 0,8837\,$\pm$\,0,0083 & 0,9807\,$\pm$\,0,0021 & 0,7703\,$\pm$\,0,0215 & 0,0758\,$\pm$\,0,0073 \\
+H12 & 0,8160\,$\pm$\,0,0005 & 0,9501\,$\pm$\,0,0001 & 0,6456\,$\pm$\,0,0031 & 0,0196\,$\pm$\,0,0022 \\
+\midrule
+B son-epoch (ikincil) & 0,7364\,$\pm$\,0,0060 & 0,9024\,$\pm$\,0,0058 & 0,4823\,$\pm$\,0,0247 & 0,2146\,$\pm$\,0,0058 \\
+\botrule
+\end{tabularx}
+\end{table}

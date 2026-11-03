@@ -1,0 +1,48 @@
+% F2 — S/N ayrışımı (resmî test). Veri: figures/data/fig_sn.dat, fig_sn_yl.dat
+% (üretici figures/scripts/fig_sn.py; kaynak [T] kiyas.*.acc_S_ham/acc_N_ham/ham_dS_eksi_dN). Sayı gömülü değil.
+\providecommand{\figveri}{figures/data}
+\providecolor{iyiRenk}{RGB}{0,84,159}
+% Kol paleti (tur-1, review 7.3): nötr kategorik; iyiRenk/kotuRenk yalnız anlamlılık/karar kodlamasında
+\providecolor{renkB}{RGB}{105,105,105}
+\providecolor{renkH01}{RGB}{160,160,160}
+\providecolor{renkH02}{RGB}{25,25,25}
+\providecolor{renkH08}{RGB}{217,130,0}
+\providecolor{renkH10}{RGB}{118,42,131}
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={group size=2 by 1, horizontal sep=0.35cm, yticklabels at=edge left},
+  scale only axis, width=4.15cm, height=4.4cm,
+  xmin=-5, xmax=10.5, ymin=-0.6, ymax=3.75,
+  ytick={0,1,2,3}, yticklabels from table={\figveri/fig_sn_yl.dat}{lab},
+  table/col sep=tab,
+  yticklabel style={font=\footnotesize}, xticklabel style={font=\footnotesize},
+  xlabel={$\Delta$ accuracy (pp)}, xlabel style={font=\footnotesize},
+  title style={font=\footnotesize, align=center},
+  every tick label/.append style={font=\footnotesize},
+  tick align=outside, tick pos=left, xmajorgrids, grid style={gray!20},
+  point meta=explicit symbolic,
+  nodes near coords, nodes near coords style={font=\footnotesize, anchor=south, fill=white, inner sep=0.8pt, yshift=2.5pt},
+]
+\nextgroupplot[title={(a) H10 $-$ H02c\\(DINOv2-B vs.\ R18)}]
+\addplot[densely dashed, gray, forget plot, nodes near coords={}] coordinates {(0,-0.6) (0,3.75)};
+\addplot[renkH10, only marks, mark=*, mark size=2pt, line width=1.4pt,
+  error bars/.cd, x dir=both, x explicit, error bar style={line width=1.4pt}, error mark options={rotate=90, mark size=3pt}]
+  table[x=d, y=y, x error minus=em, x error plus=ep, meta=lab, restrict expr to domain={\thisrow{panel}*10+\thisrow{y}}{1:3}] {\figveri/fig_sn.dat};
+\addplot[black, only marks, mark=diamond*, mark size=2.6pt, line width=1.4pt,
+  error bars/.cd, x dir=both, x explicit, error bar style={line width=1.4pt}, error mark options={rotate=90, mark size=3pt}]
+  table[x=d, y=y, x error minus=em, x error plus=ep, meta=lab, restrict expr to domain={\thisrow{panel}*10+\thisrow{y}}{0:0}] {\figveri/fig_sn.dat};
+\nextgroupplot[title={(b) H08c $-$ H02c\\(R18 + D4 vs.\ R18)}]
+\addplot[densely dashed, gray, forget plot, nodes near coords={}] coordinates {(0,-0.6) (0,3.75)};
+\addplot[renkH08, only marks, mark=*, mark size=2pt, line width=1.4pt,
+  error bars/.cd, x dir=both, x explicit, error bar style={line width=1.4pt}, error mark options={rotate=90, mark size=3pt}]
+  table[x=d, y=y, x error minus=em, x error plus=ep, meta=lab, restrict expr to domain={\thisrow{panel}*10+\thisrow{y}}{11:13}] {\figveri/fig_sn.dat};
+\addplot[black, only marks, mark=diamond*, mark size=2.6pt, line width=1.4pt,
+  error bars/.cd, x dir=both, x explicit, error bar style={line width=1.4pt}, error mark options={rotate=90, mark size=3pt}]
+  table[x=d, y=y, x error minus=em, x error plus=ep, meta=lab, restrict expr to domain={\thisrow{panel}*10+\thisrow{y}}{10:10}] {\figveri/fig_sn.dat};
+\end{groupplot}
+\end{tikzpicture}
+\caption{Resmî test kazancının lezyon tekrarına göre ayrışımı: genel, S (lezyonu eğitimde görülmüş), N (görülmemiş) ve ön-kayıtlı kural nesnesi $\Delta_S-\Delta_N$. Nokta: 5 seed ortalamalı fark [puan]; çubuk: eşleştirilmiş görüntü-bootstrap \%95 GA.}
+\label{fig:sn}
+\end{figure}

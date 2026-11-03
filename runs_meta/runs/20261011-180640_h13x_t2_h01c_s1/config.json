@@ -1,0 +1,77 @@
+{
+  "run_id": "20261011-180640_h13x_t2_h01c_s1",
+  "varyant": "h13x_t2_h01c",
+  "seed": "1",
+  "etiket": "H13x T2: H10_s ⊕ H02c_s ⊕ H01c_s log-olasılık ⅓",
+  "ebeveyn": "20261011-161411_h10_dinov2b_k4_ft224_s1",
+  "hipotez": "H13",
+  "kuyruk": "tur5-h13x",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>/env/.venv/Scripts/python.exe",
+    "varyantlar/topluluk/topluluk.py",
+    "--uyeler",
+    "runs_colab/20261011-161411_h10_dinov2b_k4_ft224_s1",
+    "runs_colab/20261011-131620_h02_r18in_ft224_colab_s1",
+    "runs_colab/20261011-125744_h01_dinov2b_lp_r224_colab_s1",
+    "--birlesim",
+    "logolasilik",
+    "--seed-denet",
+    "hepsi",
+    "--seed",
+    "1",
+    "--out",
+    "<WS>\\runs\\20261011-180640_h13x_t2_h01c_s1/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-10-11T18:06:40",
+  "makine": "LAPTOP-SKK5GIC3",
+  "donanim": "cpu-birlesim",
+  "topluluk": {
+    "kural": "softmax(Σ w_i log clip(p_i, kirp, 1))",
+    "birlesim": "logolasilik",
+    "agirlik": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "kirp": 1e-12,
+    "seed_denet": "hepsi",
+    "kart": "hipotezler/H13.md",
+    "kaynak": "Gontijo-Lopes vd. 2022 (ICLR); Lakshminarayanan vd. 2017"
+  },
+  "uyeler": [
+    {
+      "run_id": "20261011-161411_h10_dinov2b_k4_ft224_s1",
+      "varyant": "h10_dinov2b_k4_ft224",
+      "seed": "1",
+      "ebeveyn": "h02_r18in_ft224_colab:s1",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "29ab1587013962a9219985c1b8ead69fc0e7968ae5a80cf70df60e8e770f2a10",
+      "dizin": "<WS>\\runs_colab\\20261011-161411_h10_dinov2b_k4_ft224_s1",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    },
+    {
+      "run_id": "20261011-131620_h02_r18in_ft224_colab_s1",
+      "varyant": "h02_r18in_ft224_colab",
+      "seed": "1",
+      "ebeveyn": "20261010-225428_h02_r18in_ft224_s1",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "a1ed946e66356c8fa79e7a1e943d987f2f8b594eeec1fa97d0460cbde3bbb29c",
+      "dizin": "<WS>\\runs_colab\\20261011-131620_h02_r18in_ft224_colab_s1",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    },
+    {
+      "run_id": "20261011-125744_h01_dinov2b_lp_r224_colab_s1",
+      "varyant": "h01_dinov2b_lp_r224_colab",
+      "seed": "1",
+      "ebeveyn": "20261010-221455_h01_dinov2b_lp_r224_s1",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "c3d44b0c6bd4e385d3a3a3834e928df76f615f766130b7ada498d96af09d670b",
+      "dizin": "<WS>\\runs_colab\\20261011-125744_h01_dinov2b_lp_r224_colab_s1",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    }
+  ],
+  "denetim_hatasi": []
+}

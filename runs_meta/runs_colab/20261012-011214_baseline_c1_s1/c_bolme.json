@@ -1,0 +1,28 @@
+{
+ "veri": "c1",
+ "npz": "/content/is/data/dermamnist_c_resmipiksel_28.npz",
+ "dogrulama": {
+  "npz": "dermamnist_c_resmipiksel_28.npz",
+  "kok": "/content/is/data",
+  "md5": "28e1e7bef1f8ce2d1b537edab2e0bef8",
+  "sha256": "0333131edbdae3402cd0fe853eace8af3e735585365fd41bc96fe92f096e5af3",
+  "bayt": 23658560,
+  "veri": "c1",
+  "md5_resmi": "28e1e7bef1f8ce2d1b537edab2e0bef8",
+  "icerik_sha256": "d2e3516354424c7372592c5b62d5eb65d95560fd0ceabd03e9a17e233de71ac5",
+  "beklenen": "k5_c_bolme_beklenen.json"
+ },
+ "medmnist_md5_resmi_ozgun": "0744692d530f8e62ec473284d019b0c7",
+ "medmnist_md5_surec_ici": "28e1e7bef1f8ce2d1b537edab2e0bef8",
+ "medmnist_n_samples_ozgun": {
+  "train": 7007,
+  "val": 1003,
+  "test": 2005
+ },
+ "medmnist_n_samples_surec_ici": {
+  "train": 8215,
+  "val": 573,
+  "test": 1227
+ },
+ "veri_kok": "/content/is/data/k5_rakip_c1"
+}

@@ -1,0 +1,119 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-2 H06, analiz kartı; kart mtime 2026-10-11 00:58). Hiçbir h06_* koşumundan ÖNCE yazıldı (2026-10-11 01:14); değiştirilmez. Kaynaklar: hipotezler/H06.md (üst tablo + uygulama notu), sonuclar/tahlil-tur1.md §1b (H01 iç çıpası ACC 0,8223, dengeli 0,6494, AUC 0,9563).",
+ "_notlar": [
+  "farkli_seedler_farkli KULLANILMAZ (kart: sonda; H01 gerekçesi). Seed bağlılığı tahmin_val.npy farkıyla belgelenir.",
+  "yon_vs/tavan: referans (H01) aynı kuyrukta değil → seed başına delta tavanları (kartın görülmemiş eşikleri).",
+  "katlar_sha256 H04 ile aynı olmalı (string; kapı dışında yürütücü elle denetler)."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN — h06_h01_logitayar_duman, s0, τ ∈ {0; 1}, τ = 0 özdeşliği",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 1
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.8123,
+     "ust": 0.8423,
+     "kaynak": "H06 kartı: alt = kısıt (H01 0,8223 − 0,010), üst = görülmemiş ACC Δ > +2,0"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tau0_ozdeslik_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H06 operasyonel DUR: τ = 0 özdeşlik farkı ≠ 0"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "pi_sira_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H06 operasyonel DUR: π sırası"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kat_sapma",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "H04 §τ protokolü 1 (aynı katlar.json)"
+    }
+   ]
+  },
+  "3": {
+   "aciklama": "TAM — h06_h01_logitayar × seed 0–4",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 5
+    },
+    {
+     "tur": "aralik",
+     "varyant": "h06_h01_logitayar",
+     "alt": 0.8123,
+     "ust": 0.8423,
+     "kaynak": "H06 kartı uygulama notu a3"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_dengeli_acc",
+     "alt": 0.55,
+     "ust": 0.7094,
+     "kaynak": "H06 kartı a3: üst = görülmemiş (H01 0,6494 + 6,0)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_auc",
+     "alt": 0.945,
+     "ust": 0.966,
+     "kaynak": "H06 kartı a3 (AUC Δ > +1,0 görülmemiş)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tau0_ozdeslik_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H06 operasyonel DUR"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "pi_sira_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H06 operasyonel DUR"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kat_sapma",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "aynı katlar.json"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_dengeli_acc_delta",
+     "alt": -1.0,
+     "ust": 0.06,
+     "kaynak": "H06 görülmemiş: OOF dengeli Δ > +6,0"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_acc_delta",
+     "alt": -1.0,
+     "ust": 0.02,
+     "kaynak": "H06 görülmemiş: OOF ACC Δ > +2,0"
+    }
+   ]
+  }
+ }
+}

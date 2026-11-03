@@ -1,0 +1,766 @@
+{
+  "veri_seti": "DermaMNIST",
+  "medmnist_surum": "3.0.2",
+  "numpy_surum": "2.2.6",
+  "zenodo_kayit": "10.5281/zenodo.10519652",
+  "info_lisans": "CC BY-NC 4.0",
+  "info_n_samples": {
+    "train": 7007,
+    "val": 1003,
+    "test": 2005
+  },
+  "dosyalar": {
+    "dermamnist.npz": {
+      "bayt": 19725078,
+      "sha256": "1a309fec2e33bb6aba88e7d078e5ccbb9736c84a0b415ac197eb3c8fa331e050",
+      "md5": "0744692d530f8e62ec473284d019b0c7",
+      "md5_resmi": "0744692d530f8e62ec473284d019b0c7",
+      "md5_eslesme": true
+    }
+  },
+  "boyutlar": {
+    "28": {
+      "anahtarlar": [
+        "test_images",
+        "test_labels",
+        "train_images",
+        "train_labels",
+        "val_images",
+        "val_labels"
+      ],
+      "split": {
+        "train": {
+          "n": 7007,
+          "goruntu_sekli": [
+            28,
+            28,
+            3
+          ],
+          "goruntu_dtype": "uint8",
+          "etiket_sekli": [
+            1
+          ],
+          "etiket_dtype": "uint8",
+          "piksel_min": 0,
+          "piksel_max": 255,
+          "beklenen_n": 7007,
+          "n_eslesme": true,
+          "sinif_sayim": {
+            "0 actinic keratoses and intraepithelial carcinoma": 228,
+            "1 basal cell carcinoma": 359,
+            "2 benign keratosis-like lesions": 769,
+            "3 dermatofibroma": 80,
+            "4 melanoma": 779,
+            "5 melanocytic nevi": 4693,
+            "6 vascular lesions": 99
+          },
+          "dengesizlik_orani_max_min": 58.66
+        },
+        "val": {
+          "n": 1003,
+          "goruntu_sekli": [
+            28,
+            28,
+            3
+          ],
+          "goruntu_dtype": "uint8",
+          "etiket_sekli": [
+            1
+          ],
+          "etiket_dtype": "uint8",
+          "piksel_min": 0,
+          "piksel_max": 255,
+          "beklenen_n": 1003,
+          "n_eslesme": true,
+          "sinif_sayim": {
+            "0 actinic keratoses and intraepithelial carcinoma": 33,
+            "1 basal cell carcinoma": 52,
+            "2 benign keratosis-like lesions": 110,
+            "3 dermatofibroma": 12,
+            "4 melanoma": 111,
+            "5 melanocytic nevi": 671,
+            "6 vascular lesions": 14
+          },
+          "dengesizlik_orani_max_min": 55.92
+        },
+        "test": {
+          "n": 2005,
+          "goruntu_sekli": [
+            28,
+            28,
+            3
+          ],
+          "goruntu_dtype": "uint8",
+          "etiket_sekli": [
+            1
+          ],
+          "etiket_dtype": "uint8",
+          "piksel_min": 0,
+          "piksel_max": 255,
+          "beklenen_n": 2005,
+          "n_eslesme": true,
+          "sinif_sayim": {
+            "0 actinic keratoses and intraepithelial carcinoma": 66,
+            "1 basal cell carcinoma": 103,
+            "2 benign keratosis-like lesions": 220,
+            "3 dermatofibroma": 23,
+            "4 melanoma": 223,
+            "5 melanocytic nevi": 1341,
+            "6 vascular lesions": 29
+          },
+          "dengesizlik_orani_max_min": 58.3
+        }
+      },
+      "tam_piksel_kopya": {
+        "train_ici_kopya_goruntu": 2,
+        "val_ici_kopya_goruntu": 2,
+        "test_ici_kopya_goruntu": 0,
+        "train∩val_hash": 0,
+        "val_ornek_train_ile_ayni": 0,
+        "train∩test_hash": 0,
+        "test_ornek_train_ile_ayni": 0,
+        "val∩test_hash": 0,
+        "test_ornek_val_ile_ayni": 0
+      }
+    }
+  },
+  "indirme_kaydi": {
+    "28": {
+      "dosya": "dermamnist.npz",
+      "kosumlar": [
+        {
+          "tarih": "2026-10-10T07:08:59",
+          "sure_sn": 193.0,
+          "durum": "indirildi",
+          "kaynak_gunluk": "data/indirme_ilk_kosum.log"
+        },
+        {
+          "tarih": "2026-10-10T07:12",
+          "sure_sn": 2.9,
+          "durum": "onceden_var_md5_dogrulandi",
+          "kaynak_gunluk": "data/indirme_meta.log"
+        }
+      ]
+    },
+    "64": {
+      "dosya": "dermamnist_64.npz",
+      "kosumlar": [
+        {
+          "tarih": "2026-10-10T07:12",
+          "durum": "DURDURULDU — Zenodo hızı ~50-300 KB/s; 262144 bayt yarım dosya silindi"
+        }
+      ]
+    },
+    "HAM10000_metadata.csv": {
+      "url": "https://dataverse.harvard.edu/api/access/datafile/4338392?format=original"
+    },
+    "dermamnist_split_info.csv": {
+      "url": "https://raw.githubusercontent.com/kakumarabhishek/Corrected-Skin-Image-Datasets/ac655ac5a5b93264c57d69d6d520778d915bfc89/DermaMNIST/DermaMNIST_Analysis/dermamnist_split_info.csv"
+    }
+  },
+  "boyutlar_arasi_tutarlilik_(28e_kucultulmus)": {},
+  "lezyon_sizintisi": {
+    "ham10000_goruntu": 10015,
+    "ham10000_lezyon": 7470,
+    "split_info_satir": 10015,
+    "eslesmeyen_image_id": 0,
+    "etiket_dx_uyumu": "10015/10015",
+    "capraz": {
+      "train∩val": {
+        "lezyon": 332,
+        "goruntu_(iki_bolumdeki_toplam)": 769,
+        "val_goruntu_sizan": 348
+      },
+      "train∩test": {
+        "lezyon": 641,
+        "goruntu_(iki_bolumdeki_toplam)": 1518,
+        "test_goruntu_sizan": 693
+      },
+      "val∩test": {
+        "lezyon": 113,
+        "goruntu_(iki_bolumdeki_toplam)": 241,
+        "test_goruntu_sizan": 120
+      }
+    },
+    "uc_bolumde_birden_lezyon": 40,
+    "uc_bolumde_birden_goruntu": 130,
+    "birden_fazla_bolumde_lezyon": 1006,
+    "birden_fazla_bolumde_lezyon_orani": 0.1347,
+    "val_goruntu_lezyonu_trainde_olan": 348,
+    "val_goruntu_lezyonu_trainde_olan_orani": 0.347,
+    "test_goruntu_lezyonu_trainde_olan": 693,
+    "test_goruntu_lezyonu_trainde_olan_orani": 0.3456,
+    "ham_lezyon_basina_goruntu_dagilimi": {
+      "1": 5514,
+      "2": 1423,
+      "3": 490,
+      "4": 34,
+      "5": 5,
+      "6": 4
+    },
+    "split_ici_tam_kopya_gruplari_28px": [
+      {
+        "split": "train",
+        "indeksler": [
+          2815,
+          6521
+        ],
+        "image_id": [
+          "ISIC_0024366",
+          "ISIC_0029861"
+        ],
+        "lesion_id": [
+          "HAM_0002300",
+          "HAM_0002300"
+        ],
+        "etiket": [
+          5,
+          5
+        ]
+      },
+      {
+        "split": "val",
+        "indeksler": [
+          542,
+          696
+        ],
+        "image_id": [
+          "ISIC_0024777",
+          "ISIC_0029938"
+        ],
+        "lesion_id": [
+          "HAM_0001895",
+          "HAM_0001895"
+        ],
+        "etiket": [
+          5,
+          5
+        ]
+      }
+    ]
+  },
+  "yakin_kopya_28px": {
+    "yontem": "28x28x3 ham piksel RMSE (0-255) en yakın komşu + 64-bit dHash (gri, 9x8) Hamming en yakın komşu",
+    "sonuclar": {
+      "test->train": {
+        "rmse_nn": {
+          "min": 2.541,
+          "p1": 7.999,
+          "p5": 10.078,
+          "p25": 13.184,
+          "medyan": 16.086,
+          "p75": 19.939,
+          "p95": 28.094,
+          "ort": 17.133
+        },
+        "dhash_nn": {
+          "min": 0.0,
+          "p1": 1.0,
+          "p5": 3.0,
+          "p25": 6.0,
+          "medyan": 8.0,
+          "p75": 11.0,
+          "p95": 14.0,
+          "ort": 8.334
+        },
+        "rmse_esik_alti": {
+          "0": 0,
+          "2": 0,
+          "5": 7,
+          "10": 90,
+          "15": 822,
+          "20": 1507
+        },
+        "dhash_esik_alti": {
+          "0": 5,
+          "2": 76,
+          "4": 269,
+          "6": 616
+        },
+        "rmse_nn_ayni_lezyon": 95,
+        "dhash_nn_ayni_lezyon": 64,
+        "lezyonu_refte_olan_sorgu": 693,
+        "rmse_nn_yakalama_orani_(lezyon_sizintisi)": 0.1371,
+        "rmse_nn_sizan_medyan": 16.81,
+        "rmse_nn_sizmayan_medyan": 15.78,
+        "rmse_esik_alti_ayni_lezyon": {
+          "5": 7,
+          "10": 32,
+          "15": 56,
+          "20": 78
+        },
+        "dhash_esik_alti_ayni_lezyon": {
+          "0": 2,
+          "2": 10,
+          "4": 23,
+          "6": 31
+        }
+      },
+      "val->train": {
+        "rmse_nn": {
+          "min": 4.385,
+          "p1": 7.183,
+          "p5": 10.109,
+          "p25": 13.076,
+          "medyan": 15.8,
+          "p75": 19.583,
+          "p95": 27.372,
+          "ort": 16.836
+        },
+        "dhash_nn": {
+          "min": 0.0,
+          "p1": 1.0,
+          "p5": 3.0,
+          "p25": 6.0,
+          "medyan": 8.0,
+          "p75": 10.0,
+          "p95": 14.0,
+          "ort": 8.348
+        },
+        "rmse_esik_alti": {
+          "0": 0,
+          "2": 0,
+          "5": 4,
+          "10": 48,
+          "15": 434,
+          "20": 771
+        },
+        "dhash_esik_alti": {
+          "0": 6,
+          "2": 36,
+          "4": 126,
+          "6": 295
+        },
+        "rmse_nn_ayni_lezyon": 49,
+        "dhash_nn_ayni_lezyon": 28,
+        "lezyonu_refte_olan_sorgu": 348,
+        "rmse_nn_yakalama_orani_(lezyon_sizintisi)": 0.1408,
+        "rmse_nn_sizan_medyan": 16.4,
+        "rmse_nn_sizmayan_medyan": 15.55,
+        "rmse_esik_alti_ayni_lezyon": {
+          "5": 4,
+          "10": 19,
+          "15": 34,
+          "20": 43
+        },
+        "dhash_esik_alti_ayni_lezyon": {
+          "0": 2,
+          "2": 6,
+          "4": 11,
+          "6": 17
+        }
+      },
+      "test->val": {
+        "rmse_nn": {
+          "min": 3.895,
+          "p1": 9.919,
+          "p5": 11.92,
+          "p25": 15.247,
+          "medyan": 18.355,
+          "p75": 22.619,
+          "p95": 31.593,
+          "ort": 19.685
+        },
+        "dhash_nn": {
+          "min": 1.0,
+          "p1": 2.0,
+          "p5": 4.0,
+          "p25": 8.0,
+          "medyan": 10.0,
+          "p75": 13.0,
+          "p95": 17.0,
+          "ort": 10.154
+        },
+        "rmse_esik_alti": {
+          "0": 0,
+          "2": 0,
+          "5": 1,
+          "10": 22,
+          "15": 465,
+          "20": 1226
+        },
+        "dhash_esik_alti": {
+          "0": 0,
+          "2": 29,
+          "4": 114,
+          "6": 308
+        },
+        "rmse_nn_ayni_lezyon": 19,
+        "dhash_nn_ayni_lezyon": 12,
+        "lezyonu_refte_olan_sorgu": 120,
+        "rmse_nn_yakalama_orani_(lezyon_sizintisi)": 0.1583,
+        "rmse_nn_sizan_medyan": 20.05,
+        "rmse_nn_sizmayan_medyan": 18.29,
+        "rmse_esik_alti_ayni_lezyon": {
+          "5": 1,
+          "10": 7,
+          "15": 11,
+          "20": 14
+        },
+        "dhash_esik_alti_ayni_lezyon": {
+          "0": 0,
+          "2": 0,
+          "4": 1,
+          "6": 3
+        }
+      },
+      "train->train": {
+        "rmse_nn": {
+          "min": 0.0,
+          "p1": 7.927,
+          "p5": 10.252,
+          "p25": 13.283,
+          "medyan": 16.01,
+          "p75": 19.72,
+          "p95": 27.604,
+          "ort": 17.041
+        },
+        "dhash_nn": {
+          "min": 0.0,
+          "p1": 1.06,
+          "p5": 3.0,
+          "p25": 6.0,
+          "medyan": 8.0,
+          "p75": 11.0,
+          "p95": 14.0,
+          "ort": 8.357
+        },
+        "rmse_esik_alti": {
+          "0": 2,
+          "2": 2,
+          "5": 15,
+          "10": 301,
+          "15": 2875,
+          "20": 5351
+        },
+        "dhash_esik_alti": {
+          "0": 15,
+          "2": 240,
+          "4": 950,
+          "6": 2141
+        },
+        "rmse_nn_ayni_lezyon": 350,
+        "dhash_nn_ayni_lezyon": 192
+      }
+    }
+  },
+  "toplam_bayt": 19725078,
+  "meta_dosyalari": {
+    "dermamnist_split_info.csv": {
+      "bayt": 243056,
+      "sha256": "0c9b1719bf04fa9ad3cdee2a852067a8b848795624e88ea794df40fd13c099f0"
+    },
+    "HAM10000_metadata.csv": {
+      "bayt": 690218,
+      "sha256": "de17ec44cb25ea9c3f6378ba18d69224c740afd62e86ec2edc6a894d6aa663d3"
+    }
+  },
+  "meta_kaynak": {
+    "HAM10000_metadata.csv": "https://dataverse.harvard.edu/api/access/datafile/4338392?format=original",
+    "dermamnist_split_info.csv": "https://raw.githubusercontent.com/kakumarabhishek/Corrected-Skin-Image-Datasets/ac655ac5a5b93264c57d69d6d520778d915bfc89/DermaMNIST/DermaMNIST_Analysis/dermamnist_split_info.csv"
+  },
+  "dermamnist_c_ek": {
+    "not": "EK degerlendirme; hesaplama hedefi yerel makine (2026-10-10), onceki Colab notu gecersiz",
+    "kaynak": {
+      "zenodo_record": 12739457,
+      "doi": "10.5281/zenodo.12739457",
+      "version": "v1.1",
+      "lisans_kayit": {
+        "id": "cc-by-4.0"
+      }
+    },
+    "dosyalar": {
+      "DermaMNIST-C.csv": {
+        "durum": "indirildi",
+        "bayt": 747941,
+        "bu_oturumda_alinan_bayt": 747941,
+        "sure_sn": 3.0,
+        "ort_hiz_KBps": 244.7,
+        "md5": "1c54bc9f483e97a9d7dbbde076a45900",
+        "sha256": "c27194d338986463966e1694d5b49fda933222368f04b316c702ac2e8a0d4f5c",
+        "url": "https://zenodo.org/api/records/12739457/files/DermaMNIST-C.csv/content",
+        "md5_resmi": "1c54bc9f483e97a9d7dbbde076a45900",
+        "md5_eslesti": true,
+        "baslangic": "2026-10-10T09:32:15+03:00"
+      },
+      "dermamnist_corrected_28.npz": {
+        "durum": "indirildi",
+        "bayt": 20698236,
+        "bu_oturumda_alinan_bayt": 20698236,
+        "sure_sn": 28.5,
+        "ort_hiz_KBps": 709.8,
+        "md5": "96e2862980877d45d9cacb5c25de6950",
+        "sha256": "c3d9cbd9008a0dcb76943d5cf38681bdc5166effc79f9e215657b859b9226aa8",
+        "url": "https://zenodo.org/api/records/12739457/files/dermamnist_corrected_28.npz/content",
+        "md5_resmi": "96e2862980877d45d9cacb5c25de6950",
+        "md5_eslesti": true,
+        "baslangic": "2026-10-10T09:32:18+03:00"
+      }
+    },
+    "dermamnist_corrected_224": {
+      "durum": "indirilmedi",
+      "bayt_zenodo": 1131258316,
+      "md5_resmi": "84920fb70c83b234c295b6f0d4ae2bc0",
+      "tahmini_sure_dk": {
+        "102KBps": 180.5,
+        "500KBps": 36.8,
+        "710KBps": 25.9
+      }
+    },
+    "npz_28": {
+      "anahtarlar": {
+        "train_images": {
+          "shape": [
+            8215,
+            28,
+            28,
+            3
+          ],
+          "dtype": "uint8"
+        },
+        "train_labels": {
+          "shape": [
+            8215,
+            1
+          ],
+          "dtype": "uint8"
+        },
+        "val_images": {
+          "shape": [
+            573,
+            28,
+            28,
+            3
+          ],
+          "dtype": "uint8"
+        },
+        "val_labels": {
+          "shape": [
+            573,
+            1
+          ],
+          "dtype": "uint8"
+        },
+        "test_images": {
+          "shape": [
+            1227,
+            28,
+            28,
+            3
+          ],
+          "dtype": "uint8"
+        },
+        "test_labels": {
+          "shape": [
+            1227,
+            1
+          ],
+          "dtype": "uint8"
+        }
+      },
+      "split_sayilari": {
+        "train": 8215,
+        "val": 573,
+        "test": 1227
+      },
+      "split_beklenen_eslesti": true,
+      "sinif_sayilari": {
+        "train": {
+          "0": 273,
+          "1": 448,
+          "2": 944,
+          "3": 102,
+          "4": 1021,
+          "5": 5309,
+          "6": 118
+        },
+        "val": {
+          "0": 19,
+          "1": 22,
+          "2": 50,
+          "3": 5,
+          "4": 22,
+          "5": 448,
+          "6": 7
+        },
+        "test": {
+          "0": 35,
+          "1": 44,
+          "2": 105,
+          "3": 8,
+          "4": 70,
+          "5": 948,
+          "6": 17
+        }
+      },
+      "piksel": {
+        "train": {
+          "min": 0,
+          "max": 255
+        },
+        "val": {
+          "min": 0,
+          "max": 255
+        },
+        "test": {
+          "min": 0,
+          "max": 255
+        }
+      },
+      "tam_piksel_cakisma": {
+        "train∩val": 0,
+        "train∩test": 0,
+        "val∩test": 0,
+        "split_ici_kopya": {
+          "train": 2,
+          "val": 0,
+          "test": 0
+        }
+      }
+    },
+    "csv_npz_tutarlilik": {
+      "kolon_eslemesi": {
+        "split": "split",
+        "index": null,
+        "image_id": "image_id",
+        "lesion_id": "lesion_id",
+        "label": "dx"
+      },
+      "csv_split_sayilari": {
+        "train": 8215,
+        "val": 573,
+        "test": 1227
+      },
+      "etiket_dx_uyumu": {
+        "train": "8215/8215",
+        "val": "573/573",
+        "test": "1227/1227"
+      }
+    },
+    "resmi28_piksel": {
+      "karsilastirilan": 10015,
+      "piksel_ozdes": 0,
+      "farkli_olanlarda_rmse_medyan": 14.053817236308598,
+      "farkli_olanlarda_rmse_max": 85.62974997997281
+    },
+    "sira_nn_denetimi": {
+      "train": {
+        "orneklem": 356,
+        "nn_csv_eslesmesi": 285,
+        "rmse_csv_medyan": 14.1,
+        "rmse_nn_medyan": 14.04
+      },
+      "val": {
+        "orneklem": 400,
+        "nn_csv_eslesmesi": 337,
+        "rmse_csv_medyan": 13.02,
+        "rmse_nn_medyan": 12.93
+      }
+    },
+    "kimlik": {
+      "benzersiz_image_id": 10015,
+      "HAM_eslesmeyen_image_id": 0,
+      "resmi_spliti_olmayan_image_id": 0,
+      "resmi_toplam_C_de_olmayan": 0,
+      "csv_lesion_HAM_uyumu": "10015/10015",
+      "lezyon_sayisi": {
+        "train": 5758,
+        "val": 563,
+        "test": 1149
+      },
+      "lezyon_cakisma": {
+        "train∩val": 0,
+        "train∩test": 0,
+        "val∩test": 0,
+        "uc_bolum": 0
+      },
+      "image_id_cakisma": {
+        "train∩val": 0,
+        "train∩test": 0,
+        "val∩test": 0
+      },
+      "resmi_to_C_gecis": {
+        "test": {
+          "test": 1227,
+          "train": 778,
+          "val": 0
+        },
+        "train": {
+          "test": 0,
+          "train": 7007,
+          "val": 0
+        },
+        "val": {
+          "test": 0,
+          "train": 430,
+          "val": 573
+        }
+      },
+      "C_test_resmi_kaynak": {
+        "train": 0,
+        "val": 0,
+        "test": 1227
+      },
+      "C_train_resmi_kaynak": {
+        "train": 7007,
+        "val": 430,
+        "test": 778
+      },
+      "C_val_resmi_kaynak": {
+        "train": 0,
+        "val": 573,
+        "test": 0
+      },
+      "dx_dagilimi": {
+        "train": {
+          "nv": 5309,
+          "mel": 1021,
+          "bkl": 944,
+          "bcc": 448,
+          "akiec": 273,
+          "vasc": 118,
+          "df": 102
+        },
+        "val": {
+          "nv": 448,
+          "bkl": 50,
+          "mel": 22,
+          "bcc": 22,
+          "akiec": 19,
+          "vasc": 7,
+          "df": 5
+        },
+        "test": {
+          "nv": 948,
+          "bkl": 105,
+          "mel": 70,
+          "bcc": 44,
+          "akiec": 35,
+          "vasc": 17,
+          "df": 8
+        }
+      },
+      "esleme_csv": "data/splits/dermamnist_c_esleme.csv"
+    },
+    "tasima_kurali": {
+      "val_lezyon_kurali": 428,
+      "test_lezyon_kurali": 773,
+      "kural_disi_val": [
+        "ISIC_0024736",
+        "ISIC_0033481"
+      ],
+      "kural_disi_test": [
+        "ISIC_0027820",
+        "ISIC_0024770",
+        "ISIC_0029625",
+        "ISIC_0033556",
+        "ISIC_0033417"
+      ]
+    },
+    "lisans": {
+      "npz": "CC BY-NC 4.0",
+      "csv": "CC BY 4.0",
+      "kod": "Apache-2.0"
+    }
+  }
+}

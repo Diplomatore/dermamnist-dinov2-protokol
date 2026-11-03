@@ -1,0 +1,253 @@
+kiyas,uc,A,B,delta,ga_alt,ga_ust,p_tek_B>A
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc,0.8656,0.8947,+0.0291,+0.0134,+0.0461,0.0009995
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],dengeli_acc,0.7100,0.7977,+0.0877,+0.0405,+0.1412,0.0004998
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],dengeli_acc_5sinif,0.7549,0.8039,+0.0490,+0.0089,+0.0927,0.01049
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_akiec,0.6061,0.7212,+0.1152,-0.0455,+0.2813,0.07646
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_bcc,0.8962,0.8731,-0.0231,-0.0885,+0.0421,0.7401
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_bkl,0.7055,0.7491,+0.0436,-0.0368,+0.1284,0.1489
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_df,0.5667,0.6500,+0.0833,-0.0364,+0.2500,0.1744
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_mel,0.6126,0.7135,+0.1009,+0.0274,+0.1792,0.004498
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_nv,0.9544,0.9627,+0.0083,-0.0036,+0.0209,0.09945
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_vasc,0.6286,0.9143,+0.2857,+0.0749,+0.5274,0.002999
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_molemax_disi,0.7977,0.8407,+0.0430,+0.0177,+0.0697,0.001999
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_molemax,0.9750,0.9818,+0.0068,-0.0037,+0.0191,0.09245
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_S_ham,0.8155,0.8782,+0.0626,+0.0323,+0.0961,0.0004998
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_N_ham,0.8922,0.9035,+0.0113,-0.0071,+0.0316,0.1239
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_S_molemaxdisi,0.8226,0.8852,+0.0626,+0.0319,+0.0962,0.0004998
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_N_molemaxdisi,0.7664,0.7847,+0.0182,-0.0252,+0.0620,0.2044
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],nv_payi,0.7021,0.6897,-0.0124,-0.0277,+0.0012,0.9605
+H10 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],sizinti_tabakali_SN,0.0617,0.1009,+0.0392,-0.0225,+0.1016,0.09845
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc,0.8656,0.8800,+0.0144,+0.0016,+0.0281,0.01899
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],dengeli_acc,0.7100,0.7576,+0.0476,+0.0105,+0.0869,0.006497
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],dengeli_acc_5sinif,0.7549,0.7811,+0.0262,-0.0042,+0.0592,0.04398
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_akiec,0.6061,0.6424,+0.0364,-0.0737,+0.1563,0.2769
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_bcc,0.8962,0.8654,-0.0308,-0.0950,+0.0286,0.8491
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_bkl,0.7055,0.7800,+0.0745,+0.0202,+0.1333,0.003998
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_df,0.5667,0.5833,+0.0167,-0.1333,+0.1500,0.4358
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_mel,0.6126,0.6667,+0.0541,-0.0109,+0.1225,0.05447
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_nv,0.9544,0.9511,-0.0033,-0.0135,+0.0070,0.7351
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],duyarlilik_vasc,0.6286,0.8143,+0.1857,+0.0470,+0.3667,0.007496
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_molemax_disi,0.7977,0.8165,+0.0187,-0.0026,+0.0401,0.03548
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_molemax,0.9750,0.9823,+0.0073,+0.0005,+0.0163,0.02099
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_S_ham,0.8155,0.8385,+0.0230,-0.0046,+0.0520,0.04598
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_N_ham,0.8922,0.9020,+0.0098,-0.0045,+0.0239,0.08746
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_S_molemaxdisi,0.8226,0.8435,+0.0209,-0.0064,+0.0500,0.06147
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],acc_N_molemaxdisi,0.7664,0.7825,+0.0161,-0.0170,+0.0484,0.1544
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],nv_payi,0.7021,0.6822,-0.0199,-0.0321,-0.0082,1
+H11 − H02c  [BİRİNCİL karar; bootstrap (b') bağlayıcı],sizinti_tabakali_SN,0.0617,0.0710,+0.0093,-0.0400,+0.0620,0.3513
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",acc,0.8223,0.8947,+0.0724,+0.0548,+0.0911,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",dengeli_acc,0.6494,0.7977,+0.1483,+0.0974,+0.2022,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",dengeli_acc_5sinif,0.6768,0.8039,+0.1271,+0.0920,+0.1641,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",duyarlilik_akiec,0.6000,0.7212,+0.1212,+0.0235,+0.2425,0.007996
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",duyarlilik_bcc,0.7462,0.8731,+0.1269,+0.0351,+0.2298,0.002499
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",duyarlilik_bkl,0.5691,0.7491,+0.1800,+0.0938,+0.2699,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",duyarlilik_df,0.3333,0.6500,+0.3167,+0.0500,+0.6250,0.01999
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",duyarlilik_mel,0.5315,0.7135,+0.1820,+0.1064,+0.2606,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",duyarlilik_nv,0.9374,0.9627,+0.0253,+0.0099,+0.0417,0.0009995
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",duyarlilik_vasc,0.8286,0.9143,+0.0857,+0.0000,+0.2667,0.1309
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",acc_molemax_disi,0.7299,0.8407,+0.1108,+0.0828,+0.1388,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",acc_molemax,0.9714,0.9818,+0.0104,+0.0015,+0.0220,0.01049
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",acc_S_ham,0.7356,0.8782,+0.1425,+0.1041,+0.1810,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",acc_N_ham,0.8684,0.9035,+0.0351,+0.0169,+0.0538,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",acc_S_molemaxdisi,0.7420,0.8852,+0.1432,+0.1044,+0.1824,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",acc_N_molemaxdisi,0.7146,0.7847,+0.0701,+0.0280,+0.1121,0.0004998
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",nv_payi,0.6979,0.6897,-0.0082,-0.0241,+0.0068,0.8401
+"H10 − H01c  [temsil, karar vermez: sonda → son-4-blok]",sizinti_tabakali_SN,0.0402,0.1009,+0.0607,-0.0028,+0.1229,0.03198
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",acc,0.8865,0.8947,+0.0082,-0.0076,+0.0243,0.1599
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",dengeli_acc,0.7763,0.7977,+0.0214,-0.0210,+0.0664,0.1504
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",dengeli_acc_5sinif,0.7939,0.8039,+0.0100,-0.0258,+0.0472,0.2929
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",duyarlilik_akiec,0.6485,0.7212,+0.0727,-0.0640,+0.2084,0.1599
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",duyarlilik_bcc,0.9308,0.8731,-0.0577,-0.1104,-0.0042,0.9865
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",duyarlilik_bkl,0.7564,0.7491,-0.0073,-0.0893,+0.0741,0.5762
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",duyarlilik_df,0.6500,0.6500,+0.0000,-0.0857,+0.0750,0.5372
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",duyarlilik_mel,0.6775,0.7135,+0.0360,-0.0400,+0.1171,0.1904
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",duyarlilik_nv,0.9565,0.9627,+0.0063,-0.0067,+0.0188,0.1864
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",duyarlilik_vasc,0.8143,0.9143,+0.1000,-0.1200,+0.3500,0.1979
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",acc_molemax_disi,0.8281,0.8407,+0.0126,-0.0123,+0.0389,0.1664
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",acc_molemax,0.9807,0.9818,+0.0010,-0.0080,+0.0099,0.4063
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",acc_S_ham,0.8443,0.8782,+0.0339,+0.0023,+0.0651,0.01949
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",acc_N_ham,0.9090,0.9035,-0.0055,-0.0243,+0.0130,0.7166
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",acc_S_molemaxdisi,0.8510,0.8852,+0.0342,+0.0026,+0.0657,0.01849
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",acc_N_molemaxdisi,0.7993,0.7847,-0.0146,-0.0580,+0.0291,0.7356
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",nv_payi,0.6857,0.6897,+0.0040,-0.0108,+0.0172,0.3048
+"H10 − H08c  [bilgi; farklı aileler, K5 kazanan seçimi]",sizinti_tabakali_SN,0.0563,0.1009,+0.0446,-0.0140,+0.1044,0.06497
+H11 − H10  [Pareto; yön ön-kaydı yok],acc,0.8947,0.8800,-0.0148,-0.0291,-0.0006,0.9795
+H11 − H10  [Pareto; yön ön-kaydı yok],dengeli_acc,0.7977,0.7576,-0.0401,-0.0860,+0.0022,0.9655
+H11 − H10  [Pareto; yön ön-kaydı yok],dengeli_acc_5sinif,0.8039,0.7811,-0.0228,-0.0509,+0.0059,0.9395
+H11 − H10  [Pareto; yön ön-kaydı yok],duyarlilik_akiec,0.7212,0.6424,-0.0788,-0.1715,+0.0167,0.948
+H11 − H10  [Pareto; yön ön-kaydı yok],duyarlilik_bcc,0.8731,0.8654,-0.0077,-0.0667,+0.0533,0.6467
+H11 − H10  [Pareto; yön ön-kaydı yok],duyarlilik_bkl,0.7491,0.7800,+0.0309,-0.0378,+0.0951,0.1949
+H11 − H10  [Pareto; yön ön-kaydı yok],duyarlilik_df,0.6500,0.5833,-0.0667,-0.2800,+0.1231,0.8106
+H11 − H10  [Pareto; yön ön-kaydı yok],duyarlilik_mel,0.7135,0.6667,-0.0468,-0.1080,+0.0160,0.9335
+H11 − H10  [Pareto; yön ön-kaydı yok],duyarlilik_nv,0.9627,0.9511,-0.0116,-0.0235,+0.0009,0.964
+H11 − H10  [Pareto; yön ön-kaydı yok],duyarlilik_vasc,0.9143,0.8143,-0.1000,-0.3067,+0.0750,0.8881
+H11 − H10  [Pareto; yön ön-kaydı yok],acc_molemax_disi,0.8407,0.8165,-0.0242,-0.0468,-0.0019,0.984
+H11 − H10  [Pareto; yön ön-kaydı yok],acc_molemax,0.9818,0.9823,+0.0005,-0.0075,+0.0083,0.4788
+H11 − H10  [Pareto; yön ön-kaydı yok],acc_S_ham,0.8782,0.8385,-0.0397,-0.0681,-0.0101,0.9945
+H11 − H10  [Pareto; yön ön-kaydı yok],acc_N_ham,0.9035,0.9020,-0.0015,-0.0170,+0.0132,0.5797
+H11 − H10  [Pareto; yön ön-kaydı yok],acc_S_molemaxdisi,0.8852,0.8435,-0.0417,-0.0706,-0.0126,0.9955
+H11 − H10  [Pareto; yön ön-kaydı yok],acc_N_molemaxdisi,0.7847,0.7825,-0.0022,-0.0364,+0.0313,0.5537
+H11 − H10  [Pareto; yön ön-kaydı yok],nv_payi,0.6897,0.6822,-0.0076,-0.0193,+0.0046,0.8881
+H11 − H10  [Pareto; yön ön-kaydı yok],sizinti_tabakali_SN,0.1009,0.0710,-0.0299,-0.0780,+0.0175,0.9015
+H11 − H01c  [çapraz: boyut + ince ayar paketi],acc,0.8223,0.8800,+0.0576,+0.0377,+0.0786,0.0004998
+H11 − H01c  [çapraz: boyut + ince ayar paketi],dengeli_acc,0.6494,0.7576,+0.1082,+0.0502,+0.1668,0.0009995
+H11 − H01c  [çapraz: boyut + ince ayar paketi],dengeli_acc_5sinif,0.6768,0.7811,+0.1043,+0.0603,+0.1474,0.0004998
+H11 − H01c  [çapraz: boyut + ince ayar paketi],duyarlilik_akiec,0.6000,0.6424,+0.0424,-0.1118,+0.2000,0.2899
+H11 − H01c  [çapraz: boyut + ince ayar paketi],duyarlilik_bcc,0.7462,0.8654,+0.1192,+0.0167,+0.2296,0.01499
+H11 − H01c  [çapraz: boyut + ince ayar paketi],duyarlilik_bkl,0.5691,0.7800,+0.2109,+0.1265,+0.2991,0.0004998
+H11 − H01c  [çapraz: boyut + ince ayar paketi],duyarlilik_df,0.3333,0.5833,+0.2500,-0.0545,+0.5556,0.05797
+H11 − H01c  [çapraz: boyut + ince ayar paketi],duyarlilik_mel,0.5315,0.6667,+0.1351,+0.0552,+0.2126,0.0009995
+H11 − H01c  [çapraz: boyut + ince ayar paketi],duyarlilik_nv,0.9374,0.9511,+0.0137,-0.0038,+0.0317,0.06447
+H11 − H01c  [çapraz: boyut + ince ayar paketi],duyarlilik_vasc,0.8286,0.8143,-0.0143,-0.1600,+0.1201,0.6292
+H11 − H01c  [çapraz: boyut + ince ayar paketi],acc_molemax_disi,0.7299,0.8165,+0.0866,+0.0557,+0.1200,0.0004998
+H11 − H01c  [çapraz: boyut + ince ayar paketi],acc_molemax,0.9714,0.9823,+0.0109,+0.0021,+0.0220,0.005497
+H11 − H01c  [çapraz: boyut + ince ayar paketi],acc_S_ham,0.7356,0.8385,+0.1029,+0.0608,+0.1458,0.0004998
+H11 − H01c  [çapraz: boyut + ince ayar paketi],acc_N_ham,0.8684,0.9020,+0.0336,+0.0131,+0.0540,0.001499
+H11 − H01c  [çapraz: boyut + ince ayar paketi],acc_S_molemaxdisi,0.7420,0.8435,+0.1014,+0.0597,+0.1440,0.0004998
+H11 − H01c  [çapraz: boyut + ince ayar paketi],acc_N_molemaxdisi,0.7146,0.7825,+0.0679,+0.0212,+0.1145,0.002499
+H11 − H01c  [çapraz: boyut + ince ayar paketi],nv_payi,0.6979,0.6822,-0.0158,-0.0333,+0.0006,0.9695
+H11 − H01c  [çapraz: boyut + ince ayar paketi],sizinti_tabakali_SN,0.0402,0.0710,+0.0307,-0.0395,+0.1040,0.2029
+H11 − H08c  [bilgi],acc,0.8865,0.8800,-0.0066,-0.0191,+0.0062,0.8381
+H11 − H08c  [bilgi],dengeli_acc,0.7763,0.7576,-0.0187,-0.0521,+0.0166,0.8561
+H11 − H08c  [bilgi],dengeli_acc_5sinif,0.7939,0.7811,-0.0128,-0.0371,+0.0126,0.8411
+H11 − H08c  [bilgi],duyarlilik_akiec,0.6485,0.6424,-0.0061,-0.0800,+0.0696,0.6212
+H11 − H08c  [bilgi],duyarlilik_bcc,0.9308,0.8654,-0.0654,-0.1184,-0.0143,0.9985
+H11 − H08c  [bilgi],duyarlilik_bkl,0.7564,0.7800,+0.0236,-0.0353,+0.0849,0.2394
+H11 − H08c  [bilgi],duyarlilik_df,0.6500,0.5833,-0.0667,-0.2667,+0.1273,0.7771
+H11 − H08c  [bilgi],duyarlilik_mel,0.6775,0.6667,-0.0108,-0.0810,+0.0636,0.6112
+H11 − H08c  [bilgi],duyarlilik_nv,0.9565,0.9511,-0.0054,-0.0159,+0.0053,0.8471
+H11 − H08c  [bilgi],duyarlilik_vasc,0.8143,0.8143,-0.0000,-0.0800,+0.0889,0.5727
+H11 − H08c  [bilgi],acc_molemax_disi,0.8281,0.8165,-0.0116,-0.0317,+0.0090,0.8601
+H11 − H08c  [bilgi],acc_molemax,0.9807,0.9823,+0.0016,-0.0034,+0.0070,0.2959
+H11 − H08c  [bilgi],acc_S_ham,0.8443,0.8385,-0.0057,-0.0338,+0.0231,0.6482
+H11 − H08c  [bilgi],acc_N_ham,0.9090,0.9020,-0.0070,-0.0205,+0.0061,0.8341
+H11 − H08c  [bilgi],acc_S_molemaxdisi,0.8510,0.8435,-0.0075,-0.0356,+0.0212,0.6912
+H11 − H08c  [bilgi],acc_N_molemaxdisi,0.7993,0.7825,-0.0168,-0.0490,+0.0144,0.8416
+H11 − H08c  [bilgi],nv_payi,0.6857,0.6822,-0.0036,-0.0154,+0.0086,0.7241
+H11 − H08c  [bilgi],sizinti_tabakali_SN,0.0563,0.0710,+0.0147,-0.0326,+0.0627,0.2714
+H08c − H02c  [referans: Colab'da H08 adaylığı],acc,0.8656,0.8865,+0.0209,+0.0108,+0.0317,0.0004998
+H08c − H02c  [referans: Colab'da H08 adaylığı],dengeli_acc,0.7100,0.7763,+0.0663,+0.0358,+0.1022,0.0004998
+H08c − H02c  [referans: Colab'da H08 adaylığı],dengeli_acc_5sinif,0.7549,0.7939,+0.0390,+0.0154,+0.0630,0.001499
+H08c − H02c  [referans: Colab'da H08 adaylığı],duyarlilik_akiec,0.6061,0.6485,+0.0424,-0.0400,+0.1267,0.1499
+H08c − H02c  [referans: Colab'da H08 adaylığı],duyarlilik_bcc,0.8962,0.9308,+0.0346,-0.0128,+0.0872,0.08746
+H08c − H02c  [referans: Colab'da H08 adaylığı],duyarlilik_bkl,0.7055,0.7564,+0.0509,+0.0031,+0.1008,0.01949
+H08c − H02c  [referans: Colab'da H08 adaylığı],duyarlilik_df,0.5667,0.6500,+0.0833,-0.0500,+0.2250,0.1359
+H08c − H02c  [referans: Colab'da H08 adaylığı],duyarlilik_mel,0.6126,0.6775,+0.0649,+0.0228,+0.1097,0.002999
+H08c − H02c  [referans: Colab'da H08 adaylığı],duyarlilik_nv,0.9544,0.9565,+0.0021,-0.0063,+0.0105,0.3128
+H08c − H02c  [referans: Colab'da H08 adaylığı],duyarlilik_vasc,0.6286,0.8143,+0.1857,+0.0545,+0.3474,0.005497
+H08c − H02c  [referans: Colab'da H08 adaylığı],acc_molemax_disi,0.7977,0.8281,+0.0304,+0.0145,+0.0465,0.0004998
+H08c − H02c  [referans: Colab'da H08 adaylığı],acc_molemax,0.9750,0.9807,+0.0057,-0.0000,+0.0134,0.03748
+H08c − H02c  [referans: Colab'da H08 adaylığı],acc_S_ham,0.8155,0.8443,+0.0287,+0.0097,+0.0470,0.0009995
+H08c − H02c  [referans: Colab'da H08 adaylığı],acc_N_ham,0.8922,0.9090,+0.0168,+0.0044,+0.0292,0.006997
+H08c − H02c  [referans: Colab'da H08 adaylığı],acc_S_molemaxdisi,0.8226,0.8510,+0.0284,+0.0091,+0.0470,0.0009995
+H08c − H02c  [referans: Colab'da H08 adaylığı],acc_N_molemaxdisi,0.7664,0.7993,+0.0328,+0.0053,+0.0599,0.01199
+H08c − H02c  [referans: Colab'da H08 adaylığı],nv_payi,0.7021,0.6857,-0.0164,-0.0259,-0.0070,0.999
+H08c − H02c  [referans: Colab'da H08 adaylığı],sizinti_tabakali_SN,0.0617,0.0563,-0.0054,-0.0407,+0.0319,0.6067
+H01c − H02c  [referans],acc,0.8656,0.8223,-0.0433,-0.0650,-0.0211,0.9995
+H01c − H02c  [referans],dengeli_acc,0.7100,0.6494,-0.0605,-0.1163,-0.0020,0.979
+H01c − H02c  [referans],dengeli_acc_5sinif,0.7549,0.6768,-0.0781,-0.1287,-0.0249,0.997
+H01c − H02c  [referans],duyarlilik_akiec,0.6061,0.6000,-0.0061,-0.2069,+0.1840,0.5542
+H01c − H02c  [referans],duyarlilik_bcc,0.8962,0.7462,-0.1500,-0.2556,-0.0375,0.9985
+H01c − H02c  [referans],duyarlilik_bkl,0.7055,0.5691,-0.1364,-0.2351,-0.0350,0.997
+H01c − H02c  [referans],duyarlilik_df,0.5667,0.3333,-0.2333,-0.4857,-0.0222,0.9895
+H01c − H02c  [referans],duyarlilik_mel,0.6126,0.5315,-0.0811,-0.1717,+0.0110,0.9585
+H01c − H02c  [referans],duyarlilik_nv,0.9544,0.9374,-0.0170,-0.0359,+0.0020,0.9645
+H01c − H02c  [referans],duyarlilik_vasc,0.6286,0.8286,+0.2000,+0.0222,+0.4111,0.01599
+H01c − H02c  [referans],acc_molemax_disi,0.7977,0.7299,-0.0679,-0.1010,-0.0323,0.9995
+H01c − H02c  [referans],acc_molemax,0.9750,0.9714,-0.0036,-0.0156,+0.0076,0.7481
+H01c − H02c  [referans],acc_S_ham,0.8155,0.7356,-0.0799,-0.1225,-0.0371,0.9995
+H01c − H02c  [referans],acc_N_ham,0.8922,0.8684,-0.0238,-0.0467,-0.0003,0.9755
+H01c − H02c  [referans],acc_S_molemaxdisi,0.8226,0.7420,-0.0806,-0.1235,-0.0373,0.9995
+H01c − H02c  [referans],acc_N_molemaxdisi,0.7664,0.7146,-0.0518,-0.1037,+0.0007,0.9735
+H01c − H02c  [referans],nv_payi,0.7021,0.6979,-0.0042,-0.0233,+0.0136,0.6917
+H01c − H02c  [referans],sizinti_tabakali_SN,0.0617,0.0402,-0.0215,-0.1029,+0.0632,0.6987
+H10 − baseline_c  [zincir bilgisi],acc,0.7458,0.8947,+0.1490,+0.1254,+0.1721,0.0004998
+H10 − baseline_c  [zincir bilgisi],dengeli_acc,0.4333,0.7977,+0.3644,+0.3049,+0.4226,0.0004998
+H10 − baseline_c  [zincir bilgisi],dengeli_acc_5sinif,0.5237,0.8039,+0.2802,+0.2343,+0.3272,0.0004998
+H10 − baseline_c  [zincir bilgisi],duyarlilik_akiec,0.3394,0.7212,+0.3818,+0.2303,+0.5360,0.0004998
+H10 − baseline_c  [zincir bilgisi],duyarlilik_bcc,0.4962,0.8731,+0.3769,+0.2723,+0.4909,0.0004998
+H10 − baseline_c  [zincir bilgisi],duyarlilik_bkl,0.4764,0.7491,+0.2727,+0.1711,+0.3695,0.0004998
+H10 − baseline_c  [zincir bilgisi],duyarlilik_df,0.0000,0.6500,+0.6500,+0.3600,+0.9126,0.0009995
+H10 − baseline_c  [zincir bilgisi],duyarlilik_mel,0.4000,0.7135,+0.3135,+0.2204,+0.4000,0.0004998
+H10 − baseline_c  [zincir bilgisi],duyarlilik_nv,0.9067,0.9627,+0.0560,+0.0367,+0.0759,0.0004998
+H10 − baseline_c  [zincir bilgisi],duyarlilik_vasc,0.4143,0.9143,+0.5000,+0.3000,+0.7091,0.0004998
+H10 − baseline_c  [zincir bilgisi],acc_molemax_disi,0.6207,0.8407,+0.2200,+0.1843,+0.2535,0.0004998
+H10 − baseline_c  [zincir bilgisi],acc_molemax,0.9474,0.9818,+0.0344,+0.0184,+0.0522,0.0004998
+H10 − baseline_c  [zincir bilgisi],acc_S_ham,0.6190,0.8782,+0.2592,+0.2154,+0.3036,0.0004998
+H10 − baseline_c  [zincir bilgisi],acc_N_ham,0.8131,0.9035,+0.0904,+0.0662,+0.1147,0.0004998
+H10 − baseline_c  [zincir bilgisi],acc_S_molemaxdisi,0.6238,0.8852,+0.2614,+0.2169,+0.3055,0.0004998
+H10 − baseline_c  [zincir bilgisi],acc_N_molemaxdisi,0.6168,0.7847,+0.1679,+0.1130,+0.2211,0.0004998
+H10 − baseline_c  [zincir bilgisi],nv_payi,0.7174,0.6897,-0.0277,-0.0489,-0.0072,0.9955
+H10 − baseline_c  [zincir bilgisi],sizinti_tabakali_SN,0.0091,0.1009,+0.0918,+0.0109,+0.1695,0.01549
+H10+H04 − H02c+H04  [ikinci satır],acc,0.8544,0.8855,+0.0311,+0.0150,+0.0491,0.0009995
+H10+H04 − H02c+H04  [ikinci satır],dengeli_acc,0.7377,0.8140,+0.0763,+0.0366,+0.1202,0.0004998
+H10+H04 − H02c+H04  [ikinci satır],dengeli_acc_5sinif,0.7571,0.8111,+0.0540,+0.0155,+0.0971,0.005997
+H10+H04 − H02c+H04  [ikinci satır],duyarlilik_akiec,0.6303,0.7333,+0.1030,-0.0519,+0.2643,0.09445
+H10+H04 − H02c+H04  [ikinci satır],duyarlilik_bcc,0.8885,0.8846,-0.0038,-0.0651,+0.0607,0.5442
+H10+H04 − H02c+H04  [ikinci satır],duyarlilik_bkl,0.6982,0.7600,+0.0618,-0.0163,+0.1431,0.06997
+H10+H04 − H02c+H04  [ikinci satır],duyarlilik_df,0.6500,0.7000,+0.0500,-0.0400,+0.1600,0.2049
+H10+H04 − H02c+H04  [ikinci satır],duyarlilik_mel,0.6378,0.7369,+0.0991,+0.0292,+0.1735,0.002499
+H10+H04 − H02c+H04  [ikinci satır],duyarlilik_nv,0.9306,0.9404,+0.0098,-0.0054,+0.0247,0.1024
+H10+H04 − H02c+H04  [ikinci satır],duyarlilik_vasc,0.7286,0.9429,+0.2143,+0.0499,+0.4268,0.004498
+H10+H04 − H02c+H04  [ikinci satır],acc_molemax_disi,0.7790,0.8268,+0.0478,+0.0221,+0.0756,0.0004998
+H10+H04 − H02c+H04  [ikinci satır],acc_molemax,0.9760,0.9802,+0.0042,-0.0077,+0.0157,0.2164
+H10+H04 − H02c+H04  [ikinci satır],acc_S_ham,0.8006,0.8644,+0.0638,+0.0327,+0.0980,0.0004998
+H10+H04 − H02c+H04  [ikinci satır],acc_N_ham,0.8831,0.8968,+0.0137,-0.0049,+0.0340,0.08896
+H10+H04 − H02c+H04  [ikinci satır],acc_S_molemaxdisi,0.8070,0.8701,+0.0632,+0.0316,+0.0976,0.0004998
+H10+H04 − H02c+H04  [ikinci satır],acc_N_molemaxdisi,0.7438,0.7723,+0.0285,-0.0141,+0.0734,0.1049
+H10+H04 − H02c+H04  [ikinci satır],nv_payi,0.6730,0.6624,-0.0106,-0.0257,+0.0030,0.9275
+H10+H04 − H02c+H04  [ikinci satır],sizinti_tabakali_SN,0.0632,0.0973,+0.0341,-0.0266,+0.0984,0.1379
+H11+H04 − H02c+H04  [ikinci satır],acc,0.8544,0.8710,+0.0166,+0.0018,+0.0315,0.01449
+H11+H04 − H02c+H04  [ikinci satır],dengeli_acc,0.7377,0.7992,+0.0615,+0.0301,+0.0965,0.0004998
+H11+H04 − H02c+H04  [ikinci satır],dengeli_acc_5sinif,0.7571,0.7994,+0.0423,+0.0110,+0.0743,0.004998
+H11+H04 − H02c+H04  [ikinci satır],duyarlilik_akiec,0.6303,0.6848,+0.0545,-0.0485,+0.1659,0.1684
+H11+H04 − H02c+H04  [ikinci satır],duyarlilik_bcc,0.8885,0.8808,-0.0077,-0.0744,+0.0576,0.5907
+H11+H04 − H02c+H04  [ikinci satır],duyarlilik_bkl,0.6982,0.7818,+0.0836,+0.0273,+0.1448,0.003498
+H11+H04 − H02c+H04  [ikinci satır],duyarlilik_df,0.6500,0.6833,+0.0333,-0.0600,+0.1333,0.2899
+H11+H04 − H02c+H04  [ikinci satır],duyarlilik_mel,0.6378,0.7297,+0.0919,+0.0276,+0.1618,0.003498
+H11+H04 − H02c+H04  [ikinci satır],duyarlilik_nv,0.9306,0.9198,-0.0107,-0.0248,+0.0028,0.932
+H11+H04 − H02c+H04  [ikinci satır],duyarlilik_vasc,0.7286,0.9143,+0.1857,+0.0545,+0.3467,0.007996
+H11+H04 − H02c+H04  [ikinci satır],acc_molemax_disi,0.7790,0.8016,+0.0226,-0.0010,+0.0466,0.02899
+H11+H04 − H02c+H04  [ikinci satır],acc_molemax,0.9760,0.9828,+0.0068,-0.0005,+0.0155,0.03998
+H11+H04 − H02c+H04  [ikinci satır],acc_S_ham,0.8006,0.8224,+0.0218,-0.0088,+0.0539,0.07246
+H11+H04 − H02c+H04  [ikinci satır],acc_N_ham,0.8831,0.8968,+0.0137,-0.0021,+0.0291,0.04598
+H11+H04 − H02c+H04  [ikinci satır],acc_S_molemaxdisi,0.8070,0.8255,+0.0186,-0.0128,+0.0510,0.1049
+H11+H04 − H02c+H04  [ikinci satır],acc_N_molemaxdisi,0.7438,0.7715,+0.0277,-0.0088,+0.0637,0.06847
+H11+H04 − H02c+H04  [ikinci satır],nv_payi,0.6730,0.6447,-0.0283,-0.0419,-0.0148,1
+H11+H04 − H02c+H04  [ikinci satır],sizinti_tabakali_SN,0.0632,0.0511,-0.0122,-0.0662,+0.0437,0.6677
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",acc,0.8786,0.8855,+0.0070,-0.0096,+0.0249,0.2059
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",dengeli_acc,0.8047,0.8140,+0.0093,-0.0321,+0.0553,0.3193
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",dengeli_acc_5sinif,0.8084,0.8111,+0.0026,-0.0363,+0.0421,0.4473
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",duyarlilik_akiec,0.7030,0.7333,+0.0303,-0.1231,+0.1875,0.3708
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",duyarlilik_bcc,0.9231,0.8846,-0.0385,-0.0952,+0.0255,0.8831
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",duyarlilik_bkl,0.7636,0.7600,-0.0036,-0.0854,+0.0771,0.5357
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",duyarlilik_df,0.7333,0.7000,-0.0333,-0.1200,+0.0401,0.8281
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",duyarlilik_mel,0.7207,0.7369,+0.0162,-0.0576,+0.0927,0.3258
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",duyarlilik_nv,0.9317,0.9404,+0.0086,-0.0068,+0.0234,0.1414
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",duyarlilik_vasc,0.8571,0.9429,+0.0857,-0.1000,+0.3176,0.2174
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",acc_molemax_disi,0.8149,0.8268,+0.0120,-0.0148,+0.0387,0.1929
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",acc_molemax,0.9813,0.9802,-0.0010,-0.0121,+0.0096,0.5517
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",acc_S_ham,0.8299,0.8644,+0.0345,+0.0012,+0.0680,0.02449
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",acc_N_ham,0.9044,0.8968,-0.0076,-0.0262,+0.0117,0.7726
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",acc_S_molemaxdisi,0.8359,0.8701,+0.0342,+0.0000,+0.0680,0.02549
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",acc_N_molemaxdisi,0.7883,0.7723,-0.0161,-0.0587,+0.0279,0.7576
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",nv_payi,0.6556,0.6624,+0.0068,-0.0082,+0.0197,0.1824
+"H10+H04 − H08c+H04  [ikinci satır, bilgi]",sizinti_tabakali_SN,0.0517,0.0973,+0.0456,-0.0159,+0.1058,0.06947
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],acc,0.8947,0.8855,-0.0092,-0.0152,-0.0034,0.9985
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],dengeli_acc,0.7977,0.8140,+0.0163,+0.0037,+0.0318,0.0009995
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],dengeli_acc_5sinif,0.8039,0.8111,+0.0071,-0.0005,+0.0155,0.03598
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],duyarlilik_akiec,0.7212,0.7333,+0.0121,+0.0000,+0.0308,0.1314
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],duyarlilik_bcc,0.8731,0.8846,+0.0115,-0.0111,+0.0383,0.2264
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],duyarlilik_bkl,0.7491,0.7600,+0.0109,-0.0089,+0.0309,0.1529
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],duyarlilik_df,0.6500,0.7000,+0.0500,+0.0000,+0.1333,0.1324
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],duyarlilik_mel,0.7135,0.7369,+0.0234,+0.0067,+0.0415,0.004998
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],duyarlilik_nv,0.9627,0.9404,-0.0224,-0.0293,-0.0155,1
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],duyarlilik_vasc,0.9143,0.9429,+0.0286,+0.0000,+0.0941,0.3653
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],acc_molemax_disi,0.8407,0.8268,-0.0139,-0.0232,-0.0052,1
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],acc_molemax,0.9818,0.9802,-0.0016,-0.0067,+0.0031,0.7451
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],acc_S_ham,0.8782,0.8644,-0.0138,-0.0257,-0.0030,0.995
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],acc_N_ham,0.9035,0.8968,-0.0067,-0.0136,-0.0000,0.9765
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],acc_S_molemaxdisi,0.8852,0.8701,-0.0151,-0.0267,-0.0047,0.9965
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],acc_N_molemaxdisi,0.7847,0.7723,-0.0124,-0.0272,+0.0022,0.954
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],nv_payi,0.6897,0.6624,-0.0273,-0.0333,-0.0215,1
+H10+H04 − H10  [katmanın kendi bedeli/kazancı],sizinti_tabakali_SN,0.1009,0.0973,-0.0036,-0.0224,+0.0146,0.6412

@@ -1,0 +1,57 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: SENS-LKB-tablo-kapsam, SENS-LKB-dogrulama, SENS-LKB-kume-test, SENS-LKB-kume-Ctest, SENS-LKB-ozet, SENS-LKB-T-h01-baseline, SENS-LKB-T-h02-baseline, SENS-LKB-T-h08-baseline, SENS-LKB-T-h10-baseline, SENS-LKB-T-h08-h02, SENS-LKB-T-h10-h02, SENS-LKB-T-h10-h08, SENS-LKB-T-t4-h10, SENS-LKB-T-t4-h02, SENS-LKB-T-t4-h08, SENS-LKB-T-baseline_son-baseline, SENS-LKB-T-h10-h02-dS, SENS-LKB-T-h10-h02-dN, SENS-LKB-T-h10-h02-dSdN, SENS-LKB-T-h10-h02-tabstd, SENS-LKB-T-h08-h02-dS, SENS-LKB-T-h08-h02-dN, SENS-LKB-T-h08-h02-dSdN, SENS-LKB-T-h08-h02-tabstd, SENS-LKB-T-h10-h08-dS, SENS-LKB-T-h10-h08-dN, SENS-LKB-T-h10-h08-dSdN, SENS-LKB-T-h10-h08-tabstd, SENS-LKB-C0-h10-h02, SENS-LKB-C0-h08-h02, SENS-LKB-C0-h10-h08, SENS-LKB-C0-h10-baseline, SENS-LKB-C0-K0-H10, SENS-LKB-C0-K0-H08, SENS-LKB-C0-KC0, SENS-LKB-C1-h01-baseline, SENS-LKB-C1-h02-baseline, SENS-LKB-C1-h08-baseline, SENS-LKB-C1-h10-baseline, SENS-LKB-C1-h08-h02, SENS-LKB-C1-h10-h02, SENS-LKB-C1-h10-h08, SENS-LKB-C1-K-H10, SENS-LKB-C1-K-H08, SENS-LKB-C1-KC
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Test sonrası duyarlılık: görüntü-düzeyi ve lezyon-kümeli bootstrap \%95 GA'ları (B = 2.000). Son sütun: sıfıra göre konum. Konumu değişmeyen dört betimsel H11/H12 satırı gösterilmedi.}\label{tab:lkb}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X cccc}
+\toprule
+Kıyas & \begin{tabular}[c]{@{}c@{}}$\Delta$\\\relax [puan]\end{tabular} & \begin{tabular}[c]{@{}c@{}}Görüntü-düzeyi\\\relax \%95 GA\end{tabular} & \begin{tabular}[c]{@{}c@{}}Lezyon-kümeli\\\relax \%95 GA\end{tabular} & \begin{tabular}[c]{@{}c@{}}Konum\\\relax değişti mi\end{tabular} \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Resmî test (n = 2.005): Aile 1, Aile 2, betimsel; S/N ayrışımı}} \\
+H01c $-$ B & +8,66 & [+6,96; +10,42] & [+6,77; +10,49] & hayır \\
+H02c $-$ B & +13,19 & [+11,72; +14,67] & [+11,76; +14,72] & hayır \\
+H08c $-$ B & +15,81 & [+14,21; +17,29] & [+14,28; +17,37] & hayır \\
+H10 $-$ B & +15,45 & [+13,84; +17,01] & [+13,81; +17,16] & hayır \\
+H08c $-$ H02c & +2,62 & [+1,85; +3,36] & [+1,85; +3,42] & hayır \\
+H10 $-$ H02c & +2,26 & [+1,15; +3,30] & [+1,12; +3,38] & hayır \\
+H10 $-$ H08c & \textminus{}0,36 & [\textminus{}1,40; +0,70] & [\textminus{}1,51; +0,77] & hayır \\
+T4 $-$ H10 & +2,29 & [+1,61; +2,93] & [+1,62; +2,98] & hayır \\
+T4 $-$ H02c & +4,56 & [+3,70; +5,42] & [+3,71; +5,44] & hayır \\
+T4 $-$ H08c & +1,94 & [+1,21; +2,65] & [+1,16; +2,75] & hayır \\
+B son-epoch $-$ B & \textminus{}0,31 & [\textminus{}1,28; +0,73] & [\textminus{}1,36; +0,70] & hayır \\
+H10 $-$ H02c: $\Delta_S$ & +5,43 & [+3,23; +7,47] & [+3,27; +7,65] & hayır \\
+H10 $-$ H02c: $\Delta_N$ & +0,59 & [\textminus{}0,58; +1,76] & [\textminus{}0,64; +1,81] & hayır \\
+H10 $-$ H02c: $\Delta_S{-}\Delta_N$ ham & +4,83 & [+2,22; +7,18] & [+2,36; +7,30] & hayır \\
+H10 $-$ H02c: $\Delta_S{-}\Delta_N$ tab.-std. & +4,50 & [+0,78; +8,06] & [+0,68; +8,50] & hayır \\
+H08c $-$ H02c: $\Delta_S$ & +4,27 & [+2,56; +5,89] & [+2,69; +6,02] & hayır \\
+H08c $-$ H02c: $\Delta_N$ & +1,75 & [+0,91; +2,60] & [+0,89; +2,61] & hayır \\
+H08c $-$ H02c: $\Delta_S{-}\Delta_N$ ham & +2,52 & [+0,52; +4,32] & [+0,63; +4,42] & hayır \\
+H08c $-$ H02c: $\Delta_S{-}\Delta_N$ tab.-std. & +0,89 & [\textminus{}2,04; +3,65] & [\textminus{}1,98; +4,05] & hayır \\
+H10 $-$ H08c: $\Delta_S$ & +1,15 & [\textminus{}0,85; +3,26] & [\textminus{}0,93; +3,29] & hayır \\
+H10 $-$ H08c: $\Delta_N$ & \textminus{}1,16 & [\textminus{}2,33; \textminus{}0,02] & [\textminus{}2,45; +0,11] & evet \\
+H10 $-$ H08c: $\Delta_S{-}\Delta_N$ ham & +2,31 & [\textminus{}0,08; +4,69] & [\textminus{}0,07; +4,72] & hayır \\
+H10 $-$ H08c: $\Delta_S{-}\Delta_N$ tab.-std. & +3,61 & [+0,12; +7,23] & [\textminus{}0,17; +7,43] & evet \\
+\multicolumn{5}{@{}l}{\textit{C0: C-test alt kümesi (n = 1.227); $K_0$ ve KÇ$_0$ ortak bootstrap}} \\
+H10 $-$ H02c & +0,28 & [\textminus{}0,83; +1,47] & [\textminus{}0,85; +1,45] & hayır \\
+H08c $-$ H02c & +1,50 & [+0,70; +2,28] & [+0,63; +2,35] & hayır \\
+H10 $-$ H08c & \textminus{}1,22 & [\textminus{}2,36; \textminus{}0,08] & [\textminus{}2,44; \textminus{}0,02] & hayır \\
+H10 $-$ B & +8,41 & [+6,80; +10,17] & [+6,58; +10,29] & hayır \\
+$K_0$: H10 $-$ H02c & +1,99 & [+1,06; +2,94] & [+1,04; +2,96] & hayır \\
+$K_0$: H08c $-$ H02c & +1,12 & [+0,40; +1,80] & [+0,39; +1,84] & hayır \\
+KÇ$_0$ ($K_0$ farkı) & +0,86 & [\textminus{}0,01; +1,78] & [\textminus{}0,07; +1,77] & hayır \\
+\multicolumn{5}{@{}l}{\textit{C1 (n = 1.227): Aile 1, Aile 2, betimsel; $K$ ve KÇ ortak bootstrap}} \\
+H01c $-$ B & +4,21 & [+2,41; +6,03] & [+2,26; +6,13] & hayır \\
+H02c $-$ B & +7,14 & [+5,75; +8,57] & [+5,55; +8,76] & hayır \\
+H08c $-$ B & +9,23 & [+7,71; +10,84] & [+7,64; +10,88] & hayır \\
+H10 $-$ B & +8,26 & [+6,63; +9,94] & [+6,45; +10,13] & hayır \\
+H08c $-$ H02c & +2,09 & [+1,24; +2,97] & [+1,20; +2,97] & hayır \\
+H10 $-$ H02c & +1,12 & [\textminus{}0,05; +2,30] & [\textminus{}0,03; +2,34] & hayır \\
+H10 $-$ H08c & \textminus{}0,96 & [\textminus{}2,10; +0,18] & [\textminus{}2,11; +0,21] & hayır \\
+$K$: H10 $-$ H02c & +1,14 & [+0,04; +2,31] & [\textminus{}0,03; +2,33] & evet \\
+$K$: H08c $-$ H02c & +0,54 & [\textminus{}0,39; +1,47] & [\textminus{}0,44; +1,49] & hayır \\
+KÇ ($K$ farkı) & +0,60 & [\textminus{}0,45; +1,68] & [\textminus{}0,49; +1,74] & hayır \\
+\botrule
+\end{tabularx}
+\end{table}

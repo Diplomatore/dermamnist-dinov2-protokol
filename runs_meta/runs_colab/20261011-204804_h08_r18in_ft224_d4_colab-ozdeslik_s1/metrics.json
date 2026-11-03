@@ -1,0 +1,27 @@
+{
+  "val_acc": 0.8893320039880359,
+  "val_auc": 0.9756031230628156,
+  "val_dengeli_acc": 0.7814014877246728,
+  "val_n": 1003,
+  "kaynak_val_acc": 0.8893320039880359,
+  "ozdeslik_argmax_ayni": 1003,
+  "ozdeslik_argmax_oran": 1.0,
+  "ozdeslik_p_maks_fark": 0.0,
+  "ozdeslik_gecti": 1,
+  "egitim_sure_sn": 9.52,
+  "sure_sn": 9.52,
+  "param_sayisi": 11180103,
+  "seed": 1,
+  "cihaz": "cuda:0 / NVIDIA L4",
+  "k5_test_kilidi": 0,
+  "veri_c": 0,
+  "alt_grup": {
+    "sinif_0": 0.5757575757575758,
+    "sinif_1": 0.9230769230769231,
+    "sinif_2": 0.7636363636363637,
+    "sinif_3": 0.6666666666666666,
+    "sinif_4": 0.7297297297297297,
+    "sinif_5": 0.9538002980625931,
+    "sinif_6": 0.8571428571428571
+  }
+}

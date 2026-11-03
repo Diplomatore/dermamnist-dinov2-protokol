@@ -1,0 +1,35 @@
+{
+  "run_id": "20261011-042852_rt_h07_sicaklik_s3",
+  "varyant": "rt_h07_sicaklik",
+  "seed": "3",
+  "etiket": "H07 üçüncü satır: R-T sıcaklık ölçekleme (OOF) TTA çıktısına",
+  "ebeveyn": "20261010-234351_h02_r18in_ft224_s3",
+  "hipotez": "H07",
+  "kuyruk": "tur3-h07rt",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>\\env\\.venv\\Scripts\\python.exe",
+    "varyantlar/logit_ayari/sicaklik.py",
+    "--kaynak-varyant",
+    "h07_h02_tta8",
+    "--kaynak-dosya",
+    "tahmin_val.npy",
+    "--seed",
+    "3",
+    "--out",
+    "<WS>\\runs\\20261011-042852_rt_h07_sicaklik_s3/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-10-11T04:28:52",
+  "makine": "LAPTOP-SKK5GIC3",
+  "sicaklik": {
+    "protokol": "SIRALAMA R-T",
+    "kaynak_varyant": "h07_h02_tta8",
+    "kaynak_dosya": "tahmin_val.npy",
+    "kaynak_kosum": "20261011-042429_h07_h02_tta8_s3",
+    "T_izgara": "0.5:3.0:0.01",
+    "secim": "NLL min (eşitlikte küçük T)",
+    "katlar_sha256": "0db03edb377f37e5d5b64281ea9ef9e1c5c13c5441d528166c117b4d5e0e0193"
+  }
+}

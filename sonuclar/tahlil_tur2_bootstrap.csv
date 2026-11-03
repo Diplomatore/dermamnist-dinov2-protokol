@@ -1,0 +1,97 @@
+kiyas,uc,A,B,delta,ga_alt,ga_ust,p_tek_B>A
+H05 − H02  [birincil],acc,0.8672,0.8662,-0.0010,-0.0078,+0.0058,0.5862
+H05 − H02  [birincil],dengeli_acc,0.7062,0.7213,+0.0151,-0.0023,+0.0328,0.04098
+H05 − H02  [birincil],duyarlilik_akiec,0.5818,0.5515,-0.0303,-0.0857,+0.0194,0.8966
+H05 − H02  [birincil],duyarlilik_bcc,0.9038,0.8846,-0.0192,-0.0519,+0.0100,0.918
+H05 − H02  [birincil],duyarlilik_bkl,0.7073,0.7182,+0.0109,-0.0155,+0.0382,0.2164
+H05 − H02  [birincil],duyarlilik_df,0.5333,0.6167,+0.0833,+0.0154,+0.1667,0.02249
+H05 − H02  [birincil],duyarlilik_mel,0.6180,0.6595,+0.0414,+0.0097,+0.0750,0.004498
+H05 − H02  [birincil],duyarlilik_nv,0.9565,0.9472,-0.0092,-0.0153,-0.0032,0.9985
+H05 − H02  [birincil],duyarlilik_vasc,0.6429,0.6714,+0.0286,-0.0267,+0.0833,0.2134
+H05 − H02  [birincil],acc_molemax_disi,0.8003,0.7984,-0.0019,-0.0128,+0.0090,0.6127
+H05 − H02  [birincil],nv_payi,0.7011,0.6927,-0.0084,-0.0144,-0.0024,0.998
+H05 − H02  [birincil],sizinti_tabakali_SN,0.0665,0.0524,-0.0141,-0.0384,+0.0123,0.8531
+H05(aucsecim) − H02(aucsecim),acc,0.8588,0.8602,+0.0014,-0.0056,+0.0090,0.3543
+H05(aucsecim) − H02(aucsecim),dengeli_acc,0.6856,0.7162,+0.0306,+0.0117,+0.0527,0.0004998
+H05(aucsecim) − H02(aucsecim),duyarlilik_akiec,0.5515,0.5758,+0.0242,-0.0143,+0.0629,0.1344
+H05(aucsecim) − H02(aucsecim),duyarlilik_bcc,0.8615,0.8808,+0.0192,-0.0085,+0.0480,0.1019
+H05(aucsecim) − H02(aucsecim),duyarlilik_bkl,0.6945,0.7073,+0.0127,-0.0187,+0.0423,0.2014
+H05(aucsecim) − H02(aucsecim),duyarlilik_df,0.5000,0.6000,+0.1000,+0.0000,+0.2182,0.04998
+H05(aucsecim) − H02(aucsecim),duyarlilik_mel,0.6432,0.6342,-0.0090,-0.0400,+0.0212,0.7076
+H05(aucsecim) − H02(aucsecim),duyarlilik_nv,0.9481,0.9437,-0.0045,-0.0114,+0.0030,0.8851
+H05(aucsecim) − H02(aucsecim),duyarlilik_vasc,0.6000,0.6714,+0.0714,+0.0000,+0.1539,0.04048
+H05(aucsecim) − H02(aucsecim),acc_molemax_disi,0.7868,0.7890,+0.0023,-0.0089,+0.0142,0.3453
+H05(aucsecim) − H02(aucsecim),nv_payi,0.6937,0.6905,-0.0032,-0.0094,+0.0030,0.8496
+H05(aucsecim) − H02(aucsecim),sizinti_tabakali_SN,0.0525,0.0576,+0.0050,-0.0216,+0.0328,0.3538
+H05(son ep) − H02(son ep),acc,0.8606,0.8594,-0.0012,-0.0078,+0.0056,0.6172
+H05(son ep) − H02(son ep),dengeli_acc,0.6947,0.7129,+0.0183,+0.0022,+0.0353,0.01699
+H05(son ep) − H02(son ep),duyarlilik_akiec,0.5455,0.5394,-0.0061,-0.0625,+0.0483,0.6067
+H05(son ep) − H02(son ep),duyarlilik_bcc,0.8923,0.8962,+0.0038,-0.0364,+0.0458,0.4513
+H05(son ep) − H02(son ep),duyarlilik_bkl,0.6891,0.7164,+0.0273,+0.0017,+0.0545,0.02299
+H05(son ep) − H02(son ep),duyarlilik_df,0.5667,0.6167,+0.0500,-0.0222,+0.1200,0.1229
+H05(son ep) − H02(son ep),duyarlilik_mel,0.6162,0.6378,+0.0216,-0.0098,+0.0527,0.08596
+H05(son ep) − H02(son ep),duyarlilik_nv,0.9529,0.9413,-0.0116,-0.0176,-0.0054,1
+H05(son ep) − H02(son ep),duyarlilik_vasc,0.6000,0.6429,+0.0429,+0.0000,+0.0889,0.04048
+H05(son ep) − H02(son ep),acc_molemax_disi,0.7906,0.7880,-0.0026,-0.0132,+0.0083,0.6652
+H05(son ep) − H02(son ep),nv_payi,0.6991,0.6867,-0.0124,-0.0179,-0.0066,1
+H05(son ep) − H02(son ep),sizinti_tabakali_SN,0.0645,0.0607,-0.0039,-0.0319,+0.0234,0.6012
+H05 − H04(OOF)  [kart ikincil 11],acc,0.8576,0.8662,+0.0086,+0.0010,+0.0162,0.01399
+H05 − H04(OOF)  [kart ikincil 11],dengeli_acc,0.7425,0.7213,-0.0212,-0.0456,+0.0016,0.963
+H05 − H04(OOF)  [kart ikincil 11],duyarlilik_akiec,0.6121,0.5515,-0.0606,-0.1086,-0.0167,0.9975
+H05 − H04(OOF)  [kart ikincil 11],duyarlilik_bcc,0.9000,0.8846,-0.0154,-0.0586,+0.0254,0.7701
+H05 − H04(OOF)  [kart ikincil 11],duyarlilik_bkl,0.7145,0.7182,+0.0036,-0.0250,+0.0314,0.4448
+H05 − H04(OOF)  [kart ikincil 11],duyarlilik_df,0.6667,0.6167,-0.0500,-0.2000,+0.0728,0.7886
+H05 − H04(OOF)  [kart ikincil 11],duyarlilik_mel,0.6613,0.6595,-0.0018,-0.0394,+0.0344,0.5492
+H05 − H04(OOF)  [kart ikincil 11],duyarlilik_nv,0.9288,0.9472,+0.0185,+0.0120,+0.0261,0.0004998
+H05 − H04(OOF)  [kart ikincil 11],duyarlilik_vasc,0.7143,0.6714,-0.0429,-0.1077,+0.0182,0.946
+H05 − H04(OOF)  [kart ikincil 11],acc_molemax_disi,0.7855,0.7984,+0.0129,+0.0006,+0.0252,0.02149
+H05 − H04(OOF)  [kart ikincil 11],nv_payi,0.6670,0.6927,+0.0257,+0.0195,+0.0331,0.0004998
+H05 − H04(OOF)  [kart ikincil 11],sizinti_tabakali_SN,0.0743,0.0524,-0.0219,-0.0496,+0.0070,0.9335
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",acc,0.8620,0.8662,+0.0042,-0.0032,+0.0116,0.1304
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",dengeli_acc,0.7386,0.7213,-0.0173,-0.0421,+0.0056,0.931
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",duyarlilik_akiec,0.6121,0.5515,-0.0606,-0.1086,-0.0167,0.9975
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",duyarlilik_bcc,0.9077,0.8846,-0.0231,-0.0632,+0.0148,0.8816
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",duyarlilik_bkl,0.7109,0.7182,+0.0073,-0.0212,+0.0371,0.3353
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",duyarlilik_df,0.6500,0.6167,-0.0333,-0.1800,+0.0857,0.7021
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",duyarlilik_mel,0.6523,0.6595,+0.0072,-0.0278,+0.0396,0.3478
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",duyarlilik_nv,0.9374,0.9472,+0.0098,+0.0038,+0.0168,0.0009995
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",duyarlilik_vasc,0.7000,0.6714,-0.0286,-0.0857,+0.0267,0.8981
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",acc_molemax_disi,0.7919,0.7984,+0.0065,-0.0052,+0.0184,0.1414
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",nv_payi,0.6770,0.6927,+0.0158,+0.0100,+0.0223,0.0004998
+"H05 − H02@τ=0,5  [eğitim-zamanı vs post-hoc eşdeğer]",sizinti_tabakali_SN,0.0750,0.0524,-0.0226,-0.0506,+0.0060,0.9405
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",acc,0.8672,0.8620,-0.0052,-0.0106,-0.0002,0.9785
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",dengeli_acc,0.7062,0.7386,+0.0324,+0.0126,+0.0561,0.0004998
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",duyarlilik_akiec,0.5818,0.6121,+0.0303,+0.0000,+0.0611,0.03398
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",duyarlilik_bcc,0.9038,0.9077,+0.0038,-0.0140,+0.0204,0.4078
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",duyarlilik_bkl,0.7073,0.7109,+0.0036,-0.0107,+0.0196,0.3448
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",duyarlilik_df,0.5333,0.6500,+0.1167,+0.0000,+0.2615,0.05447
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",duyarlilik_mel,0.6180,0.6523,+0.0342,+0.0196,+0.0509,0.0004998
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",duyarlilik_nv,0.9565,0.9374,-0.0191,-0.0249,-0.0141,1
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",duyarlilik_vasc,0.6429,0.7000,+0.0571,+0.0000,+0.1250,0.04648
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",acc_molemax_disi,0.8003,0.7919,-0.0084,-0.0167,-0.0007,0.986
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",nv_payi,0.7011,0.6770,-0.0241,-0.0295,-0.0193,1
+"H02@τ=0,5 − H02  [teşhis, seçimsiz]",sizinti_tabakali_SN,0.0665,0.0750,+0.0085,-0.0074,+0.0257,0.1574
+H04 − H02  [doğrulama],acc,0.8672,0.8576,-0.0096,-0.0166,-0.0032,0.998
+H04 − H02  [doğrulama],dengeli_acc,0.7062,0.7425,+0.0363,+0.0157,+0.0595,0.0004998
+H04 − H02  [doğrulama],duyarlilik_akiec,0.5818,0.6121,+0.0303,+0.0000,+0.0611,0.03398
+H04 − H02  [doğrulama],duyarlilik_bcc,0.9038,0.9000,-0.0038,-0.0218,+0.0122,0.7506
+H04 − H02  [doğrulama],duyarlilik_bkl,0.7073,0.7145,+0.0073,-0.0136,+0.0297,0.2419
+H04 − H02  [doğrulama],duyarlilik_df,0.5333,0.6667,+0.1333,+0.0167,+0.2800,0.01949
+H04 − H02  [doğrulama],duyarlilik_mel,0.6180,0.6613,+0.0432,+0.0242,+0.0649,0.0004998
+H04 − H02  [doğrulama],duyarlilik_nv,0.9565,0.9288,-0.0277,-0.0352,-0.0210,1
+H04 − H02  [doğrulama],duyarlilik_vasc,0.6429,0.7143,+0.0714,+0.0154,+0.1401,0.01449
+H04 − H02  [doğrulama],acc_molemax_disi,0.8003,0.7855,-0.0149,-0.0253,-0.0050,0.9975
+H04 − H02  [doğrulama],nv_payi,0.7011,0.6670,-0.0341,-0.0409,-0.0283,1
+H04 − H02  [doğrulama],sizinti_tabakali_SN,0.0665,0.0743,+0.0077,-0.0132,+0.0278,0.2234
+H06 − H01  [doğrulama],acc,0.8223,0.8158,-0.0066,-0.0160,+0.0032,0.92
+H06 − H01  [doğrulama],dengeli_acc,0.6494,0.6766,+0.0272,+0.0065,+0.0567,0.001499
+H06 − H01  [doğrulama],duyarlilik_akiec,0.6000,0.6303,+0.0303,+0.0000,+0.0813,0.1339
+H06 − H01  [doğrulama],duyarlilik_bcc,0.7462,0.7654,+0.0192,+0.0000,+0.0489,0.1474
+H06 − H01  [doğrulama],duyarlilik_bkl,0.5691,0.5727,+0.0036,-0.0084,+0.0187,0.3383
+H06 − H01  [doğrulama],duyarlilik_df,0.3333,0.4167,+0.0833,+0.0000,+0.2727,0.3628
+H06 − H01  [doğrulama],duyarlilik_mel,0.5315,0.5802,+0.0486,+0.0125,+0.0917,0.0009995
+H06 − H01  [doğrulama],duyarlilik_nv,0.9374,0.9139,-0.0235,-0.0356,-0.0134,1
+H06 − H01  [doğrulama],duyarlilik_vasc,0.8286,0.8571,+0.0286,+0.0000,+0.1000,0.3633
+H06 − H01  [doğrulama],acc_molemax_disi,0.7299,0.7208,-0.0090,-0.0242,+0.0065,0.8876
+H06 − H01  [doğrulama],nv_payi,0.6979,0.6708,-0.0271,-0.0369,-0.0179,1
+H06 − H01  [doğrulama],sizinti_tabakali_SN,0.0402,0.0441,+0.0039,-0.0323,+0.0409,0.3908

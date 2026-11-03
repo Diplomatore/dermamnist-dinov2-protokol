@@ -1,0 +1,24 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: T-AILE1-h01-baseline, C1-A1-h01-baseline, T-AILE1-h02-baseline, C1-A1-h02-baseline, T-AILE1-h08-baseline, C1-A1-h08-baseline, T-AILE1-h10-baseline, C1-A1-h10-baseline, T-K-baseline_son-baseline-acc
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Rakibe karşı eşleştirilmiş kıyaslar: $\Delta$ACC, görüntü-bootstrap GA, Holm düzeltmeli tek yönlü $p$. Mavi kalın: GA sıfırın üstünde; betimsel satır renksiz. Aile~2: Tablo~\ref{tab:protokol}.}\label{tab:kiyas}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X cccc}
+\toprule
+ & \multicolumn{2}{c}{Resmî test (n = 2.005)} & \multicolumn{2}{c}{C1: lezyon-ayrık (n = 1.227)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Kıyas & $\Delta$ACC [puan] & Holm $p$ & $\Delta$ACC [puan] & Holm $p$ \\
+ & [\%95 GA] & ($t$; boot) & [\%95 GA] & ($t$; boot) \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Aile 1: rakibe karşı (marj $\geq +2{,}0$)}} \\
+H01c $-$ B & \begin{tabular}[c]{@{}c@{}}\iyi{+8,66}\\\relax [+6,96; +10,42]\end{tabular} & \begin{tabular}[c]{@{}c@{}}$2{,}9{\times}10^{-6}$\\\relax 0,002\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+4,21}\\\relax [+2,41; +6,03]\end{tabular} & \begin{tabular}[c]{@{}c@{}}$6{,}5{\times}10^{-5}$\\\relax 0,002\end{tabular} \\
+H02c $-$ B & \begin{tabular}[c]{@{}c@{}}\iyi{+13,19}\\\relax [+11,72; +14,67]\end{tabular} & \begin{tabular}[c]{@{}c@{}}$2{,}9{\times}10^{-6}$\\\relax 0,002\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+7,14}\\\relax [+5,75; +8,57]\end{tabular} & \begin{tabular}[c]{@{}c@{}}$1{,}4{\times}10^{-4}$\\\relax 0,002\end{tabular} \\
+H08c $-$ B & \begin{tabular}[c]{@{}c@{}}\iyi{+15,81}\\\relax [+14,21; +17,29]\end{tabular} & \begin{tabular}[c]{@{}c@{}}$1{,}1{\times}10^{-6}$\\\relax 0,002\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+9,23}\\\relax [+7,71; +10,84]\end{tabular} & \begin{tabular}[c]{@{}c@{}}$2{,}2{\times}10^{-6}$\\\relax 0,002\end{tabular} \\
+H10 $-$ B & \begin{tabular}[c]{@{}c@{}}\iyi{+15,45}\\\relax [+13,84; +17,01]\end{tabular} & \begin{tabular}[c]{@{}c@{}}$1{,}3{\times}10^{-6}$\\\relax 0,002\end{tabular} & \begin{tabular}[c]{@{}c@{}}\iyi{+8,26}\\\relax [+6,63; +9,94]\end{tabular} & \begin{tabular}[c]{@{}c@{}}$2{,}7{\times}10^{-5}$\\\relax 0,002\end{tabular} \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Betimsel (Holm dışı)}} \\
+B son-epoch $-$ B & \begin{tabular}[c]{@{}c@{}}\textminus{}0,31\\\relax [\textminus{}1,28; +0,73]\end{tabular} & \begin{tabular}[c]{@{}c@{}}--\\\relax --\end{tabular} & -- & -- \\
+\botrule
+\end{tabularx}
+\end{table}

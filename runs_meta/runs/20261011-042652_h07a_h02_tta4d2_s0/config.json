@@ -1,0 +1,31 @@
+{
+  "run_id": "20261011-042652_h07a_h02_tta4d2_s0",
+  "varyant": "h07a_h02_tta4d2",
+  "seed": "0",
+  "etiket": "H07 ablasyon (i): d2 alt kümesi (4 görünüm; kaydedilmiş olasılıklar, CPU)",
+  "ebeveyn": "20261010-222930_h02_r18in_ft224_s0",
+  "hipotez": "H07",
+  "kuyruk": "tur3-h07a",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>\\env\\.venv\\Scripts\\python.exe",
+    "varyantlar/tta/tta_alt.py",
+    "--kaynak-varyant",
+    "h07_h02_tta8",
+    "--alt",
+    "d2",
+    "--seed",
+    "0",
+    "--out",
+    "<WS>\\runs\\20261011-042652_h07a_h02_tta4d2_s0/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-10-11T04:26:52",
+  "makine": "LAPTOP-SKK5GIC3",
+  "protokol": {
+    "ablasyon": "H07 (i) d2: görünümler ['kimlik', 'rot180', 'yatay_cevirme', 'dikey_cevirme']",
+    "kaynak_run": "20261011-042306_h07_h02_tta8_s0",
+    "gpu": "yok (kaydedilmiş olasılıklar)"
+  }
+}

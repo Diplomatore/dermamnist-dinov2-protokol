@@ -1,0 +1,88 @@
+{
+  "run_id": "20261010-092925_baseline_onucus_s0",
+  "varyant": "baseline_onucus",
+  "seed": "0",
+  "etiket": "MedMNIST resmî ResNet-18 28px (experiments@70b6b3a) — ön-uçuş 20 epoch (protokolden sapma: kısaltılmış) · YEREL GTX 1650",
+  "ebeveyn": null,
+  "hipotez": null,
+  "kuyruk": "k3-baseline-yerel",
+  "asama": 2,
+  "kural": {
+    "nan_kes": true,
+    "ilerleme_zorunlu_sn": 300,
+    "sabit_sn": 300,
+    "min_adim": 10,
+    "alt_sinir": {
+      "val_acc_eniyi": 0.6
+    }
+  },
+  "komut": [
+    "<WS>\\env\\.venv\\Scripts\\python.exe",
+    "scripts/rakip_kos.py",
+    "--seed",
+    "0",
+    "--epoch",
+    "20",
+    "--veri-kok",
+    "data/medmnist",
+    "--out",
+    "<WS>\\runs\\20261010-092925_baseline_onucus_s0/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-10-10T09:29:27",
+  "makine": "LAPTOP-SKK5GIC3",
+  "donanim": {
+    "cihaz": "cuda:0 / NVIDIA GeForce GTX 1650",
+    "nvidia_smi": "NVIDIA GeForce GTX 1650, 555.97, 4096 MiB",
+    "torch": "2.5.1+cu121",
+    "cuda": "12.1",
+    "cudnn": 90100,
+    "torchvision": "0.20.1+cu121",
+    "sklearn": "1.9.1",
+    "numpy": "2.2.6",
+    "python": "3.11.16",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "makine": "LAPTOP-SKK5GIC3"
+  },
+  "veri": {
+    "npz": "dermamnist.npz",
+    "kok": "<WS>\\data\\medmnist",
+    "md5": "0744692d530f8e62ec473284d019b0c7",
+    "md5_resmi": "0744692d530f8e62ec473284d019b0c7",
+    "sha256": "1a309fec2e33bb6aba88e7d078e5ccbb9736c84a0b415ac197eb3c8fa331e050",
+    "bayt": 19725078
+  },
+  "rakip": {
+    "depo": "https://github.com/MedMNIST/experiments",
+    "commit": "70b6b3a7ad7afddff1df2a3b735235830fbdb142",
+    "betik": "MedMNIST2D/train_and_eval_pytorch.py",
+    "blob_sha1": {
+      "train_and_eval_pytorch.py": "09157bd8d6032be12cbf1eea0cfa8ccbd39914cb",
+      "models.py": "24579d6612441aa1e1af63f3d246d4e61db822fd"
+    },
+    "medmnist_paket": "3.0.2",
+    "medmnist_depo_commit": "805b74237fb5bd2db376fd94e50646b6a8905d9d"
+  },
+  "protokol": {
+    "data_flag": "dermamnist",
+    "size": 28,
+    "num_epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "optimizer": "Adam",
+    "milestones": [
+      10.0,
+      15.0
+    ],
+    "gamma": 0.1,
+    "kayip": "CrossEntropyLoss",
+    "donusum": "ToTensor + Normalize(0.5, 0.5)",
+    "augment": "yok",
+    "resize": false,
+    "model": "models.ResNet18 (3x3 stem, maxpool yok)",
+    "secim": "val AUC (cur_auc > best_auc, deepcopy)",
+    "seed": 0,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false
+  }
+}

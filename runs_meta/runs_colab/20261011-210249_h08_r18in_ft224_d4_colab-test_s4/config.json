@@ -1,0 +1,69 @@
+{
+  "run_id": "20261011-210249_h08_r18in_ft224_d4_colab-test_s4",
+  "varyant": "h08_r18in_ft224_d4_colab-test",
+  "seed": "4",
+  "etiket": "K5 TEST çıkarımı: h08_r18in_ft224_d4_colab s4",
+  "ebeveyn": "20261011-141608_h08_r18in_ft224_d4_colab_s4",
+  "hipotez": "H08",
+  "kuyruk": "k5-test",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "python",
+    "colab/fp32_kos.py",
+    "varyantlar/k5/k5_cikarim.py",
+    "--tur",
+    "r18",
+    "--kaynak",
+    "20261011-141608_h08_r18in_ft224_d4_colab_s4",
+    "--seed",
+    "4",
+    "--test-kilidi-acik",
+    "--out",
+    "/content/is/runs/20261011-210249_h08_r18in_ft224_d4_colab-test_s4/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-10-11T21:02:50",
+  "makine": "ee658e45c0ed",
+  "k5": {
+    "kaynak_run": "20261011-141608_h08_r18in_ft224_d4_colab_s4",
+    "kaynak_varyant": "h08_r18in_ft224_d4_colab",
+    "tur": "r18",
+    "veri": {
+      "npz": "dermamnist_224.npz",
+      "kok": "/content/is/data/medmnist",
+      "md5": "8974907d8e169bef5f5b96bc506ae45d",
+      "md5_resmi": "8974907d8e169bef5f5b96bc506ae45d",
+      "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d",
+      "bayt": 1091112502
+    },
+    "kaynak_sha256": {
+      "best_model.pth": "906a231e36e9c804eb935de627a303f41c26e2607903207c8c5c2ea01f101743",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "518b0796f8c34a9db81cd63b92e8933da7315f0247278d583900f940a7344875",
+      "etiket_val.npy": "0a25a91b92c1c4cba4c7b9daa2693c2efee9dae6f5ae0a77042773ba7e929499",
+      "metrics.json": "c034ea2fe19a9b628967b6b7ae38279562578d3e4e45414af674f041b5baeb1e",
+      "config.json": "3bc9e1d8e55180bf6112a975fadfe3526e828353bb9008917811285b2c88ccdf"
+    },
+    "ozdeslik_tol": 1e-05,
+    "acc_tol": 0.0001,
+    "test_kilidi_acik": true,
+    "tepe_gpu_bellek_mb": 933.2
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 92700,
+    "numpy": "2.1.3",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "makine": "ee658e45c0ed",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

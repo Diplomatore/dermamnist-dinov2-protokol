@@ -1,0 +1,38 @@
+{
+  "kategori": {
+    "id": "med",
+    "no": "03",
+    "name": "Tıbbi Görüntüleme"
+  },
+  "konu": {
+    "id": "med-1",
+    "code": "3.1",
+    "title": "Düşük Çözünürlükte Transfer Öğrenme: DermaMNIST’te ResNet-18’in DINOv2 ile Aşılması",
+    "titleEn": "Beating the MedMNIST Baseline with Self-Supervised Features",
+    "dataset": {
+      "name": "DermaMNIST",
+      "detail": "7 sınıf cilt lezyonu · pip install medmnist ile iner · CC lisans",
+      "url": "https://medmnist.com/"
+    },
+    "baseline": {
+      "name": "ResNet-18 (28px), sıfırdan",
+      "code": "MedMNIST resmi benchmark kodu (MedMNIST/MedMNIST)",
+      "result": "ACC 0,735 / AUC 0,917 (MedMNIST v2, Tablo 3)"
+    },
+    "target": "ACC ≥ 0,80 (DINOv2 özellikleriyle %92,02 raporlanmış)",
+    "metric": "ACC + AUC",
+    "strategy": [
+      "Ajan veri setini indirir, resmi ResNet-18 baseline’ını koşar",
+      "224px ölçekleme + ImageNet önağırlıkları",
+      "DINOv2 öznitelik çıkarımı + doğrusal sonda varyantı",
+      "Sınıf dengesizliği için focal loss",
+      "Augmentation araması + TTA"
+    ],
+    "gpu": "Colab T4 yeterli (~30–60 dk/koşu)",
+    "system": "Ubuntu 22.04 · CUDA 12.1 · PyTorch 2.3+ · medmnist/timm",
+    "duration": "2–3 hafta",
+    "difficulty": 1,
+    "publishTarget": "SCI dergi (medikal) / Workshop",
+    "orchFit": "Çok yüksek"
+  }
+}

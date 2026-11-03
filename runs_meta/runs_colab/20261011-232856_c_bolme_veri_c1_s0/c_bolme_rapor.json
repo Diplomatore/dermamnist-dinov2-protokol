@@ -1,0 +1,23 @@
+{
+ "tarih": "2026-10-11T23:37:03",
+ "c_esleme_sha256": "65a3c480be5a2898e2d9ecaf514acdd6ab3ff4f4294a3c49ccf1463edb348e5a",
+ "lezyon_kesisim": {
+  "train_val": 0,
+  "train_test": 0,
+  "val_test": 0
+ },
+ "n": {
+  "train": 8215,
+  "val": 573,
+  "test": 1227
+ },
+ "icerik_sha256": {
+  "28": "d2e3516354424c7372592c5b62d5eb65d95560fd0ceabd03e9a17e233de71ac5",
+  "224": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba"
+ },
+ "dosya_sha256": {
+  "28": "0333131edbdae3402cd0fe853eace8af3e735585365fd41bc96fe92f096e5af3",
+  "224": "b9b2db5626be2675647c89b4bd3b1b5d6fd93f5b9404fbb9cdf914aa4c8bbc0d"
+ },
+ "hatalar": []
+}

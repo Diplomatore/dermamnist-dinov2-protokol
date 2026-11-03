@@ -1,0 +1,212 @@
+{
+ "aciklama": "Drive sonuclar/ → WS/sonuclar/ (beklenti kapı raporları + Colab leaderboard'ları). SHA256 doğrulandı; yerel dosya üzerine yazılmadı.",
+ "kaynak": "<DRIVE_KOK>\\3-1\\sonuclar",
+ "hedef": "<WS>\\sonuclar",
+ "zaman": "2026-10-12T19:08:08",
+ "n_kopya": 34,
+ "n_zaten_ayni": 0,
+ "n_catisma": 0,
+ "kopya": [
+  {
+   "ad": "beklenti-k5-c1-A-asama1.md",
+   "bayt": 1479,
+   "sha256": "bd9b71fec8d00bb76aade32ceffdf746f372c8468f1fe0a4f84d92288bb9a5c7"
+  },
+  {
+   "ad": "beklenti-k5-c1-A-asama3.md",
+   "bayt": 61,
+   "sha256": "500a52ca467a50d6f286f4fc052a0d29676e97986e24000e5a19cff3bb1e18fc"
+  },
+  {
+   "ad": "beklenti-k5-c1-A-v2-asama1.md",
+   "bayt": 2381,
+   "sha256": "cc89e8ea6af53983cfaabb664884a25eb7a22187ecf1ff6291323f9a5eb7a48e"
+  },
+  {
+   "ad": "beklenti-k5-c1-A-v2-asama3.md",
+   "bayt": 64,
+   "sha256": "ceb97207fd07cf0d3cd6c672754447aa0787ecca7bf0e73d2960f16d3c3e5525"
+  },
+  {
+   "ad": "beklenti-k5-c1-A-v3-asama1.md",
+   "bayt": 1980,
+   "sha256": "df1557a57e5044d3eec07df09889e1c0977aa57b6e2b52e7ecabefee24f41586"
+  },
+  {
+   "ad": "beklenti-k5-c1-A-v3-asama2.md",
+   "bayt": 2985,
+   "sha256": "e328cbb7fc5664cb658e552c79490adc96a4be21e15f73d4beb3604e59a95583"
+  },
+  {
+   "ad": "beklenti-k5-c1-A-v3-asama3.md",
+   "bayt": 7900,
+   "sha256": "8ab2c323e23fb9ff618bbee937f89cf427a7ab1984577dbf6843ff2d345e59bb"
+  },
+  {
+   "ad": "beklenti-k5-c1-B-asama1.md",
+   "bayt": 1816,
+   "sha256": "96766b989ca46cfe63da35fa3dd479bef34ee2170871bca0b7cfca3ef36fbe7a"
+  },
+  {
+   "ad": "beklenti-k5-c1-B-asama2.md",
+   "bayt": 2465,
+   "sha256": "32dcddc5d60c538ed86986996830d2e1a6ca3a62ddfaa2495d25297c70325ebb"
+  },
+  {
+   "ad": "beklenti-k5-c1-B-asama3.md",
+   "bayt": 8190,
+   "sha256": "03808821c5c1b81920b6b92ca58876c6a4a7caae5552bf67546a5991b4d294af"
+  },
+  {
+   "ad": "beklenti-k5-test-asama1.md",
+   "bayt": 18053,
+   "sha256": "fd3d97cbc5dc3572c931977a930634a9f1edbf66c3c8d6d0410f00f74a389c69"
+  },
+  {
+   "ad": "beklenti-k5-test-asama3.md",
+   "bayt": 24270,
+   "sha256": "ac0201528599e70a4b569b708e8773bbd07e3f743a4b512d6e97d999ac1242ab"
+  },
+  {
+   "ad": "beklenti-kc1-tekrar-asama1.md",
+   "bayt": 4044,
+   "sha256": "a9b0553f61f8062b613b618ec91eca622fa74747340d196185eac69a077faf1c"
+  },
+  {
+   "ad": "beklenti-kc1-tekrar-asama2.md",
+   "bayt": 8147,
+   "sha256": "9ead8ef374c121875fe6893888ba1c2d67285683c5cb9144ad8310296b400ffc"
+  },
+  {
+   "ad": "beklenti-kc1-tekrar-asama3.md",
+   "bayt": 8386,
+   "sha256": "b5a0cc69d7e09033398995dcd7ede436b7f8646a7fe8d4330da0929119f7e1d4"
+  },
+  {
+   "ad": "beklenti-kc2-tur4-h10-asama1.md",
+   "bayt": 1222,
+   "sha256": "3b910adad28213a80e7de7bd9687a97b6950dc99ab671c7ce482ed9dc1b62b42"
+  },
+  {
+   "ad": "beklenti-kc2-tur4-h10-asama2.md",
+   "bayt": 1886,
+   "sha256": "f2d459da22a170a784eaf8d185fc32ebda6b1a74c1fad6091bf71ef9f36ce224"
+  },
+  {
+   "ad": "beklenti-kc2-tur4-h11-asama1.md",
+   "bayt": 1084,
+   "sha256": "8920290452e0470815c9ad1982f208d1e4ac2f2d555e1800d9f95fe4faf26aa7"
+  },
+  {
+   "ad": "beklenti-kc2-tur4-h11-asama2.md",
+   "bayt": 1617,
+   "sha256": "f4e643d06056858fc7afd33fb189183b44f868ac085283662fe087c0b4350b6a"
+  },
+  {
+   "ad": "beklenti-kc2-tur4-h12-asama1.md",
+   "bayt": 1002,
+   "sha256": "33b98093739eef690e5696ddcd21cb2cc66a3345e9540625ccfc8bc87d219ffe"
+  },
+  {
+   "ad": "beklenti-kc2-tur4-h12-asama2.md",
+   "bayt": 1922,
+   "sha256": "04b601df1ad72b55efcdea8c80d65292055a9141336c087744db5a984cb057c1"
+  },
+  {
+   "ad": "leaderboard-colab-k5-c1-A-v2.csv",
+   "bayt": 124025,
+   "sha256": "0f6b004542160927a7b5466b644bfa9e24d1102ed4dfd689bb41323df6d3d1f9"
+  },
+  {
+   "ad": "leaderboard-colab-k5-c1-A-v2.md",
+   "bayt": 5169,
+   "sha256": "8e6f97207235f020d44be5c0c19dc2ddc7a392aa9f22e5e4be8257e8de4ac8bf"
+  },
+  {
+   "ad": "leaderboard-colab-k5-c1-A-v3.csv",
+   "bayt": 160148,
+   "sha256": "a8fb5a448ea33553ff4fedd51e48c36a628bed94cad654dc5a41d10d0a174bff"
+  },
+  {
+   "ad": "leaderboard-colab-k5-c1-A-v3.md",
+   "bayt": 6279,
+   "sha256": "df75bb024daa9325bb2d849552a852ca6dba43e0270f86faa983f57a8153475f"
+  },
+  {
+   "ad": "leaderboard-colab-k5-c1-A.csv",
+   "bayt": 107998,
+   "sha256": "ba2c759c3c9da8435ca11d28acc14ae558abca40b1d2edab0a5ac36fd71b46f9"
+  },
+  {
+   "ad": "leaderboard-colab-k5-c1-A.md",
+   "bayt": 4436,
+   "sha256": "0a771b2f317720f3b8278be4c1f4a6eed664cd5800121490f6bda5b6f527c020"
+  },
+  {
+   "ad": "leaderboard-colab-k5-c1-B.csv",
+   "bayt": 143979,
+   "sha256": "20c5293adf542c8093488d809a01489efe5a213cc6371f320548184f4fbe4a38"
+  },
+  {
+   "ad": "leaderboard-colab-k5-c1-B.md",
+   "bayt": 5902,
+   "sha256": "2ec18eef3cccee7c95c7c9a956de8586cbc261ec67a37d081e491390e2421b3b"
+  },
+  {
+   "ad": "leaderboard-colab-k5-test.csv",
+   "bayt": 105837,
+   "sha256": "a0ed17a3acba94a6186569a570fbdc7691490c8748719ddefc684663cf9d7cbd"
+  },
+  {
+   "ad": "leaderboard-colab-k5-test.md",
+   "bayt": 4331,
+   "sha256": "afccbea5336f1fc85bbd6ccb7061ca380880d8b8b8ee131a69d638ad9585644c"
+  },
+  {
+   "ad": "leaderboard-kc1.csv",
+   "bayt": 36783,
+   "sha256": "7bfa8248e4fb1638e8ceb248d9005310326bbd2cc87470b0accbb14ca4ae77c9"
+  },
+  {
+   "ad": "leaderboard-kc1.md",
+   "bayt": 1706,
+   "sha256": "e96e631cdacfb481718705b96adf91413f17a8e3c52812e789e4146563f55f42"
+  },
+  {
+   "ad": "tekrar-ozeti-colab.md",
+   "bayt": 852,
+   "sha256": "21bce2af9c9f41d52b8c2d0353dc28651ab714464486e34df25bc6df6b2fab54"
+  }
+ ],
+ "zaten_ayni": [],
+ "catisma": [],
+ "esdeger_ad": [
+  {
+   "drive": "replikasyon.md",
+   "yerel": "replikasyon-colab.md",
+   "ayni": true
+  }
+ ],
+ "ortak_ad_denetim": [
+  {
+   "ad": "k5_dondurma.json",
+   "ayni": true
+  },
+  {
+   "ad": "k5_dondurma.json.sha256",
+   "ayni": true
+  },
+  {
+   "ad": "k5_test_sonuc.json",
+   "ayni": true
+  },
+  {
+   "ad": "k5_test_sonuc.json.sha256",
+   "ayni": true
+  },
+  {
+   "ad": "k5_test_sonuc.md",
+   "ayni": true
+  }
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "_aciklama": "ÖN-KAYIT (kuyruk kc1-tekrar = COLAB TEKRAR KAPISI; deney-yürütücü 2026-10-11, hiçbir Colab ölçüm koşumundan ÖNCE yazıldı; koşum sonrası DEĞİŞTİRİLMEZ, devam kuyruklarına BAYT BAYT kopyalanır). Kaynaklar: hipotezler/SIRALAMA.md 'ÖN-KAYIT — COLAB TEKRAR KAPISI' (KULLANICI KARARI 7, 11:39; FP32, TF32 kapalı, AMP yok; uyum kuralı), kuyruk/k3-baseline-yerel-v2.beklenti.json (rakip), kuyruk/tur1.beklenti.json (H01/H02), kuyruk/tur3.beklenti.json (H08), G:/yz/durum/baglanti_testi.json (L4 23.034 MiB). Komutlar yerel tariflerin AYNISI (aynı betik + aynı argümanlar); tek farklar: 'python colab/fp32_kos.py' sarmalayıcısı (TF32 kapalı; rakip köprüsü kapatmıyordu), H02/H08 dumanında ölçüm-yalnız --ozdeslik-ref (yerel aynı kolun dumanı), varyant adlarında _colab son eki, zaman sınırları (operasyonel).",
+ "_notlar": [
+  "TEKRAR KAPISI KARARI BU DOSYADA DEĞİL: aşama 3 son aşamadır, kuyruk.py son aşamadan sonra kapı koşmaz. Uyum kuralı (5-seed ort.): baseline test_acc ∈ [0,7218; 0,754] (replikasyon_kapisi.py --baseline baseline_colab) ve |val_acc − 0,7396| ≤ 2,0 puan; H01/H02/H08 |Δval| ≤ 1,5 puan (yerel 0,8223 / 0,8672 / 0,8893) VE sıralama H08 > H02 > H01. Şef değerlendirir; aşağıdaki aşama-3 'aralik' kuralları bu uyum bantlarının mekanik yansımasıdır (bilgi).",
+  "ozdeslik_ilk_adim_loss_fark (H02/H08 dumanı, --ozdeslik-ref = aynı kolun YEREL dumanı): aynı kod + aynı veri (MD5) + aynı önağırlık (SHA256) + aynı seed → fark yalnız GPU FP32 aritmetiğinden gelebilir. CPU RNG akışları (randperm, randint, normal_, nn.Linear init) torch 2.5.1 ↔ 2.11.0 arasında BİT BİT AYNI (deney-yürütücü sınaması 2026-10-11, CPU; batch sırası, D4 seçimi, baş başlatması aynı). Eşik 1e-3 (kayıp ≈ 1,85; FP32 farkı beklenen ≲ 1e-5): üstü veri hattı/ön işleme/önağırlık farkı demektir → DUR, teşhis.",
+  "farkli_seedler_farkli KULLANILMADI: kural varyant filtresi taşımaz ve sonda kolu (H01) için kart gereği yasak (dışbükey; val ACC k/1003 seed'ler arasında aynı çıkabilir). R18/rakip seed bağlılığı: a2 raporunda s0/s1 val_acc ve ilk_adim_loss (şef/defter son hücresi); sonda: seed_tahmin_en_kucuk_fark > 0.",
+  "ikincil_aralik varyant filtresi taşımaz → yalnız kola özgü anahtarlar kullanıldı (rakip: secim_val_auc_farki, test_*; sonda: param_omurga, oznitelik_*, seed_tahmin_*, yakinsama_fark; R18: ilk_adim_loss, epoch_sure_ort_sn, val_acc_aucsecim; H08: augment_*). param_sayisi kollar arasında farklı olduğu için KULLANILMADI (rakip 11.172.423 / R18 11.180.103 / sonda 5.383 — kod aynı, yerelde doğrulandı).",
+  "Süre bantları L4'e göre (KULLANICI KARARI 7: kartların GTX 1650 süre kuralları Colab'da gevşek): epoch_sure_ort_sn alt = yerel / 20 (L4/GTX 1650 FP32 tepe oranı 30,3/2,98 TFLOPS ≈ 10,2 × 2 pay; altı = epoch'un veri atladığı şüphesi), üst = yerel ölçüm × ≈ 1,25 (L4 yerelden belirgin YAVAŞsa veri hattı/disk/CPU düşüşü arızası). H02 yerel 48,7 s → [2,4; 60].",
+  "tepe_gpu_bellek_mb üst 22.500 (L4 23.034 MiB, bağlantı testi). FP32 denetimi metrics dışında: her koşum klasöründe fp32_durum.json (defter son hücresi + şef)."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN (seed 0) — dört kolun kod yolu Colab/L4'te: rakip 3 epoch, H01 sonda 256+256 (C = 1, seçim 0,1), H02 1 epoch, H08 1 epoch (D4 açık)",
+   "kurallar": [
+    {"tur": "sonlu"},
+    {"tur": "min_kosum", "n": 4},
+    {"tur": "aralik", "varyant": "baseline_colab_duman", "alt": 0.619, "ust": 0.80, "kaynak": "k3-baseline-yerel-v2.beklenti.json a1: alt = val çoğunluk tabanı 0,669 − 0,05 (3 epoch), üst = 28 px tavanı ~0,78 + marj (literatur-cipa §4e); yerel duman 0,7089"},
+    {"tur": "aralik", "varyant": "h01_dinov2b_lp_r224_colab_duman", "alt": 0.55, "ust": 0.95, "kaynak": "tur1.beklenti.json a1 (KOMUTLAR §5): 256 train, tek C; yerel duman 0,652"},
+    {"tur": "aralik", "varyant": "h02_r18in_ft224_colab_duman", "alt": 0.62, "ust": 0.90, "kaynak": "tur1.beklenti.json a1: çoğunluk 0,669 − 0,05; üst H02 görülmemiş 0,90; yerel duman 0,8116"},
+    {"tur": "aralik", "varyant": "h08_r18in_ft224_d4_colab_duman", "alt": 0.62, "ust": 0.90, "kaynak": "tur3.beklenti.json a1 (H08); yerel duman 0,8096"},
+    {"tur": "kollar_farkli", "kaynak": "plasebo yakalayıcı: H02 ↔ H08 (D4 devrede) ve diğer kollar aynı seed'de farklı olmalı"},
+    {"tur": "ikincil_aralik", "metrik": "ozdeslik_ilk_adim_loss_fark", "alt": 0.0, "ust": 0.001, "kaynak": "_notlar 2: yerel H02 dumanı 1,8524776697 / H08 dumanı 1,8451145887 ile aynı kod-veri-önağırlık-seed; CPU RNG 2.5.1↔2.11 bit bit aynı; fark yalnız GPU aritmetiği"},
+    {"tur": "ikincil_aralik", "metrik": "secim_val_auc_farki", "alt": 0.0, "ust": 1e-06, "kaynak": "k3 a1: resmî best_model val AUC = köprünün seçilen-epoch val AUC'si (rakip)"},
+    {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.60, "ust": 0.99, "kaynak": "k3 a1 alt 0,60 (3 epoch rakip); üst 0,99 görülmemiş (literatur-cipa §4e)"},
+    {"tur": "ikincil_aralik", "metrik": "ayni_seed_tahmin_maks_fark", "alt": 0.0, "ust": 0.0, "kaynak": "H01 kartı R5: aynı seed tekrarında tahmin bit-bit aynı (sonda)"},
+    {"tur": "ikincil_aralik", "metrik": "seed_tahmin_en_kucuk_fark", "alt": 1e-06, "ust": 1.0, "kaynak": "H01 kartı R5: farklı seed → farklı tahmin (sonda)"},
+    {"tur": "ikincil_aralik", "metrik": "param_omurga", "alt": 85724928, "ust": 85724928, "kaynak": "H01 kartı revizyon 10 (ViT-B/14 img_size 224)"},
+    {"tur": "ikincil_aralik", "metrik": "oznitelik_boyut", "alt": 768, "ust": 768, "kaynak": "H01 kartı: CLS 768-b"},
+    {"tur": "ikincil_aralik", "metrik": "oznitelik_determinizm_maks_fark", "alt": 0.0, "ust": 1e-05, "kaynak": "H01 kartı Seed'in rolü; tur1 a1"},
+    {"tur": "ikincil_aralik", "metrik": "oznitelik_img_s", "alt": 10, "ust": 1000, "kaynak": "H01 öldürme (d) alt 10 img/s; üst: ViT-B/14 r224 ileri ≈ 46 GFLOP/görüntü, L4 FP32 tepe 30,3 TFLOPS → fiziksel tavan ≈ 650 img/s"},
+    {"tur": "ikincil_aralik", "metrik": "ilk_adim_loss", "alt": 1.5, "ust": 2.6, "kaynak": "≈ ln 7 = 1,95 (yeni 7 sınıflı kafa); tur1/tur3 a1"},
+    {"tur": "ikincil_aralik", "metrik": "epoch_sure_ort_sn", "alt": 2.4, "ust": 60, "kaynak": "_notlar 5: yerel H02/H08 48,7 s / 20 … × 1,25"},
+    {"tur": "ikincil_aralik", "metrik": "augment_d4", "alt": 1, "ust": 1, "kaynak": "H08 bayrağı devrede (tur3 a1)"},
+    {"tur": "ikincil_aralik", "metrik": "augment_toplam_ornek", "alt": 7007, "ust": 7007, "kaynak": "H08: 1 epoch × 7.007 (tur3 a1)"},
+    {"tur": "ikincil_aralik", "metrik": "egitim_sure_sn", "alt": 1, "ust": 900, "kaynak": "duman satırı ≤ 15 dk (yerel: rakip 59 s, sonda 54 s, H02/H08 47–48 s)"},
+    {"tur": "ikincil_aralik", "metrik": "tepe_gpu_bellek_mb", "alt": 1, "ust": 22500, "kaynak": "L4 23.034 MiB (bağlantı testi)"}
+   ]
+  },
+  "2": {
+   "aciklama": "ÖN-UÇUŞ (seed 0, 1) — rakip 20 epoch, H01 sonda tam veri (8 C, C* = ort(s0,s1), lbfgs), H02 5 epoch, H08 5 epoch",
+   "kurallar": [
+    {"tur": "sonlu"},
+    {"tur": "min_kosum", "n": 8},
+    {"tur": "kollar_farkli", "kaynak": "plasebo yakalayıcı (H02 ↔ H08 ve diğerleri)"},
+    {"tur": "aralik", "varyant": "baseline_colab_onucus", "alt": 0.669, "ust": 0.80, "kaynak": "k3 a2: alt val çoğunluk tabanı 0,669, üst 28 px tavanı + marj; yerel 0,7816/0,7817"},
+    {"tur": "aralik", "varyant": "h01_dinov2b_lp_r224_colab_onucus", "alt": 0.7596, "ust": 0.88, "kaynak": "tur1 a2 / H01 kartı: alt B + 0,02, üst görülmemiş 0,88; yerel 0,8245/0,8215"},
+    {"tur": "aralik", "varyant": "h02_r18in_ft224_colab_onucus", "alt": 0.72, "ust": 0.90, "kaynak": "tur1 a2 (5 epoch); yerel 0,8604/0,8584"},
+    {"tur": "aralik", "varyant": "h08_r18in_ft224_d4_colab_onucus", "alt": 0.72, "ust": 0.90, "kaynak": "tur3 a2 (5 epoch)"},
+    {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.85, "ust": 0.99, "kaynak": "k3 a2 alt 0,85 (rakip 20 ep), tur1/tur3 a2 üst 0,99"},
+    {"tur": "ikincil_aralik", "metrik": "secim_val_auc_farki", "alt": 0.0, "ust": 1e-06, "kaynak": "k3 a2 (rakip)"},
+    {"tur": "ikincil_aralik", "metrik": "yakinsama_fark", "alt": 0.0, "ust": 0.005, "kaynak": "H01 öldürme (e): |SGD − lbfgs| ≤ 0,5 puan"},
+    {"tur": "ikincil_aralik", "metrik": "seed_tahmin_en_kucuk_fark", "alt": 1e-06, "ust": 1.0, "kaynak": "H01 kartı R5"},
+    {"tur": "ikincil_aralik", "metrik": "ayni_seed_tahmin_maks_fark", "alt": 0.0, "ust": 0.0, "kaynak": "H01 kartı R5"},
+    {"tur": "ikincil_aralik", "metrik": "n_train", "alt": 7007, "ust": 7007, "kaynak": "resmî split (sonda/R18)"},
+    {"tur": "ikincil_aralik", "metrik": "val_n", "alt": 1003, "ust": 1003, "kaynak": "resmî split (sonda/R18)"},
+    {"tur": "ikincil_aralik", "metrik": "param_omurga", "alt": 85724928, "ust": 85724928, "kaynak": "H01 kartı"},
+    {"tur": "ikincil_aralik", "metrik": "oznitelik_boyut", "alt": 768, "ust": 768, "kaynak": "H01 kartı"},
+    {"tur": "ikincil_aralik", "metrik": "oznitelik_determinizm_maks_fark", "alt": 0.0, "ust": 1e-05, "kaynak": "H01 kartı"},
+    {"tur": "ikincil_aralik", "metrik": "oznitelik_img_s", "alt": 10, "ust": 1000, "kaynak": "H01 öldürme (d); fiziksel tavan ≈ 650 img/s"},
+    {"tur": "ikincil_aralik", "metrik": "ilk_adim_loss", "alt": 1.5, "ust": 2.6, "kaynak": "≈ ln 7"},
+    {"tur": "ikincil_aralik", "metrik": "epoch_sure_ort_sn", "alt": 2.4, "ust": 60, "kaynak": "_notlar 5 (yerel a2 49,4/51,7 s)"},
+    {"tur": "ikincil_aralik", "metrik": "val_acc_aucsecim", "alt": 0.69, "ust": 0.90, "kaynak": "tur1 a2 (H02/H08)"},
+    {"tur": "ikincil_aralik", "metrik": "augment_d4", "alt": 1, "ust": 1, "kaynak": "H08"},
+    {"tur": "ikincil_aralik", "metrik": "augment_toplam_ornek", "alt": 35035, "ust": 35035, "kaynak": "H08: 5 epoch × 7.007 (tur3 a2)"},
+    {"tur": "ikincil_aralik", "metrik": "augment_frekans_maks_sapma", "alt": 0.0, "ust": 0.01, "kaynak": "H08 öldürme (g): 8 dönüşüm 0,125 ± 0,01 (tur3 a2)"},
+    {"tur": "ikincil_aralik", "metrik": "egitim_sure_sn", "alt": 10, "ust": 1500, "kaynak": "a2 satırı ≤ 25 dk; rakip 20 ep ≤ 1.500 s ⇒ 100 ep ≤ 125 dk < a3 zaman sınırı 150 dk (yerel 20 ep ≈ 390 s)"},
+    {"tur": "ikincil_aralik", "metrik": "tepe_gpu_bellek_mb", "alt": 1, "ust": 22500, "kaynak": "L4 23.034 MiB"}
+   ]
+  },
+  "3": {
+   "aciklama": "TAM (bilgi; kuyruk son aşamadan sonra kapı koşmaz; tekrar kapısı kararı şefte) — H01 ×5, H02 30 ep ×5, H08 30 ep ×5, rakip 100 ep ×5 (seed 0–4, yerel tarifler)",
+   "kurallar": [
+    {"tur": "sonlu"},
+    {"tur": "min_kosum", "n": 20},
+    {"tur": "kollar_farkli"},
+    {"tur": "aralik", "varyant": "baseline_colab", "alt": 0.7196, "ust": 0.7596, "kaynak": "SIRALAMA ön-kaydı: |val_acc_Colab − 0,7396| ≤ 2,0 puan (yerel seed std 2,05)"},
+    {"tur": "aralik", "varyant": "h01_dinov2b_lp_r224_colab", "alt": 0.8073, "ust": 0.8373, "kaynak": "SIRALAMA ön-kaydı: |Δ| ≤ 1,5 puan, yerel 0,8223"},
+    {"tur": "aralik", "varyant": "h02_r18in_ft224_colab", "alt": 0.8522, "ust": 0.8822, "kaynak": "SIRALAMA ön-kaydı: |Δ| ≤ 1,5 puan, yerel 0,8672"},
+    {"tur": "aralik", "varyant": "h08_r18in_ft224_d4_colab", "alt": 0.8743, "ust": 0.9043, "kaynak": "SIRALAMA ön-kaydı: |Δ| ≤ 1,5 puan, yerel 0,8893"},
+    {"tur": "ikincil_aralik", "metrik": "test_acc", "alt": 0.7098, "ust": 0.766, "kaynak": "k3 a3: SEED BAŞINA SARI bandı (rakip); ortalama kabul [0,7218; 0,754] replikasyon_kapisi.py"},
+    {"tur": "ikincil_aralik", "metrik": "test_auc", "alt": 0.897, "ust": 0.937, "kaynak": "k3 a3: seed başına 2×tolerans (rakip)"},
+    {"tur": "ikincil_aralik", "metrik": "secim_val_auc_farki", "alt": 0.0, "ust": 1e-06, "kaynak": "k3 a3 (rakip)"},
+    {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.88, "ust": 0.99, "kaynak": "tur1/tur3 a3 (rakip 100 ep yerel 0,9228)"},
+    {"tur": "ikincil_aralik", "metrik": "yakinsama_fark", "alt": 0.0, "ust": 0.005, "kaynak": "H01 öldürme (e)"},
+    {"tur": "ikincil_aralik", "metrik": "seed_tahmin_en_kucuk_fark", "alt": 1e-06, "ust": 1.0, "kaynak": "H01 kartı R5"},
+    {"tur": "ikincil_aralik", "metrik": "n_train", "alt": 7007, "ust": 7007, "kaynak": "resmî split"},
+    {"tur": "ikincil_aralik", "metrik": "epoch_sure_ort_sn", "alt": 2.4, "ust": 60, "kaynak": "_notlar 5 (yerel a3 48,4–49,6 s)"},
+    {"tur": "ikincil_aralik", "metrik": "augment_toplam_ornek", "alt": 210210, "ust": 210210, "kaynak": "H08: 30 epoch × 7.007 (tur3 a3)"},
+    {"tur": "ikincil_aralik", "metrik": "augment_frekans_maks_sapma", "alt": 0.0, "ust": 0.01, "kaynak": "H08 öldürme (g)"}
+   ]
+  }
+ }
+}

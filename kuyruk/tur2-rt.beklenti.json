@@ -1,0 +1,76 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-2 R-T sıcaklık ölçekleme raporlama protokolü; KART DEĞİL; SIRALAMA mtime 2026-10-11 01:01). Hiçbir rt_* koşumundan ÖNCE yazıldı (2026-10-11 01:14). Kaynaklar: hipotezler/SIRALAMA.md R-T (beklenti H02 OOF ECE [0,025; 0,045], görülmemiş < 0,010), sonuclar/tahlil-tur1.md §1b ham ECE-15 (B 0,0365, H01 0,0309, H02 0,0745), Guo vd. 2017 (argmax korunur).",
+ "_notlar": [
+  "Metrik val_ece (min). Aralık alt = 0,010 (R-T görülmemiş: 15 kutulu ECE gürültü tabanının altı), üst = kaynağın ham ECE'si + 0,010 (OOF ölçekleme ham değeri belirgin kötüleştirmemeli; +0,010 < gürültü tabanı 0,02–0,03). H02 için üst = ham 0,0745 (aşırı güvenli; T > 1 beklenir).",
+  "R-T kuralı (OOF ECE ≤ 0,045 → giderilir, değilse kısmen) kapı değil, raporlama kuralıdır.",
+  "rt_h04 kaynağı = h04_h02_logitayar OOF tahminleri (ham ECE'si koşumdan önce bilinmiyor → üst H02 ham + 0,010)."
+ ],
+ "metrik": "val_ece",
+ "yon": "min",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — rt_h02_sicaklik, rt_h01_sicaklik, rt_baseline_sicaklik, rt_h04_sicaklik × seed 0–4 (seed başına T, 5 kat OOF)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 20
+    },
+    {
+     "tur": "aralik",
+     "varyant": "rt_h02_sicaklik",
+     "alt": 0.01,
+     "ust": 0.0745,
+     "kaynak": "SIRALAMA R-T: görülmemiş < 0,010; üst = H02 ham ECE 0,0745 (tahlil §1b). Ön-kayıtlı beklenti [0,025; 0,045] (Guo 2017 göreli düşüş %66–92)"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "rt_h01_sicaklik",
+     "alt": 0.01,
+     "ust": 0.0409,
+     "kaynak": "H01 ham ECE 0,0309 (tahlil §1b) + 0,010; alt R-T görülmemiş"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "rt_baseline_sicaklik",
+     "alt": 0.01,
+     "ust": 0.0465,
+     "kaynak": "B ham ECE 0,0365 + 0,010; alt R-T görülmemiş"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "rt_h04_sicaklik",
+     "alt": 0.01,
+     "ust": 0.0845,
+     "kaynak": "H04 = H02 + önsel kaydırma; üst H02 ham 0,0745 + 0,010; alt R-T görülmemiş"
+    },
+    {
+     "tur": "kollar_farkli"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "acc_degisim",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "Guo vd. 2017 / SIRALAMA R-T: sıcaklık argmax'ı değiştirmez"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "dengeli_degisim",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "aynı (argmax korunur)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "T_tamval",
+     "alt": 0.51,
+     "ust": 2.99,
+     "kaynak": "SIRALAMA R-T ızgarası [0,5; 3,0]: sınırda T = ızgara yetersiz; tahlil teşhisi H02 T 1,48–1,86"
+    }
+   ]
+  }
+ }
+}

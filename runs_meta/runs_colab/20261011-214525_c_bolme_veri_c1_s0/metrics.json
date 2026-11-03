@@ -1,0 +1,12 @@
+{
+ "denetim_gecti": 1,
+ "c_veri_bekleme_sn": 540.7,
+ "c2_md5_dogrulandi": 1,
+ "cihaz": "cpu",
+ "n_train": 8215,
+ "n_val": 573,
+ "n_test": 1227,
+ "lezyon_kesisim_toplam": 0,
+ "egitim_sure_sn": 579.7,
+ "sure_sn": 579.7
+}

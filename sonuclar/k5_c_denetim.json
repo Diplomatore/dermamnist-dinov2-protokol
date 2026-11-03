@@ -1,0 +1,53 @@
+{
+ "tarih": "2026-10-11T18:21:46",
+ "kaynak_sha256": {
+  "dermamnist_c_esleme.csv": "65a3c480be5a2898e2d9ecaf514acdd6ab3ff4f4294a3c49ccf1463edb348e5a",
+  "dermamnist_lezyon_esleme.csv": "ccd833066d530f8daecc474a3176c2af47c7964738709c2d16687bda8dbd9dfb",
+  "DermaMNIST-C.csv": "c27194d338986463966e1694d5b49fda933222368f04b316c702ac2e8a0d4f5c"
+ },
+ "n": {
+  "train": 8215,
+  "val": 573,
+  "test": 1227
+ },
+ "P7_ctest_lezyon_kesisim_resmi_train_val": {
+  "goruntu": 0,
+  "n_ctest": 1227,
+  "lezyon": 0
+ },
+ "P7_ctest_lezyon_kesisim_resmi_train": 0,
+ "P7_ctest_lezyon_kesisim_resmi_val": 0,
+ "P7_ctest_resmi_test_alt_kume": {
+  "eslesen": 1227,
+  "n": 1227
+ },
+ "P7_ctest_esleme_tutarli": {
+  "eslesen": 1227,
+  "n": 1227
+ },
+ "esleme_tutarli_tum": {
+  "eslesen": 10015,
+  "n": 10015
+ },
+ "c_csv_bolme_ayni": {
+  "eslesen": 10015,
+  "n": 10015
+ },
+ "c_csv_sira_ayni": true,
+ "index_resmi_benzersiz": true,
+ "bilgi": {
+  "cval_lezyon_kesisim_ctrain": 0,
+  "ctest_lezyon_kesisim_ctrain_cval": 0,
+  "ctrain_resmi_kaynak": {
+   "train": 7007,
+   "val": 430,
+   "test": 778
+  },
+  "cval_resmi_kaynak": {
+   "val": 573
+  },
+  "ctest_resmi_test_payi": 0.6119700748129676
+ },
+ "hatalar": [],
+ "karar": "GEÇTİ"
+}

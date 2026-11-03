@@ -1,0 +1,48 @@
+{
+  "_aciklama": "ÖN-KAYIT (2026-10-10, rakip-kurucu; kuyruk başlatılmadan ÖNCE yazıldı, koşum sonrası DEĞİŞTİRİLMEZ). Kuyruk k3-baseline: MedMNIST resmî ResNet-18 (28 px, sıfırdan) @ MedMNIST/experiments 70b6b3a, hedef D (Colab Pro, NVIDIA L4). Varyant adları aşamaya göre AYRI: a1=baseline_duman, a2=baseline_onucus, a3=baseline — replikasyon_kapisi.py ve leaderboard.py kuyruk/aşama ayırmadan varyant adına bakar; kısaltılmış koşumlar 'baseline' ortalamasına karışmasın diye.",
+  "_karar_verici_replikasyon": "Aşama 3 son aşamadır; kuyruk.py son aşamadan sonra kapı koşmaz. KARAR VERİCİ ölçüt ORTALAMA test_acc ∈ [0.7218, 0.754] olup replikasyon_kapisi.py ile sınanır: --metrik test_acc --yon max --lit 0.7338 --lit-ust 0.742 --tolerans 0.012 (YEŞİL [0.7218,0.754], SARI [0.7098,0.766]); ikincil (bilgi) test_auc --lit 0.917 --tolerans 0.01 → [0.907,0.927]. Kaynak: notlar/literatur-cipa.md §2.2; orkestrasyon_durumu.md Kararlar (K1.5→K3). Aşağıdaki aşama-3 test kuralları SEED BAŞINA (ikincil_aralik tek koşuma bakar) olduğundan SARI bandı (2×tolerans) kullanır; tek bir sapkın seed'in ortalama kapısını taklit eden yanlış İHLAL üretmemesi için.",
+  "metrik": "val_acc",
+  "yon": "max",
+  "asama": {
+    "1": {
+      "aciklama": "DUMAN — Colab/L4 üzerinde kod yolu, veri yolu, pin kurulumu ve metrik köprüsü çalışıyor mu (seed 0, 3 epoch; resmî kod milestone'ları 0.5E/0.75E = 1.5/2.25)",
+      "kurallar": [
+        {"tur": "sonlu"},
+        {"tur": "min_kosum", "n": 1},
+        {"tur": "aralik", "alt": 0.619, "ust": 0.80, "kaynak": "alt: val çoğunluk tabanı 671/1003=0.669 (data/data_manifest.md) − 0.05 gevşetme (3 epoch); üst: 28 px bilgiyle bilinen tavan ~0.78 (literatur-cipa.md §4e: DINOv2 LP-28 77.37, MedViT-S 0.780) + marj. Yerel GTX 1650 dumanı (seed 0, 3 ep) val_acc 0.7089 — ölçüm değil, kod doğruluğu"},
+        {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.60, "ust": 0.96, "kaynak": "alt: şans 0.5 + 0.1 (3 epoch); üst: 28 px literatür AUC tavanı 0.937 (MedViT-S, literatur-cipa.md §4e) + marj"},
+        {"tur": "ikincil_aralik", "metrik": "param_sayisi", "alt": 11172423, "ust": 11172423, "kaynak": "resmî models.ResNet18(in_channels=3, num_classes=7) parametre sayısı (yerel dumanda ölçüldü) — farklı model = kurulum hatası"},
+        {"tur": "ikincil_aralik", "metrik": "secim_val_auc_farki", "alt": 0.0, "ust": 1e-06, "kaynak": "mekanik: resmî best_model (deepcopy) val AUC'si köprünün kaydettiği seçilen-epoch val AUC'sine eşit olmalı"},
+        {"tur": "ikincil_aralik", "metrik": "egitim_sure_sn", "alt": 1, "ust": 900, "kaynak": "L4 tahmini 3 epoch ≈ 30–40 sn (yerel GTX 1650: 23.4 sn/epoch); 15 dk üstü = veri hattı/donanım arızası"}
+      ]
+    },
+    "2": {
+      "aciklama": "ÖN-UÇUŞ — tam kod yolu, kısaltılmış eğitim (20 epoch; resmî kod milestone'ları 0.5E/0.75E = 10/15'e ölçekler), 2 seed (0, 1) → seed bağlı mı, öğreniyor mu, süre makul mü",
+      "kurallar": [
+        {"tur": "sonlu"},
+        {"tur": "min_kosum", "n": 2},
+        {"tur": "farkli_seedler_farkli"},
+        {"tur": "aralik", "alt": 0.669, "ust": 0.80, "kaynak": "Literatürde VAL sayısı yok (yalnız test: Yang 2023 T3 0.735; Doerrich 2025 S4 73.38±0.61; Medeiros 2026 T2 0.742). 20 epoch kısaltılmış eğitim için gevşetilmiş: alt = val çoğunluk tabanı 0.669 (manifest; 'hep nv' tahmini — altı öğrenmeme demek); üst = 28 px tavanı ~0.78 + marj (literatur-cipa.md §4e). Üstü sızıntı/protokol şüphesi"},
+        {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.85, "ust": 0.96, "kaynak": "test AUC çıpası 0.917 (Yang 2023 T3) − 0.067 kısaltılmış eğitim gevşetmesi; yerel 3 epoch dumanı bile 0.907; üst: 28 px AUC tavanı 0.937 + marj"},
+        {"tur": "ikincil_aralik", "metrik": "en_iyi_epoch", "alt": 2, "ust": 20, "kaynak": "mekanik: en iyi val AUC 1. epoch'ta kalıyorsa eğitim ilerlemiyor (lr/optimizer/veri hatası)"},
+        {"tur": "ikincil_aralik", "metrik": "param_sayisi", "alt": 11172423, "ust": 11172423, "kaynak": "resmî models.ResNet18 parametre sayısı"},
+        {"tur": "ikincil_aralik", "metrik": "secim_val_auc_farki", "alt": 0.0, "ust": 1e-06, "kaynak": "mekanik: resmî seçim = köprü seçimi"},
+        {"tur": "ikincil_aralik", "metrik": "egitim_sure_sn", "alt": 10, "ust": 1800, "kaynak": "L4 tahmini 20 epoch ≈ 3–4 dk (CPU veri hattı ağırlıklı, rakip/KURULUM.md süre tahmini); 30 dk üstü = tam koşum 2.5 sa+/seed demek → dur, teşhis"}
+      ]
+    },
+    "3": {
+      "aciklama": "TAM — resmî protokol birebir (100 epoch, Adam 1e-3, MultiStep 50/75 ×0.1, bs 128, CE, augment yok, norm 0.5, val-AUC seçimi), seed {0,1,2,3,4}. Karar verici replikasyon: ORTALAMA test_acc → replikasyon_kapisi.py (yukarıda _karar_verici_replikasyon).",
+      "kurallar": [
+        {"tur": "sonlu"},
+        {"tur": "min_kosum", "n": 5},
+        {"tur": "farkli_seedler_farkli"},
+        {"tur": "aralik", "alt": 0.669, "ust": 0.80, "kaynak": "val_acc > val çoğunluk tabanı 0.669 (data/data_manifest.md); üst 28 px tavanı ~0.78 + marj (literatur-cipa.md §4e) — val için literatür sayısı yok"},
+        {"tur": "ikincil_aralik", "metrik": "test_acc", "alt": 0.7098, "ust": 0.766, "kaynak": "SEED BAŞINA SARI bandı = [0.7338−2×0.012, 0.742+2×0.012]; Yang 2023 Sci Data 10:41 T3 (0.735); Doerrich 2025 Sci Rep 15:7669 Ek T S4 (73.38±0.61, 3 seed); Medeiros 2026 arXiv:2604.09697 T2 (0.742). ORTALAMA kabul [0.7218, 0.754] → replikasyon_kapisi.py"},
+        {"tur": "ikincil_aralik", "metrik": "test_auc", "alt": 0.897, "ust": 0.937, "kaynak": "SEED BAŞINA 2×tolerans bandı; Yang 2023 T3 AUC 0.917, tol 0.01 (tek kaynak; Doerrich S4 AUC std 0.28 puan). ORTALAMA bilgi bandı [0.907, 0.927] → replikasyon_kapisi.py --metrik test_auc"},
+        {"tur": "ikincil_aralik", "metrik": "param_sayisi", "alt": 11172423, "ust": 11172423, "kaynak": "resmî models.ResNet18 parametre sayısı"},
+        {"tur": "ikincil_aralik", "metrik": "secim_val_auc_farki", "alt": 0.0, "ust": 1e-06, "kaynak": "mekanik: resmî seçim = köprü seçimi"},
+        {"tur": "ikincil_aralik", "metrik": "egitim_sure_sn", "alt": 300, "ust": 3600, "kaynak": "L4 tahmini 100 epoch ≈ 15–20 dk/seed (rakip/KURULUM.md: yerel 23.4 sn/epoch'un bileşen ölçümünden; CPU veri hattı ~%70); alt 5 dk = epoch atlanmış şüphesi, üst 60 dk = donanım/veri hattı sorunu"}
+      ]
+    }
+  }
+}

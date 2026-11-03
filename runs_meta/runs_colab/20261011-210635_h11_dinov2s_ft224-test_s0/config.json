@@ -1,0 +1,77 @@
+{
+  "run_id": "20261011-210635_h11_dinov2s_ft224-test_s0",
+  "varyant": "h11_dinov2s_ft224-test",
+  "seed": "0",
+  "etiket": "K5 TEST çıkarımı: h11_dinov2s_ft224 s0",
+  "ebeveyn": "20261011-160117_h11_dinov2s_ft224_s0",
+  "hipotez": "H11",
+  "kuyruk": "k5-test",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "python",
+    "colab/fp32_kos.py",
+    "varyantlar/k5/k5_cikarim.py",
+    "--tur",
+    "vit_tam",
+    "--kaynak",
+    "20261011-160117_h11_dinov2s_ft224_s0",
+    "--seed",
+    "0",
+    "--test-kilidi-acik",
+    "--out",
+    "/content/is/runs/20261011-210635_h11_dinov2s_ft224-test_s0/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-10-11T21:06:37",
+  "makine": "ee658e45c0ed",
+  "k5": {
+    "kaynak_run": "20261011-160117_h11_dinov2s_ft224_s0",
+    "kaynak_varyant": "h11_dinov2s_ft224",
+    "tur": "vit_tam",
+    "veri": {
+      "npz": "dermamnist_224.npz",
+      "kok": "/content/is/data/medmnist",
+      "md5": "8974907d8e169bef5f5b96bc506ae45d",
+      "md5_resmi": "8974907d8e169bef5f5b96bc506ae45d",
+      "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d",
+      "bayt": 1091112502
+    },
+    "kaynak_sha256": {
+      "best_model.pth": "2519e3566ae9c21a3c880c23974ee1d8181830ba0f1eb51b8e81a456880fd9de",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "d682cc19f11c02ce46277983c43b24333ca8352913bec1d5b49905e5e880e5c9",
+      "etiket_val.npy": "0a25a91b92c1c4cba4c7b9daa2693c2efee9dae6f5ae0a77042773ba7e929499",
+      "metrics.json": "b792eb2085dcbc1e4dac9a9e6ae07d59e029c7316797c0d9515bc42ff0a9d91a",
+      "config.json": "5785a20776b653ba29ecda2fc4c0c4d6392817ce1436be029d964b6521d913b6"
+    },
+    "ozdeslik_tol": 1e-05,
+    "acc_tol": 0.0001,
+    "test_kilidi_acik": true,
+    "vit": {
+      "timm_ad": "vit_small_patch14_dinov2.lvd142m",
+      "mod": "tam",
+      "donuk_blok": 0,
+      "onbellek_bs": 32,
+      "val_bs": 64,
+      "fused_attn": 1
+    },
+    "tepe_gpu_bellek_mb": 441.4
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 92700,
+    "numpy": "2.1.3",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "makine": "ee658e45c0ed",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

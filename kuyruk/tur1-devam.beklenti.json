@@ -1,0 +1,80 @@
+{
+  "_aciklama": "ÖN-KAYIT (tur1; H01/H02/H03 KULLANICI ONAYLI 2026-10-10 20:15). Kuyruk başlatılmadan ÖNCE yazıldı (deney-yürütücü, 2026-10-10 ~20:40); koşum sonrası DEĞİŞTİRİLMEZ. Kaynaklar: hipotezler/H01.md, H02.md, H03.md (üst tablo + uygulama notları), sonuclar/hata-analizi.md §0/§8 (iç çıpa B = val ACC 0,7396 ± 0,0205; öldürme eşiği B + 0,02 = 0,7596), notlar/literatur-cipa.md §4 (görülmemiş eşikleri), env/hiz-olcumu.md + yerel GPU dumanı (runs_yerel_duman/runs/*gpu_duman*, 20:19–20:30).",
+  "_notlar": [
+    "yon_vs / tavan / sure_orani kuralları KULLANILMADI: beklenti_kontrol.py referansı (baseline) aynı kuyruk ve aşamada ister; baseline bu kuyrukta yok. Yerine kartların mutlak aralıkları: alt = öldürme/operasyonel eşik, üst = kartın 'görülmemiş kadar iyi' eşiği (gevşetilmedi).",
+    "farkli_seedler_farkli KULLANILMADI: kural türü varyant filtresi desteklemiyor ve sonda kolları (H01/H03) için kart gereği yasak (dışbükey problem; val ACC k/1003 seed'ler arasında aynı çıkabilir — yerel dumanda s0/s1 val_acc ikisi de 0,6445 çıktı). Sonda seed bağlılığı: ikincil_aralik seed_tahmin_en_kucuk_fark > 0 (kart R5). H02 seed bağlılığı kapı dışında, şef/tahlilci a2 sonrası ilk_adim_loss ve val_acc'yi seed'ler arasında elle kıyaslar (açık soru: beklenti_kontrol.py'ye farkli_seedler_farkli için 'varyant' filtresi).",
+    "ikincil_aralik kuralları da varyant filtresi taşımaz: yalnız ilgili koşumun metrics.json'unda bulunan anahtarlara uygulanır. Sonda'ya özgü: seed_tahmin_*, ayni_seed_tahmin_maks_fark, yakinsama_fark, oznitelik_*, param_omurga. H02'ye özgü: epoch_sure_ort_sn, ilk_adim_loss, val_acc_aucsecim.",
+    "yakinsama_fark a1'de YOK: 256 görüntülük alt kümede bs 256 → yalnız 100 Adam adımı; yerel dumanda SGD/lbfgs farkı 7,8–12,9 puan (yakınsama sınaması değil). Tam veride (2.800 adım) a2/a3'te uygulanır.",
+    "Aşama 3 kuralları bilgi amaçlıdır (kuyruk son aşamada kapı koşmaz); karar leaderboard + öldürme kuralları + tahlilcide."
+  ],
+  "metrik": "val_acc",
+  "yon": "max",
+  "asama": {
+    "1": {
+      "aciklama": "DUMAN — üç kolun kod yolu: H03 r28 ve H01 r224 sonda (256 train + 256 val alt küme, tek C = 1, seçim seed'leri 0,1, öznitelik çıkarımı dahil) + H02 1 epoch; seed 0",
+      "kurallar": [
+        {"tur": "sonlu"},
+        {"tur": "min_kosum", "n": 3},
+        {"tur": "aralik", "varyant": "h03_dinov2b_lp_r28_duman", "alt": 0.55, "ust": 0.95, "kaynak": "varyantlar/KOMUTLAR.md §5 h01/h03 a1 taslağı (20:10, duman öncesi): 256 train, tek C, yakınsamamış sonda → alt ≈ çoğunluk tabanı 0,669 − 0,12; üst gevşek (alt küme, ölçüm değil)"},
+        {"tur": "aralik", "varyant": "h01_dinov2b_lp_r224_duman", "alt": 0.55, "ust": 0.95, "kaynak": "varyantlar/KOMUTLAR.md §5 h01 a1 taslağı (aynı gerekçe)"},
+        {"tur": "aralik", "varyant": "h02_r18in_ft224_duman", "alt": 0.62, "ust": 0.90, "kaynak": "varyantlar/KOMUTLAR.md §5 h02 a1 (20:10): alt = çoğunluk tabanı 0,669 − 0,05 (rakip duman gevşetmesiyle aynı); üst = H02 görülmemiş eşiği 0,90 (literatur-cipa §4a)"},
+        {"tur": "kollar_farkli"},
+        {"tur": "ikincil_aralik", "metrik": "ayni_seed_tahmin_maks_fark", "alt": 0.0, "ust": 0.0, "kaynak": "H01 kartı 'Seed bağlılığının belgelenmesi (R5)': aynı seed tekrarında tahmin_val bit-bit aynı (duman)"},
+        {"tur": "ikincil_aralik", "metrik": "seed_tahmin_en_kucuk_fark", "alt": 1e-06, "ust": 1.0, "kaynak": "H01/H03 kartı R5: farklı seed'lerde tahmin_val maks|fark| > 0 (float32 çözünürlüğünün üstü)"},
+        {"tur": "ikincil_aralik", "metrik": "param_omurga", "alt": 85724928, "ust": 85724928, "kaynak": "H01 kartı revizyon 10 (ViT-B/14 img_size=224, CPU doğrulaması)"},
+        {"tur": "ikincil_aralik", "metrik": "oznitelik_boyut", "alt": 768, "ust": 768, "kaynak": "H01 kartı: CLS 768-b"},
+        {"tur": "ikincil_aralik", "metrik": "oznitelik_determinizm_maks_fark", "alt": 0.0, "ust": 1e-05, "kaynak": "H01 kartı Seed'in rolü: öznitelik seed'den bağımsız (on-ozn determinizm farkı 0); KOMUTLAR §5"},
+        {"tur": "ikincil_aralik", "metrik": "oznitelik_img_s", "alt": 10, "ust": 1000, "kaynak": "H01 öldürme kuralı (d): çıkarım < 10 img/s → DUR (hiz-olcumu 26 img/s)"},
+        {"tur": "ikincil_aralik", "metrik": "epoch_sure_ort_sn", "alt": 10, "ust": 90, "kaynak": "H02 öldürme kuralı (d): epoch > 90 s → DUR, veri hattı teşhisi (kart tahmini 43 s/epoch)"},
+        {"tur": "ikincil_aralik", "metrik": "ilk_adim_loss", "alt": 1.5, "ust": 2.5, "kaynak": "mekanik: yeni 7 sınıflı fc kafasının ilk CE değeri ≈ ln 7 = 1,946 (etiket/normalizasyon hatası yakalayıcı)"},
+        {"tur": "ikincil_aralik", "metrik": "egitim_sure_sn", "alt": 1, "ust": 600, "kaynak": "hiz-olcumu.md + yerel duman (sonda 30–47 s, H02 1 epoch 49 s); 600 s = duman satır sınırı"},
+        {"tur": "ikincil_aralik", "metrik": "tepe_gpu_bellek_mb", "alt": 1, "ust": 3900, "kaynak": "GTX 1650 4 GB; H02 kartı ≈ 2,8 GB; duman sonda 643 MB, H02 1.742 MB"}
+      ]
+    },
+    "2": {
+      "aciklama": "ÖN-UÇUŞ — tam train/val, seed 0 ve 1: H03 r28 ve H01 r224 sonda (8 C ızgarası, C* = ort(s0,s1)), H02 5 epoch (T_max = 5, kısaltılmış)",
+      "kurallar": [
+        {"tur": "sonlu"},
+        {"tur": "min_kosum", "n": 6},
+        {"tur": "aralik", "varyant": "h03_dinov2b_lp_r28_onucus", "alt": 0.69, "ust": 0.80, "kaynak": "H03 kartı uygulama notu (r28 aralik [0,69; 0,80]): alt = operasyonel DUR 0,69 (çoğunluk 0,669 + 2), üst = r28 görülmemiş eşiği 0,80 (literatur-cipa §4b/e). Kart beklentisi [0,730; 0,780]'ın gevşetilmişi"},
+        {"tur": "aralik", "varyant": "h01_dinov2b_lp_r224_onucus", "alt": 0.7596, "ust": 0.88, "kaynak": "H01 kartı: alt = öldürme (b) eşiği B + 0,02 (hata-analizi §8), üst = görülmemiş eşiği 0,88 (literatur-cipa §4b). Kart beklentisi [0,820; 0,860]'ın gevşetilmişi; kart uygulama notu a2–3 aralığıyla aynı"},
+        {"tur": "aralik", "varyant": "h02_r18in_ft224_onucus", "alt": 0.72, "ust": 0.90, "kaynak": "varyantlar/KOMUTLAR.md §5 h02 a2 (20:10, H02 sonucu yokken): 5 epoch kısaltılmış → alt ≈ rakip testi 0,735 − 0,015; üst = H02 görülmemiş eşiği 0,90 (gevşetilmez)"},
+        {"tur": "kollar_farkli"},
+        {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.88, "ust": 0.99, "kaynak": "üst: val_auc > 0,99 görülmemiş (H01/H02 kartı, literatur-cipa §4e); alt: varyant filtresi olmadığından kart AUC aralıklarının en düşüğü (H03 r28 [0,915; 0,935]) ve B 0,9228'in gevşetilmişi"},
+        {"tur": "ikincil_aralik", "metrik": "yakinsama_fark", "alt": 0.0, "ust": 0.005, "kaynak": "H01 öldürme kuralı (e) / H03 operasyonel DUR: |SGD ort val_acc − lbfgs val_acc| ≤ 0,5 puan (a2'de 2-seed ortalaması)"},
+        {"tur": "ikincil_aralik", "metrik": "seed_tahmin_en_kucuk_fark", "alt": 1e-06, "ust": 1.0, "kaynak": "H01/H03 kartı R5 (farkli_seedler_farkli yerine)"},
+        {"tur": "ikincil_aralik", "metrik": "ayni_seed_tahmin_maks_fark", "alt": 0.0, "ust": 0.0, "kaynak": "H01 kartı R5: aynı seed → bit-bit aynı tahmin"},
+        {"tur": "ikincil_aralik", "metrik": "n_train", "alt": 7007, "ust": 7007, "kaynak": "resmî split (alt küme a2'ye sızmadı)"},
+        {"tur": "ikincil_aralik", "metrik": "val_n", "alt": 1003, "ust": 1003, "kaynak": "resmî split"},
+        {"tur": "ikincil_aralik", "metrik": "param_omurga", "alt": 85724928, "ust": 85724928, "kaynak": "H01 kartı revizyon 10"},
+        {"tur": "ikincil_aralik", "metrik": "oznitelik_boyut", "alt": 768, "ust": 768, "kaynak": "H01 kartı"},
+        {"tur": "ikincil_aralik", "metrik": "oznitelik_determinizm_maks_fark", "alt": 0.0, "ust": 1e-05, "kaynak": "on-ozn determinizm farkı 0"},
+        {"tur": "ikincil_aralik", "metrik": "oznitelik_img_s", "alt": 10, "ust": 1000, "kaynak": "H01 öldürme (d)"},
+        {"tur": "ikincil_aralik", "metrik": "epoch_sure_ort_sn", "alt": 10, "ust": 90, "kaynak": "H02 öldürme kuralı (d): ön-uçuşta ort. epoch > 90 s → DUR"},
+        {"tur": "ikincil_aralik", "metrik": "ilk_adim_loss", "alt": 1.5, "ust": 2.5, "kaynak": "mekanik: ≈ ln 7"},
+        {"tur": "ikincil_aralik", "metrik": "val_acc_aucsecim", "alt": 0.69, "ust": 0.90, "kaynak": "H02 kartı: alt = canlı kural/operasyonel 0,69; üst = görülmemiş 0,90. (b'') eşiği 0,7596 30 epoch içindir, a3'te tahlilcide"},
+        {"tur": "ikincil_aralik", "metrik": "egitim_sure_sn", "alt": 10, "ust": 900, "kaynak": "yerel ölçüm: sonda uyumu ≈ 5 s × 17 + lbfgs ≤ 37 s; H02 5 × 48,7 s ≈ 245 s; 900 s = a2 satır sınırı"},
+        {"tur": "ikincil_aralik", "metrik": "tepe_gpu_bellek_mb", "alt": 1, "ust": 3900, "kaynak": "GTX 1650 4 GB"}
+      ]
+    },
+    "3": {
+      "aciklama": "TAM (bilgi amaçlı; kuyruk son aşamada kapı koşmaz) — H03 r28/r64/r128 × seed 0–4, H01 r224 × seed 0–4 (C* = ort(s0..s4); lbfgs denetimi her basamakta bir kez, s0 satırında), H02 30 epoch × seed 0–4",
+      "kurallar": [
+        {"tur": "sonlu"},
+        {"tur": "min_kosum", "n": 25},
+        {"tur": "aralik", "varyant": "h03_dinov2b_lp_r28", "alt": 0.69, "ust": 0.80, "kaynak": "H03 kartı uygulama notu a3 r28"},
+        {"tur": "aralik", "varyant": "h03_dinov2b_lp_r64", "alt": 0.69, "ust": 0.85, "kaynak": "H03 kartı uygulama notu a3 r64 (görülmemiş 0,85)"},
+        {"tur": "aralik", "varyant": "h03_dinov2b_lp_r128", "alt": 0.69, "ust": 0.87, "kaynak": "H03 kartı uygulama notu a3 r128 (görülmemiş 0,87)"},
+        {"tur": "aralik", "varyant": "h01_dinov2b_lp_r224", "alt": 0.7596, "ust": 0.88, "kaynak": "H01 kartı uygulama notu a2–3"},
+        {"tur": "aralik", "varyant": "h02_r18in_ft224", "alt": 0.7596, "ust": 0.90, "kaynak": "H02 kartı uygulama notu a3"},
+        {"tur": "kollar_farkli"},
+        {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.88, "ust": 0.99, "kaynak": "a2 ile aynı"},
+        {"tur": "ikincil_aralik", "metrik": "yakinsama_fark", "alt": 0.0, "ust": 0.005, "kaynak": "H01 öldürme (e); 5-seed ortalaması (s0 satırı)"},
+        {"tur": "ikincil_aralik", "metrik": "seed_tahmin_en_kucuk_fark", "alt": 1e-06, "ust": 1.0, "kaynak": "H01/H03 kartı R5"},
+        {"tur": "ikincil_aralik", "metrik": "n_train", "alt": 7007, "ust": 7007, "kaynak": "resmî split"},
+        {"tur": "ikincil_aralik", "metrik": "epoch_sure_ort_sn", "alt": 10, "ust": 90, "kaynak": "H02 öldürme (d)"},
+        {"tur": "ikincil_aralik", "metrik": "val_acc_aucsecim", "alt": 0.69, "ust": 0.90, "kaynak": "H02 kartı; (b'') 0,7596 eşiği tahlilcide"}
+      ]
+    }
+  }
+}

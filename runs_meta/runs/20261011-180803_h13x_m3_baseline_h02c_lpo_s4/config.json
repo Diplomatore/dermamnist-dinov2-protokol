@@ -1,0 +1,65 @@
+{
+  "run_id": "20261011-180803_h13x_m3_baseline_h02c_lpo_s4",
+  "varyant": "h13x_m3_baseline_h02c_lpo",
+  "seed": "4",
+  "etiket": "H13x M3: baseline_c_s ⊕ H02c_s log-olasılık ½;½ (rakibe topluluk hakkı)",
+  "ebeveyn": "20261011-133837_h02_r18in_ft224_colab_s4",
+  "hipotez": "H13",
+  "kuyruk": "tur5-h13x",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>/env/.venv/Scripts/python.exe",
+    "varyantlar/topluluk/topluluk.py",
+    "--uyeler",
+    "runs_colab/20261011-133837_h02_r18in_ft224_colab_s4",
+    "runs_colab/20261011-151359_baseline_colab_s4",
+    "--birlesim",
+    "logolasilik",
+    "--seed-denet",
+    "hepsi",
+    "--seed",
+    "4",
+    "--out",
+    "<WS>\\runs\\20261011-180803_h13x_m3_baseline_h02c_lpo_s4/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-10-11T18:08:03",
+  "makine": "LAPTOP-SKK5GIC3",
+  "donanim": "cpu-birlesim",
+  "topluluk": {
+    "kural": "softmax(Σ w_i log clip(p_i, kirp, 1))",
+    "birlesim": "logolasilik",
+    "agirlik": [
+      0.5,
+      0.5
+    ],
+    "kirp": 1e-12,
+    "seed_denet": "hepsi",
+    "kart": "hipotezler/H13.md",
+    "kaynak": "Gontijo-Lopes vd. 2022 (ICLR); Lakshminarayanan vd. 2017"
+  },
+  "uyeler": [
+    {
+      "run_id": "20261011-133837_h02_r18in_ft224_colab_s4",
+      "varyant": "h02_r18in_ft224_colab",
+      "seed": "4",
+      "ebeveyn": "20261011-000829_h02_r18in_ft224_s4",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "2018c1b82a5dd9efb343c55ddfadff2fbf0036f8ee76af181c8860f03d7bb526",
+      "dizin": "<WS>\\runs_colab\\20261011-133837_h02_r18in_ft224_colab_s4",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    },
+    {
+      "run_id": "20261011-151359_baseline_colab_s4",
+      "varyant": "baseline_colab",
+      "seed": "4",
+      "ebeveyn": "20261010-192128_baseline_s4",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "0a18e4b72d3515fe6250ed448ac064955c9c9a6b93bbbfb5d5f8b4967b559ca6",
+      "dizin": "<WS>\\runs_colab\\20261011-151359_baseline_colab_s4",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    }
+  ],
+  "denetim_hatasi": []
+}

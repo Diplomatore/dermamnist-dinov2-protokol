@@ -1,0 +1,13 @@
+{
+  "zaman": "2026-10-10T10:49:55",
+  "neden": "progress.json 3482s güncellenmedi (eğitim takıldı; eşik 300s)",
+  "kural": {
+    "nan_kes": true,
+    "ilerleme_zorunlu_sn": 300,
+    "sabit_sn": 300,
+    "min_adim": 30,
+    "alt_sinir": {
+      "val_acc_eniyi": 0.6
+    }
+  }
+}

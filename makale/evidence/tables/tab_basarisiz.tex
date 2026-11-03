@@ -1,0 +1,27 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: BO-H05, BO-H07, BO-H09, BO-H13, C1-A2-h10-h02, T-C0-K-h10-h02, T-SN-h08-h02, T-C0-KC0, C1-KC, C1-KC-oran, C1-KC-ifade
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Öldürülen kartlar ve tutmayan ön-kayıtlar. Kırmızı eğik: ön-kayıtlı beklenti tutmadı.}\label{tab:basarisiz}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}X cc}
+\toprule
+Madde & Ön-kayıtlı kural & Ölçülen [puan; \%95 GA] & Sonuç \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{A. Öldürülen kartlar (yalnız doğrulama, n = 1.003)}} \\
+H05 sınıf ağırlıklı CE (dengeli ACC) & dengeli $\Delta < +0{,}5$ ya da $p_t \geq 0{,}05$ ya da ACC $< 0{,}8572$ & +1,51 [\textminus{}0,23; +3,28]; $p_t$ 0,097 & \kotu{ÖLDÜR} \\
+H07 TTA, 8 dihedral görünüm & $\Delta < +0{,}5$ ya da GA alt $\leq 0$ & \textminus{}0,44 [\textminus{}1,48; +0,60] & \kotu{ÖLDÜR} \\
+H09 renk oynaması & $\Delta < +0{,}5$ ya da $p_t \geq 0{,}05$ & +0,32 [\textminus{}0,58; +1,26]; $p_t$ 0,033 & \kotu{ÖLDÜR} \\
+H13 topluluk H02c $\oplus$ H10 & $\Delta < +0{,}5$ ya da $p_t \geq 0{,}05$ & +0,14 [\textminus{}0,96; +1,24]; $p_t$ 0,369 & \kotu{ÖLDÜR} \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{B. Tutmayan test ön-kayıtları (resmî test / C0 / C1)}} \\
+L: H10 $-$ H02c, C1 & GA alt $> 0$ & +1,12 [\textminus{}0,05; +2,30] & \kotu{ayırt edilemedi} \\
+C0-1: H10 $-$ H02c, C0 & GA alt $> 0$ & +0,28 [\textminus{}0,83; +1,47] & \kotu{ayırt edilemedi} \\
+T-SN2: H08c $-$ H02c, $\Delta_S \approx \Delta_N$ & ham $\Delta_S-\Delta_N$ GA'sı 0'ı kapsar & +2,52 [+0,52; +4,32] & \kotu{tutmadı ($S > N$)} \\
+KÇ$_0$: $K_{0,\mathrm{H10}} > K_{0,\mathrm{H08}}$ & GA alt $> 0$ & +0,86 [\textminus{}0,01; +1,78] & \kotu{ayırt edilemedi} \\
+KÇ: $K_{\mathrm{H10}} > K_{\mathrm{H08}}$ & GA alt $> 0$ & +0,60 [\textminus{}0,45; +1,68] & \kotu{ayırt edilemedi} \\
+KÇ ifade eşiği & oran $\geq 0{,}5$ ve KÇ desteklenir & oran 0,503; KÇ desteklenmedi & \kotu{FALSE} \\
+C2: yayımlanmış C pikselleri & ikincil analiz & koşulmadı (bütçe kararı) & -- \\
+\botrule
+\end{tabularx}
+\end{table}

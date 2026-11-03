@@ -1,0 +1,241 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-5; kart hipotezler/H13.md mtime 2026-10-11 17:52:31, SIRALAMA-TUR5.md 17:51:12). Hiçbir h13_*/h13x_*/h13k_*/rt_h13_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 18:03:23); koşum sonrası DEĞİŞTİRİLMEZ. Kaynak: hipotezler/H13.md (Uygulama notu 'Beklenti' a1/a3, öldürme (c)/(d)/(e), Bütçe). Ad: kart ve SIRALAMA-TUR5 §6 'kuyruk/tur5-h13.beklenti.json' (bağlayıcı).",
+ "_notlar": [
+  "Eğitim yok → ön-uçuş (a2) yok (kart Bütçe: 'a1 duman → a3'). Her satır foreground kosum.py (< 5 dk; CPU).",
+  "yon_vs/tavan: referans H10 Colab kökünde (bu kuyrukta değil) → kullanılamaz. Görülmemiş (Δ vs H10 > +2,0; ort. > 0,93; AUC > 0,99) 5-seed ortalamasıyla tahlilcide (kart: 'Kapı yalnız arıza alarmıdır'). Seed başına üst 0,93 = kart görülmemiş ACC eşiği.",
+  "Özdeşlik kuralları (c1–c4) kartta a1'de istenir; a3 satırları da --ozdeslik ile koşar, kurallar a3'te de uygulanır (sıkılaştırma)."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN — h13_h02c_h10_lpo_duman s0 (tek üye özdeşliği + çift üye)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 1
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_tek_uye_maks_fark",
+     "alt": 0.0,
+     "ust": 1e-06,
+     "kaynak": "H13 öldürme (c1): tek üye modu (yalnız H10) max|Δp| ≤ 1e-6"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_tek_uye_argmax_ayni_oran",
+     "alt": 1.0,
+     "ust": 1.0,
+     "kaynak": "H13 öldürme (c1): argmax 1.003/1.003 aynı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_tek_uye_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H13 öldürme (c1): tek üye ACC = H10 kayıtlı val_acc"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "etiket_hizasi",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H13 öldürme (c2): üç kolun etiket_val.npy = npz val etiketi"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "uye_ebeveyn_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H13 öldürme (c3): H10_s config.ebeveyn = h02_r18in_ft224_colab:s<s>"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "seed_denet_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H13 Değişen tek şey: seed-eşleşik (H10_s ⊕ H02c_s)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "satir_toplam_maks_sapma",
+     "alt": 0.0,
+     "ust": 1e-06,
+     "kaynak": "H13 öldürme (c4): satır toplamları 1 ± 1e-6"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kirp",
+     "alt": 1e-12,
+     "ust": 1e-12,
+     "kaynak": "H13 öldürme (d): log için 1e-12 kırpma ön-kayıtlı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val (kart: n = 1.003)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "uye_sayisi",
+     "alt": 2,
+     "ust": 2,
+     "kaynak": "H13: iki üye (H10_s, H02c_s)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "agirlik_uye1",
+     "alt": 0.5,
+     "ust": 0.5,
+     "kaynak": "H13: ½ ; ½ (ağırlık araması yok)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 96910414,
+     "ust": 96910414,
+     "kaynak": "H13 öldürme (f) M7: toplam param 96,9 M (H10 85.730.311 + H02c 11.180.103)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "egitim_sure_sn",
+     "alt": 0.0,
+     "ust": 300,
+     "kaynak": "H13 bütçe: CPU < 5 dk (satır başına)"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.84,
+     "ust": 0.93,
+     "kaynak": "H13 uygulama notu a1: aralik [0.84, 0.93]"
+    }
+   ]
+  },
+  "3": {
+   "aciklama": "TAM — h13_h02c_h10_lpo s0–4",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 5
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "üyeler seed'e göre farklı ağırlıklar"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.86,
+     "ust": 0.93,
+     "kaynak": "H13 uygulama notu a3: aralik [0.86, 0.93] (üst = görülmemiş ACC)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_auc",
+     "alt": 0.96,
+     "ust": 0.995,
+     "kaynak": "H13 uygulama notu a3: val_auc [0.96, 0.995]"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_tek_uye_maks_fark",
+     "alt": 0.0,
+     "ust": 1e-06,
+     "kaynak": "H13 öldürme (c1): tek üye modu (yalnız H10) max|Δp| ≤ 1e-6"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_tek_uye_argmax_ayni_oran",
+     "alt": 1.0,
+     "ust": 1.0,
+     "kaynak": "H13 öldürme (c1): argmax 1.003/1.003 aynı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_tek_uye_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H13 öldürme (c1): tek üye ACC = H10 kayıtlı val_acc"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "etiket_hizasi",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H13 öldürme (c2): üç kolun etiket_val.npy = npz val etiketi"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "uye_ebeveyn_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H13 öldürme (c3): H10_s config.ebeveyn = h02_r18in_ft224_colab:s<s>"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "seed_denet_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H13 Değişen tek şey: seed-eşleşik (H10_s ⊕ H02c_s)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "satir_toplam_maks_sapma",
+     "alt": 0.0,
+     "ust": 1e-06,
+     "kaynak": "H13 öldürme (c4): satır toplamları 1 ± 1e-6"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kirp",
+     "alt": 1e-12,
+     "ust": 1e-12,
+     "kaynak": "H13 öldürme (d): log için 1e-12 kırpma ön-kayıtlı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val (kart: n = 1.003)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "uye_sayisi",
+     "alt": 2,
+     "ust": 2,
+     "kaynak": "H13: iki üye (H10_s, H02c_s)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "agirlik_uye1",
+     "alt": 0.5,
+     "ust": 0.5,
+     "kaynak": "H13: ½ ; ½ (ağırlık araması yok)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 96910414,
+     "ust": 96910414,
+     "kaynak": "H13 öldürme (f) M7: toplam param 96,9 M (H10 85.730.311 + H02c 11.180.103)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "egitim_sure_sn",
+     "alt": 0.0,
+     "ust": 300,
+     "kaynak": "H13 bütçe: CPU < 5 dk (satır başına)"
+    }
+   ]
+  }
+ }
+}

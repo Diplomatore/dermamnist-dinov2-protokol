@@ -1,0 +1,38 @@
+{
+  "donanim": "cpu-birlesim",
+  "topluluk": {
+    "kural": "softmax(Σ w_i log clip(p_i, kirp, 1))",
+    "birlesim": "logolasilik",
+    "agirlik": [
+      0.5,
+      0.5
+    ],
+    "kirp": 1e-12,
+    "seed_denet": "hepsi",
+    "kart": "hipotezler/H13.md",
+    "kaynak": "Gontijo-Lopes vd. 2022 (ICLR); Lakshminarayanan vd. 2017"
+  },
+  "uyeler": [
+    {
+      "run_id": "20261011-133112_h02_r18in_ft224_colab_s3",
+      "varyant": "h02_r18in_ft224_colab",
+      "seed": "3",
+      "ebeveyn": "20261010-234351_h02_r18in_ft224_s3",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "e259d3b30f432fece2e56758b44f25cd7e281eb40c017bd4e3d38951b26ae2f7",
+      "dizin": "<WS>\\runs_colab\\20261011-133112_h02_r18in_ft224_colab_s3",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    },
+    {
+      "run_id": "20261011-150122_baseline_colab_s3",
+      "varyant": "baseline_colab",
+      "seed": "3",
+      "ebeveyn": "20261010-184922_baseline_s3",
+      "donanim": "NVIDIA L4, 580.82.07, 23034 MiB",
+      "tahmin_val_sha256": "1283f2227f83e5d09457d54908003e932220b2fdfd6d0e48a39a26fd0897f221",
+      "dizin": "<WS>\\runs_colab\\20261011-150122_baseline_colab_s3",
+      "kaynak": "<DRIVE_KOK>/3-1/runs (yerel arşiv kopyası runs_colab/, SHA256 ARSIV_MANIFEST.json)"
+    }
+  ],
+  "denetim_hatasi": []
+}

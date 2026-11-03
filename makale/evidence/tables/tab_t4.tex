@@ -1,0 +1,23 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: T-t4-acc, T-t4-auc, T-t4-dengeli_acc, T-t4-ece15, T-C0-t4-acc, T-C0-cogunluk, V-t4-acc, T-K-t4-h10-acc, T-K-t4-h08-acc, T-K-t4-h02-acc
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Ek: T4 = H08c $\oplus$ H10 seed-eşli topluluğu, betimsel; çoklu karşılaştırma düzeltmesi yok, bu yüzden renk kodu uygulanmaz.}\label{tab:t4}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X cc}
+\toprule
+Ölçü & Değer & Değerlendirme \\
+\midrule
+T4 ACC (ort.\,$\pm$\,std) & 0,9169\,$\pm$\,0,0027 & resmî test \\
+T4 AUC (ort.\,$\pm$\,std) & 0,9904\,$\pm$\,0,0007 & resmî test \\
+T4 Dengeli ACC (ort.\,$\pm$\,std) & 0,8296\,$\pm$\,0,0065 & resmî test \\
+T4 ECE-15 (ort.\,$\pm$\,std) & 0,0419\,$\pm$\,0,0029 & resmî test \\
+T4 ACC (çoğunluk tabanı +16,09 puan) & 0,9335\,$\pm$\,0,0015 & C0 \\
+T4 ACC (test öncesi görüldü) & 0,9095\,$\pm$\,0,0060 & doğrulama \\
+\midrule
+T4 $-$ H10: $\Delta$ACC [puan; \%95 GA] & +2,29 [+1,61; +2,93] & resmî test \\
+T4 $-$ H08c: $\Delta$ACC [puan; \%95 GA] & +1,94 [+1,21; +2,65] & resmî test \\
+T4 $-$ H02c: $\Delta$ACC [puan; \%95 GA] & +4,56 [+3,70; +5,42] & resmî test \\
+\botrule
+\end{tabularx}
+\end{table}

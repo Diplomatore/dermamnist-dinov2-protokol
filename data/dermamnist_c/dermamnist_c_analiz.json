@@ -1,0 +1,368 @@
+{
+  "tarih": "2026-10-10T20:08:15+03:00",
+  "csv_sutunlar": [
+    "lesion_id",
+    "image_id",
+    "dx",
+    "dx_type",
+    "age",
+    "sex",
+    "localization",
+    "dataset",
+    "split"
+  ],
+  "csv_satir": 10015,
+  "npz_28": {
+    "anahtarlar": {
+      "train_images": {
+        "shape": [
+          8215,
+          28,
+          28,
+          3
+        ],
+        "dtype": "uint8"
+      },
+      "train_labels": {
+        "shape": [
+          8215,
+          1
+        ],
+        "dtype": "uint8"
+      },
+      "val_images": {
+        "shape": [
+          573,
+          28,
+          28,
+          3
+        ],
+        "dtype": "uint8"
+      },
+      "val_labels": {
+        "shape": [
+          573,
+          1
+        ],
+        "dtype": "uint8"
+      },
+      "test_images": {
+        "shape": [
+          1227,
+          28,
+          28,
+          3
+        ],
+        "dtype": "uint8"
+      },
+      "test_labels": {
+        "shape": [
+          1227,
+          1
+        ],
+        "dtype": "uint8"
+      }
+    },
+    "split_sayilari": {
+      "train": 8215,
+      "val": 573,
+      "test": 1227
+    },
+    "split_beklenen_eslesti": true,
+    "sinif_sayilari": {
+      "train": {
+        "0": 273,
+        "1": 448,
+        "2": 944,
+        "3": 102,
+        "4": 1021,
+        "5": 5309,
+        "6": 118
+      },
+      "val": {
+        "0": 19,
+        "1": 22,
+        "2": 50,
+        "3": 5,
+        "4": 22,
+        "5": 448,
+        "6": 7
+      },
+      "test": {
+        "0": 35,
+        "1": 44,
+        "2": 105,
+        "3": 8,
+        "4": 70,
+        "5": 948,
+        "6": 17
+      }
+    },
+    "piksel": {
+      "train": {
+        "min": 0,
+        "max": 255
+      },
+      "val": {
+        "min": 0,
+        "max": 255
+      },
+      "test": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    "tam_piksel_cakisma": {
+      "train∩val": 0,
+      "train∩test": 0,
+      "val∩test": 0,
+      "split_ici_kopya": {
+        "train": 2,
+        "val": 0,
+        "test": 0
+      }
+    }
+  },
+  "csv_npz_tutarlilik": {
+    "kolon_eslemesi": {
+      "split": "split",
+      "index": null,
+      "image_id": "image_id",
+      "lesion_id": "lesion_id",
+      "label": "dx"
+    },
+    "csv_split_sayilari": {
+      "train": 8215,
+      "val": 573,
+      "test": 1227
+    },
+    "etiket_dx_uyumu": {
+      "train": "8215/8215",
+      "val": "573/573",
+      "test": "1227/1227"
+    }
+  },
+  "resmi28_piksel": {
+    "karsilastirilan": 10015,
+    "piksel_ozdes": 0,
+    "farkli_olanlarda_rmse_medyan": 14.053817236308598,
+    "farkli_olanlarda_rmse_max": 85.62974997997281
+  },
+  "npz_224": {
+    "anahtarlar": {
+      "train_images": {
+        "shape": [
+          8215,
+          224,
+          224,
+          3
+        ],
+        "dtype": "uint8"
+      },
+      "train_labels": {
+        "shape": [
+          8215,
+          1
+        ],
+        "dtype": "uint8"
+      },
+      "val_images": {
+        "shape": [
+          573,
+          224,
+          224,
+          3
+        ],
+        "dtype": "uint8"
+      },
+      "val_labels": {
+        "shape": [
+          573,
+          1
+        ],
+        "dtype": "uint8"
+      },
+      "test_images": {
+        "shape": [
+          1227,
+          224,
+          224,
+          3
+        ],
+        "dtype": "uint8"
+      },
+      "test_labels": {
+        "shape": [
+          1227,
+          1
+        ],
+        "dtype": "uint8"
+      }
+    },
+    "split_sayilari": {
+      "train": 8215,
+      "val": 573,
+      "test": 1227
+    },
+    "split_beklenen_eslesti": true,
+    "sinif_sayilari": {
+      "train": {
+        "0": 273,
+        "1": 448,
+        "2": 944,
+        "3": 102,
+        "4": 1021,
+        "5": 5309,
+        "6": 118
+      },
+      "val": {
+        "0": 19,
+        "1": 22,
+        "2": 50,
+        "3": 5,
+        "4": 22,
+        "5": 448,
+        "6": 7
+      },
+      "test": {
+        "0": 35,
+        "1": 44,
+        "2": 105,
+        "3": 8,
+        "4": 70,
+        "5": 948,
+        "6": 17
+      }
+    },
+    "piksel": {
+      "train": {
+        "min": 0,
+        "max": 255
+      },
+      "val": {
+        "min": 0,
+        "max": 255
+      },
+      "test": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    "tam_piksel_cakisma": {
+      "train∩val": 0,
+      "train∩test": 0,
+      "val∩test": 0,
+      "split_ici_kopya": {
+        "train": 2,
+        "val": 0,
+        "test": 0
+      }
+    },
+    "boyutlar_arasi_sira": {
+      "train": {
+        "orneklem": 300,
+        "nn_ayni_indeks": 300,
+        "rmse_ayni_indeks_medyan": 0.30444231629371643,
+        "rmse_nn_medyan": 0.30444231629371643
+      },
+      "val": {
+        "orneklem": 300,
+        "nn_ayni_indeks": 300,
+        "rmse_ayni_indeks_medyan": 0.30304577946662903,
+        "rmse_nn_medyan": 0.30304577946662903
+      }
+    }
+  },
+  "kimlik": {
+    "kolon_eslemesi": {
+      "split": "split",
+      "index": null,
+      "image_id": "image_id",
+      "lesion_id": "lesion_id",
+      "label": "dx"
+    },
+    "benzersiz_image_id": 10015,
+    "HAM_eslesmeyen_image_id": 0,
+    "resmi_spliti_olmayan_image_id": 0,
+    "resmi_toplam_C_de_olmayan": 0,
+    "csv_lesion_HAM_uyumu": "10015/10015",
+    "lezyon_sayisi": {
+      "train": 5758,
+      "val": 563,
+      "test": 1149
+    },
+    "lezyon_cakisma": {
+      "train∩val": 0,
+      "train∩test": 0,
+      "val∩test": 0,
+      "uc_bolum": 0
+    },
+    "image_id_cakisma": {
+      "train∩val": 0,
+      "train∩test": 0,
+      "val∩test": 0
+    },
+    "resmi_to_C_gecis": {
+      "test": {
+        "test": 1227,
+        "train": 778,
+        "val": 0
+      },
+      "train": {
+        "test": 0,
+        "train": 7007,
+        "val": 0
+      },
+      "val": {
+        "test": 0,
+        "train": 430,
+        "val": 573
+      }
+    },
+    "C_test_resmi_kaynak": {
+      "train": 0,
+      "val": 0,
+      "test": 1227
+    },
+    "C_train_resmi_kaynak": {
+      "train": 7007,
+      "val": 430,
+      "test": 778
+    },
+    "C_val_resmi_kaynak": {
+      "train": 0,
+      "val": 573,
+      "test": 0
+    },
+    "dx_dagilimi": {
+      "train": {
+        "nv": 5309,
+        "mel": 1021,
+        "bkl": 944,
+        "bcc": 448,
+        "akiec": 273,
+        "vasc": 118,
+        "df": 102
+      },
+      "val": {
+        "nv": 448,
+        "bkl": 50,
+        "mel": 22,
+        "bcc": 22,
+        "akiec": 19,
+        "vasc": 7,
+        "df": 5
+      },
+      "test": {
+        "nv": 948,
+        "bkl": 105,
+        "mel": 70,
+        "bcc": 44,
+        "akiec": 35,
+        "vasc": 17,
+        "df": 8
+      }
+    },
+    "esleme_csv": "data/splits/dermamnist_c_esleme.csv"
+  }
+}

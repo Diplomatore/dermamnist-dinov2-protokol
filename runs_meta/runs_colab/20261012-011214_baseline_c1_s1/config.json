@@ -1,0 +1,90 @@
+{
+  "run_id": "20261012-011214_baseline_c1_s1",
+  "varyant": "baseline_c1",
+  "seed": "1",
+  "etiket": "C1 rakip 28 px 100 ep (rakip kodu aynen; veri c1)",
+  "ebeveyn": "20261011-143613_baseline_colab_s1",
+  "hipotez": "K3",
+  "kuyruk": "k5-c1-A-v3",
+  "asama": 3,
+  "kural": {
+    "nan_kes": true,
+    "ilerleme_zorunlu_sn": 300,
+    "sabit_sn": 300,
+    "min_adim": 30,
+    "alt_sinir": {
+      "val_acc_eniyi": 0.6
+    }
+  },
+  "komut": [
+    "python",
+    "colab/fp32_kos.py",
+    "varyantlar/k5/c_rakip_kos.py",
+    "--veri",
+    "c1",
+    "--",
+    "--seed",
+    "1",
+    "--epoch",
+    "100",
+    "--out",
+    "/content/is/runs/20261012-011214_baseline_c1_s1/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-10-12T01:12:15",
+  "makine": "a65fcb9985e1",
+  "donanim": {
+    "cihaz": "cuda:0 / NVIDIA L4",
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 92700,
+    "torchvision": "0.26.0+cu130",
+    "sklearn": "1.6.1",
+    "numpy": "2.1.3",
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "makine": "a65fcb9985e1"
+  },
+  "veri": {
+    "npz": "dermamnist.npz",
+    "kok": "/content/is/data/k5_rakip_c1",
+    "md5": "28e1e7bef1f8ce2d1b537edab2e0bef8",
+    "md5_resmi": "28e1e7bef1f8ce2d1b537edab2e0bef8",
+    "sha256": "0333131edbdae3402cd0fe853eace8af3e735585365fd41bc96fe92f096e5af3",
+    "bayt": 23658560
+  },
+  "rakip": {
+    "depo": "https://github.com/MedMNIST/experiments",
+    "commit": "70b6b3a7ad7afddff1df2a3b735235830fbdb142",
+    "betik": "MedMNIST2D/train_and_eval_pytorch.py",
+    "blob_sha1": {
+      "train_and_eval_pytorch.py": "09157bd8d6032be12cbf1eea0cfa8ccbd39914cb",
+      "models.py": "24579d6612441aa1e1af63f3d246d4e61db822fd"
+    },
+    "medmnist_paket": "3.0.2",
+    "medmnist_depo_commit": "805b74237fb5bd2db376fd94e50646b6a8905d9d"
+  },
+  "protokol": {
+    "data_flag": "dermamnist",
+    "size": 28,
+    "num_epochs": 100,
+    "batch_size": 128,
+    "lr": 0.001,
+    "optimizer": "Adam",
+    "milestones": [
+      50.0,
+      75.0
+    ],
+    "gamma": 0.1,
+    "kayip": "CrossEntropyLoss",
+    "donusum": "ToTensor + Normalize(0.5, 0.5)",
+    "augment": "yok",
+    "resize": false,
+    "model": "models.ResNet18 (3x3 stem, maxpool yok)",
+    "secim": "val AUC (cur_auc > best_auc, deepcopy)",
+    "seed": 1,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false
+  }
+}

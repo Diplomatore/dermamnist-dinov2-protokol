@@ -1,0 +1,28 @@
+{
+  "val_acc": 0.7367896311066799,
+  "val_auc": 0.9228849426362651,
+  "val_dengeli_acc": 0.4063573882075053,
+  "val_n": 1003,
+  "kaynak_val_acc": 0.7367896311066799,
+  "ozdeslik_argmax_ayni": 1003,
+  "ozdeslik_argmax_oran": 1.0,
+  "ozdeslik_p_maks_fark": 0.0,
+  "ozdeslik_val_acc_fark": 0.0,
+  "ozdeslik_gecti": 1,
+  "egitim_sure_sn": 0.01,
+  "sure_sn": 0.01,
+  "param_sayisi": 11172423,
+  "seed": 3,
+  "cihaz": "cpu (yeniden çıkarım yok)",
+  "k5_test_kilidi": 0,
+  "veri_c": 0,
+  "alt_grup": {
+    "sinif_0": 0.36363636363636365,
+    "sinif_1": 0.28846153846153844,
+    "sinif_2": 0.5454545454545454,
+    "sinif_3": 0.0,
+    "sinif_4": 0.3063063063063063,
+    "sinif_5": 0.9120715350223547,
+    "sinif_6": 0.42857142857142855
+  }
+}

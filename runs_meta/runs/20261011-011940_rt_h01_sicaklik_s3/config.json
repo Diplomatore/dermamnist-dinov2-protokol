@@ -1,0 +1,35 @@
+{
+  "run_id": "20261011-011940_rt_h01_sicaklik_s3",
+  "varyant": "rt_h01_sicaklik",
+  "seed": "3",
+  "etiket": "R-T sıcaklık ölçekleme (raporlama protokolü, kart değil): h01_dinov2b_lp_r224, seed başına T, OOF 5 kat",
+  "ebeveyn": "20261010-222218_h01_dinov2b_lp_r224_s3",
+  "hipotez": "R-T",
+  "kuyruk": "tur2-rt",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>/env/.venv/Scripts/python.exe",
+    "varyantlar/logit_ayari/sicaklik.py",
+    "--kaynak-varyant",
+    "h01_dinov2b_lp_r224",
+    "--kaynak-dosya",
+    "tahmin_val.npy",
+    "--seed",
+    "3",
+    "--out",
+    "<WS>\\runs\\20261011-011940_rt_h01_sicaklik_s3/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-10-11T01:19:40",
+  "makine": "LAPTOP-SKK5GIC3",
+  "sicaklik": {
+    "protokol": "SIRALAMA R-T",
+    "kaynak_varyant": "h01_dinov2b_lp_r224",
+    "kaynak_dosya": "tahmin_val.npy",
+    "kaynak_kosum": "20261010-222218_h01_dinov2b_lp_r224_s3",
+    "T_izgara": "0.5:3.0:0.01",
+    "secim": "NLL min (eşitlikte küçük T)",
+    "katlar_sha256": "0db03edb377f37e5d5b64281ea9ef9e1c5c13c5441d528166c117b4d5e0e0193"
+  }
+}

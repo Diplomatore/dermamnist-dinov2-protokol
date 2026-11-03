@@ -1,0 +1,22 @@
+{
+  "run_id": "20261011-232856_c_bolme_veri_c1_s0",
+  "varyant": "c_bolme_veri_c1",
+  "seed": "0",
+  "etiket": "C1 veri kurulumu/denetimi (c_bolme_npz.py --kip c1)",
+  "ebeveyn": null,
+  "hipotez": "K5",
+  "kuyruk": "k5-c1-A-v3",
+  "asama": 1,
+  "kural": null,
+  "komut": [
+    "python",
+    "scripts/c_bolme_npz.py",
+    "--kip",
+    "c1",
+    "--out",
+    "/content/is/runs/20261011-232856_c_bolme_veri_c1_s0/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-10-11T23:28:56",
+  "makine": "a65fcb9985e1"
+}

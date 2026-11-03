@@ -1,2 +1,5 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Satır sonu dönüşümü KAPALI: dosyalar bayt bayt saklanır ve checkout edilir.
+# Neden: ön-kayıt zinciri (sonuclar/k5_dondurma.json, *.sha256, k5_test.KILIT), kanıt defteri
+# (makale/evidence/evidence.json → kaynak_sha256) ve arşiv manifesti (runs_meta/runs_colab/ARSIV_MANIFEST.json)
+# dosyaların SHA256'sını kaydeder; CRLF↔LF dönüşümü bu özetleri bozar. Doğrulama: python tools/dogrula.py
+* -text

@@ -1,0 +1,56 @@
+{
+ "_aciklama": "ÖN-KAYIT (kuyruk kc2-tur4-h10; Tur-4 H10 kartı, Colab L4; deney-yürütücü 2026-10-11, hiçbir h10_* koşumundan ÖNCE yazıldı; koşum sonrası DEĞİŞTİRİLMEZ, devam kuyruklarına BAYT BAYT kopyalanır). Kaynak: hipotezler/H10.md 'Uygulama notu' beklenti listesi + öldürme kuralları (c)(d)(f)(g); Colab uyarlamaları _notlar'da (yalnız donanıma bağlı süre bantları ve özdeşlik toleransı; aralık/AUC/param kuralları kartla AYNI).",
+ "_notlar": [
+  "SÜRE (kart (d) epoch_sure_ort_sn [60, 400] GTX 1650 içindir — KULLANICI KARARI 7: Colab'da gevşek). L4 bandı: alt = yerel 260,5 s / 20 = 13 s (L4/GTX 1650 FP32 tepe oranı 10,2 × 2 pay; ayrıca 4 blok × 3 ileri-geri ≈ 46 GFLOP/görüntü × 7.007 = 323 TFLOP → L4 tepe hızında ≥ 10,7 s/epoch; altı = epoch veri atlıyor şüphesi), üst = yerel ölçüm 260 s (L4 GTX 1650'den yavaşsa disk/memmap/CPU düşüşü arızası). Kartın 400 s'si hâlâ geçerli üst sınırın üstünde → kart kuralı da sağlanmış olur.",
+  "ÖZDEŞLİK (kart (f): a1 s0 ilk_adim_loss yerel ölçümden |fark| > 1e-6 → DUR). Colab'da önbellek L4'te yeniden üretilir (fp16 yuvarlama sınırında tek-ulp farklar) ve GPU aritmetiği farklı → bit eşitliği beklenmez. CPU RNG (randperm, baş init) torch 2.5.1 ↔ 2.11.0 bit bit aynı (deney-yürütücü sınaması 2026-10-11) → fark yalnız aritmetikten: tolerans 1e-3 (kayıp 1,7128; beklenen ≲ 1e-4). ŞART: kc1-tekrar a1'de H02/H08 ozdeslik_ilk_adim_loss_fark ≤ 1e-4 ölçülmüş olmalı (aynı kod yolunun donanımlar arası ampirik farkı); değilse şef bu kuralı kc2 BAŞLAMADAN kaynağıyla (kc1 ölçümü) yeniden yazar.",
+  "onbellek_tutarlilik_maks_fark ≤ 5e-3 (kart (f); fp16 payı 2,4e-3) Colab'da da aynen geçerli: önbellek ↔ tam ağ aynı GPU'da ölçülür.",
+  "Ebeveyn (--ebeveyn): kart 'aynı seed H02 run_id' der; Colab'da karar ebeveyni H02'nin Colab kolu → 'h02_r18in_ft224_colab:s<seed>' sembolik referansı; run_id eşlemesi kc1-tekrar bitince kart Sonuç'una (KOMUTLAR §2 emsali).",
+  "Zaman sınırları kartla aynı (a1 10 / a2 35 / a3 90 dk); L4'te bol kalır."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN — h10_dinov2b_k4_ft224_duman (s0, 1 epoch; blok-8 token önbelleği L4'te yazılır + özdeşlik + önbellek tutarlılığı)",
+   "kurallar": [
+    {"tur": "sonlu"},
+    {"tur": "min_kosum", "n": 1},
+    {"tur": "aralik", "alt": 0.62, "ust": 0.93, "kaynak": "H10.md uygulama notu a1"},
+    {"tur": "ikincil_aralik", "metrik": "param_egitilen", "alt": 28364551, "ust": 28364551, "kaynak": "H10 öldürme (f)"},
+    {"tur": "ikincil_aralik", "metrik": "param_sayisi", "alt": 85730311, "ust": 85730311, "kaynak": "H10 öldürme (f)"},
+    {"tur": "ikincil_aralik", "metrik": "ilk_adim_loss", "alt": 1.7117894759178162, "ust": 1.7137894759178162, "kaynak": "H10 öldürme (f): yerel ölçüm runs_yerel_duman/runs/20261011-100750_t4_gpu_b_kismi_k4_1ep_s0 = 1,7127894759178162; Colab toleransı 1e-3 (_notlar 2)"},
+    {"tur": "ikincil_aralik", "metrik": "onbellek_tutarlilik_maks_fark", "alt": 0.0, "ust": 0.005, "kaynak": "H10 öldürme (f)"},
+    {"tur": "ikincil_aralik", "metrik": "egitim_sure_sn", "alt": 20, "ust": 600, "kaynak": "H10 uygulama notu [60, 600] → L4 alt sınırı yerel/20 (_notlar 1; yerel a1 ≈ 520 s önbellek dahil); üst = kart"},
+    {"tur": "ikincil_aralik", "metrik": "tepe_gpu_bellek_mb", "alt": 1, "ust": 22500, "kaynak": "L4 23.034 MiB"}
+   ]
+  },
+  "2": {
+   "aciklama": "ÖN-UÇUŞ — h10_dinov2b_k4_ft224_onucus (s0, s1 × 5 epoch)",
+   "kurallar": [
+    {"tur": "sonlu"},
+    {"tur": "min_kosum", "n": 2},
+    {"tur": "farkli_seedler_farkli", "kaynak": "H10 öldürme (g)"},
+    {"tur": "aralik", "alt": 0.72, "ust": 0.93, "kaynak": "H10.md uygulama notu a2"},
+    {"tur": "ikincil_aralik", "metrik": "epoch_sure_ort_sn", "alt": 13, "ust": 260, "kaynak": "H10 öldürme (d) L4 uyarlaması (_notlar 1)"},
+    {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.88, "ust": 0.995, "kaynak": "H10.md uygulama notu a2"},
+    {"tur": "ikincil_aralik", "metrik": "param_egitilen", "alt": 28364551, "ust": 28364551, "kaynak": "H10 öldürme (f)"},
+    {"tur": "ikincil_aralik", "metrik": "onbellek_tutarlilik_maks_fark", "alt": 0.0, "ust": 0.005, "kaynak": "H10 öldürme (f)"},
+    {"tur": "ikincil_aralik", "metrik": "n_train", "alt": 7007, "ust": 7007, "kaynak": "resmî split"},
+    {"tur": "ikincil_aralik", "metrik": "tepe_gpu_bellek_mb", "alt": 1, "ust": 22500, "kaynak": "L4 23.034 MiB"}
+   ]
+  },
+  "3": {
+   "aciklama": "TAM (bilgi) — h10_dinov2b_k4_ft224 (s0–4 × 15 epoch)",
+   "kurallar": [
+    {"tur": "sonlu"},
+    {"tur": "min_kosum", "n": 5},
+    {"tur": "farkli_seedler_farkli", "kaynak": "H10 öldürme (g)"},
+    {"tur": "aralik", "alt": 0.80, "ust": 0.93, "kaynak": "H10.md uygulama notu a3 (arıza alarmı; görülmemiş kararı 5-seed ortalamasıyla tahlilcide)"},
+    {"tur": "ikincil_aralik", "metrik": "val_auc", "alt": 0.93, "ust": 0.995, "kaynak": "H10.md uygulama notu a3"},
+    {"tur": "ikincil_aralik", "metrik": "epoch_sure_ort_sn", "alt": 13, "ust": 260, "kaynak": "H10 öldürme (d) L4 uyarlaması"},
+    {"tur": "ikincil_aralik", "metrik": "param_egitilen", "alt": 28364551, "ust": 28364551, "kaynak": "H10 öldürme (f)"},
+    {"tur": "ikincil_aralik", "metrik": "n_train", "alt": 7007, "ust": 7007, "kaynak": "resmî split"}
+   ]
+  }
+ }
+}

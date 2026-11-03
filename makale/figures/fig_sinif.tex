@@ -1,0 +1,51 @@
+% F3 — Sınıf bazında resmî test duyarlılığı. Veri: figures/data/fig_sinif.dat, fig_sinif_x.dat
+% (üretici figures/scripts/fig_sinif.py; kaynak [T] kollar.*.ort/std.duyarlilik_*). Sayı gömülü değil.
+\providecommand{\figveri}{figures/data}
+\providecolor{iyiRenk}{RGB}{0,84,159}
+\providecolor{kotuRenk}{RGB}{178,24,43}
+% Kol paleti (tur-1, review 7.3): nötr kategorik; iyiRenk/kotuRenk yalnız anlamlılık/karar kodlamasında
+\providecolor{renkB}{RGB}{105,105,105}
+\providecolor{renkH01}{RGB}{160,160,160}
+\providecolor{renkH02}{RGB}{25,25,25}
+\providecolor{renkH08}{RGB}{217,130,0}
+\providecolor{renkH10}{RGB}{118,42,131}
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  scale only axis, width=10.6cm, height=4.8cm,
+  xmin=-0.55, xmax=6.55, ymin=0, ymax=1.08,
+  xtick={0,...,6}, xticklabels from table={\figveri/fig_sinif_x.dat}{lab},
+  table/col sep=tab,
+  xticklabel style={align=center}, every tick label/.append style={font=\footnotesize},
+  ylabel={Sensitivity (recall)}, ylabel style={font=\footnotesize},
+  ytick={0,0.2,...,1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=1},
+  tick align=outside, tick pos=left, ymajorgrids, grid style={gray!20},
+  legend style={font=\footnotesize, at={(0.5,1.02)}, anchor=south, legend columns=4, draw=none,
+                /tikz/every even column/.append style={column sep=6pt}},
+  legend cell align=left, area legend,
+]
+% nadir sınıf (test n < 50) gölgesi — veri dosyasındaki 'nadir' sütunundan
+\addplot[ybar, bar width=0.96, bar shift=0pt, fill=gray!14, draw=none, forget plot]
+  table[x=x, y expr=\thisrow{nadir}*1.08] {\figveri/fig_sinif_x.dat};
+\addplot[ybar, bar width=0.17, bar shift=0pt, fill=renkB, draw=renkB,
+  error bars/.cd, y dir=both, y explicit, error bar style={black, line width=0.6pt}]
+  table[x=x, y=m, y error=s, restrict expr to domain={\thisrow{k}}{0:0}] {\figveri/fig_sinif.dat};
+\addlegendentry{B (28 px rival)}
+\addplot[ybar, bar width=0.17, bar shift=0pt, fill=renkH02, draw=renkH02,
+  error bars/.cd, y dir=both, y explicit, error bar style={black, line width=0.6pt}]
+  table[x=x, y=m, y error=s, restrict expr to domain={\thisrow{k}}{1:1}] {\figveri/fig_sinif.dat};
+\addlegendentry{H02c (R18-ImageNet)}
+\addplot[ybar, bar width=0.17, bar shift=0pt, fill=renkH08, draw=renkH08,
+  error bars/.cd, y dir=both, y explicit, error bar style={black, line width=0.6pt}]
+  table[x=x, y=m, y error=s, restrict expr to domain={\thisrow{k}}{2:2}] {\figveri/fig_sinif.dat};
+\addlegendentry{H08c (R18 + D4)}
+\addplot[ybar, bar width=0.17, bar shift=0pt, fill=renkH10, draw=renkH10,
+  error bars/.cd, y dir=both, y explicit, error bar style={black, line width=0.6pt}]
+  table[x=x, y=m, y error=s, restrict expr to domain={\thisrow{k}}{3:3}] {\figveri/fig_sinif.dat};
+\addlegendentry{H10 (DINOv2-B)}
+\end{axis}
+\end{tikzpicture}
+\caption{Resmî test sınıf duyarlılığı (5 seed ortalaması; hata çubuğu: seed std, GA değil). Gri zemin: test örneği 50'nin altındaki nadir sınıflar (df, vasc). Sınıf farkları için güven aralığı hesaplanmadı.}
+\label{fig:sinif}
+\end{figure}

@@ -1,0 +1,49 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-3; kartlar H07/H08/H09 mtime 2026-10-11 04:02/04:03/04:04, SIRALAMA 04:08). Hiçbir h07_*/h08_*/h09_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 04:22); koşum sonrası DEĞİŞTİRİLMEZ. Üçüncü satır (rapor, karar vermez): rt_h08_sicaklik = sicaklik.py --kaynak-varyant h08_r18in_ft224_d4, aynı katlar. Kaynak: SIRALAMA R-T + Tur-3 ortak ön-kayıtlar; tur2-rt beklentisi (rt_h04 emsali: kaynağın ham ECE'si önceden bilinmediğinde üst = H02 ham 0,0745 + 0,010).",
+ "_notlar": [
+  "Alt 0,010 = R-T görülmemiş (15 kutulu ECE gürültü tabanı altı). Sıcaklık argmax'ı değiştirmez (Guo 2017)."
+ ],
+ "metrik": "val_ece",
+ "yon": "min",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — rt_h08_sicaklik s0–4 (CPU)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 5
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.01,
+     "ust": 0.0845,
+     "kaynak": "R-T görülmemiş < 0,010; üst = H02 ham ECE 0,0745 + 0,010 (rt_h04 emsali)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "acc_degisim",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "Guo vd. 2017: sıcaklık argmax'ı değiştirmez"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "dengeli_degisim",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "aynı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "T_tamval",
+     "alt": 0.51,
+     "ust": 2.99,
+     "kaynak": "R-T ızgarası [0,5; 3,0]: sınırda T = ızgara yetersiz"
+    }
+   ]
+  }
+ }
+}

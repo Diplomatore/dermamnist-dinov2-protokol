@@ -1,0 +1,57 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-3; kartlar H07/H08/H09 mtime 2026-10-11 04:02/04:03/04:04, SIRALAMA 04:08). Hiçbir h07_*/h08_*/h09_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 04:22); koşum sonrası DEĞİŞTİRİLMEZ. H07 ablasyon (i) (karar vermez): h07a_h02_tta4d2 ve h07a_h02_tta4r90, H07 koşumlarının tahmin_val_gorunum.npy dosyalarından (ek GPU yok). Kaynak: H07 Ablasyon planı (i)/(ii).",
+ "_notlar": [
+  "Keşifsel yön D2 ≥ 90° (anizotropik ölçekleme) KAPI DEĞİL; tahlilde raporlanır. Aralık yalnız bozuk-hesap alarmıdır."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — h07a_h02_tta4d2 + h07a_h02_tta4r90 × s0–4 (CPU)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 10
+    },
+    {
+     "tur": "kollar_farkli",
+     "kaynak": "plasebo: D2 ve 90° alt kümeleri farklı görünümler"
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "ebeveyn seed'leri farklı"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.669,
+     "ust": 0.9,
+     "kaynak": "alt = çoğunluk tabanı 0,669 (bozuk alarm), üst = H02 tavanı 0,90 (H07 kartı)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kaynak_ozdeslik_maks_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "kaydedilmiş 8 görünümün ortalaması = kaydedilen TTA tahmini (bütünlük)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "gorunum_sayisi",
+     "alt": 4,
+     "ust": 4,
+     "kaynak": "H07 ablasyon (i): 4'er görünüm"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    }
+   ]
+  }
+ }
+}

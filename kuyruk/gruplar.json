@@ -1,0 +1,33 @@
+{
+ "_aciklama": "Colab defteri (3-1-colab.ipynb) ve yerel izleyici (scripts/colab_izle.py) için kuyruk grupları: defterdeki KUYRUK değişkeni bir grup adıdır; gruptaki kuyruklar SIRAYLA koşar (her biri kendi devam ailesiyle). Bir kuyruk aşama kapısında DURURSA grup durur (şef teşhis eder).",
+ "gruplar": {
+  "kc1-tekrar": [
+   "kc1-tekrar"
+  ],
+  "kc2-tur4": [
+   "kc2-tur4-h12",
+   "kc2-tur4-h10",
+   "kc2-tur4-h11"
+  ],
+  "k5-test": [
+   "k5-test"
+  ],
+  "k5-c1": [
+   "k5-c1-A",
+   "k5-c1-B",
+   "k5-c1-A-v2",
+   "k5-c1-A-v3"
+  ],
+  "k5-c2": [
+   "k5-c2"
+  ]
+ },
+ "izin_gereken": [
+  "k5-test",
+  "k5-c1",
+  "k5-c2"
+ ],
+ "_aciklama_k5": "K5 (2026-10-11): k5-test tek sekme (izin kuyruk/k5-test.izin.json, ŞEF); k5-c1-A ve k5-c1-B İKİ PARALEL sekme (tek kuyruk adıyla; izinleri k5-c1 grubundan devralır: kuyruk/k5-c1.izin.json, şef — resmî test sonucu SHA256 ile donduktan SONRA); k5-c2 C1 bitince tek sekme (kuyruk/k5-c2.izin.json, şef — §5 bütçe kapısı). Kullanıcı kısıtı: aynı anda en çok 2 Colab oturumu.",
+ "_aciklama_k5_v2": "2026-10-11 ~22:00: k5-c1-A a1'de durdu (rakip medmnist n_samples assert'i; sonda duman alt kümesi tek sınıf). Düzeltme kodda (varyantlar/k5/c_rakip_kos.py, c_bolme.py); satırlar ve beklenti BAYT BAYT aynı kopya → k5-c1-A-v2. k5-c1 grubunda olduğu için izni kuyruk/k5-c1.izin.json'dan devralır. Ayrıntı hipotezler/K5-C1-UYGULAMA-NOTU.md.",
+ "_aciklama_k5_v3": "2026-10-11 ~22:30: k5-c1-A-v2 a1 kapısı beklenti kapsam hatasıyla durdu (h01 dumanı alt küme 256 ↔ n_train/val_n kuralı). k5-c1-A-v3: yalnız h01_c1_duman satırı tam veriyle; kurallar aynı. İzin k5-c1 grubundan."
+}

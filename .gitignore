@@ -1,0 +1,21 @@
+# Veri, önbellek, ağırlık ve büyük çıktılar depoya girmez (bkz. README "Veri")
+/data/medmnist/
+/data/dermamnist_c/*.npz
+/data/dermamnist_c/*.csv
+/data/meta/
+/data/hf_cache/
+/data/torch_cache/
+/data/oznitelik/*.npz
+/data/oznitelik/*.npy
+*.npz
+*.npy
+*.pth
+*.pt
+*.ckpt
+*.log
+/runs/
+/runs_colab/
+/rakip/experiments/
+/env/.venv/
+__pycache__/
+*.pyc

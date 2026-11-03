@@ -1,0 +1,956 @@
+{
+  "aciklama": "Nitel panel verisi (VAL). Makale için sonradan eklendi — deney-gelistirici. Test açılmadı.",
+  "kaynak": {
+    "betik": "scripts/nitel_panel_val.py",
+    "betik_sha256": "f16bbf369adc4497f60ddefce56e2004384bb7e5a5add55f00df1b9813c7c5d2",
+    "zaman": "2026-10-12T19:37:35",
+    "python": "3.11.16",
+    "numpy": "2.2.6",
+    "npz": "dermamnist_224.npz",
+    "npz_md5": "8974907d8e169bef5f5b96bc506ae45d",
+    "npz_md5_resmi_eslesti": true,
+    "kollar": {
+      "B": [
+        "20261011-142338_baseline_colab_s0",
+        "20261011-143613_baseline_colab_s1",
+        "20261011-144846_baseline_colab_s2",
+        "20261011-150122_baseline_colab_s3",
+        "20261011-151359_baseline_colab_s4"
+      ],
+      "H02c": [
+        "20261011-130855_h02_r18in_ft224_colab_s0",
+        "20261011-131620_h02_r18in_ft224_colab_s1",
+        "20261011-132346_h02_r18in_ft224_colab_s2",
+        "20261011-133112_h02_r18in_ft224_colab_s3",
+        "20261011-133837_h02_r18in_ft224_colab_s4"
+      ],
+      "H08c": [
+        "20261011-134604_h08_r18in_ft224_d4_colab_s0",
+        "20261011-135335_h08_r18in_ft224_d4_colab_s1",
+        "20261011-140107_h08_r18in_ft224_d4_colab_s2",
+        "20261011-140837_h08_r18in_ft224_d4_colab_s3",
+        "20261011-141608_h08_r18in_ft224_d4_colab_s4"
+      ],
+      "H10": [
+        "20261011-160211_h10_dinov2b_k4_ft224_s0",
+        "20261011-161411_h10_dinov2b_k4_ft224_s1",
+        "20261011-162611_h10_dinov2b_k4_ft224_s2",
+        "20261011-163811_h10_dinov2b_k4_ft224_s3",
+        "20261011-165010_h10_dinov2b_k4_ft224_s4"
+      ]
+    },
+    "tahmin_dosyasi": "tahmin_val.npy (seçilen epoch softmax; B için resmî val-AUC seçimi)",
+    "tahmin_val_sha256_dogrulandi": true
+  },
+  "lisans": "Görüntüler DermaMNIST (MedMNIST v2/v3, HAM10000 türevi), CC BY-NC 4.0 — atıf zorunlu, ticari kullanım yok.",
+  "tanimlar": {
+    "dogru_seed_sayisi": "5 seed içinde argmax'ı gerçek sınıfa eşit olan seed sayısı",
+    "cogunluk_dogru": "dogru_seed_sayisi >= 3",
+    "cogunluk_tahmin": "seed argmax modu; eşitlikte ort. olasılığı yüksek sınıf, sonra küçük sınıf indeksi",
+    "ort_olasilik_gercek": "gerçek sınıf softmax olasılığının 5-seed ortalaması",
+    "S_N": "S = görüntünün lezyonu resmî train'de var; N = yok (veri.sizinti_maskesi)"
+  },
+  "secim_olcutu": {
+    "k": 2,
+    "kategoriler": [
+      {
+        "kod": "N-a",
+        "aciklama": "N: H08c çoğunluk doğru, H10 çoğunluk yanlış",
+        "kazanan": "H08c",
+        "kaybeden": "H10"
+      },
+      {
+        "kod": "N-b",
+        "aciklama": "N: H10 çoğunluk doğru, H08c çoğunluk yanlış",
+        "kazanan": "H10",
+        "kaybeden": "H08c"
+      },
+      {
+        "kod": "S-a",
+        "aciklama": "S: H08c çoğunluk doğru, H10 çoğunluk yanlış",
+        "kazanan": "H08c",
+        "kaybeden": "H10"
+      },
+      {
+        "kod": "S-b",
+        "aciklama": "S: H10 çoğunluk doğru, H08c çoğunluk yanlış",
+        "kazanan": "H10",
+        "kaybeden": "H08c"
+      },
+      {
+        "kod": "DV-a",
+        "aciklama": "df/vasc: H08c çoğunluk doğru, H02c çoğunluk yanlış",
+        "kazanan": "H08c",
+        "kaybeden": "H02c"
+      },
+      {
+        "kod": "DV-b",
+        "aciklama": "df/vasc: H02c çoğunluk doğru, H08c çoğunluk yanlış",
+        "kazanan": "H02c",
+        "kaybeden": "H08c"
+      },
+      {
+        "kod": "Z",
+        "aciklama": "ortak zor çekirdek: dört kol 5 seed'de de yanlış",
+        "kazanan": null,
+        "kaybeden": null
+      }
+    ],
+    "kural": "Yönlü kategoriler: g = p̄_kazanan − p̄_kaybeden; g'si kategori medyanına en yakın k görüntü (eşitlikte küçük val indeksi). Z: dört kol p̄ ortalaması çekirdek medyanına en yakın k görüntü. Çakışmada sabit sıra N-a, N-b, S-a, S-b, DV-a, DV-b, Z (görüntü ilk kategoride kalır). Seed'siz, deterministik.",
+    "on_kayit": "makale WS notes/eksik-kod-teklifi.md (koşumdan önce yazıldı)"
+  },
+  "baslik_cumlesi": "Görüntüler val kümesinden önceden yazılmış kuralla seçildi: her kategoride (S/N × hangi kolun 5 seed'lik çoğunluk oyuyla doğru olduğu; df/vasc'ta H08c↔H02c; dört kolun beş seed'de de yanlış olduğu çekirdek) kazanan ve kaybeden kolun gerçek-sınıf ortalama olasılık farkı kategori medyanına en yakın iki görüntü (eşitlikte küçük indeks).",
+  "kategori_aday_sayisi": {
+    "N-a": 27,
+    "N-b": 25,
+    "S-a": 22,
+    "S-b": 32,
+    "DV-a": 4,
+    "DV-b": 0,
+    "Z": 8
+  },
+  "bilgi": {
+    "DV_H08c_dogru_B_yanlis_aday": 13,
+    "DV_B_dogru_H08c_yanlis_aday": 0,
+    "DV_destek": {
+      "df": 12,
+      "vasc": 14
+    },
+    "N_say": 655,
+    "S_say": 348,
+    "ucunun_ortak_hep_yanlis_H02c_H08c_H10": 14,
+    "kategori_medyan_skor": {
+      "N-a": 0.6917804855853319,
+      "N-b": 0.6514368370175362,
+      "S-a": 0.5153542749583722,
+      "S-b": 0.6625116970855742,
+      "DV-a": 0.6038831090612803,
+      "DV-b": null,
+      "Z": 0.05532040862613031
+    },
+    "not": "Sayılar val (n=1003) üzerindedir; test'e bakılmadı. Panel betimseldir, karar taşımaz."
+  },
+  "denetim_P": {
+    "P4_S_sayisi": 348,
+    "P1_P2_P3": "20/20 tahmin_val SHA256 dondurma + ARSIV_MANIFEST ile aynı; etiket hizası ve olasılık toplamı tamam",
+    "P5_hep_yanlis": {
+      "B": 141,
+      "H02c": 62,
+      "H08c": 57,
+      "H10": 58
+    },
+    "P6_argmax_farkli_oran": {
+      "B~H02c": 0.2269,
+      "B~H08c": 0.2323,
+      "B~H10": 0.2566,
+      "H02c~H08c": 0.0943,
+      "H02c~H10": 0.1416,
+      "H08c~H10": 0.1334
+    },
+    "P7_secim_kosulu": "tüm seçilenlerde kazanan c≥3, kaybeden c≤2",
+    "P8_karo": "12 karo 224×224×3 uint8, npz pikselleriyle bayt-özdeş"
+  },
+  "beklenti_E": {
+    "E1_S-b_gt_S-a": {
+      "S-a": 22,
+      "S-b": 32,
+      "tuttu": true
+    },
+    "E2_N-a_ge_N-b_ya_da_yakin_(<=5)": {
+      "N-a": 27,
+      "N-b": 25,
+      "tuttu": true
+    },
+    "E3_DV-a_gt_DV-b": {
+      "DV-a": 4,
+      "DV-b": 0,
+      "tuttu": true
+    },
+    "E4_1_le_Z_le_14": {
+      "Z": 8,
+      "tuttu": true
+    }
+  },
+  "goruntuler": [
+    {
+      "kategori": "N-a",
+      "kategori_aciklama": "N: H08c çoğunluk doğru, H10 çoğunluk yanlış",
+      "val_indeks": 132,
+      "image_id": "ISIC_0032329",
+      "lesion_id": "HAM_0005027",
+      "gercek_sinif": "akiec",
+      "S_N": "N",
+      "karo": "figures/tiles/nitel/val_0132.png",
+      "g_kazanan_eksi_kaybeden": 0.6918,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "akiec",
+          "dogru_seed_sayisi": 3,
+          "ort_olasilik_gercek": 0.2952,
+          "ort_olasilik_cogunluk": 0.2952,
+          "seed_tahminleri": [
+            "akiec",
+            "bkl",
+            "akiec",
+            "akiec",
+            "nv"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "akiec",
+          "dogru_seed_sayisi": 4,
+          "ort_olasilik_gercek": 0.7058,
+          "ort_olasilik_cogunluk": 0.7058,
+          "seed_tahminleri": [
+            "akiec",
+            "akiec",
+            "akiec",
+            "akiec",
+            "df"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "akiec",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.7335,
+          "ort_olasilik_cogunluk": 0.7335,
+          "seed_tahminleri": [
+            "akiec",
+            "akiec",
+            "akiec",
+            "akiec",
+            "akiec"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "mel",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0417,
+          "ort_olasilik_cogunluk": 0.8699,
+          "seed_tahminleri": [
+            "mel",
+            "mel",
+            "mel",
+            "mel",
+            "mel"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "N-a",
+      "kategori_aciklama": "N: H08c çoğunluk doğru, H10 çoğunluk yanlış",
+      "val_indeks": 492,
+      "image_id": "ISIC_0027781",
+      "lesion_id": "HAM_0005693",
+      "gercek_sinif": "bkl",
+      "S_N": "N",
+      "karo": "figures/tiles/nitel/val_0492.png",
+      "g_kazanan_eksi_kaybeden": 0.6854,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.4672,
+          "ort_olasilik_cogunluk": 0.4672,
+          "seed_tahminleri": [
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 3,
+          "ort_olasilik_gercek": 0.5316,
+          "ort_olasilik_cogunluk": 0.5316,
+          "seed_tahminleri": [
+            "bkl",
+            "nv",
+            "nv",
+            "bkl",
+            "bkl"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.7172,
+          "ort_olasilik_cogunluk": 0.7172,
+          "seed_tahminleri": [
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0319,
+          "ort_olasilik_cogunluk": 0.9091,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "nv",
+            "nv"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "N-b",
+      "kategori_aciklama": "N: H10 çoğunluk doğru, H08c çoğunluk yanlış",
+      "val_indeks": 710,
+      "image_id": "ISIC_0030067",
+      "lesion_id": "HAM_0001589",
+      "gercek_sinif": "bkl",
+      "S_N": "N",
+      "karo": "figures/tiles/nitel/val_0710.png",
+      "g_kazanan_eksi_kaybeden": 0.6514,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0419,
+          "ort_olasilik_cogunluk": 0.9461,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "nv",
+            "nv"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 1,
+          "ort_olasilik_gercek": 0.1761,
+          "ort_olasilik_cogunluk": 0.814,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "bkl",
+            "nv"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 1,
+          "ort_olasilik_gercek": 0.3135,
+          "ort_olasilik_cogunluk": 0.6792,
+          "seed_tahminleri": [
+            "nv",
+            "bkl",
+            "nv",
+            "nv",
+            "nv"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.9649,
+          "ort_olasilik_cogunluk": 0.9649,
+          "seed_tahminleri": [
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "N-b",
+      "kategori_aciklama": "N: H10 çoğunluk doğru, H08c çoğunluk yanlış",
+      "val_indeks": 776,
+      "image_id": "ISIC_0027354",
+      "lesion_id": "HAM_0007359",
+      "gercek_sinif": "bkl",
+      "S_N": "N",
+      "karo": "figures/tiles/nitel/val_0776.png",
+      "g_kazanan_eksi_kaybeden": 0.6561,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 4,
+          "ort_olasilik_gercek": 0.4607,
+          "ort_olasilik_cogunluk": 0.4607,
+          "seed_tahminleri": [
+            "bkl",
+            "mel",
+            "bkl",
+            "bkl",
+            "bkl"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "akiec",
+          "dogru_seed_sayisi": 2,
+          "ort_olasilik_gercek": 0.3067,
+          "ort_olasilik_cogunluk": 0.4292,
+          "seed_tahminleri": [
+            "bkl",
+            "bkl",
+            "akiec",
+            "akiec",
+            "mel"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "akiec",
+          "dogru_seed_sayisi": 1,
+          "ort_olasilik_gercek": 0.3367,
+          "ort_olasilik_cogunluk": 0.6068,
+          "seed_tahminleri": [
+            "akiec",
+            "akiec",
+            "akiec",
+            "akiec",
+            "bkl"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.9928,
+          "ort_olasilik_cogunluk": 0.9928,
+          "seed_tahminleri": [
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "S-a",
+      "kategori_aciklama": "S: H08c çoğunluk doğru, H10 çoğunluk yanlış",
+      "val_indeks": 818,
+      "image_id": "ISIC_0028085",
+      "lesion_id": "HAM_0000065",
+      "gercek_sinif": "bcc",
+      "S_N": "S",
+      "karo": "figures/tiles/nitel/val_0818.png",
+      "g_kazanan_eksi_kaybeden": 0.5572,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "bcc",
+          "dogru_seed_sayisi": 4,
+          "ort_olasilik_gercek": 0.5201,
+          "ort_olasilik_cogunluk": 0.5201,
+          "seed_tahminleri": [
+            "bcc",
+            "bcc",
+            "bcc",
+            "bkl",
+            "bcc"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "bcc",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.9793,
+          "ort_olasilik_cogunluk": 0.9793,
+          "seed_tahminleri": [
+            "bcc",
+            "bcc",
+            "bcc",
+            "bcc",
+            "bcc"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "bcc",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.9244,
+          "ort_olasilik_cogunluk": 0.9244,
+          "seed_tahminleri": [
+            "bcc",
+            "bcc",
+            "bcc",
+            "bcc",
+            "bcc"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 2,
+          "ort_olasilik_gercek": 0.3672,
+          "ort_olasilik_cogunluk": 0.5993,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "bcc",
+            "nv",
+            "bcc"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "S-a",
+      "kategori_aciklama": "S: H08c çoğunluk doğru, H10 çoğunluk yanlış",
+      "val_indeks": 514,
+      "image_id": "ISIC_0030134",
+      "lesion_id": "HAM_0001203",
+      "gercek_sinif": "mel",
+      "S_N": "S",
+      "karo": "figures/tiles/nitel/val_0514.png",
+      "g_kazanan_eksi_kaybeden": 0.4735,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.1197,
+          "ort_olasilik_cogunluk": 0.757,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "nv",
+            "nv"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.1209,
+          "ort_olasilik_cogunluk": 0.8744,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "nv",
+            "nv"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "mel",
+          "dogru_seed_sayisi": 4,
+          "ort_olasilik_gercek": 0.5097,
+          "ort_olasilik_cogunluk": 0.5097,
+          "seed_tahminleri": [
+            "mel",
+            "mel",
+            "nv",
+            "mel",
+            "mel"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0362,
+          "ort_olasilik_cogunluk": 0.9538,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "nv",
+            "nv"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "S-b",
+      "kategori_aciklama": "S: H10 çoğunluk doğru, H08c çoğunluk yanlış",
+      "val_indeks": 484,
+      "image_id": "ISIC_0028730",
+      "lesion_id": "HAM_0005282",
+      "gercek_sinif": "akiec",
+      "S_N": "S",
+      "karo": "figures/tiles/nitel/val_0484.png",
+      "g_kazanan_eksi_kaybeden": 0.6592,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 1,
+          "ort_olasilik_gercek": 0.1596,
+          "ort_olasilik_cogunluk": 0.3547,
+          "seed_tahminleri": [
+            "bkl",
+            "akiec",
+            "bkl",
+            "bkl",
+            "bcc"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "bcc",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.1107,
+          "ort_olasilik_cogunluk": 0.5481,
+          "seed_tahminleri": [
+            "bcc",
+            "bcc",
+            "bcc",
+            "bcc",
+            "bcc"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "df",
+          "dogru_seed_sayisi": 2,
+          "ort_olasilik_gercek": 0.2986,
+          "ort_olasilik_cogunluk": 0.5532,
+          "seed_tahminleri": [
+            "df",
+            "akiec",
+            "akiec",
+            "df",
+            "df"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "akiec",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.9578,
+          "ort_olasilik_cogunluk": 0.9578,
+          "seed_tahminleri": [
+            "akiec",
+            "akiec",
+            "akiec",
+            "akiec",
+            "akiec"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "S-b",
+      "kategori_aciklama": "S: H10 çoğunluk doğru, H08c çoğunluk yanlış",
+      "val_indeks": 802,
+      "image_id": "ISIC_0033929",
+      "lesion_id": "HAM_0001509",
+      "gercek_sinif": "nv",
+      "S_N": "S",
+      "karo": "figures/tiles/nitel/val_0802.png",
+      "g_kazanan_eksi_kaybeden": 0.6658,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 4,
+          "ort_olasilik_gercek": 0.5158,
+          "ort_olasilik_cogunluk": 0.5158,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "nv",
+            "mel"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 2,
+          "ort_olasilik_gercek": 0.5008,
+          "ort_olasilik_cogunluk": 0.5008,
+          "seed_tahminleri": [
+            "mel",
+            "nv",
+            "nv",
+            "mel",
+            "bkl"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "mel",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0569,
+          "ort_olasilik_cogunluk": 0.9389,
+          "seed_tahminleri": [
+            "mel",
+            "mel",
+            "mel",
+            "mel",
+            "mel"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 3,
+          "ort_olasilik_gercek": 0.7227,
+          "ort_olasilik_cogunluk": 0.7227,
+          "seed_tahminleri": [
+            "mel",
+            "nv",
+            "nv",
+            "mel",
+            "nv"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "DV-a",
+      "kategori_aciklama": "df/vasc: H08c çoğunluk doğru, H02c çoğunluk yanlış",
+      "val_indeks": 159,
+      "image_id": "ISIC_0031123",
+      "lesion_id": "HAM_0003487",
+      "gercek_sinif": "df",
+      "S_N": "N",
+      "karo": "figures/tiles/nitel/val_0159.png",
+      "g_kazanan_eksi_kaybeden": 0.6437,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0345,
+          "ort_olasilik_cogunluk": 0.3885,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "bcc",
+            "nv",
+            "nv"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 1,
+          "ort_olasilik_gercek": 0.2003,
+          "ort_olasilik_cogunluk": 0.7887,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "df",
+            "nv"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "df",
+          "dogru_seed_sayisi": 4,
+          "ort_olasilik_gercek": 0.844,
+          "ort_olasilik_cogunluk": 0.844,
+          "seed_tahminleri": [
+            "df",
+            "df",
+            "nv",
+            "df",
+            "df"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "df",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.8885,
+          "ort_olasilik_cogunluk": 0.8885,
+          "seed_tahminleri": [
+            "df",
+            "df",
+            "df",
+            "df",
+            "df"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "DV-a",
+      "kategori_aciklama": "df/vasc: H08c çoğunluk doğru, H02c çoğunluk yanlış",
+      "val_indeks": 418,
+      "image_id": "ISIC_0026467",
+      "lesion_id": "HAM_0001537",
+      "gercek_sinif": "vasc",
+      "S_N": "N",
+      "karo": "figures/tiles/nitel/val_0418.png",
+      "g_kazanan_eksi_kaybeden": 0.5641,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "vasc",
+          "dogru_seed_sayisi": 3,
+          "ort_olasilik_gercek": 0.5786,
+          "ort_olasilik_cogunluk": 0.5786,
+          "seed_tahminleri": [
+            "vasc",
+            "vasc",
+            "vasc",
+            "nv",
+            "nv"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0748,
+          "ort_olasilik_cogunluk": 0.919,
+          "seed_tahminleri": [
+            "nv",
+            "nv",
+            "nv",
+            "nv",
+            "nv"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "vasc",
+          "dogru_seed_sayisi": 3,
+          "ort_olasilik_gercek": 0.6389,
+          "ort_olasilik_cogunluk": 0.6389,
+          "seed_tahminleri": [
+            "vasc",
+            "vasc",
+            "nv",
+            "vasc",
+            "nv"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "vasc",
+          "dogru_seed_sayisi": 5,
+          "ort_olasilik_gercek": 0.933,
+          "ort_olasilik_cogunluk": 0.933,
+          "seed_tahminleri": [
+            "vasc",
+            "vasc",
+            "vasc",
+            "vasc",
+            "vasc"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "Z",
+      "kategori_aciklama": "ortak zor çekirdek: dört kol 5 seed'de de yanlış",
+      "val_indeks": 522,
+      "image_id": "ISIC_0025154",
+      "lesion_id": "HAM_0001177",
+      "gercek_sinif": "df",
+      "S_N": "N",
+      "karo": "figures/tiles/nitel/val_0522.png",
+      "g_kazanan_eksi_kaybeden": null,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "bcc",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0708,
+          "ort_olasilik_cogunluk": 0.3883,
+          "seed_tahminleri": [
+            "bcc",
+            "bcc",
+            "bcc",
+            "bkl",
+            "bcc"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "akiec",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.1005,
+          "ort_olasilik_cogunluk": 0.647,
+          "seed_tahminleri": [
+            "akiec",
+            "akiec",
+            "bcc",
+            "akiec",
+            "akiec"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "bcc",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0363,
+          "ort_olasilik_cogunluk": 0.5249,
+          "seed_tahminleri": [
+            "akiec",
+            "bcc",
+            "bcc",
+            "akiec",
+            "bcc"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "bcc",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0002,
+          "ort_olasilik_cogunluk": 0.964,
+          "seed_tahminleri": [
+            "bcc",
+            "bcc",
+            "bcc",
+            "bcc",
+            "bcc"
+          ]
+        }
+      }
+    },
+    {
+      "kategori": "Z",
+      "kategori_aciklama": "ortak zor çekirdek: dört kol 5 seed'de de yanlış",
+      "val_indeks": 806,
+      "image_id": "ISIC_0027044",
+      "lesion_id": "HAM_0002871",
+      "gercek_sinif": "df",
+      "S_N": "N",
+      "karo": "figures/tiles/nitel/val_0806.png",
+      "g_kazanan_eksi_kaybeden": null,
+      "kollar": {
+        "B": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.1164,
+          "ort_olasilik_cogunluk": 0.4771,
+          "seed_tahminleri": [
+            "bkl",
+            "bkl",
+            "nv",
+            "nv",
+            "nv"
+          ]
+        },
+        "H02c": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0947,
+          "ort_olasilik_cogunluk": 0.659,
+          "seed_tahminleri": [
+            "bkl",
+            "bkl",
+            "bkl",
+            "bkl",
+            "nv"
+          ]
+        },
+        "H08c": {
+          "cogunluk_tahmin": "bkl",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0219,
+          "ort_olasilik_cogunluk": 0.5544,
+          "seed_tahminleri": [
+            "bkl",
+            "bkl",
+            "bkl",
+            "nv",
+            "bkl"
+          ]
+        },
+        "H10": {
+          "cogunluk_tahmin": "nv",
+          "dogru_seed_sayisi": 0,
+          "ort_olasilik_gercek": 0.0017,
+          "ort_olasilik_cogunluk": 0.4593,
+          "seed_tahminleri": [
+            "nv",
+            "bkl",
+            "bkl",
+            "nv",
+            "nv"
+          ]
+        }
+      }
+    }
+  ]
+}

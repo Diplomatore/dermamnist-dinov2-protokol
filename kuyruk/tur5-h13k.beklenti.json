@@ -1,0 +1,67 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-5; kart hipotezler/H13.md mtime 2026-10-11 17:52:31, SIRALAMA-TUR5.md 17:51:12). Hiçbir h13_*/h13x_*/h13k_*/rt_h13_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 18:03:23); koşum sonrası DEĞİŞTİRİLMEZ. İkinci satır (karar vermez): h13k_h13_logitayar = logit_ayari.py --ebeveyn-varyant h13_h02c_h10_lpo (aynı katlar.json SHA256 0db03edb…e0193, τ 0:1:0,1, kısıt = topluluğun kendi ham ACC'si − 0,010). Kaynak: H13 ikincil (8); H10 + H04 çıpası (OOF dengeli 0,8140 / ACC 0,8855; tahlil-tur4 §6).",
+ "_notlar": [
+  "Aralıklar mekanik alarmdır (dengeli üst 0,90: H10 + H04 0,8140 + pay; alt 0,70 bozuk alarmı)."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — h13k_h13_logitayar s0–4 (CPU)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 5
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "kaynak seed'leri farklı"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.85,
+     "ust": 0.93,
+     "kaynak": "H13 a3 bandı; OOF ACC kısıtı kaynak − 0,010 (H10 + H04 OOF ACC 0,8855)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tau0_ozdeslik_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H04 öldürme (d): τ = 0 özdeşliği"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "pi_sira_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H04 öldürme (d)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kat_sapma",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "H04 §τ protokolü 1"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_dengeli_acc",
+     "alt": 0.7,
+     "ust": 0.9,
+     "kaynak": "mekanik alarm: H10 + H04 OOF dengeli 0,8140 (tahlil-tur4 §6) ± pay"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    }
+   ]
+  }
+ }
+}

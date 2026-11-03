@@ -1,0 +1,44 @@
+{
+  "logit_ayari": {
+    "kural": "argmax_c [log p − τ·log π_train]",
+    "kaynak": "Menon vd. 2021 post-hoc logit adjustment",
+    "ebeveyn_varyant": "h09_r18in_ft224_renk02",
+    "ebeveyn_dosya": "tahmin_val.npy",
+    "ebeveyn_kosumlar": {
+      "0": "20261011-070422_h09_r18in_ft224_renk02_s0",
+      "1": "20261011-072946_h09_r18in_ft224_renk02_s1",
+      "2": "20261011-075502_h09_r18in_ft224_renk02_s2",
+      "3": "20261011-082014_h09_r18in_ft224_renk02_s3",
+      "4": "20261011-084527_h09_r18in_ft224_renk02_s4"
+    },
+    "tau_izgara": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "kisit": 0.01,
+    "kat": "StratifiedGroupKFold(lesion_id)",
+    "kat_rng": 20261011,
+    "katlar_sha256": "0db03edb377f37e5d5b64281ea9ef9e1c5c13c5441d528166c117b4d5e0e0193",
+    "pi_train": [
+      0.03253888968174683,
+      0.051234479805908374,
+      0.10974739546168118,
+      0.01141715427429713,
+      0.11117453974596832,
+      0.6697588126159555,
+      0.0141287284144427
+    ],
+    "esitlik_tol": 1e-09,
+    "kisit_tol": 1e-12,
+    "alt_bolme": 20
+  }
+}

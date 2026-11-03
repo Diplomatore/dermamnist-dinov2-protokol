@@ -1,0 +1,61 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-2 H04 yan kolları, KARAR VERMEZ; H04 ikincil 10–11). Hiçbir h04x_* koşumundan ÖNCE yazıldı (2026-10-11 01:14). Kaynaklar: hipotezler/H04.md ikincil (10) aucsecim kolu, (11) M3 rakip satırı (kısıt B − 0,010); sonuclar/tahlil-tur1.md §1b (H02 aucsecim ACC 0,8588; B 0,7396).",
+ "_notlar": [
+  "Aynı kod yolu H04 dumanında sınandı; yan kolların ayrı dumanı yok. Kurallar mekaniktir; karar vermez.",
+  "Kısıt her kolun kendi ebeveyn ACC'sine göre −0,010; üst = ebeveyn + 0,020 (literatur-cipa §4c görülmemiş ACC kazancı)."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — h04x_h02aucsecim_logitayar (H02 tahmin_val_aucsecim.npy) ve h04x_baseline_logitayar (baseline tahmin_val.npy) × seed 0–4",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 10
+    },
+    {
+     "tur": "aralik",
+     "varyant": "h04x_h02aucsecim_logitayar",
+     "alt": 0.8488,
+     "ust": 0.8788,
+     "kaynak": "H04 ikincil (10): H02 aucsecim ACC 0,8588 (tahlil §1b) − 0,010 / + 0,020"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "h04x_baseline_logitayar",
+     "alt": 0.7296,
+     "ust": 0.7596,
+     "kaynak": "H04 ikincil (11) / SIRALAMA M3: kısıt B − 0,010 (B 0,7396); üst B + 0,020"
+    },
+    {
+     "tur": "kollar_farkli"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tau0_ozdeslik_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H04 öldürme (d) (aucsecim kolunda referans val_acc_aucsecim / val_dengeli_acc_aucsecim)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "pi_sira_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H04 (d)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kat_sapma",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "H04 §τ protokolü 1"
+    }
+   ]
+  }
+ }
+}

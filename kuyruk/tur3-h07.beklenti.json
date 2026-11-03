@@ -1,0 +1,171 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-3; kartlar H07/H08/H09 mtime 2026-10-11 04:02/04:03/04:04, SIRALAMA 04:08). Hiçbir h07_*/h08_*/h09_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 04:22); koşum sonrası DEĞİŞTİRİLMEZ. Kaynak: hipotezler/H07.md (öldürme c/d, uygulama notu beklentileri, görülmemiş), H02 iç çıpası (val ACC 0,8672 ± 0,0028; seed 0,8634–0,8704; ECE 0,0745; AUC 0,9697).",
+ "_notlar": [
+  "Eğitim yok → ön-uçuş (a2) yok (kart Bütçe, H04 gibi). a1 duman h07_h02_tta8_duman (s0), a3 h07_h02_tta8 (s0–4). Her satır foreground kosum.py (< 5 dk).",
+  "yon_vs/tavan: referans H02 başka kuyrukta (tur1-devam) → kullanılamaz. Yerine seed başına mutlak aralık [0,80; 0,90] (kart: 0,90 = H02 tavanı, 0,80 = bozuk görünüm alarmı) ve özdeşlik/devrede kuralları. Görülmemiş kararı (Δ > +3,0 ya da ort. > 0,90) 5-seed ortalamasıyla tahlilcide (tahlil-tur2 §3.2 önerisi).",
+  "Kapı mekanik arıza alarmıdır; karar öldürme kuralıyla (bootstrap bağlayıcı) tahlilcide."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN — h07_h02_tta8_duman s0 (tam val, 8 görünüm)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_kimlik_maks_fark",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "H07 öldürme (c): kimlik görünümü ↔ ebeveyn tahmin_val.npy max|Δp| ≤ 1e-4"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_kimlik_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H07 öldürme (c): kimlik val_acc ebeveyninkiyle tam eşit"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "gorunum_arasi_maks_fark",
+     "alt": 0.001,
+     "ust": 1.0,
+     "kaynak": "H07 öldürme (d) + uygulama notu: görünümler arası max|Δp| > 0 (dönüşüm devrede)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 11180103,
+     "ust": 11180103,
+     "kaynak": "H02/H07/H08/H09 kartları: 11.180.103 (değişmez)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "gorunum_sayisi",
+     "alt": 8,
+     "ust": 8,
+     "kaynak": "H07 Değişen tek şey: D4 = 8 görünüm"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_ece",
+     "alt": 0.01,
+     "ust": 1.0,
+     "kaynak": "H07 görülmemiş: ham ECE < 0,010 (15 kutulu ECE gürültü tabanı altı) → İNCELE"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "egitim_sure_sn",
+     "alt": 1,
+     "ust": 300,
+     "kaynak": "H07 bütçe: koşum başına çıkarım ≈ 40–60 s (8.024 ileri geçiş); satır < 5 dk (K1)"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 1
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.8,
+     "ust": 0.9,
+     "kaynak": "H07 uygulama notu a1: üst 0,90 = H02 tavanı, alt 0,80 (Δ ≈ −6,7) bozuk görünüm alarmı"
+    }
+   ]
+  },
+  "3": {
+   "aciklama": "TAM — h07_h02_tta8 s0–4",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_kimlik_maks_fark",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "H07 öldürme (c): kimlik görünümü ↔ ebeveyn tahmin_val.npy max|Δp| ≤ 1e-4"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_kimlik_acc_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H07 öldürme (c): kimlik val_acc ebeveyninkiyle tam eşit"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "gorunum_arasi_maks_fark",
+     "alt": 0.001,
+     "ust": 1.0,
+     "kaynak": "H07 öldürme (d) + uygulama notu: görünümler arası max|Δp| > 0 (dönüşüm devrede)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "param_sayisi",
+     "alt": 11180103,
+     "ust": 11180103,
+     "kaynak": "H02/H07/H08/H09 kartları: 11.180.103 (değişmez)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "gorunum_sayisi",
+     "alt": 8,
+     "ust": 8,
+     "kaynak": "H07 Değişen tek şey: D4 = 8 görünüm"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_ece",
+     "alt": 0.01,
+     "ust": 1.0,
+     "kaynak": "H07 görülmemiş: ham ECE < 0,010 (15 kutulu ECE gürültü tabanı altı) → İNCELE"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "egitim_sure_sn",
+     "alt": 1,
+     "ust": 300,
+     "kaynak": "H07 bütçe: koşum başına çıkarım ≈ 40–60 s (8.024 ileri geçiş); satır < 5 dk (K1)"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 5
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "H07 a3: ebeveyn H02 seed'leri farklı ağırlıklar"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.8,
+     "ust": 0.9,
+     "kaynak": "H07 uygulama notu a3"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_auc",
+     "alt": 0.95,
+     "ust": 0.99,
+     "kaynak": "H07 uygulama notu a3 (görülmemiş val_auc > 0,99)"
+    }
+   ]
+  }
+ }
+}

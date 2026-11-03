@@ -1,0 +1,67 @@
+{
+ "_aciklama": "ÖN-KAYIT (Tur-3; kartlar H07/H08/H09 mtime 2026-10-11 04:02/04:03/04:04, SIRALAMA 04:08). Hiçbir h07_*/h08_*/h09_* koşumundan ÖNCE yazıldı (deney-yürütücü, 2026-10-11 04:22); koşum sonrası DEĞİŞTİRİLMEZ. İkinci satır (karar vermez): h09k_h09_logitayar = logit_ayari.py --ebeveyn-varyant h09_r18in_ft224_renk02 (aynı katlar.json SHA256 0db03edb…e0193, τ 0:1:0,1, kısıt = varyantın kendi ham ACC'si − 0,010). Kaynak: SIRALAMA Tur-3 ortak ön-kayıtlar; H09 ana metrik/ikinciller; H04 a3 kapısı (tur2-h04).",
+ "_notlar": [
+  "Aralıklar mekanik alarmdır. Dengeli üst sınır seed başına geniş tutuldu (H04 a3'te s3 0,8026 görüldü; tahlil-tur2 §3.2: görülmemiş ortalama birimindedir)."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "3": {
+   "aciklama": "TAM — h09k_h09_logitayar s0–4 (CPU)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 5
+    },
+    {
+     "tur": "farkli_seedler_farkli",
+     "kaynak": "kaynak seed'leri farklı"
+    },
+    {
+     "tur": "aralik",
+     "alt": 0.8,
+     "ust": 0.9,
+     "kaynak": "H09 beklenti kapısı bandı (0,80 bozuk alarmı, 0,90 H02 tavanı); OOF ACC kısıtı kaynak − 0,010"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tau0_ozdeslik_fark",
+     "alt": 0.0,
+     "ust": 0.0,
+     "kaynak": "H04 öldürme (d): τ = 0 özdeşliği"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "pi_sira_ok",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H04 öldürme (d)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kat_sapma",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "H04 §τ protokolü 1"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_dengeli_acc",
+     "alt": 0.6,
+     "ust": 0.85,
+     "kaynak": "mekanik alarm: H04 a3 seed aralığı 0,71–0,80 (tur2_cpu_olcum) + pay"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    }
+   ]
+  }
+ }
+}
