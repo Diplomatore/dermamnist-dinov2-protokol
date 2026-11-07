@@ -1,0 +1,24 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: E1-dogrulama, E1-ctest-acilis, E1-kontrol-durum, E1-H14-acc, E1-K1-h14-h10-acc, E1-K2-h14-h08-acc, E1-BET-h14-h02-acc, E1-H14-dengeli_acc, E1-K1-h14-h10-dengeli_acc, E1-K2-h14-h08-dengeli_acc, E1-BET-h14-h02-dengeli_acc, E1-H14-dengeli_acc_5sinif, E1-K1-h14-h10-dengeli_acc_5sinif, E1-K2-h14-h08-dengeli_acc_5sinif, E1-BET-h14-h02-dengeli_acc_5sinif, E1-H14-duyarlilik_mel, E1-K1-h14-h10-duyarlilik_mel, E1-K2-h14-h08-duyarlilik_mel, E1-BET-h14-h02-duyarlilik_mel, E1-K1-h14-h10-t_acc, E1-K2-h14-h08-t_acc, E1-BET-h14-h02-t_acc, E1-K1-h14-h10-t_dengeli, E1-K2-h14-h08-t_dengeli, E1-BET-h14-h02-t_dengeli
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{E1: H14 (H10 + eğitimde D4), lezyon-ayrık C1 C-test, 5 seed. H14 değerleri ve arşiv kollarına eşleştirilmiş farklar.}\label{tab:e1}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+Metrik & \begin{tabular}[c]{@{}c@{}}H14\\\relax ort.\,$\pm$\,std\\\relax [oran]\end{tabular} & \begin{tabular}[c]{@{}c@{}}H14 $-$ H10\\\relax (K1)\\\relax $\Delta$ [puan], GA\end{tabular} & \begin{tabular}[c]{@{}c@{}}H14 $-$ H08c\\\relax (K2)\\\relax $\Delta$ [puan], GA\end{tabular} & \begin{tabular}[c]{@{}c@{}}H14 $-$ H02c\\\relax (betimsel)\\\relax $\Delta$ [puan], GA\end{tabular} \\
+\midrule
+ACC & 0,9198\,$\pm$\,0,0039 & \begin{tabular}[c]{@{}c@{}}+0,37\\\relax [\textminus{}0,20; +0,98]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}0,59\\\relax [\textminus{}1,68; +0,51]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+1,50\\\relax [+0,34; +2,69]\end{tabular} \\
+\addlinespace
+Dengeli ACC & 0,8035\,$\pm$\,0,0208 & \begin{tabular}[c]{@{}c@{}}+4,14\\\relax [+0,92; +7,51]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+0,73\\\relax [\textminus{}3,79; +6,33]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+9,88\\\relax [+5,17; +14,71]\end{tabular} \\
+\addlinespace
+Dengeli-5 ACC & 0,7535\,$\pm$\,0,0230 & \begin{tabular}[c]{@{}c@{}}+1,09\\\relax [\textminus{}0,90; +3,07]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}2,22\\\relax [\textminus{}6,40; +2,00]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+3,07\\\relax [\textminus{}1,17; +7,14]\end{tabular} \\
+\addlinespace
+Mel duyarlılığı & 0,6457\,$\pm$\,0,0871 & \begin{tabular}[c]{@{}c@{}}\textminus{}2,29\\\relax [\textminus{}6,47; +2,19]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}1,71\\\relax [\textminus{}10,36; +6,08]\end{tabular} & \begin{tabular}[c]{@{}c@{}}+4,86\\\relax [\textminus{}3,82; +13,44]\end{tabular} \\
+\midrule
+$t$ testi $p$: ACC & -- & 0,154 & 0,155 & 0,036 \\
+$t$ testi $p$: dengeli & -- & 0,066 & 0,595 & 0,004 \\
+\botrule
+\end{tabular*}
+\par\smallskip\raggedright $\Delta$ = H14 $-$ kol; GA: görüntü-bootstrap \%95 yüzdelik aralığı (B = 2.000, rng 0, iki kola aynı ağırlıklar); mel n = 70. $t$: seed-eşli, iki yönlü, n = 5, yalnız bilgi. Test sonrası keşifsel, düzeltmesiz; K5 Holm ailelerine girmez; vurgu yok.
+\end{table}

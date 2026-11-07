@@ -1,0 +1,150 @@
+{
+  "h14": {
+    "onbellek_gorunum": 8,
+    "onbellek_d4": "/content/is/data/oznitelik_c1/dinov2_vitb14_r224_blok8_tok_d4g{1..7}_train.npy (+ g0 = _train.npy; fp16)",
+    "augment": "D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003",
+    "ozdeslik_ref": null,
+    "kontrol_ref_run": null,
+    "kontrol_durum": null,
+    "disk_min_gb": 40.0
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "46e2c9eac9ee",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  },
+  "veri": {
+    "npz": "dermamnist_c_resmipiksel_224.npz",
+    "kok": "/content/is/data",
+    "md5": "3e07c0de4b4cf307ba8145ec6db0f964",
+    "sha256": "b9b2db5626be2675647c89b4bd3b1b5d6fd93f5b9404fbb9cdf914aa4c8bbc0d",
+    "bayt": 1507641200,
+    "veri": "c1",
+    "md5_resmi": "3e07c0de4b4cf307ba8145ec6db0f964",
+    "icerik_sha256": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba",
+    "beklenen": "k5_c_bolme_beklenen.json"
+  },
+  "model": {
+    "ad": "vit_base_patch14_dinov2.lvd142m",
+    "kisa": "dinov2_vitb14",
+    "img_size": 224,
+    "agirlik": {
+      "hf_hub_id": "timm/vit_base_patch14_dinov2.lvd142m",
+      "dosya": "model.safetensors",
+      "sha256": "55cbb5d887b336d430e649c277b85a1429e724871f9d02ac16203235886d8c7b",
+      "bayt": 346334872,
+      "hf_revizyon": "4685c99dabffe5affac90bd99dbffd25801ae58d"
+    },
+    "param_sayisi": 85730311,
+    "param_egitilen": 28364551,
+    "bas": "Linear(768,7) CLS (son norm sonrası)",
+    "timm": "1.0.30"
+  },
+  "protokol": {
+    "mod": "kismi",
+    "son_k": 4,
+    "donuk_blok": 8,
+    "onbellek": "/content/is/data/oznitelik_c1/dinov2_vitb14_r224_blok8_tok_{train,val}.npy (fp16)",
+    "optimizer": "AdamW",
+    "lr_bas": 0.001,
+    "lr_govde": 1e-05,
+    "katman_azalma": 1.0,
+    "weight_decay": 0.01,
+    "wd_muaf": "1-B parametreler + no_weight_decay()",
+    "takvim": "adım başına kosinüs (T=1935), ısınma 0 adım",
+    "bs_etkin": 64,
+    "mikro_bs": 32,
+    "grad_ckpt": false,
+    "fused_attn": 1,
+    "drop_path": 0.0,
+    "epoch": 15,
+    "kayip": "CrossEntropy (Σ / etkin batch)",
+    "augment": "D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003",
+    "normalizasyon": "ImageNet (GPU'da)",
+    "hassasiyet": "fp32 (TF32 kapalı; önbellek fp16 saklama)",
+    "secim": "val ACC kesin artış (eşitlikte val AUC); ek: val AUC seçimi (rakip kuralı)",
+    "seed": 2,
+    "cudnn_deterministic": true,
+    "alt_kume": null,
+    "azami_adim": null,
+    "param_gruplari": [
+      {
+        "ad": "k9_wd0",
+        "lr": 0.0,
+        "wd": 0.0,
+        "n": 11520
+      },
+      {
+        "ad": "k9_wd0.01",
+        "lr": 0.0,
+        "wd": 0.01,
+        "n": 7077888
+      },
+      {
+        "ad": "k10_wd0",
+        "lr": 0.0,
+        "wd": 0.0,
+        "n": 11520
+      },
+      {
+        "ad": "k10_wd0.01",
+        "lr": 0.0,
+        "wd": 0.01,
+        "n": 7077888
+      },
+      {
+        "ad": "k11_wd0",
+        "lr": 0.0,
+        "wd": 0.0,
+        "n": 11520
+      },
+      {
+        "ad": "k11_wd0.01",
+        "lr": 0.0,
+        "wd": 0.01,
+        "n": 7077888
+      },
+      {
+        "ad": "k12_wd0",
+        "lr": 0.0,
+        "wd": 0.0,
+        "n": 11520
+      },
+      {
+        "ad": "k12_wd0.01",
+        "lr": 0.0,
+        "wd": 0.01,
+        "n": 7077888
+      },
+      {
+        "ad": "k13_wd0",
+        "lr": 0.0,
+        "wd": 0.0,
+        "n": 1536
+      },
+      {
+        "ad": "bas_wd0.01",
+        "lr": 0.0,
+        "wd": 0.01,
+        "n": 5376
+      },
+      {
+        "ad": "bas_wd0",
+        "lr": 0.0,
+        "wd": 0.0,
+        "n": 7
+      }
+    ]
+  }
+}

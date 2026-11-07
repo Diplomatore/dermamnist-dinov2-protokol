@@ -1,0 +1,44 @@
+{
+ "zaman": "2026-11-07T17:45:53",
+ "kural": "E1 bütçe (H14 kural h: E1 birleşik L4-sa > 5,0 → DUR)",
+ "kuyruk_onek": "e1-",
+ "baslangic_sa_yerel": 0.0,
+ "colab_l4_sa": 1.572,
+ "colab_damgali_kosum": 12,
+ "colab_kosan_kosum": 0,
+ "colab_yetim_kosum": 0,
+ "dokum": {
+  "toplam_sa": 1.571611,
+  "damgali_n": 12,
+  "damgali_sa": 1.571611,
+  "kosan_n": 0,
+  "kosan_sa": 0.0,
+  "yetim_n": 0,
+  "yetim_sa": 0.0,
+  "kuyruk_sa": {
+   "e1-h14": 1.571611
+  }
+ },
+ "tanim": "tüm eşzamanlı Colab oturumları: damgalı sure_sn + damgasız/yetim .heartbeat gecen_sn",
+ "sayac": 1.572,
+ "esik": 5.0,
+ "karar": "DEVAM",
+ "komut": [
+  "python",
+  "colab/fp32_kos.py",
+  "varyantlar/k5/k5_cikarim.py",
+  "--tur",
+  "vit_kismi",
+  "--kaynak-varyant",
+  "h14_c1",
+  "--kaynak-kuyruk",
+  "e1-h14",
+  "--seed",
+  "2",
+  "--veri",
+  "c1",
+  "--test-kilidi-acik",
+  "--out",
+  "/content/is/runs/20261107-174551_h14_c1-test_s2/metrics.json"
+ ]
+}

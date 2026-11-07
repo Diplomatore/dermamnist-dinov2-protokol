@@ -1186,6 +1186,8 @@ def sapma_kayitlari():
         if not (p / "config.json").exists():
             continue
         cf = json.loads((p / "config.json").read_text(encoding="utf-8"))
+        if str(cf.get("kuyruk", "")).startswith("e1-"):
+            continue  # E1/H14 (2026-11-07) ayrı deney; K5 C1 kuyruk kaydı değişmesin (E1-* kayıtlarına bakınız)
         if int(cf.get("asama", 0)) == 3:
             kuyruk_kol.setdefault(cf["varyant"], set()).add(cf["kuyruk"])
     kuyruk_kol = {k: sorted(v) for k, v in sorted(kuyruk_kol.items())}
@@ -1240,6 +1242,237 @@ def sapma_kayitlari():
          VS_C1, "beklemede", "durum", d, f"satır {i}", KIP_SAP, zaman="2026-11-03",
          kaynaklar=[{"dosya": d, "satir": i}, {"dosya": d2, "satir": i2}],
          not_="sonuç geldiğinde bu kayıt ve tab:sapma satırı güncellenir")
+
+
+# ---------------------------------------------------------------- Revizyon E1 (2026-11-07): H14 = H10 + eğitim-zamanı D4, C1
+KIP_E1 = ("test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir "
+          "kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm "
+          "ailelerine girmez; hiçbir ön-kayıtlı karar değişmez")
+ETIKET_E1 = ["test sonrası keşifsel, düzeltmesiz (E1/H14)"]
+E1_ORTAM = "evidence/e1/ortam-colab-E1-20261107-155457-57ae.json"  # Drive yz/3-1/env kopyası (sha256 kayıtta)
+
+
+def e1_kayitlari():
+    rel = "sonuclar/e1_h14_sonuc.json"
+    if not (DW / rel).exists():
+        print("UYARI: e1_h14_sonuc.json yok — E1-* kayıtları atlandı")
+        return
+    d = jload(rel)
+    # --- bütünlük: .sha256 eşleşmeli, kuru özdeşlik geçmiş olmalı, sonuç yeniden yazılmamış olmalı
+    beyan = (DW / (rel + ".sha256")).read_text(encoding="utf-8").split()[0]
+    if beyan != sha(DW / rel):
+        raise SystemExit("E1: e1_h14_sonuc.json SHA256 .sha256 beyanıyla uyuşmuyor")
+    if d["kuru"] or not d["kuru_ozdeslik"]["gecti"] or d["yeniden_neden"] is not None:
+        raise SystemExit("E1: kuru/özdeşlik/yeniden durumu beklenen değil")
+    if d["kart_sha256"] != sha(DW / "hipotezler/H14.md") or d["betik_sha256"] != sha(DW / "scripts/e1_h14_analiz.py"):
+        raise SystemExit("E1: kart/betik SHA256 sonuç dosyasındakiyle uyuşmuyor")
+    ix = {r["id"]: r for r in KAYIT}
+
+    # (1) kuru koşu özdeşliği (dondurulmuş k5_c1 satırlarının yeniden üretimi)
+    oz = d["kuru_ozdeslik"]
+    maks = max([v["maks_fark_puan"] for k, v in oz["satirlar"].items() if "maks_fark_puan" in v] +
+               [abs(v["fark"]) for k, v in oz["satirlar"].items() if "fark" in v])
+    ekle("E1-dogrulama", "E1 analiz betiğiyle dondurulmuş C1 sonuçlarının yeniden üretimi (karşılaştırılan satır)",
+         "e1_h14_analiz.py --kuru (k5_test.py işlevleri içe aktarılır)", VS_C1, len(oz["satirlar"]), "satır", rel,
+         "kuru_ozdeslik", KIP_E1, etiket=ETIKET_E1, maks_fark_puan=maks, tolerans_puan=oz["tolerans_puan"],
+         gecti=oz["gecti"], satirlar=sorted(oz["satirlar"]), karsi_dosya="sonuclar/k5_c1_sonuc.json",
+         betik_sha256=d["betik_sha256"], kart_sha256=d["kart_sha256"], k5_test_sha256=d["k5_test_sha256"],
+         analiz_tarihi=d["tarih"], yontem_ayrinti=d["yontem"])
+
+    # (2) C-test açılışı: H14 için seed başına bir kez; kural (i) veri_c = 1
+    test_kos = sorted(p.name for p in RC.glob("*_h14_c1-test_s*"))
+    beyan_kos = sorted(d["kosumlar"]["H14"].values())
+    if test_kos != beyan_kos:
+        raise SystemExit(f"E1: runs_colab h14 C-test koşumları sonuç dosyasıyla uyuşmuyor: {test_kos}")
+    ms = [json.loads((DW / "runs_colab" / k / "metrics.json").read_text(encoding="utf-8")) for k in beyan_kos]
+    if any(m["veri_c"] != 1 or m["test_n"] != 1227 for m in ms):
+        raise SystemExit("E1: kural (i) — veri_c ≠ 1 ya da test_n ≠ 1227")
+    ekle("E1-ctest-acilis", "H14 C-test çıkarım koşumu sayısı (seed başına bir; ikinci açılış yok)", "H14", VS_C1,
+         len(test_kos), "koşum", "runs_colab/*_h14_c1-test_s*/metrics.json", "veri_c, test_n; e1_h14_sonuc.json "
+         "kosumlar.H14, yeniden_neden", KIP_E1, etiket=ETIKET_E1, kosumlar=beyan_kos, n_seed=d["n_seed"],
+         yeniden_neden=d["yeniden_neden"], veri_c=[m["veri_c"] for m in ms],
+         not_="kart kural (i): C1 eğitimli modelin resmî test/val çıkarımı yok (veri_c = 1); yeniden açılış yok")
+
+    # (3) kural (f): kontrol kolu Durum A → K1 karşılaştırıcısı arşiv H10 (H10r gerekmedi)
+    du = d["durum"]
+    a = du["ayrinti"]
+    i_od, s_od = satir_bul("orkestrasyon_durumu.md", "E1 BİTTİ")
+    ekle("E1-kontrol-durum", "kod yolu kontrolü (kart kural f): kontrol kolu (8 görünüm yolu, D4 kapalı) ↔ Ekim "
+         "h10_c1 dumanı", "h14_c1_d4kapali_duman ↔ h10_c1_duman", "C-val ∩ resmî val (n=573)", du["durum"], "durum",
+         rel, "durum", KIP_E1, etiket=ETIKET_E1, k1_karsilastirici=du["k1_karsilastirici"], h10r_gerekli=False,
+         ilk_adim_loss_fark=a["kontrol_ilk_adim_loss_fark"], argmax_oran=a["kontrol_argmax_oran"],
+         p_maks_fark=a["kontrol_p_maks_fark"], val_acc_fark=a["kontrol_val_acc_fark"],
+         surum_fark=a["kontrol_surum_fark"], kontrol_run=a["kontrol_run"],
+         kural_A="|Δ ilk_adim_loss| ≤ 1e-6 ∧ argmax 573/573 ∧ maks |Δp| ≤ 1e-5 (hipotezler/H14.md satır 48)",
+         kaynaklar=[{"dosya": rel, "alan": "durum"}, {"dosya": "orkestrasyon_durumu.md", "satir": i_od}])
+
+    # (4) ortam: koşum config.json'ları (14/14) + Colab oturum ortam kaydı
+    h14_cf = {p.name: json.loads((p / "config.json").read_text(encoding="utf-8"))["donanim"]
+              for p in sorted(RC.glob("*_h14_c1*"))}
+    ekim = json.loads((DW / "runs_colab/20261011-225511_h10_c1_s0/config.json").read_text(encoding="utf-8"))["donanim"]
+    torch_s = sorted({c["torch"] for c in h14_cf.values()})
+    cudnn_s = sorted({c["cudnn"] for c in h14_cf.values()})
+    if len(torch_s) != 1 or len(cudnn_s) != 1:
+        raise SystemExit(f"E1: koşumlar arası sürüm farkı {torch_s} {cudnn_s}")
+    if f"{ekim['cudnn']} → {cudnn_s[0]}" not in a["kontrol_surum_fark"]:
+        raise SystemExit("E1: cuDNN farkı analiz JSON'uyla uyuşmuyor")
+    oy = WS / E1_ORTAM
+    oc = json.loads(oy.read_text(encoding="utf-8"))
+    if oc["torch"] != torch_s[0] or oc["cudnn"] != cudnn_s[0] or oc["oturum"] not in oy.name:
+        raise SystemExit("E1: Colab ortam kaydı koşum config'leriyle uyuşmuyor")
+    ekle("E1-ortam-cudnn", "E1 koşumlarının cuDNN sürümü (Ekim C1 ölçümleri: karsi_ekim)", "H14 (14 koşum)", "—",
+         cudnn_s[0], "sürüm", "runs_colab/*_h14_c1*/config.json", "donanim.cudnn", KIP_E1, etiket=ETIKET_E1,
+         karsi_ekim=ekim["cudnn"], karsi_dosya="runs_colab/20261011-225511_h10_c1_s0/config.json",
+         n_kosum=len(h14_cf), analiz_beyani=a["kontrol_surum_fark"],
+         not_="Kontrol kolu bu farka rağmen Ekim dumanını bit düzeyinde üretti (E1-kontrol-durum).")
+    diger = {k: [ekim[k], h14_cf[next(iter(h14_cf))][k]] for k in ("python", "numpy")
+             if ekim[k] != h14_cf[next(iter(h14_cf))][k]}
+    ekle("E1-ortam-torch", "E1 koşumlarının torch sürümü", "H14 (14 koşum)", "—", torch_s[0], "sürüm",
+         "runs_colab/*_h14_c1*/config.json", "donanim.torch", KIP_E1, etiket=ETIKET_E1, karsi_ekim=ekim["torch"],
+         ekimle_ayni=torch_s[0] == ekim["torch"], timm=sorted({c["timm"] for c in h14_cf.values()}),
+         cuda=sorted({c["cuda"] for c in h14_cf.values()}), diger_farklar_ekim_e1=diger,
+         colab_varsayilan_torch=oc["torch_sabitleme"]["colab_torch"], torch_sabitleme=oc["torch_sabitleme"],
+         ortam_kaydi=WS_REL + E1_ORTAM, ortam_kaydi_sha256=sha(oy),
+         ortam_kaydi_kaynak="<DRIVE_KOK>/3-1/env/ortam-colab-E1-20261107-155457-57ae.json (kopya)",
+         uyari=(f"orkestrasyon_durumu.md satır {i_od} 'torch 2.14.1 — sabitleme hedefi 2.11 tutmadı' der; koşum "
+                f"kayıtları bununla ÇELİŞİR: 2.14.1 Colab varsayılanıdır, sabitleme başarılı oldu (rc 0) ve 14 koşumun "
+                f"hepsi {torch_s[0]} ile koştu. Makalede 'torch 2.14.1' yazılmaz; Ekim'den tek sürüm farkı cuDNN'dir "
+                f"(+ python/numpy yama sürümleri)."))
+
+    # (5) bütçe
+    i_b, s_b = satir_bul("hipotezler/H14.md", "| Bütçe |")
+    if "kart tavanı 5,0 L4-sa" not in s_b or "Tahmin ≈ 1,6 L4-sa" not in s_b:
+        raise SystemExit("E1: H14.md bütçe satırı beklenen ifadeleri taşımıyor")
+    ekle("E1-butce", "E1 birleşik koşum süresi (kart kural h)", "H14", "—", d["notlar"]["butce_E1_L4sa"], "L4-sa", rel,
+         "notlar.butce_E1_L4sa", KIP_E1, etiket=ETIKET_E1, kart_tavani=5.0, kart_tahmini=1.6,
+         kart_kaynak=f"hipotezler/H14.md satır {i_b}", oturum_kaynak=f"orkestrasyon_durumu.md satır {i_od}",
+         not_="H10r koşulmadı (Durum A); C1 sonu birleşik deftere (BUT-toplam) dahil değildir")
+
+    # (6) H14 mutlak C-test değerleri (5 seed ort.; std = analiz betiğinin kol_ozet'i)
+    h = d["kollar"]["H14"]
+    seed_alan = {"acc": "test_acc", "auc": "test_auc", "dengeli_acc": "test_dengeli_acc", "nll": "test_nll"}
+    for m in ["acc", "auc", "dengeli_acc", "dengeli_acc_5sinif", "duyarlilik_mel", "makro_f1", "ece15", "nll"]:
+        ek = {}
+        if m in seed_alan:
+            sd = [x[seed_alan[m]] for x in ms]
+            if abs(st.mean(sd) - h["ort"][m]) > 1e-9:
+                raise SystemExit(f"E1: H14 {m} seed ortalaması metrics.json ile uyuşmuyor")
+            ek = {"seed_degerleri": sd, "seed_kaynak": [f"runs_colab/{k}/metrics.json:{seed_alan[m]}" for k in beyan_kos],
+                  "std_ddof1_metrics": st.stdev(sd)}
+        if m == "acc" and abs(st.stdev([x["test_acc"] for x in ms]) - h["std"]["acc"]) > 1e-9:
+            raise SystemExit("E1: H14 ACC std (ddof=1) uyuşmuyor")
+        ekle(f"E1-H14-{m}", f"{m} (5 seed ort.)", "H14", VS_C1, h["ort"][m], "oran", rel, f"kollar.H14.ort.{m}", KIP_E1,
+             etiket=ETIKET_E1, yon=YON.get(m, "yuksek" if m.startswith("duyarlilik") else None), std=h["std"][m],
+             std_alan=f"kollar.H14.std.{m}", n_seed=d["n_seed"], **ek)
+    ekle("E1-H14-accmaj", "ACC − çoğunluk tabanı", "H14", VS_C1, h["acc_eksi_cogunluk"], "oran", rel,
+         "kollar.H14.acc_eksi_cogunluk", KIP_E1, etiket=ETIKET_E1)
+
+    # (7) kıyaslar (Δ = B − A; A = arşiv kolu, B = H14), görüntü-bootstrap B = 2000, rng 0, düzeltmesiz
+    ARSIV = {"H10": "h10", "H08c": "h08", "H02c": "h02"}
+    REF = {"acc": "C1-{k}-acc", "dengeli_acc": "C1-{k}-dengeli", "dengeli_acc_5sinif": "C1-{k}-dengeli5",
+           "mel_duyarlilik": "C1-REV-{k}-duyarlilik_mel"}
+    KIY = [("K1: H14 − H10", "E1-K1-h14-h10", "H10", "K1 (kart birincil)"),
+           ("K2: H14 − H08c", "E1-K2-h14-h08", "H08c", "K2 (kart birincil)"),
+           ("betimsel: H14 − H02c", "E1-BET-h14-h02", "H02c", "betimsel")]
+    for anahtar, onek, kol, rol in KIY:
+        v = d["kiyaslar"][anahtar]
+        if v["n_seed"] != 5:
+            raise SystemExit(f"E1: {anahtar} n_seed {v['n_seed']}")
+        k = ARSIV[kol]
+        for m in ["acc", "dengeli_acc", "dengeli_acc_5sinif", "mel_duyarlilik"]:
+            x = v[m]
+            rid = REF[m].format(k=k)
+            if abs(ix[rid]["deger"] - x["A"]) > 1e-9:
+                raise SystemExit(f"E1: {anahtar} {m} A ({x['A']}) ↔ {rid} ({ix[rid]['deger']})")
+            if abs(100 * (x["B"] - x["A"]) - x["delta_puan"]) > 1e-9:
+                raise SystemExit(f"E1: {anahtar} {m} Δ = B − A değil")
+            konum = x["etiket"].split(" (")[0]
+            g = x["ga_puan"]
+            beklenen = "H14 üstün" if g[0] > 0 else ("H14 geride" if g[1] < 0 else "ayırt edilemedi")
+            if konum != beklenen:
+                raise SystemExit(f"E1: {anahtar} {m} etiket ↔ GA tutarsız")
+            mid = "duyarlilik_mel" if m == "mel_duyarlilik" else m
+            ekle(f"{onek}-{mid}", f"Δ{mid} (eşleştirilmiş görüntü-bootstrap)", f"H14 − {kol}", VS_C1,
+                 round(x["delta_puan"], 6), "puan", rel, f"kiyaslar.{anahtar}.{m}", KIP_E1,
+                 etiket=ETIKET_E1 + [rol], ga=[round(g[0], 6), round(g[1], 6)], konum=konum, A=x["A"], B=x["B"],
+                 A_ref_id=rid, p_ust=x.get("p_ust"), p_alt=x.get("p_alt"), n_mel=x.get("n_mel"),
+                 farkli_dogru_goruntu=v["farkli_dogru_goruntu"] if m == "acc" else None,
+                 not_=("p_ust = (1+#{Δ*≤0})/(B+1), p_alt tersi; düzeltmesiz, bilgi" if "p_ust" in x else None))
+        for t, mm in [("t_acc", "ACC"), ("t_dengeli", "dengeli ACC")]:
+            x = v[t]
+            ekle(f"{onek}-{t}", f"seed-eşli t, {mm} (iki yönlü; bilgi)", f"H14 − {kol}", VS_C1,
+                 round(x["ort_puan"], 6), "puan", rel, f"kiyaslar.{anahtar}.{t}", KIP_E1, etiket=ETIKET_E1 + [rol],
+                 p_iki_yonlu=x["p_iki_yonlu_bilgi"], fark_seed_puan=[round(f, 6) for f in x["fark_seed_puan"]],
+                 n_seed=len(x["fark_seed_puan"]))
+
+    # (8) ön-kayıtlı beklentiler (kart satır 45) ↔ gerçekleşen; mekanizma devrede mi (beklenti-ihlali G2)
+    i_e, s_e = satir_bul("hipotezler/H14.md", "| Beklenen etki (yön + büyüklük) |")
+    ARALIK = [  # (ad, kartta geçen ifade, alt, üst, gerçekleşen id)
+        ("K1 ΔACC", "K1 H14 − H10 (C-test ACC): −0,5 … +2,0 puan", -0.5, 2.0, "E1-K1-h14-h10-acc"),
+        ("H14 C-test ACC", "Mutlak H14 C-test ACC **[0,911; 0,936]**", 0.911, 0.936, "E1-H14-acc"),
+        ("K2 ΔACC", "K2 H14 − H08c: −1,5 … +1,0", -1.5, 1.0, "E1-K2-h14-h08-acc"),
+        ("K1 Δdengeli", "dengeli ACC Δ(H14 − H10) [−2; +8]", -2.0, 8.0, "E1-K1-h14-h10-dengeli_acc"),
+        ("K2 Δdengeli", "Δ(H14 − H08c) [−5; +4]", -5.0, 4.0, "E1-K2-h14-h08-dengeli_acc"),
+        ("K1 Δmel", "Mel duyarlılığı Δ(H14 − H10) [−5; +12]", -5.0, 12.0, "E1-K1-h14-h10-duyarlilik_mel"),
+    ]
+    kont = []
+    for ad, ifade, lo, hi, rid in ARALIK:
+        if ifade not in s_e:
+            raise SystemExit(f"E1: kart satır {i_e} '{ifade}' ifadesini taşımıyor")
+        val = next(r["deger"] for r in KAYIT if r["id"] == rid)
+        kont.append({"ad": ad, "aralik": [lo, hi], "gerceklesen": val, "id": rid, "icinde": lo <= val <= hi})
+    if "C-val ACC [0,915; 0,945]" not in s_e or "**> 0,069**" not in s_e:
+        raise SystemExit("E1: kart C-val/manipülasyon ifadesi bulunamadı")
+    cv = d["egitim"]["cval_acc_ort"]
+    kont.append({"ad": "H14 C-val ACC", "aralik": [0.915, 0.945], "gerceklesen": cv,
+                 "kaynak_alan": "egitim.cval_acc_ort", "icinde": 0.915 <= cv <= 0.945})
+    n = d["notlar"]
+    kont.append({"ad": "manipülasyon: s0 ep5 train kaybı > 0,069", "gerceklesen": n["manipulasyon_s0_ep5_loss"],
+                 "kaynak_alan": "notlar.manipulasyon_s0_ep5_loss", "icinde": n["manipulasyon_esik_>0,069"]})
+    kont.append({"ad": "seçilen epoch ort. > 7,0", "gerceklesen": n["secilen_epoch_ort"],
+                 "kaynak_alan": "notlar.secilen_epoch_ort", "icinde": n["secilen_epoch_>7,0"]})
+    kont.append({"ad": "ECE ≤ H10 C1", "kaynak_alan": "notlar.ece_H14_<=_K1ref", "icinde": n["ece_H14_<=_K1ref"]})
+    ekle("E1-onkayit-beklenti", "kartın ön-kayıtlı beklenti aralıkları içinde kalan madde sayısı",
+         "H14", VS_C1, sum(k_["icinde"] for k_ in kont), "madde", "hipotezler/H14.md", f"satır {i_e}", KIP_E1,
+         etiket=ETIKET_E1, toplam_madde=len(kont), maddeler=kont, kart_mtime="2026-11-03T22:39:10",
+         not_="kart koşumdan önce yazıldı (mtime; sonuç dosyası kart_sha256 ile aynı)")
+    eg = d["egitim"]
+    sd = eg["seed"]
+    if "2 × H10 C1 (0,0345)" not in s_e:
+        raise SystemExit("E1: kartta H10 C1 s0 ep5 kaybı (0,0345) bulunamadı")
+    H10_EP5 = 0.0345  # hipotezler/H14.md satır i_e: "s0 ep 5 train kaybı > 2 × H10 C1 (0,0345)"
+    oran5 = n["manipulasyon_s0_ep5_loss"] / H10_EP5
+    ekle("E1-mekanizma", "D4 devrede mi (kart kural g): ihlal eden seed sayısı", "H14", VS_C1,
+         len(eg["kural_g_ihlal_seed"]), "seed", rel, "egitim.kural_g_ihlal_seed", KIP_E1, etiket=ETIKET_E1,
+         d4_duman_ilk_adim_loss_fark=a["d4_duman_ilk_adim_loss_fark"],
+         augment_frekans_maks_sapma=max(s["augment_frekans_maks_sapma"] for s in sd.values()),
+         onbellek_gorunum_tutarlilik_maks_fark=max(s["onbellek_gorunum_tutarlilik_maks_fark"] for s in sd.values()),
+         onbellek_gorunum_ozdes_cift=sum(s["onbellek_gorunum_ozdes_cift"] for s in sd.values()),
+         train_loss_ep5_s0=n["manipulasyon_s0_ep5_loss"], h10_c1_train_loss_ep5_s0=H10_EP5,
+         h10_kaynak=f"hipotezler/H14.md satır {i_e} ('2 × H10 C1 (0,0345)')",
+         kural_j_notu=n["kural_j_notu"], esikler="augment ≤ 0,01; görünüm ≤ 5e-3; özdeş çift 0; D4 dumanı ≠ kontrol",
+         uyari=("Beklenti-ihlali G2 adayı: D4 eklemek ACC'yi ayırt edilebilir biçimde değiştirmedi (K1). Mekanizmanın "
+                "devrede olduğu ölçüldü (D4 dumanı ilk adım kaybı kontrolden farklı; augment frekansı ve önbellek "
+                f"görünüm denetimleri geçti; s0 ep5 train kaybı H10'unkinin {str(round(oran5, 1)).replace('.', ',')} katı; dengeli ACC K1'de değişti) "
+                "→ ACC sonucu bir arıza değil, bulgu olarak raporlanabilir."), train_loss_ep5_oran_h10=oran5)
+    ekle("E1-H14-cval-acc", "C-val ACC (5 seed ort.; seçim ölçütü)", "H14", VS_CV, eg["cval_acc_ort"], "oran", rel,
+         "egitim.cval_acc_ort", KIP_E1, etiket=ETIKET_E1, seed=[sd[s]["val_acc"] for s in sorted(sd)],
+         secilen_epoch=[sd[s]["en_iyi_epoch"] for s in sorted(sd)], secilen_epoch_ort=eg["secilen_epoch_ort"],
+         epoch_sure_ort_sn=eg["epoch_sure_ort_sn"], kural_e_az_egitim=eg["kural_e_az_egitim"],
+         egitim_kosumlari=[eg["kosumlar"][s] for s in sorted(eg["kosumlar"])])
+    gm = d["gorulmemis"]
+    ekle("E1-gorulmemis", "kart 'görülmemiş kadar iyi' (İNCELE) bayrağı", "H14", VS_C1, gm["INCELE"], "mantıksal", rel,
+         "gorulmemis", KIP_E1, etiket=ETIKET_E1, bayraklar={k_: v_ for k_, v_ in gm.items() if k_ != "INCELE"})
+
+    # (9) ön-kayıt sapma tablosu: E1 gerçekleşen (SAP-E1 'beklemede' kaydı değiştirilmez)
+    i_k, s_k = satir_bul("orkestrasyon_durumu.md", "(revizyon E1): H14 kartı yazıldı")
+    ekle("SAP-E1-gerceklesen", "E1 / H14 gerçekleşen akış (SAP-E1 'beklemede' kaydının devamı)", "H10 + D4 (H14)",
+         VS_C1, "tamamlandı", "durum", "orkestrasyon_durumu.md", f"satır {i_od}", KIP_SAP, zaman=_zaman(s_od),
+         kart_zaman=_zaman(s_k), kart_mtime="2026-11-03T22:39:10", onceki_id="SAP-E1",
+         kaynaklar=[{"dosya": "orkestrasyon_durumu.md", "satir": i_k}, {"dosya": "orkestrasyon_durumu.md", "satir": i_od},
+                    {"dosya": rel, "alan": "tarih", "deger": d["tarih"]}],
+         ilgili_id=["E1-kontrol-durum", "E1-ortam-cudnn", "E1-butce", "E1-ctest-acilis", "E1-K2-h14-h08-acc",
+                    "E1-K1-h14-h10-acc", "E1-K1-h14-h10-dengeli_acc"])
 
 
 def val_tanim_esleme():
@@ -1306,24 +1539,26 @@ def main():
     lkb_kayitlari()
     c1mel_kayitlari()
     sapma_kayitlari()
+    e1_kayitlari()
     lit_dogrulama_isle()
     # not_ → not (Python anahtar sözcüğü çakışması)
     for r in KAYIT:
         if "not_" in r:
             r["not"] = r.pop("not_")
-    kaynaklar = sorted({r["kaynak_dosya"] for r in KAYIT if r["kaynak_dosya"].startswith(("sonuclar", "notlar", "gunluk", "data", "hipotezler", WS_REL))})
+    kaynaklar = sorted({r["kaynak_dosya"] for r in KAYIT if r["kaynak_dosya"].startswith(("sonuclar", "notlar", "gunluk", "data", "hipotezler", "orkestrasyon", WS_REL))})
     out = {
         "deney_meta": {
             "yazilim": str(DW),
             "donanim": "Colab NVIDIA L4 24 GB; Python 3.13.15, torch 2.11.0+cu130, FP32, TF32 kapalı, deterministik "
-                       "(karşılaştırılan tüm test/C1 sayıları). Yerel GTX 1650 yalnız K3 replikasyonu ve Tur 1–3 seçimi.",
+                       "(karşılaştırılan tüm test/C1 sayıları). Yerel GTX 1650 yalnız K3 replikasyonu ve Tur 1–3 seçimi. "
+                       "E1/H14 (2026-11-07): aynı GPU ve torch 2.11.0+cu130, cuDNN 91900 (Ekim 92700); bkz. E1-ortam-*.",
             "tarih": "2026-10-12",
             "tekrar_sayisi": 5,
             "kosul": "Ön-kayıtlı; resmî test bir kez açıldı (2026-10-11 21:12, ikinci_acilis null); C-test kol başına bir "
                      "kez; eşleştirilmiş görüntü-bootstrap (B=2000, rng 0) + tek yönlü seed-eşli t + Holm.",
             "birim_notu": "Δ'lar puan (×100). 'oran' = [0,1]. kiyas.* fraksiyonları ×100 ile puana çevrildi (ham_deger alanı).",
             "uretici": "evidence/scripts/build_evidence.py",
-            "kurallar": "Bu üretici test tahmin dosyalarını açmaz (brief madde 13). Tek istisna SENS-LKB-* kayıtlarıdır: kullanıcı onaylı (2026-10-17) test sonrası duyarlılık analizi; tahminleri evidence/scripts/lkb_bootstrap.py okur, bu üretici yalnız onun JSON çıktısını okur. İkinci istisna C1-REV-* kayıtlarıdır: test-sonrası analiz (revizyon 2026-11-03, dış eleştiri M3); yalnız dondurulmuş C1 C-test tahminlerini evidence/scripts/c1_mel_bootstrap.py okur, bu üretici onun JSON çıktısını okur. KV C1/C2 KURU vekilleri alınmadı.",
+            "kurallar": "Bu üretici test tahmin dosyalarını açmaz (brief madde 13). Tek istisna SENS-LKB-* kayıtlarıdır: kullanıcı onaylı (2026-10-17) test sonrası duyarlılık analizi; tahminleri evidence/scripts/lkb_bootstrap.py okur, bu üretici yalnız onun JSON çıktısını okur. İkinci istisna C1-REV-* kayıtlarıdır: test-sonrası analiz (revizyon 2026-11-03, dış eleştiri M3); yalnız dondurulmuş C1 C-test tahminlerini evidence/scripts/c1_mel_bootstrap.py okur, bu üretici onun JSON çıktısını okur. Üçüncü istisna E1-* kayıtlarıdır: test sonrası keşifsel H14 kolu (revizyon E1, 2026-11-07); tahminleri deney WS scripts/e1_h14_analiz.py okur, bu üretici yalnız sonuclar/e1_h14_sonuc.json ile H14 koşumlarının metrics.json/config.json dosyalarını okur. KV C1/C2 KURU vekilleri alınmadı.",
             "kaynak_sha256": {k: sha(WS / k[len(WS_REL):] if k.startswith(WS_REL) else DW / k) for k in kaynaklar},
         },
         "kayitlar": KAYIT,

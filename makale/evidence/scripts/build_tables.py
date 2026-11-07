@@ -562,6 +562,17 @@ def tab_sapma():
     assert [c for c, r in mel.items() if r["ga"][0] > 0] == ["h08-h02"]
     nmel = R("C1-REV-n-mel", ad)["deger"]
     assert R("SAP-E1", ad)["deger"] == "beklemede"
+    # E1 gerçekleşen (revizyon 2026-11-07): SAP-E1 kaydı 'beklemede' kalır; devamı SAP-E1-gerceklesen + E1-*
+    e1g = R("SAP-E1-gerceklesen", ad)
+    assert e1g["deger"] == "tamamlandı"
+    e1k = R("E1-kontrol-durum", ad)
+    assert e1k["deger"] == "A" and e1k["ilk_adim_loss_fark"] == 0 and e1k["argmax_oran"] == 1.0
+    e1c = R("E1-ortam-cudnn", ad)
+    assert R("E1-ctest-acilis", ad)["deger"] == 5 and R("E1-ortam-torch", ad)["ekimle_ayni"] is True
+    e1b = R("E1-butce", ad)
+    e1k2 = R("E1-K2-h14-h08-acc", ad)
+    assert e1k2["konum"] == "ayırt edilemedi" and e1k2["ga"][0] < 0 < e1k2["ga"][1]
+    od_e1 = ", ".join(str(k["satir"]) for k in e1g["kaynaklar"] if "satir" in k)
     for k in ("SAP-C2-kapi", "SAP-T4-plan", "SAP-ON-6-3", "SAP-H10D4-plan", "SAP-C1-dengeli-onkayit", "SAP-C1-A-neden"):
         R(k, ad)  # kaynak satırı defterde olmalı (kullanılan id listesine girer)
     bin_ = format(lkbd["deger"], ",").replace(",", ".")
@@ -617,10 +628,14 @@ def tab_sapma():
          "aynı tabloda § işaretiyle verildi (§6.3 ``ayrı bölüm'' koşulundan sapma).",
          f"Dengeli yön iki çiftte desteklendi ({p('C1-K-h10-h02-dengeli_acc')}; {p('C1-K-h08-h02-dengeli_acc')}). Mel: "
          f"yalnız H08c $-$ H02c GA'sı sıfırın üstünde; n~=~{nmel}, GA geniş."),
-        ("E1 / H14: H10 + D4 (C1)" + kay(f"EP §2b ({z('SAP-E1', 'zaman')})", "OD:15"),
+        ("E1 / H14: H10 + D4 (C1)" + kay(f"EP §2b ({z('SAP-E1', 'zaman')})", "OD:15",
+                                          f"OD:{od_e1} ({z('SAP-E1-gerceklesen', 'zaman')})"),
          f"Test sonrası yeni kol yok (§6.3); H10 + D4 sınırlılık ({z('SAP-karar12')}).",
-         "Yazar kararıyla (dış eleştiri) C1'de ``test sonrası keşifsel'' kol; H14 ön-kayıt kartı koşumdan önce yazılacak.",
-         "\\textit{Beklemede.} Hiçbir mevcut kararı değiştirmeyecek."),
+         f"Yazar kararıyla (dış eleştiri) C1'de ``test sonrası keşifsel'' kol; H14 kartı koşumdan önce yazıldı "
+         f"({z('SAP-E1-gerceklesen', 'kart_zaman')}). Beş seed, C-test seed başına bir kez; kontrol kolu Ekim dumanını "
+         f"tolerans içinde üretti (Durum~A: ilk adım kaybı aynı, olasılık farkı $\le 10^{{-5}}$; cuDNN {e1c['karsi_ekim']} $\\to$ {e1c['deger']}); {sayi(e1b['deger'], 1)}~L4-sa.",
+         f"Karar ve Holm sonuçları aynı (düzeltmesiz, Holm dışı). H14 $-$ H08c $\\Delta$ACC {pg('E1-K2-h14-h08-acc')}: "
+         "ayırt edilemedi (Tablo~\\ref{tab:e1})."),
     ]
     BAS = ("\\begin{tabularx}{\\textwidth}{>{\\raggedright\\arraybackslash\\hsize=0.80\\hsize}X "
            ">{\\raggedright\\arraybackslash\\hsize=0.95\\hsize}X >{\\raggedright\\arraybackslash\\hsize=1.35\\hsize}X "
@@ -644,7 +659,49 @@ def tab_sapma():
           "tab:sapma", govde(A), notlar=notlar)
     KULLANILAN["tab_sapma_b"] = list(KULLANILAN[ad])
     tablo("tab_sapma_b", "Ek: ön-kayıt sapmaları (2/2: test sonrası). Kaynak kısaltmaları Tablo~\\ref{tab:sapma} "
-                         "altında; son satır beklemededir.", "tab:sapma-devam", govde(B))
+                         "altındadır.", "tab:sapma-devam", govde(B))
+
+
+# ------------------------------------------------------------------ (i) E1 / H14 (revizyon 2026-11-07; test sonrası keşifsel)
+def tab_e1():
+    """H14 = H10 + eğitim-zamanı D4, C1. Test sonrası keşifsel ve düzeltmesiz → renk/kazanan vurgusu YOK
+    (kullanıcı/şef kararı; tab_lkb ile aynı ilke). Hücreler yalnız E1-* kayıtlarından."""
+    ad = "tab_e1"
+    KIY = [("E1-K1-h14-h10", "H10", "K1"), ("E1-K2-h14-h08", "H08c", "K2"), ("E1-BET-h14-h02", "H02c", "betimsel")]
+    MET = [("acc", "ACC"), ("dengeli_acc", "Dengeli ACC"), ("dengeli_acc_5sinif", "Dengeli-5 ACC"),
+           ("duyarlilik_mel", "Mel duyarlılığı")]
+    assert R("E1-dogrulama", ad)["maks_fark_puan"] == 0 and R("E1-ctest-acilis", ad)["deger"] == 5
+    assert R("E1-kontrol-durum", ad)["deger"] == "A"
+    def uc(a, b, c):
+        return f"\\begin{{tabular}}[c]{{@{{}}c@{{}}}}{a}\\\\\\relax {b}\\\\\\relax {c}\\end{{tabular}}"
+
+    g = ["\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}lcccc}", "\\toprule",
+         "Metrik & " + " & ".join([uc("H14", "ort.\\,$\\pm$\\,std", "[oran]")] +
+                                  [uc(f"H14 $-$ {kol}", f"({rol})", "$\\Delta$ [puan], GA") for _, kol, rol in KIY])
+         + " \\\\", "\\midrule"]
+    nmel = None
+    for m, etiket in MET:
+        h = R(f"E1-H14-{m}", ad)
+        hucre = [pm(h["deger"], h["std"], 4)]
+        for onek, _, _ in KIY:
+            r = R(f"{onek}-{m}", ad)
+            assert r["konum"] in ("ayırt edilemedi", "H14 üstün", "H14 geride")
+            if m == "duyarlilik_mel":
+                nmel = r["n_mel"]
+            hucre.append(iki(isaretli(r["deger"]), ga(r["ga"])))
+        g.append(f"{etiket} & " + " & ".join(hucre) + " \\\\")
+        g.append("\\addlinespace")
+    g[-1] = "\\midrule"
+    for t, etiket in [("t_acc", "$t$ testi $p$: ACC"), ("t_dengeli", "$t$ testi $p$: dengeli")]:
+        g.append(f"{etiket} & -- & " + " & ".join(pdeg(R(f"{onek}-{t}", ad)["p_iki_yonlu"]) for onek, _, _ in KIY)
+                 + " \\\\")
+    g += ["\\botrule", "\\end{tabular*}"]
+    assert not any("\\iyi" in x or "\\kotu" in x for x in g)  # keşifsel: vurgu yok
+    notlar = ("$\\Delta$ = H14 $-$ kol; GA: görüntü-bootstrap \\%95 yüzdelik aralığı (B = 2.000, rng 0, iki kola aynı "
+              f"ağırlıklar); mel n = {nmel}. $t$: seed-eşli, iki yönlü, n = 5, yalnız bilgi. Test sonrası keşifsel, "
+              "düzeltmesiz; K5 Holm ailelerine girmez; vurgu yok.")
+    tablo(ad, "E1: H14 (H10 + eğitimde D4), lezyon-ayrık C1 C-test, 5 seed. H14 değerleri ve arşiv kollarına "
+              "eşleştirilmiş farklar.", "tab:e1", g, notlar=notlar)
 
 
 if __name__ == "__main__":
@@ -657,4 +714,5 @@ if __name__ == "__main__":
     tab_basarisiz()
     tab_lkb()
     tab_sapma()
+    tab_e1()
     (OUT / "KULLANILAN_IDLER.json").write_text(json.dumps(KULLANILAN, ensure_ascii=False, indent=1), encoding="utf-8")

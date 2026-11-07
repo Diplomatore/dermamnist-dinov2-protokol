@@ -1,29 +1,31 @@
 {
  "deney_meta": {
   "yazilim": "<WS>",
-  "donanim": "Colab NVIDIA L4 24 GB; Python 3.13.15, torch 2.11.0+cu130, FP32, TF32 kapalı, deterministik (karşılaştırılan tüm test/C1 sayıları). Yerel GTX 1650 yalnız K3 replikasyonu ve Tur 1–3 seçimi.",
+  "donanim": "Colab NVIDIA L4 24 GB; Python 3.13.15, torch 2.11.0+cu130, FP32, TF32 kapalı, deterministik (karşılaştırılan tüm test/C1 sayıları). Yerel GTX 1650 yalnız K3 replikasyonu ve Tur 1–3 seçimi. E1/H14 (2026-11-07): aynı GPU ve torch 2.11.0+cu130, cuDNN 91900 (Ekim 92700); bkz. E1-ortam-*.",
   "tarih": "2026-10-12",
   "tekrar_sayisi": 5,
   "kosul": "Ön-kayıtlı; resmî test bir kez açıldı (2026-10-11 21:12, ikinci_acilis null); C-test kol başına bir kez; eşleştirilmiş görüntü-bootstrap (B=2000, rng 0) + tek yönlü seed-eşli t + Holm.",
   "birim_notu": "Δ'lar puan (×100). 'oran' = [0,1]. kiyas.* fraksiyonları ×100 ile puana çevrildi (ham_deger alanı).",
   "uretici": "evidence/scripts/build_evidence.py",
-  "kurallar": "Bu üretici test tahmin dosyalarını açmaz (brief madde 13). Tek istisna SENS-LKB-* kayıtlarıdır: kullanıcı onaylı (2026-10-17) test sonrası duyarlılık analizi; tahminleri evidence/scripts/lkb_bootstrap.py okur, bu üretici yalnız onun JSON çıktısını okur. İkinci istisna C1-REV-* kayıtlarıdır: test-sonrası analiz (revizyon 2026-11-03, dış eleştiri M3); yalnız dondurulmuş C1 C-test tahminlerini evidence/scripts/c1_mel_bootstrap.py okur, bu üretici onun JSON çıktısını okur. KV C1/C2 KURU vekilleri alınmadı.",
+  "kurallar": "Bu üretici test tahmin dosyalarını açmaz (brief madde 13). Tek istisna SENS-LKB-* kayıtlarıdır: kullanıcı onaylı (2026-10-17) test sonrası duyarlılık analizi; tahminleri evidence/scripts/lkb_bootstrap.py okur, bu üretici yalnız onun JSON çıktısını okur. İkinci istisna C1-REV-* kayıtlarıdır: test-sonrası analiz (revizyon 2026-11-03, dış eleştiri M3); yalnız dondurulmuş C1 C-test tahminlerini evidence/scripts/c1_mel_bootstrap.py okur, bu üretici onun JSON çıktısını okur. Üçüncü istisna E1-* kayıtlarıdır: test sonrası keşifsel H14 kolu (revizyon E1, 2026-11-07); tahminleri deney WS scripts/e1_h14_analiz.py okur, bu üretici yalnız sonuclar/e1_h14_sonuc.json ile H14 koşumlarının metrics.json/config.json dosyalarını okur. KV C1/C2 KURU vekilleri alınmadı.",
   "kaynak_sha256": {
    "../../makale_workspace/dermamnist-dinov2-protokol/evidence/c1mel/c1_mel_sonuc.json": "5ca72c7f0d01da603ab75c8c85daa8f99c9e65b61e873583d83aedcbf50db426",
    "../../makale_workspace/dermamnist-dinov2-protokol/evidence/lkb/lkb_bootstrap_sonuc.json": "4a8e64fda09301250b0f9f163d77c06ace49a472729bbe4b3d61babc6d4d2f6a",
    "../../makale_workspace/dermamnist-dinov2-protokol/figures/data/nitel_panel_val.json": "66fc4e0dc4cc8ef1ee11955cb05a62abdf16ff4aa84bc155c9ca01a2cd0bb0d4",
-   "../../makale_workspace/dermamnist-dinov2-protokol/notes/elestiri-plani.md": "002e7fd4c3096f13d06ca3db399f14dc3ec71b1d3e468955772bcc8cb80f6c0e",
+   "../../makale_workspace/dermamnist-dinov2-protokol/notes/elestiri-plani.md": "6173d2bd7b4d2a1fd2c908b52a98dacf82b961d6bcb4425534a133470b4d8186",
    "../../makale_workspace/dermamnist-dinov2-protokol/notes/literature.md": "f350c178ad112496191a2579c55af6e5a502f90e3d03c7fd3f30b1da19284b1f",
-   "../../makale_workspace/dermamnist-dinov2-protokol/notes/orkestrasyon_durumu.md": "cbcfde89dbdda23be626aa99c98cc46ac24e7c02fbfe7fb8a1bc60ee7b1d12a1",
+   "../../makale_workspace/dermamnist-dinov2-protokol/notes/orkestrasyon_durumu.md": "61c571695126739c67e9477f53c1e6af08ff53a8408937bb6ef37a71605766c2",
    "../../makale_workspace/dermamnist-dinov2-protokol/notes/review.md": "7e8f9aee7fa5f260219594e766b435e0e4683e78691d3c82289436109f8bccff",
    "data/data_manifest.md": "693d212c6af79553a2e507e923b97e66f675d6da941f9aff2a7988d6db11ce12",
    "data/splits/dermamnist_c_esleme.csv": "65a3c480be5a2898e2d9ecaf514acdd6ab3ff4f4294a3c49ccf1463edb348e5a",
    "data/splits/dermamnist_lezyon_esleme.csv": "ccd833066d530f8daecc474a3176c2af47c7964738709c2d16687bda8dbd9dfb",
    "gunluk/deney-gunlugu.md": "af371119dbe33a9541896aad6fc26ed8f8c9f5b532ca19e7771f51231582a1e4",
    "hipotezler/H08.md": "c52e63e77c4ef5bd4874f5994154680f5927d332f3e32f484d64b2eac86144be",
+   "hipotezler/H14.md": "1991c2441e2ea8f12f8a52970bb4911369f8d1907d3391e0c948f476f22b5d2a",
    "hipotezler/K5-ONKAYIT.md": "ac8215ead0d6e47c1fcb194e05e8f38542b38aa6b8d1e5a84c6b3fe63a05f9d7",
    "hipotezler/SIRALAMA.md": "e017899affa99c5517c8097f4c3b7e83f0cff254a13948baf44fbe50264c0209",
    "notlar/literatur-cipa.md": "6f277b80e7ed4e59b4eb662bfaed144050c441a324dfaddbfc9a1e24483fb6f9",
+   "orkestrasyon_durumu.md": "4ef3a03ae8f470e50f13a2d26e9e1ebb0d5a4b4b235467bed68d57f82e8dcb70",
    "sonuclar/ablasyon.csv": "09cd75a689a88597bb0d18d660bf139d3bb27ca3fa2aae0c4870a4d77632ea3c",
    "sonuclar/basarisiz-onkayitlar.md": "2d0e5f78ef521287f717c4468ac97e9eab8871890f2f24beceecf3295351fe41",
    "sonuclar/beklenti-k5-c1-A-asama1.md": "bd9b71fec8d00bb76aade32ceffdf746f372c8468f1fe0a4f84d92288bb9a5c7",
@@ -32,6 +34,7 @@
    "sonuclar/beklenti-k5-c1-A-v3-asama3.md": "8ab2c323e23fb9ff618bbee937f89cf427a7ab1984577dbf6843ff2d345e59bb",
    "sonuclar/beklenti-k5-c1-B-asama1.md": "96766b989ca46cfe63da35fa3dd479bef34ee2170871bca0b7cfca3ef36fbe7a",
    "sonuclar/beklenti-k5-c1-B-asama3.md": "03808821c5c1b81920b6b92ca58876c6a4a7caae5552bf67546a5991b4d294af",
+   "sonuclar/e1_h14_sonuc.json": "94ca0f0e8d142d7fae3f359d151f9059f72c22c26149b997d7c17660e2ccdb08",
    "sonuclar/hata-kirilim-h10-karsilastirma.csv": "803442ad7b261edc2ae45a16def859c0d2f8e693b9f49e89c253e41d2ce5744e",
    "sonuclar/hata-kirilim-h10-zor-gecis.json": "9360f265a4a5caac1c4b2b9914ecf5180e7757c31314c09d2164c97e4a3ab4bb",
    "sonuclar/hata_kirilim_ozet_baseline_colab.json": "875f5a3535c038df105b29a36c0a1a6c7055fd7281a18015eaf6805f730c0c14",
@@ -22947,6 +22950,1187 @@
     }
    ],
    "not": "sonuç geldiğinde bu kayıt ve tab:sapma satırı güncellenir"
+  },
+  {
+   "id": "E1-dogrulama",
+   "metrik": "E1 analiz betiğiyle dondurulmuş C1 sonuçlarının yeniden üretimi (karşılaştırılan satır)",
+   "yontem": "e1_h14_analiz.py --kuru (k5_test.py işlevleri içe aktarılır)",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 6,
+   "birim": "satır",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kuru_ozdeslik",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "maks_fark_puan": 0.0,
+   "tolerans_puan": 0.005,
+   "gecti": true,
+   "satirlar": [
+    "h08-h02",
+    "h10-h02",
+    "h10-h08",
+    "kol_h02_acc",
+    "kol_h08_acc",
+    "kol_h10_acc"
+   ],
+   "karsi_dosya": "sonuclar/k5_c1_sonuc.json",
+   "betik_sha256": "c38cba390fc05ba742bcce6230603eb976ad6d205f83aa57ed94bd580606826b",
+   "kart_sha256": "1991c2441e2ea8f12f8a52970bb4911369f8d1907d3391e0c948f476f22b5d2a",
+   "k5_test_sha256": "13a71cf1375fc98a2e8c891bb4f5fdc884e43deb6819ba740aa4035428179b4c",
+   "analiz_tarihi": "2026-11-07T18:09:59",
+   "yontem_ayrinti": "k5_test.Bootstrap (B=2000, rng 0, aynı W iki kola) + k5_test.kiyas; mel duyarlılığı aynı W ile; seed t iki yönlü (bilgi); düzeltme yok"
+  },
+  {
+   "id": "E1-ctest-acilis",
+   "metrik": "H14 C-test çıkarım koşumu sayısı (seed başına bir; ikinci açılış yok)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 5,
+   "birim": "koşum",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs_colab/*_h14_c1-test_s*/metrics.json",
+   "kaynak_alan": "veri_c, test_n; e1_h14_sonuc.json kosumlar.H14, yeniden_neden",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "kosumlar": [
+    "20261107-174445_h14_c1-test_s0",
+    "20261107-174519_h14_c1-test_s1",
+    "20261107-174551_h14_c1-test_s2",
+    "20261107-174623_h14_c1-test_s3",
+    "20261107-174656_h14_c1-test_s4"
+   ],
+   "n_seed": 5,
+   "veri_c": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "not": "kart kural (i): C1 eğitimli modelin resmî test/val çıkarımı yok (veri_c = 1); yeniden açılış yok"
+  },
+  {
+   "id": "E1-kontrol-durum",
+   "metrik": "kod yolu kontrolü (kart kural f): kontrol kolu (8 görünüm yolu, D4 kapalı) ↔ Ekim h10_c1 dumanı",
+   "yontem": "h14_c1_d4kapali_duman ↔ h10_c1_duman",
+   "veri_seti": "C-val ∩ resmî val (n=573)",
+   "deger": "A",
+   "birim": "durum",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "durum",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "k1_karsilastirici": "H10",
+   "h10r_gerekli": false,
+   "ilk_adim_loss_fark": 0.0,
+   "argmax_oran": 1.0,
+   "p_maks_fark": 1.341104507446289e-06,
+   "val_acc_fark": 0.0,
+   "surum_fark": "cudnn: 92700 → 91900",
+   "kontrol_run": "20261107-161257_h14_c1_d4kapali_duman_s0",
+   "kural_A": "|Δ ilk_adim_loss| ≤ 1e-6 ∧ argmax 573/573 ∧ maks |Δp| ≤ 1e-5 (hipotezler/H14.md satır 48)",
+   "kaynaklar": [
+    {
+     "dosya": "sonuclar/e1_h14_sonuc.json",
+     "alan": "durum"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 264
+    }
+   ]
+  },
+  {
+   "id": "E1-ortam-cudnn",
+   "metrik": "E1 koşumlarının cuDNN sürümü (Ekim C1 ölçümleri: karsi_ekim)",
+   "yontem": "H14 (14 koşum)",
+   "veri_seti": "—",
+   "deger": 91900,
+   "birim": "sürüm",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs_colab/*_h14_c1*/config.json",
+   "kaynak_alan": "donanim.cudnn",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "karsi_ekim": 92700,
+   "karsi_dosya": "runs_colab/20261011-225511_h10_c1_s0/config.json",
+   "n_kosum": 14,
+   "analiz_beyani": "cudnn: 92700 → 91900",
+   "not": "Kontrol kolu bu farka rağmen Ekim dumanını bit düzeyinde üretti (E1-kontrol-durum)."
+  },
+  {
+   "id": "E1-ortam-torch",
+   "metrik": "E1 koşumlarının torch sürümü",
+   "yontem": "H14 (14 koşum)",
+   "veri_seti": "—",
+   "deger": "2.11.0+cu130",
+   "birim": "sürüm",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs_colab/*_h14_c1*/config.json",
+   "kaynak_alan": "donanim.torch",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "karsi_ekim": "2.11.0+cu130",
+   "ekimle_ayni": true,
+   "timm": [
+    "1.0.30"
+   ],
+   "cuda": [
+    "13.0"
+   ],
+   "diger_farklar_ekim_e1": {
+    "python": [
+     "3.13.15",
+     "3.13.16"
+    ],
+    "numpy": [
+     "2.1.3",
+     "2.4.6"
+    ]
+   },
+   "colab_varsayilan_torch": "2.14.1+cu130",
+   "torch_sabitleme": {
+    "hedef": "2.11.0+cu130",
+    "colab_torch": "2.14.1+cu130",
+    "colab_torchvision": "0.29.1+cu130",
+    "denendi": true,
+    "rc": 0,
+    "basarili": true
+   },
+   "ortam_kaydi": "../../makale_workspace/dermamnist-dinov2-protokol/evidence/e1/ortam-colab-E1-20261107-155457-57ae.json",
+   "ortam_kaydi_sha256": "e15d4a8cd5b280ef523da3176ccbdce1c32d417098ab9071ac0f26d92c62c6e0",
+   "ortam_kaydi_kaynak": "<DRIVE_KOK>/3-1/env/ortam-colab-E1-20261107-155457-57ae.json (kopya)",
+   "uyari": "orkestrasyon_durumu.md satır 264 'torch 2.14.1 — sabitleme hedefi 2.11 tutmadı' der; koşum kayıtları bununla ÇELİŞİR: 2.14.1 Colab varsayılanıdır, sabitleme başarılı oldu (rc 0) ve 14 koşumun hepsi 2.11.0+cu130 ile koştu. Makalede 'torch 2.14.1' yazılmaz; Ekim'den tek sürüm farkı cuDNN'dir (+ python/numpy yama sürümleri)."
+  },
+  {
+   "id": "E1-butce",
+   "metrik": "E1 birleşik koşum süresi (kart kural h)",
+   "yontem": "H14",
+   "veri_seti": "—",
+   "deger": 1.597,
+   "birim": "L4-sa",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "notlar.butce_E1_L4sa",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "kart_tavani": 5.0,
+   "kart_tahmini": 1.6,
+   "kart_kaynak": "hipotezler/H14.md satır 47",
+   "oturum_kaynak": "orkestrasyon_durumu.md satır 264",
+   "not": "H10r koşulmadı (Durum A); C1 sonu birleşik deftere (BUT-toplam) dahil değildir"
+  },
+  {
+   "id": "E1-H14-acc",
+   "metrik": "acc (5 seed ort.)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.9198044009779951,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.ort.acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "yon": "yuksek",
+   "std": 0.0038915522041771387,
+   "std_alan": "kollar.H14.std.acc",
+   "n_seed": 5,
+   "seed_degerleri": [
+    0.9176854115729421,
+    0.9144254278728606,
+    0.9242053789731052,
+    0.9225753871230644,
+    0.9201303993480032
+   ],
+   "seed_kaynak": [
+    "runs_colab/20261107-174445_h14_c1-test_s0/metrics.json:test_acc",
+    "runs_colab/20261107-174519_h14_c1-test_s1/metrics.json:test_acc",
+    "runs_colab/20261107-174551_h14_c1-test_s2/metrics.json:test_acc",
+    "runs_colab/20261107-174623_h14_c1-test_s3/metrics.json:test_acc",
+    "runs_colab/20261107-174656_h14_c1-test_s4/metrics.json:test_acc"
+   ],
+   "std_ddof1_metrics": 0.0038915522041771387
+  },
+  {
+   "id": "E1-H14-auc",
+   "metrik": "auc (5 seed ort.)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.9862480591349148,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.ort.auc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "yon": "yuksek",
+   "std": 0.0008745478556212266,
+   "std_alan": "kollar.H14.std.auc",
+   "n_seed": 5,
+   "seed_degerleri": [
+    0.9869625164988954,
+    0.9852620996872268,
+    0.987081566253144,
+    0.9853653459296556,
+    0.986568767305652
+   ],
+   "seed_kaynak": [
+    "runs_colab/20261107-174445_h14_c1-test_s0/metrics.json:test_auc",
+    "runs_colab/20261107-174519_h14_c1-test_s1/metrics.json:test_auc",
+    "runs_colab/20261107-174551_h14_c1-test_s2/metrics.json:test_auc",
+    "runs_colab/20261107-174623_h14_c1-test_s3/metrics.json:test_auc",
+    "runs_colab/20261107-174656_h14_c1-test_s4/metrics.json:test_auc"
+   ],
+   "std_ddof1_metrics": 0.0008745478556212266
+  },
+  {
+   "id": "E1-H14-dengeli_acc",
+   "metrik": "dengeli_acc (5 seed ort.)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.8035484826842128,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.ort.dengeli_acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "yon": "yuksek",
+   "std": 0.02081855043745085,
+   "std_alan": "kollar.H14.std.dengeli_acc",
+   "n_seed": 5,
+   "seed_degerleri": [
+    0.8267788358151085,
+    0.7922887221632035,
+    0.8086310703798204,
+    0.7738561362404571,
+    0.816187648822475
+   ],
+   "seed_kaynak": [
+    "runs_colab/20261107-174445_h14_c1-test_s0/metrics.json:test_dengeli_acc",
+    "runs_colab/20261107-174519_h14_c1-test_s1/metrics.json:test_dengeli_acc",
+    "runs_colab/20261107-174551_h14_c1-test_s2/metrics.json:test_dengeli_acc",
+    "runs_colab/20261107-174623_h14_c1-test_s3/metrics.json:test_dengeli_acc",
+    "runs_colab/20261107-174656_h14_c1-test_s4/metrics.json:test_dengeli_acc"
+   ],
+   "std_ddof1_metrics": 0.02081855043745085
+  },
+  {
+   "id": "E1-H14-dengeli_acc_5sinif",
+   "metrik": "dengeli_acc_5sinif (5 seed ort.)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.7534972875226039,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.ort.dengeli_acc_5sinif",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "yon": "yuksek",
+   "std": 0.022995969979918596,
+   "std_alan": "kollar.H14.std.dengeli_acc_5sinif",
+   "n_seed": 5
+  },
+  {
+   "id": "E1-H14-duyarlilik_mel",
+   "metrik": "duyarlilik_mel (5 seed ort.)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.6457142857142857,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.ort.duyarlilik_mel",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "yon": "yuksek",
+   "std": 0.08713114675415373,
+   "std_alan": "kollar.H14.std.duyarlilik_mel",
+   "n_seed": 5
+  },
+  {
+   "id": "E1-H14-makro_f1",
+   "metrik": "makro_f1 (5 seed ort.)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.8074028470578242,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.ort.makro_f1",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "yon": "yuksek",
+   "std": 0.009674668371057158,
+   "std_alan": "kollar.H14.std.makro_f1",
+   "n_seed": 5
+  },
+  {
+   "id": "E1-H14-ece15",
+   "metrik": "ece15 (5 seed ort.)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.0474565644087399,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.ort.ece15",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "yon": "dusuk",
+   "std": 0.008520471008886248,
+   "std_alan": "kollar.H14.std.ece15",
+   "n_seed": 5
+  },
+  {
+   "id": "E1-H14-nll",
+   "metrik": "nll (5 seed ort.)",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.3024896806446303,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.ort.nll",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "yon": "dusuk",
+   "std": 0.028478288700292242,
+   "std_alan": "kollar.H14.std.nll",
+   "n_seed": 5,
+   "seed_degerleri": [
+    0.3023776190306857,
+    0.33191533536899626,
+    0.3279762050693031,
+    0.2644340921566441,
+    0.2857451515975219
+   ],
+   "seed_kaynak": [
+    "runs_colab/20261107-174445_h14_c1-test_s0/metrics.json:test_nll",
+    "runs_colab/20261107-174519_h14_c1-test_s1/metrics.json:test_nll",
+    "runs_colab/20261107-174551_h14_c1-test_s2/metrics.json:test_nll",
+    "runs_colab/20261107-174623_h14_c1-test_s3/metrics.json:test_nll",
+    "runs_colab/20261107-174656_h14_c1-test_s4/metrics.json:test_nll"
+   ],
+   "std_ddof1_metrics": 0.028478288700292228
+  },
+  {
+   "id": "E1-H14-accmaj",
+   "metrik": "ACC − çoğunluk tabanı",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.14720440097799514,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kollar.H14.acc_eksi_cogunluk",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ]
+  },
+  {
+   "id": "E1-K1-h14-h10-acc",
+   "metrik": "Δacc (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H10",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.374898,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K1: H14 − H10.acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K1 (kart birincil)"
+   ],
+   "ga": [
+    -0.195599,
+    0.977995
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.9160554197229014,
+   "B": 0.919804400977995,
+   "A_ref_id": "C1-h10-acc",
+   "p_ust": 0.09295352323838081,
+   "p_alt": 0.9090454772613693,
+   "farkli_dogru_goruntu": 125,
+   "not": "p_ust = (1+#{Δ*≤0})/(B+1), p_alt tersi; düzeltmesiz, bilgi"
+  },
+  {
+   "id": "E1-K1-h14-h10-dengeli_acc",
+   "metrik": "Δdengeli_acc (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H10",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 4.138107,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K1: H14 − H10.dengeli_acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K1 (kart birincil)"
+   ],
+   "ga": [
+    0.917991,
+    7.509092
+   ],
+   "konum": "H14 üstün",
+   "A": 0.7621674101170963,
+   "B": 0.8035484826842129,
+   "A_ref_id": "C1-h10-dengeli"
+  },
+  {
+   "id": "E1-K1-h14-h10-dengeli_acc_5sinif",
+   "metrik": "Δdengeli_acc_5sinif (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H10",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 1.087468,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K1: H14 − H10.dengeli_acc_5sinif",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K1 (kart birincil)"
+   ],
+   "ga": [
+    -0.900763,
+    3.068437
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.7426226094580526,
+   "B": 0.753497287522604,
+   "A_ref_id": "C1-h10-dengeli5"
+  },
+  {
+   "id": "E1-K1-h14-h10-duyarlilik_mel",
+   "metrik": "Δduyarlilik_mel (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H10",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": -2.285714,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K1: H14 − H10.mel_duyarlilik",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K1 (kart birincil)"
+   ],
+   "ga": [
+    -6.470795,
+    2.191781
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.6685714285714285,
+   "B": 0.6457142857142858,
+   "A_ref_id": "C1-REV-h10-duyarlilik_mel",
+   "p_ust": 0.8600699650174912,
+   "p_alt": 0.15542228885557222,
+   "n_mel": 70,
+   "not": "p_ust = (1+#{Δ*≤0})/(B+1), p_alt tersi; düzeltmesiz, bilgi"
+  },
+  {
+   "id": "E1-K1-h14-h10-t_acc",
+   "metrik": "seed-eşli t, ACC (iki yönlü; bilgi)",
+   "yontem": "H14 − H10",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.374898,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K1: H14 − H10.t_acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K1 (kart birincil)"
+   ],
+   "p_iki_yonlu": 0.15388212023778783,
+   "fark_seed_puan": [
+    -0.244499,
+    0.407498,
+    1.059495,
+    0.488998,
+    0.162999
+   ],
+   "n_seed": 5
+  },
+  {
+   "id": "E1-K1-h14-h10-t_dengeli",
+   "metrik": "seed-eşli t, dengeli ACC (iki yönlü; bilgi)",
+   "yontem": "H14 − H10",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 4.138107,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K1: H14 − H10.t_dengeli",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K1 (kart birincil)"
+   ],
+   "p_iki_yonlu": 0.06634325195929844,
+   "fark_seed_puan": [
+    9.130086,
+    3.631389,
+    2.941785,
+    -0.861965,
+    5.849241
+   ],
+   "n_seed": 5
+  },
+  {
+   "id": "E1-K2-h14-h08-acc",
+   "metrik": "Δacc (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H08c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": -0.586797,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K2: H14 − H08c.acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K2 (kart birincil)"
+   ],
+   "ga": [
+    -1.678892,
+    0.505297
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.9256723716381418,
+   "B": 0.919804400977995,
+   "A_ref_id": "C1-h08-acc",
+   "p_ust": 0.8595702148925537,
+   "p_alt": 0.14142928535732133,
+   "farkli_dogru_goruntu": 195,
+   "not": "p_ust = (1+#{Δ*≤0})/(B+1), p_alt tersi; düzeltmesiz, bilgi"
+  },
+  {
+   "id": "E1-K2-h14-h08-dengeli_acc",
+   "metrik": "Δdengeli_acc (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H08c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.727597,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K2: H14 − H08c.dengeli_acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K2 (kart birincil)"
+   ],
+   "ga": [
+    -3.790127,
+    6.334635
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.7962725136084353,
+   "B": 0.8035484826842129,
+   "A_ref_id": "C1-h08-dengeli"
+  },
+  {
+   "id": "E1-K2-h14-h08-dengeli_acc_5sinif",
+   "metrik": "Δdengeli_acc_5sinif (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H08c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": -2.216658,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K2: H14 − H08c.dengeli_acc_5sinif",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K2 (kart birincil)"
+   ],
+   "ga": [
+    -6.39553,
+    1.996677
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.7756638719929859,
+   "B": 0.753497287522604,
+   "A_ref_id": "C1-h08-dengeli5"
+  },
+  {
+   "id": "E1-K2-h14-h08-duyarlilik_mel",
+   "metrik": "Δduyarlilik_mel (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H08c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": -1.714286,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K2: H14 − H08c.mel_duyarlilik",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K2 (kart birincil)"
+   ],
+   "ga": [
+    -10.358778,
+    6.07898
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.6628571428571429,
+   "B": 0.6457142857142858,
+   "A_ref_id": "C1-REV-h08-duyarlilik_mel",
+   "p_ust": 0.6786606696651675,
+   "p_alt": 0.3343328335832084,
+   "n_mel": 70,
+   "not": "p_ust = (1+#{Δ*≤0})/(B+1), p_alt tersi; düzeltmesiz, bilgi"
+  },
+  {
+   "id": "E1-K2-h14-h08-t_acc",
+   "metrik": "seed-eşli t, ACC (iki yönlü; bilgi)",
+   "yontem": "H14 − H08c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": -0.586797,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K2: H14 − H08c.t_acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K2 (kart birincil)"
+   ],
+   "p_iki_yonlu": 0.15513461404187878,
+   "fark_seed_puan": [
+    -0.325998,
+    -1.548492,
+    -0.651997,
+    0.488998,
+    -0.896496
+   ],
+   "n_seed": 5
+  },
+  {
+   "id": "E1-K2-h14-h08-t_dengeli",
+   "metrik": "seed-eşli t, dengeli ACC (iki yönlü; bilgi)",
+   "yontem": "H14 − H08c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0.727597,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.K2: H14 − H08c.t_dengeli",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "K2 (kart birincil)"
+   ],
+   "p_iki_yonlu": 0.5950157516456931,
+   "fark_seed_puan": [
+    5.66608,
+    -0.438373,
+    -0.117466,
+    -1.472221,
+    -3.6e-05
+   ],
+   "n_seed": 5
+  },
+  {
+   "id": "E1-BET-h14-h02-acc",
+   "metrik": "Δacc (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H02c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 1.499593,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.betimsel: H14 − H02c.acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "betimsel"
+   ],
+   "ga": [
+    0.342298,
+    2.689487
+   ],
+   "konum": "H14 üstün",
+   "A": 0.9048084759576203,
+   "B": 0.919804400977995,
+   "A_ref_id": "C1-h02-acc",
+   "p_ust": 0.004997501249375313,
+   "p_alt": 0.9965017491254373,
+   "farkli_dogru_goruntu": 219,
+   "not": "p_ust = (1+#{Δ*≤0})/(B+1), p_alt tersi; düzeltmesiz, bilgi"
+  },
+  {
+   "id": "E1-BET-h14-h02-dengeli_acc",
+   "metrik": "Δdengeli_acc (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H02c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 9.880851,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.betimsel: H14 − H02c.dengeli_acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "betimsel"
+   ],
+   "ga": [
+    5.168428,
+    14.705317
+   ],
+   "konum": "H14 üstün",
+   "A": 0.7047399696357254,
+   "B": 0.8035484826842129,
+   "A_ref_id": "C1-h02-dengeli"
+  },
+  {
+   "id": "E1-BET-h14-h02-dengeli_acc_5sinif",
+   "metrik": "Δdengeli_acc_5sinif (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H02c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 3.068486,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.betimsel: H14 − H02c.dengeli_acc_5sinif",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "betimsel"
+   ],
+   "ga": [
+    -1.169989,
+    7.139255
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.7228124280782507,
+   "B": 0.753497287522604,
+   "A_ref_id": "C1-h02-dengeli5"
+  },
+  {
+   "id": "E1-BET-h14-h02-duyarlilik_mel",
+   "metrik": "Δduyarlilik_mel (eşleştirilmiş görüntü-bootstrap)",
+   "yontem": "H14 − H02c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 4.857143,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.betimsel: H14 − H02c.mel_duyarlilik",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "betimsel"
+   ],
+   "ga": [
+    -3.823529,
+    13.442764
+   ],
+   "konum": "ayırt edilemedi",
+   "A": 0.5971428571428571,
+   "B": 0.6457142857142858,
+   "A_ref_id": "C1-REV-h02-duyarlilik_mel",
+   "p_ust": 0.14342828585707146,
+   "p_alt": 0.8615692153923038,
+   "n_mel": 70,
+   "not": "p_ust = (1+#{Δ*≤0})/(B+1), p_alt tersi; düzeltmesiz, bilgi"
+  },
+  {
+   "id": "E1-BET-h14-h02-t_acc",
+   "metrik": "seed-eşli t, ACC (iki yönlü; bilgi)",
+   "yontem": "H14 − H02c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 1.499593,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.betimsel: H14 − H02c.t_acc",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "betimsel"
+   ],
+   "p_iki_yonlu": 0.036267520588288554,
+   "fark_seed_puan": [
+    0.162999,
+    1.874491,
+    3.096985,
+    1.140994,
+    1.222494
+   ],
+   "n_seed": 5
+  },
+  {
+   "id": "E1-BET-h14-h02-t_dengeli",
+   "metrik": "seed-eşli t, dengeli ACC (iki yönlü; bilgi)",
+   "yontem": "H14 − H02c",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 9.880851,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "kiyaslar.betimsel: H14 − H02c.t_dengeli",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)",
+    "betimsel"
+   ],
+   "p_iki_yonlu": 0.003597953245712547,
+   "fark_seed_puan": [
+    12.986546,
+    13.463666,
+    5.808981,
+    6.387251,
+    10.757813
+   ],
+   "n_seed": 5
+  },
+  {
+   "id": "E1-onkayit-beklenti",
+   "metrik": "kartın ön-kayıtlı beklenti aralıkları içinde kalan madde sayısı",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 10,
+   "birim": "madde",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "hipotezler/H14.md",
+   "kaynak_alan": "satır 45",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "toplam_madde": 10,
+   "maddeler": [
+    {
+     "ad": "K1 ΔACC",
+     "aralik": [
+      -0.5,
+      2.0
+     ],
+     "gerceklesen": 0.374898,
+     "id": "E1-K1-h14-h10-acc",
+     "icinde": true
+    },
+    {
+     "ad": "H14 C-test ACC",
+     "aralik": [
+      0.911,
+      0.936
+     ],
+     "gerceklesen": 0.9198044009779951,
+     "id": "E1-H14-acc",
+     "icinde": true
+    },
+    {
+     "ad": "K2 ΔACC",
+     "aralik": [
+      -1.5,
+      1.0
+     ],
+     "gerceklesen": -0.586797,
+     "id": "E1-K2-h14-h08-acc",
+     "icinde": true
+    },
+    {
+     "ad": "K1 Δdengeli",
+     "aralik": [
+      -2.0,
+      8.0
+     ],
+     "gerceklesen": 4.138107,
+     "id": "E1-K1-h14-h10-dengeli_acc",
+     "icinde": true
+    },
+    {
+     "ad": "K2 Δdengeli",
+     "aralik": [
+      -5.0,
+      4.0
+     ],
+     "gerceklesen": 0.727597,
+     "id": "E1-K2-h14-h08-dengeli_acc",
+     "icinde": true
+    },
+    {
+     "ad": "K1 Δmel",
+     "aralik": [
+      -5.0,
+      12.0
+     ],
+     "gerceklesen": -2.285714,
+     "id": "E1-K1-h14-h10-duyarlilik_mel",
+     "icinde": true
+    },
+    {
+     "ad": "H14 C-val ACC",
+     "aralik": [
+      0.915,
+      0.945
+     ],
+     "gerceklesen": 0.9277486910994763,
+     "kaynak_alan": "egitim.cval_acc_ort",
+     "icinde": true
+    },
+    {
+     "ad": "manipülasyon: s0 ep5 train kaybı > 0,069",
+     "gerceklesen": 0.13742105013991882,
+     "kaynak_alan": "notlar.manipulasyon_s0_ep5_loss",
+     "icinde": true
+    },
+    {
+     "ad": "seçilen epoch ort. > 7,0",
+     "gerceklesen": 8.0,
+     "kaynak_alan": "notlar.secilen_epoch_ort",
+     "icinde": true
+    },
+    {
+     "ad": "ECE ≤ H10 C1",
+     "kaynak_alan": "notlar.ece_H14_<=_K1ref",
+     "icinde": true
+    }
+   ],
+   "kart_mtime": "2026-11-03T22:39:10",
+   "not": "kart koşumdan önce yazıldı (mtime; sonuç dosyası kart_sha256 ile aynı)"
+  },
+  {
+   "id": "E1-mekanizma",
+   "metrik": "D4 devrede mi (kart kural g): ihlal eden seed sayısı",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": 0,
+   "birim": "seed",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "egitim.kural_g_ihlal_seed",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "d4_duman_ilk_adim_loss_fark": 0.03211057186126709,
+   "augment_frekans_maks_sapma": 0.002401095556908095,
+   "onbellek_gorunum_tutarlilik_maks_fark": 0.002194643020629883,
+   "onbellek_gorunum_ozdes_cift": 0,
+   "train_loss_ep5_s0": 0.13742105013991882,
+   "h10_c1_train_loss_ep5_s0": 0.0345,
+   "h10_kaynak": "hipotezler/H14.md satır 45 ('2 × H10 C1 (0,0345)')",
+   "kural_j_notu": false,
+   "esikler": "augment ≤ 0,01; görünüm ≤ 5e-3; özdeş çift 0; D4 dumanı ≠ kontrol",
+   "uyari": "Beklenti-ihlali G2 adayı: D4 eklemek ACC'yi ayırt edilebilir biçimde değiştirmedi (K1). Mekanizmanın devrede olduğu ölçüldü (D4 dumanı ilk adım kaybı kontrolden farklı; augment frekansı ve önbellek görünüm denetimleri geçti; s0 ep5 train kaybı H10'unkinin 4,0 katı; dengeli ACC K1'de değişti) → ACC sonucu bir arıza değil, bulgu olarak raporlanabilir.",
+   "train_loss_ep5_oran_h10": 3.983218844635328
+  },
+  {
+   "id": "E1-H14-cval-acc",
+   "metrik": "C-val ACC (5 seed ort.; seçim ölçütü)",
+   "yontem": "H14",
+   "veri_seti": "C-val ∩ resmî val (n=573; lezyon-ayrık, yeniden eğitimsiz)",
+   "deger": 0.9277486910994763,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "egitim.cval_acc_ort",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "seed": [
+    0.924956369982548,
+    0.9301919720767888,
+    0.9179755671902269,
+    0.9354275741710296,
+    0.9301919720767888
+   ],
+   "secilen_epoch": [
+    8,
+    9,
+    11,
+    5,
+    7
+   ],
+   "secilen_epoch_ort": 8.0,
+   "epoch_sure_ort_sn": 54.256533333333344,
+   "kural_e_az_egitim": false,
+   "egitim_kosumlari": [
+    "20261107-163510_h14_c1_s0",
+    "20261107-164913_h14_c1_s1",
+    "20261107-170310_h14_c1_s2",
+    "20261107-171703_h14_c1_s3",
+    "20261107-173053_h14_c1_s4"
+   ]
+  },
+  {
+   "id": "E1-gorulmemis",
+   "metrik": "kart 'görülmemiş kadar iyi' (İNCELE) bayrağı",
+   "yontem": "H14",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": false,
+   "birim": "mantıksal",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e1_h14_sonuc.json",
+   "kaynak_alan": "gorulmemis",
+   "kip": "test sonrası keşifsel (revizyon E1, 2026-11-07); H14 C1'de yeniden eğitildi, C-test H14 için seed başına bir kez açıldı; arşiv kolları (H10, H08c, H02c) dondurulmuş C1 C-test tahminleri; düzeltmesiz, K5 Holm ailelerine girmez; hiçbir ön-kayıtlı karar değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "test sonrası keşifsel, düzeltmesiz (E1/H14)"
+   ],
+   "bayraklar": {
+    "(i) K1 Δ > +4,2": false,
+    "(ii) H14 C-test ACC > 0,9457": false,
+    "(iii) H14 C-val ACC > 0,96": false,
+    "(iv) dengeli Δ(K1) > +16,0": false
+   }
+  },
+  {
+   "id": "SAP-E1-gerceklesen",
+   "metrik": "E1 / H14 gerçekleşen akış (SAP-E1 'beklemede' kaydının devamı)",
+   "yontem": "H10 + D4 (H14)",
+   "veri_seti": "C1: DermaMNIST-C bölmesi C-test, yeniden eğitimli (n=1227)",
+   "deger": "tamamlandı",
+   "birim": "durum",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "orkestrasyon_durumu.md",
+   "kaynak_alan": "satır 264",
+   "kip": "ön-kayıt ↔ gerçekleşen beyanı (revizyon 2026-11-03; kaynak belgelerden satır düzeyinde)",
+   "atif": null,
+   "durum": "gecerli",
+   "zaman": "2026-11-07",
+   "kart_zaman": "2026-11-03",
+   "kart_mtime": "2026-11-03T22:39:10",
+   "onceki_id": "SAP-E1",
+   "kaynaklar": [
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 259
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 264
+    },
+    {
+     "dosya": "sonuclar/e1_h14_sonuc.json",
+     "alan": "tarih",
+     "deger": "2026-11-07T18:09:59"
+    }
+   ],
+   "ilgili_id": [
+    "E1-kontrol-durum",
+    "E1-ortam-cudnn",
+    "E1-butce",
+    "E1-ctest-acilis",
+    "E1-K2-h14-h08-acc",
+    "E1-K1-h14-h10-acc",
+    "E1-K1-h14-h10-dengeli_acc"
+   ]
   }
  ]
 }

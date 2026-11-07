@@ -1,0 +1,8 @@
+{
+ "veri": "c1",
+ "aciklama": "resmî MedMNIST(+) pikselleri + DermaMNIST-C bölmesi (K5-ONKAYIT §4.1)",
+ "npz_28": "/content/is/data/dermamnist_c_resmipiksel_28.npz",
+ "npz_224": "/content/is/data/dermamnist_c_resmipiksel_224.npz",
+ "ozn_dizin": "/content/is/data/oznitelik_c1",
+ "c_esleme_sha256": "65a3c480be5a2898e2d9ecaf514acdd6ab3ff4f4294a3c49ccf1463edb348e5a"
+}

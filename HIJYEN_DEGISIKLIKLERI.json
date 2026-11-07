@@ -180,8 +180,13 @@
    "yeni_sha256": "4f2383ea2c40bc7ee2b533a68dc527724b2fccc9fea00fcb8c4e9973e208e34c"
   },
   "makale/evidence/evidence.json": {
-   "onceki_sha256": "d60a10a1c430625ee52ea2b1628ce0c33db04c636c69e3057d18f333238fd8e5",
-   "yeni_sha256": "5a699a367acf8cbfebc427ff907d30ff73bd2f176d7592b79d24a288325f891e"
+   "onceki_sha256": "49b07902bf39775f15397535b134ad6b05eeb9af04122f35f9335ba90dda4071",
+   "yeni_sha256": "c909a74b3b88a62380f43c482b64d8318d03da52543dc48f5a10c3c9221f6c01"
+  },
+  "makale/evidence/scripts/build_evidence.py": {
+   "onceki_sha256": "835929af47b0900a14c4c8c86580b1207de619ddfb5aa785c7199e6f22ca7b6d",
+   "yeni_sha256": "f39cfd14018100acc26abdad9f3dfc75d0b02fb6306ec868dbdde979f6931af9",
+   "elle_yama": true
   },
   "makale/evidence/software_manifest.md": {
    "onceki_sha256": "b887abb341fbe78864b64981905cce65d1c91963b70758fdd33c35bd17071375",
@@ -198,8 +203,8 @@
    "elle_yama": true
   },
   "orkestrasyon_durumu.md": {
-   "onceki_sha256": "16fc02d0aa905bb4bd9250f1506eae0c5bd28958869e00253dd26263f36969eb",
-   "yeni_sha256": "4076f6863898382bbed20295d49262a846c2b1a0d27e0f0bfc94d9508353ec03"
+   "onceki_sha256": "4ef3a03ae8f470e50f13a2d26e9e1ebb0d5a4b4b235467bed68d57f82e8dcb70",
+   "yeni_sha256": "a766a66d2f30b24beb4642a4d8f3df6a69f961738109835ee219644e3f98c139"
   },
   "rakip/KURULUM.md": {
    "onceki_sha256": "94a248383fab6b558964f045943204646101d02f6346d84e079e31545bf13d67",
@@ -1538,12 +1543,16 @@
    "yeni_sha256": "df9ddae2f0690ad4980bfa87a53eccead386644da7fa562d4579553e5f42149d"
   },
   "runs_meta/runs_colab/ARSIV_MANIFEST.json": {
-   "onceki_sha256": "ba65fdd1fcce54fc45c6fe31c0cda4a7c3d43263d2d2d7b83f14520743f349e2",
-   "yeni_sha256": "9d9ae431e300c0d9fbc11e2986bdbf982c50c51902317385e531f53bcaa79df6"
+   "onceki_sha256": "841798076813aa9a3ecfc13946394065b98c215b626e3bb5f0d870a9ef1721c2",
+   "yeni_sha256": "6197ad814cd225467c0fb4fa337fe7dc43c4ac456970f273daaa230cda95fd0f"
   },
   "runs_meta/runs_colab/ARSIV_MANIFEST_K4_20261011-1828.json": {
    "onceki_sha256": "45d4f1cf0c824cf7bb11fb913af99aaac43be915ecb1eb109eabc30c77d00037",
    "yeni_sha256": "dedda246b19c679dcb0c8b9270fa7aaadde87722aab671bf70e0e305676d9515"
+  },
+  "runs_meta/runs_colab/ARSIV_MANIFEST_onceki.json": {
+   "onceki_sha256": "ba65fdd1fcce54fc45c6fe31c0cda4a7c3d43263d2d2d7b83f14520743f349e2",
+   "yeni_sha256": "9d9ae431e300c0d9fbc11e2986bdbf982c50c51902317385e531f53bcaa79df6"
   },
   "scripts/c1_bitince_kapat.sh": {
    "onceki_sha256": "6879f59eef4d9b8f8de58c203b3d2be5e8eef70b290a32a92effaf8d1a4162ee",
@@ -1579,8 +1588,8 @@
    "yeni_sha256": "5f07b58a9298c40223b2755affd8e8bfdaae0bdafe619d7a7146e67ca5570548"
   },
   "sonuclar/DRIVE_SONUC_MANIFEST.json": {
-   "onceki_sha256": "02e11da48ad3b1b2f25d95e083de1f37f86ac8553ff3ec28df20b981bfaaa1a0",
-   "yeni_sha256": "0b985932dc12255d7491db12ff001614bbc52f7289f67d0bc4d9771346816b9f"
+   "onceki_sha256": "0b8a37fb4f3c1d7a977b899e0fce7edd13563c3d9914a9b826985bb60f7da39d",
+   "yeni_sha256": "7c55ae7d16b3b2f1afbe16018005cd28cb635fad8f506e268669702a09f3ec9c"
   },
   "sonuclar/e1_bit_esitlik/eski_yeni.diff": {
    "onceki_sha256": "f0553a12d07830bf166668c90afa40186e5fd8475d71d7c9c0b2d25bfb4a42ae",
@@ -1589,6 +1598,10 @@
   "sonuclar/e1_h14_kuru_sonuc.json": {
    "onceki_sha256": "7acaaf6762615c0162e67c72fdab843dd1f784ad0106f9333a9c35e472be870b",
    "yeni_sha256": "d7fb4ee1cc1d77d29fe2f0f249c44ff914fd812fb67ac57292e852bc4bf63ff2"
+  },
+  "sonuclar/e1_h14_sonuc.json": {
+   "onceki_sha256": "94ca0f0e8d142d7fae3f359d151f9059f72c22c26149b997d7c17660e2ccdb08",
+   "yeni_sha256": "868aa7eb8ccf7a76d51a07a86eaf648ce07568e8d16f0cc7d712f6114bafe82f"
   },
   "sonuclar/k5_kuru_val_sonuc.json": {
    "onceki_sha256": "5f6bb0782aa40b5e518fd5db5226286c3514be6bf464ae18fdc072e3ae9802a3",
@@ -1622,11 +1635,6 @@
    "onceki_sha256": "1b6af1738988a92758ee1dd785b5e9b11e78973e4d92bc3c8bb7c61d9ecd1941",
    "yeni_sha256": "bbc8b112a4ce4a6050e2311723da2a5d837499db3c457c0bb7485b7d750530e0",
    "elle_yama": true
-  },
-  "makale/evidence/scripts/build_evidence.py": {
-   "onceki_sha256": "0c0b46c1ffa4c6d1e6a380f7fe29c91b5d7b51a2f78d7fb58afd5687e2d7f0aa",
-   "elle_yama": true,
-   "yeni_sha256": "ef2616adee6e9d42c1607f868a6fbad1aee6480714f5afad706653e78e5920f7"
   },
   "makale/evidence/scripts/lkb_bootstrap.py": {
    "onceki_sha256": "0862cbbd929aa6f1edc2e15440979bc0c22c23047b435c1bc074b4a2677d407f",
