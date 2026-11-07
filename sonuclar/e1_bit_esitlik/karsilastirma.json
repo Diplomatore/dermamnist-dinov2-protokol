@@ -1,0 +1,121 @@
+{
+ "eski↔yeni": {
+  "anahtar_kumesi_ayni": true,
+  "metrics_farkli_alanlar(zaman/bellek hariç)": {},
+  "ilk_adim_loss": [
+   2.101036787033081,
+   2.101036787033081,
+   0.0
+  ],
+  "epoch_train_loss": [
+   [
+    1.693453460931778,
+    1.693453460931778
+   ],
+   [
+    1.1423305869102478,
+    1.1423305869102478
+   ]
+  ],
+  "epoch_val": true,
+  "tahmin_val.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "tahmin_val_son.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "tahmin_val_aucsecim.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "etiket_val.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "best_model_tensor_bit_esit": "176/176",
+  "best_model_maks_fark": 0.0
+ },
+ "eski_onb↔yeni_onb": {
+  "anahtar_kumesi_ayni": true,
+  "metrics_farkli_alanlar(zaman/bellek hariç)": {},
+  "ilk_adim_loss": [
+   2.101036787033081,
+   2.101036787033081,
+   0.0
+  ],
+  "epoch_train_loss": [
+   [
+    1.693453460931778,
+    1.693453460931778
+   ],
+   [
+    1.1423305869102478,
+    1.1423305869102478
+   ]
+  ],
+  "epoch_val": true,
+  "tahmin_val.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "tahmin_val_son.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "tahmin_val_aucsecim.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "etiket_val.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "best_model_tensor_bit_esit": "176/176",
+  "best_model_maks_fark": 0.0
+ },
+ "eski↔eski_onb": {
+  "anahtar_kumesi_ayni": false,
+  "metrics_farkli_alanlar(zaman/bellek hariç)": {
+   "onbellek_yazildi": [
+    1,
+    0
+   ]
+  },
+  "ilk_adim_loss": [
+   2.101036787033081,
+   2.101036787033081,
+   0.0
+  ],
+  "epoch_train_loss": [
+   [
+    1.693453460931778,
+    1.693453460931778
+   ],
+   [
+    1.1423305869102478,
+    1.1423305869102478
+   ]
+  ],
+  "epoch_val": true,
+  "tahmin_val.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "tahmin_val_son.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "tahmin_val_aucsecim.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "etiket_val.npy": {
+   "bit_esit": true,
+   "maks_fark": 0.0
+  },
+  "best_model_tensor_bit_esit": "176/176",
+  "best_model_maks_fark": 0.0
+ }
+}

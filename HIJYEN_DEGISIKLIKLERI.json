@@ -139,6 +139,10 @@
    "onceki_sha256": "1942dc7a02e22438c762243228e861c36061970063ca97bd9742ed819599a156",
    "yeni_sha256": "d73c612738135db691097d4c062ba5a08d4b563f06696e62a75329468e3e222c"
   },
+  "hipotezler/H14-UYGULAMA-NOTU.md": {
+   "onceki_sha256": "cba3aab5cef312a6145db0b3c74c5d4e017c69389513ff65a5c4e5b66fa8cfd2",
+   "yeni_sha256": "3be2602a8d154b7d51880d2c0f50e03f9f29c977bea1de9b3cd5b04c8fe48d6e"
+  },
   "hipotezler/K5-ONKOSUL-KONTROL.md": {
    "onceki_sha256": "e99d540c9102c2388c03f285a283929d89e2b75b8c399252f925edf1f2b774ba",
    "yeni_sha256": "0f5f0a47e807ab1ec12f4d091cb87ec59e037c57619aa8c86714b16fc97f094d"
@@ -194,8 +198,8 @@
    "elle_yama": true
   },
   "orkestrasyon_durumu.md": {
-   "onceki_sha256": "90c2672467900a40fa9769f900c0412df1cb7e8ff6caf30ea0b86453ab043512",
-   "yeni_sha256": "6ad8f8ec1ebe8a6f1f9d2f104efe8758e4723fdf5275e9027a6adb4dfc6cb686"
+   "onceki_sha256": "16fc02d0aa905bb4bd9250f1506eae0c5bd28958869e00253dd26263f36969eb",
+   "yeni_sha256": "4076f6863898382bbed20295d49262a846c2b1a0d27e0f0bfc94d9508353ec03"
   },
   "rakip/KURULUM.md": {
    "onceki_sha256": "94a248383fab6b558964f045943204646101d02f6346d84e079e31545bf13d67",
@@ -1577,6 +1581,10 @@
   "sonuclar/DRIVE_SONUC_MANIFEST.json": {
    "onceki_sha256": "02e11da48ad3b1b2f25d95e083de1f37f86ac8553ff3ec28df20b981bfaaa1a0",
    "yeni_sha256": "0b985932dc12255d7491db12ff001614bbc52f7289f67d0bc4d9771346816b9f"
+  },
+  "sonuclar/e1_bit_esitlik/eski_yeni.diff": {
+   "onceki_sha256": "f0553a12d07830bf166668c90afa40186e5fd8475d71d7c9c0b2d25bfb4a42ae",
+   "yeni_sha256": "a39ba6f80b1e7d93344925150f05d239bf77449c07bc446c9d619774a65ec0cf"
   },
   "sonuclar/e1_h14_kuru_sonuc.json": {
    "onceki_sha256": "7acaaf6762615c0162e67c72fdab843dd1f784ad0106f9333a9c35e472be870b",
