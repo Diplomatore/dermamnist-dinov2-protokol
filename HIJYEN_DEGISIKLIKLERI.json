@@ -51,6 +51,10 @@
    "onceki_sha256": "f860a4da11ba73b6c00b09efcfb6fa3e346d1fcb9c26602d6c165489afa55de5",
    "yeni_sha256": "23e007845da8fd1e6eb7dc52cb70db9d1042b336423ca53705402ab09d1d872a"
   },
+  "colab/hat/defter_uret_e1.py": {
+   "onceki_sha256": "be654d7460416799f78ceb07d00d42f8c1af923c2c99dc7f80a4e7d7dac2c24f",
+   "yeni_sha256": "a13f1662276bb55dae825a4ba43237440842ff78ea07c74bfa14fa5f93d05934"
+  },
   "colab/hat/defter_uret_v1.py": {
    "onceki_sha256": "018fe0ca9bb944f5b364aa4e31655c65ed64eb574f8c6c7dd309652c9b3e144f",
    "yeni_sha256": "8a45a86555fea3ccca70efc9d55c79034a28e89590f8470fec01d120cfd89bbb"
@@ -60,8 +64,12 @@
    "yeni_sha256": "b71896c01adde4362c0a69884168d6f0adccc74ca178cf52bcdcaea950138063"
   },
   "colab/hat/drive_paketle.py": {
-   "onceki_sha256": "df1911dd8f73055bdd866e1251896165f57a47ab19bc2cafc72f1abeb17b2c09",
-   "yeni_sha256": "b0292b66b2d09a01ee2de2afbb009f96b4d7553f24a5dd63ec66e280b0808d14"
+   "onceki_sha256": "3b31765e5f1a79ba4205517618a2402dcc530d19f7c8b07af05ba94281cb0063",
+   "yeni_sha256": "6c5a91aa0a0dd4994460eea55b279709bed644fc67590b563a0ea5c7b82298d5"
+  },
+  "colab/hat/e1_kuyruk_yaz.py": {
+   "onceki_sha256": "70b1cee884ec1258a725282e877bc6a2b12a4fffb72397423be9b81c6665cdc1",
+   "yeni_sha256": "f166ad4e7e5eebbbf504d7c884903e1576757b112cd55b72454d0286eff0bb1f"
   },
   "colab/hat/README.md": {
    "onceki_sha256": "ad1d97a12eba7ac34ebcb96f358ad9053209bc79821d3fe22d9c1da1cc1c7567",
@@ -186,8 +194,8 @@
    "elle_yama": true
   },
   "orkestrasyon_durumu.md": {
-   "onceki_sha256": "810807c9e3ea6581a641622cee6bb7c6b4d3d2b399cddb417417a283457bef1b",
-   "yeni_sha256": "607a45df2f39e289b451ade0a44c61d5d852344dd72700db37df52aee6ba5b50"
+   "onceki_sha256": "90c2672467900a40fa9769f900c0412df1cb7e8ff6caf30ea0b86453ab043512",
+   "yeni_sha256": "6ad8f8ec1ebe8a6f1f9d2f104efe8758e4723fdf5275e9027a6adb4dfc6cb686"
   },
   "rakip/KURULUM.md": {
    "onceki_sha256": "94a248383fab6b558964f045943204646101d02f6346d84e079e31545bf13d67",
@@ -1550,6 +1558,10 @@
    "onceki_sha256": "d9d5966f0d7b438d27f083ef267fdd5f9de6227ef4d8d685943bf7b3d95b9c69",
    "yeni_sha256": "22682e0e2520e7627c5122a76e9b3ab96a0d03516cea4f0e286f4929ed2b2da5"
   },
+  "scripts/e1_h14_analiz.py": {
+   "onceki_sha256": "c38cba390fc05ba742bcce6230603eb976ad6d205f83aa57ed94bd580606826b",
+   "yeni_sha256": "2bff9a16e922ee63dcbec38fa99e54ce45bb4a55eeefdf21149d6d6fee7ad1f4"
+  },
   "scripts/tahlil_tur4.py": {
    "onceki_sha256": "bb3a50241330be369ae4966494ee61d91a02a6975aa572014e3e00308f0c93d4",
    "yeni_sha256": "78a5a45e1f6c968a2d64bd181fa5e2c67d0c728050591a9578c559eecfce4a24"
@@ -1565,6 +1577,10 @@
   "sonuclar/DRIVE_SONUC_MANIFEST.json": {
    "onceki_sha256": "02e11da48ad3b1b2f25d95e083de1f37f86ac8553ff3ec28df20b981bfaaa1a0",
    "yeni_sha256": "0b985932dc12255d7491db12ff001614bbc52f7289f67d0bc4d9771346816b9f"
+  },
+  "sonuclar/e1_h14_kuru_sonuc.json": {
+   "onceki_sha256": "7acaaf6762615c0162e67c72fdab843dd1f784ad0106f9333a9c35e472be870b",
+   "yeni_sha256": "d7fb4ee1cc1d77d29fe2f0f249c44ff914fd812fb67ac57292e852bc4bf63ff2"
   },
   "sonuclar/k5_kuru_val_sonuc.json": {
    "onceki_sha256": "5f6bb0782aa40b5e518fd5db5226286c3514be6bf464ae18fdc072e3ae9802a3",

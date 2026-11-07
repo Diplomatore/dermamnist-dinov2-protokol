@@ -45,8 +45,10 @@ def _oku(p: Path):
         return None
 
 
-def colab_saat_dokum(runs: Path, haric: Path | None = None) -> dict:
-    """Σ koşum süresi (sa) + döküm. haric: bu satırın kendi RUN_DIR'i (sayılmaz)."""
+def colab_saat_dokum(runs: Path, haric: Path | None = None, kuyruk_onek: str | None = None) -> dict:
+    """Σ koşum süresi (sa) + döküm. haric: bu satırın kendi RUN_DIR'i (sayılmaz).
+    kuyruk_onek (E1/H14 kural h, 2026-11-03): verilirse YALNIZ config.kuyruk'u bu önekle başlayan koşumlar sayılır
+    (ör. 'e1-' → E1 birleşik L4-sa; Ekim koşumları sayılmaz). None → eski davranış (hepsi)."""
     out = {"toplam_sa": 0.0, "damgali_n": 0, "damgali_sa": 0.0, "kosan_n": 0, "kosan_sa": 0.0,
            "yetim_n": 0, "yetim_sa": 0.0, "kuyruk_sa": {}}
     if not runs.exists():
@@ -54,6 +56,8 @@ def colab_saat_dokum(runs: Path, haric: Path | None = None) -> dict:
     haric_ad = Path(haric).name if haric else None
     for d in runs.iterdir():
         if not d.is_dir() or d.name == "kuyruklar" or d.name == haric_ad:
+            continue
+        if kuyruk_onek is not None and not str(((_oku(d / "config.json") or {}).get("kuyruk")) or "").startswith(kuyruk_onek):
             continue
         done = d / ".done"
         s, tur = None, None
@@ -99,17 +103,19 @@ def main() -> int:
     p.add_argument("--esik", type=float, required=True)
     p.add_argument("--baslangic-sa", type=float, required=True)
     p.add_argument("--kok", default=".")
+    p.add_argument("--kuyruk-onek", default=None, help="yalnız bu önekli kuyrukların koşumları (E1: 'e1-')")
+    p.add_argument("--kural", default="H11 erteleme (H11.md Bütçe; SIRALAMA Tur-4 §3)", help="kayıt metni")
     a = p.parse_args(argv[:i])
     komut = argv[i + 1:]
     if not komut:
         raise SystemExit("HATA: '--' sonrası komut yok")
     kok = Path(a.kok).resolve()
     rd = os.environ.get("RUN_DIR")
-    D = colab_saat_dokum(kok / "runs", Path(rd) if rd else None)
+    D = colab_saat_dokum(kok / "runs", Path(rd) if rd else None, a.kuyruk_onek)
     saat = D["toplam_sa"]
     sayac = a.baslangic_sa + saat
     karar = "ERTELE" if sayac > a.esik else "DEVAM"
-    kayit = {"zaman": time.strftime("%Y-%m-%dT%H:%M:%S"), "kural": "H11 erteleme (H11.md Bütçe; SIRALAMA Tur-4 §3)",
+    kayit = {"zaman": time.strftime("%Y-%m-%dT%H:%M:%S"), "kural": a.kural, "kuyruk_onek": a.kuyruk_onek,
              "baslangic_sa_yerel": a.baslangic_sa, "colab_l4_sa": round(saat, 3),
              "colab_damgali_kosum": D["damgali_n"], "colab_kosan_kosum": D["kosan_n"], "colab_yetim_kosum": D["yetim_n"],
              "dokum": D, "tanim": "tüm eşzamanlı Colab oturumları: damgalı sure_sn + damgasız/yetim .heartbeat gecen_sn",
@@ -123,7 +129,7 @@ def main() -> int:
           f"{D['damgali_sa']:.2f} sa, koşan {D['kosan_n']} {D['kosan_sa']:.2f} sa, yetim {D['yetim_n']} {D['yetim_sa']:.2f} sa) "
           f"{'>' if karar == 'ERTELE' else '≤'} eşik {a.esik} → {karar}", flush=True)
     if karar == "ERTELE":
-        print("[erteleme_kapisi] H11 a3 ERTELENDİ — karar şef/kullanıcıda (rc=94, metrics yok).", flush=True)
+        print(f"[erteleme_kapisi] {a.kural}: ERTELENDİ/DUR — karar şef/kullanıcıda (rc=94, metrics yok).", flush=True)
         return 94
     sys.stdout.flush()
     os.execvp(komut[0], komut)
@@ -160,6 +166,18 @@ def kendi_testi() -> int:
         assert abs(D2["toplam_sa"] - (2.25 + 30 / 3600)) < 1e-6, D2
         h, n = colab_saat(runs)
         assert n == 5 and abs(h - D2["toplam_sa"]) < 1e-9, (h, n)
+        # E1 (kural h): kuyruk öneki filtresi — yalnız 'e1-' kuyrukları
+        kosum("e1a", "e1-h14", {"rc": 0, "sure_sn": 1800.0})
+        kosum("e1b", "e1-h10r", None, 900)
+        De = colab_saat_dokum(runs, ben, "e1-")
+        assert abs(De["toplam_sa"] - 0.75) < 1e-6 and set(De["kuyruk_sa"]) == {"e1-h14", "e1-h10r"}, De
+        r = subprocess.run([sys.executable, __file__, "--esik", "0.5", "--baslangic-sa", "0", "--kuyruk-onek", "e1-",
+                            "--kural", "E1 bütçe (H14 kural h)", "--kok", str(t), "--", sys.executable, "-c", "print('KOSTU')"],
+                           capture_output=True, text=True, env={**os.environ, "RUN_DIR": str(ben)})
+        e = json.loads((ben / "erteleme.json").read_text(encoding="utf-8"))
+        assert r.returncode == 94 and "KOSTU" not in r.stdout and abs(e["sayac"] - 0.75) < 1e-3, (r, e)
+        (runs / "e1a").rename(runs / "e1a_x"); (runs / "e1b").rename(runs / "e1b_x")
+        shutil.rmtree(runs / "e1a_x"); shutil.rmtree(runs / "e1b_x")
         # karar: 21,0 + 2,25 = 23,25 > 23 → ERTELE (rc 94, komut koşmaz); 15,3 + 2,25 ≤ 23 → DEVAM (komut koşar)
         env = {**os.environ, "RUN_DIR": str(ben)}
         r = subprocess.run([sys.executable, __file__, "--esik", "23.0", "--baslangic-sa", "21.0", "--kok", str(t), "--",

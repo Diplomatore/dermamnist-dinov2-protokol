@@ -37,7 +37,9 @@ HAT = WS / "colab" / "hat"
 ORKESTRA = ["kosum.py", "kuyruk.py", "beklenti_kontrol.py", "leaderboard.py", "replikasyon_kapisi.py"]
 COLAB = ["fp32_kos.py", "erteleme_kapisi.py", "oz_sinama.py", "defter_yardim.py", "oturum_sar.py", "veri_listesi.json"]
 KUYRUKLAR = ["kc1-tekrar", "kc2-tur4-h12", "kc2-tur4-h10", "kc2-tur4-h11",
-             "k5-test", "k5-c1-A", "k5-c1-B", "k5-c2", "k5-c1-A-v2", "k5-c1-A-v3"]  # K5 (2026-10-11; colab/hat/k5_kuyruk_yaz.py)
+             "k5-test", "k5-c1-A", "k5-c1-B", "k5-c2", "k5-c1-A-v2", "k5-c1-A-v3",  # K5 (2026-10-11; colab/hat/k5_kuyruk_yaz.py)
+             "e1-h14", "e1-h10r"]  # E1 / H14 (2026-11-03; colab/hat/e1_kuyruk_yaz.py)
+E1_DEFTER = WS / "colab" / "e1-h14.ipynb"   # E1 defteri (colab/hat/defter_uret_e1.py) → yz/e1-h14.ipynb
 HARIC_PARCA = {"__pycache__", ".git", ".venv"}
 HARIC_UZANTI = {".pyc", ".pth", ".pt", ".ckpt", ".npz", ".npy", ".tmp"}
 YONETILEN = ["scripts", "varyantlar", "rakip", "orkestra", "colab", "data"]
@@ -90,6 +92,7 @@ Bu klasörü şef (Claude) yazar. **Elle değiştirme.**
 Defterler (`yz/` içinde):
 - `3-1-colab.ipynb` — v1 tek defter (kc1-tekrar). Yalnız o oturum koparsa yeniden açılır.
 - `3-1-colab-A.ipynb`, `-B`, `-C` — v2 paralel sekmeler. Hepsi aynı kod; yalnız ilk hücre (SEKME, KUYRUK) farklı.
+- E1 (2026-11-03): `e1-h14.ipynb` — H14 (H10 C1 + D4; test sonrası keşifsel). Adımlar: WS `colab/E1-OKU-BENI.md`.
 - K5: `3-1-colab-K5-test.ipynb` (resmî test; tek sekme), `3-1-colab-K5-C1-A.ipynb` + `-K5-C1-B.ipynb` (C1; test SONRASI, iki sekme),
   `3-1-colab-K5-C2.ipynb` (C2; C1 bitince tek sekme). Her biri şef izni ister. **Aynı anda en çok 2 Colab oturumu.**
 
@@ -120,7 +123,7 @@ def main():
     kod, kuy = kod_girdileri(), kuyruk_girdileri()
     eksik = [str(k) for k, _ in kod + kuy if not k.exists()]
     defter = HAT / "3-1-colab.ipynb"   # v1 (yalnız kayıt; Drive'a yazılmaz)
-    sekme_defterleri = sorted(HAT.glob("3-1-colab-*.ipynb"))
+    sekme_defterleri = sorted(HAT.glob("3-1-colab-*.ipynb")) + ([E1_DEFTER] if E1_DEFTER.exists() else [])
     if not defter.exists():
         eksik.append(str(defter))
     if not sekme_defterleri:
@@ -145,7 +148,7 @@ def main():
     # v2 sekme defterleri: Colab'da açılıp kaydedilmiş bir kopya EZİLMEZ (açık sekmenin otomatik kaydıyla çakışır)
     defterler, korunan = {}, []
     for yerel in sekme_defterleri:
-        s_ad = yerel.stem[len("3-1-colab-"):]
+        s_ad = yerel.stem[len("3-1-colab-"):] if yerel.stem.startswith("3-1-colab-") else yerel.stem
         d = yz / yerel.name
         if d.exists() and sha256(d) != sha256(yerel) and sha256(d) not in bilinen and not a.defter_ez:
             korunan.append(d.name)

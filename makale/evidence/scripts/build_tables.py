@@ -518,6 +518,135 @@ def tab_lkb():
               "satırı gösterilmedi.", "tab:lkb", g)
 
 
+# ------------------------------------------------------------------ (h) ön-kayıt sapma tablosu (revizyon 2026-11-03; M4)
+def tab_sapma():
+    """Ön-kayıtlı plan ↔ gerçekleşen ↔ sapma ↔ sonuca etkisi (revizyon 2026-11-03; eleştiri M4).
+    Sayı ve zamanlar yalnız kanıt kayıtlarından (R); niteleyici ifadeler (aşıldı, GA > 0, …) assert ile denetlenir.
+    Tek sayfaya sığmadığı için kronolojik iki floata bölünür: tab:sapma (test öncesi + test geçişi) ve
+    tab:sapma-devam (test sonrası)."""
+    ad = "tab_sapma"
+
+    def z(kid, alan="deger"):
+        return str(R(kid, ad)[alan]).replace("T", " ")
+
+    def p(kid, n=2):
+        return isaretli(R(kid, ad)["deger"], n)
+
+    def pg(kid, n=2):
+        r = R(kid, ad)
+        return f"{isaretli(r['deger'], n)} {ga(r['ga'], n)}"
+
+    # ---- tutarlılık denetimleri (metindeki niteleyici ifadeler kanıtla uyuşmalı)
+    esik = R("SAP-H08-esik", ad)["deger"]
+    assert R("SAP-H08-val-dengeli", ad)["deger"] > esik
+    assert R("T-K-h08-h02-dengeli_acc", ad)["deger"] > esik and R("T-G2-H08-bayrak", ad)["deger"] is True
+    assert R("T-DOG-H08", ad)["deger"] is True
+    sn1_ham, sn1_tab = R("T-K-h10-h02-dSdN", ad), R("T-K-h10-h02-tab_std_dS_eksi_dN", ad)
+    sn2_ham, sn2_tab = R("T-K-h08-h02-dSdN", ad), R("T-K-h08-h02-tab_std_dS_eksi_dN", ad)
+    assert sn1_ham["ga"][0] > 0 and sn1_tab["ga"][0] > 0                       # T-SN1: iki ölçüde aynı etiket
+    assert sn2_ham["ga"][0] > 0 and sn2_tab["ga"][0] < 0 < sn2_tab["ga"][1]    # T-SN2: ölçüye bağlı
+    ekb, dond, acil = R("ON-tarih-ekb", ad), R("ON-tarih-dondurma", ad), R("T-meta-tarih", ad)
+    assert ekb["dondurmada_sha_var"] is True and dond["deger"] < acil["deger"]
+    for k in ("SAP-C1-A-a1", "SAP-C1-Av2-a1"):
+        assert R(k, ad)["deger"] == "İHLAL"
+    for k in ("SAP-C1-Av3-a1", "SAP-C1-Av3-a3", "SAP-C1-B-a1", "SAP-C1-B-a3"):
+        assert R(k, ad)["deger"] == "GEÇTİ"
+    assert R("SAP-C1-kuyruk-kol", ad)["deger"] == "k5-c1-B"
+    but = R("BUT-toplam", ad)
+    assert R("T-t4-auc", ad)["deger"] > 0.99 and R("SAP-T4-auc-denetim", ad)["deger"] is False
+    lkb, lkbd = R("SENS-LKB-ozet", ad), R("SENS-LKB-dogrulama", ad)
+    assert lkbd["maks_mutlak_fark"] == 0 and lkbd["uyusmaz"] == 0
+    d10, d08 = R("C1-K-h10-h02-dengeli_acc", ad), R("C1-K-h08-h02-dengeli_acc", ad)
+    assert d10["ga"][0] > 0 and d08["ga"][0] > 0
+    mel = {c: R(f"C1-REV-K-{c}-duyarlilik_mel", ad) for c in ("h10-h02", "h08-h02", "h10-h08")}
+    assert [c for c, r in mel.items() if r["ga"][0] > 0] == ["h08-h02"]
+    nmel = R("C1-REV-n-mel", ad)["deger"]
+    assert R("SAP-E1", ad)["deger"] == "beklemede"
+    for k in ("SAP-C2-kapi", "SAP-T4-plan", "SAP-ON-6-3", "SAP-H10D4-plan", "SAP-C1-dengeli-onkayit", "SAP-C1-A-neden"):
+        R(k, ad)  # kaynak satırı defterde olmalı (kullanılan id listesine girer)
+    bin_ = format(lkbd["deger"], ",").replace(",", ".")
+
+    def kay(*k):
+        return "\\newline{\\itshape " + "; ".join(k) + "}"
+
+    A = [
+        ("H08 bayrağı, teste taşınma" + kay("H08:30", f"SIR:626 ({z('SAP-H08-yolA')})", f"KR §2.1, §12 ({z('SAP-karar12')})"),
+         f"Dengeli ACC $\\Delta >$ {sayi(esik, 1)} puan ise İNCELE, TUT yok; test yolu öngörülmemiş.",
+         f"Doğrulamada $\\Delta$ {pg('SAP-H08-val-dengeli')}; arıza bulunmadı, TUT verilmedi. Yazar kararıyla test "
+         f"doğrulama adayı oldu (yol~A); kuralı test öncesi yazıldı. Testte bayrak yine aşıldı: {pg('T-K-h08-h02-dengeli_acc')}.",
+         f"Kazanan (H10) değişmedi. H08c kuralı geçti ($\\Delta$ACC {p('T-AILE2-h08-h02')}), ResNet-18 satırı oldu; eşik "
+         "gevşetilmedi."),
+        ("S/N kural nesnesi (ek~b)" + kay(f"ONb; GN:33 ({z('ON-tarih-ekb')})", f"dondurma {z('ON-tarih-dondurma')[:16]}"),
+         "§2.6 kuralının nesnesi (ham ya da tabaka-std. $\\Delta_S-\\Delta_N$) belirsiz; düzeltme yalnız ek~b ile, test öncesi.",
+         f"Ek~b ham farkı seçti; iki ölçünün doğrulama değerleri ({p('ON-ekb-val-ham')}; {p('ON-ekb-val-tab')}) "
+         f"görülmüştü. Ek dondurmaya girdi, test açılışından ({z('T-meta-tarih')[11:16]}) önce.",
+         f"T-SN1 iki ölçüde aynı. T-SN2 ham ölçüde tutmadı; tabaka-std. ölçüde ({pg('T-K-h08-h02-tab_std_dS_eksi_dN')}) "
+         "tutardı."),
+        ("C1 kuyruk tekrarları (A, A-v2, A-v3)" + kay("BK", "UN", "GN:71--72", "koşum config"),
+         "§4.2: C1 tarifleri, kolları, seed'leri donmuş; kapı İHLAL'inde düzeltme ve yeni kuyruk adı.",
+         f"Kuyruk A (B, H01c, H02c): a1 {z('SAP-C1-A-a1', 'zaman')[11:]} İHLAL (iki duman rc = 1) $\\to$ üç yardımcı betik "
+         f"düzeltildi; A-v2 a1 {z('SAP-C1-Av2-a1', 'zaman')[11:]} İHLAL (kapı kuralı dumana da uygulandı) $\\to$ yalnız "
+         f"kapsam düzeltildi; A-v3 GEÇTİ ({z('SAP-C1-Av3-a3', 'zaman')[11:]}). H08c ve H10 kuyruk B'de bir kez koştu "
+         f"({z('SAP-C1-B-a3', 'zaman')[11:]}).",
+         "Geçersiz ölçüm koşumu yok (yalnız duman). Tarif, kural ve analiz betiği aynı; üç betiğin SHA256'sı dondurmayla "
+         "uyuşmaz."),
+        ("C2 (yayımlanmış C pikselleri)" + kay("ON:214", f"GN:35 ({z('SAP-C2-karar')})", "GN:56"),
+         f"İkincil; C1 sonunda defter $\\leq$ {sayi(R('SAP-C2-kapi', ad)['deger'], 1)}~sa ise koşulur, değilse sınırlılık.",
+         f"Yazar kararıyla C1 sürerken atlandı; kapı işletilmedi. C1 sonu defter {sayi(but['deger'], 1)} oturum-sa "
+         f"(koşum toplamı {sayi(but['kosum_suresi_saat'], 1)}~sa).",
+         "C2 $-$ C1 görüntü hazırlama etkisi ölçülmedi; C1 kararları etkilenmez."),
+    ]
+    B = [
+        ("T4 (H08c $\\oplus$ H10)" + kay("ON:68", f"KR §2.2, §12 ({z('SAP-karar12')})"),
+         "Ek tabloda; iddia yalnız H08 doğrulanırsa; kazanan olamaz.",
+         f"H08 doğrulandı; yine de yalnız betimsel ek satır. Test AUC'si {sayi(R('T-t4-auc', ad)['deger'], 4)} "
+         "($> 0{,}99$) için teste yeniden bakılmadı.",
+         "Plandan dar iddia; karar ya da Holm ailesi yok; AUC bayrağı açık."),
+        ("H10 + D4 birleşim kartı" + kay("SIR:86--87", f"GN:32 ({z('SAP-karar10')})", "ON §6.3", "KR §12"),
+         "H08 K5'te doğrulanır ve DINOv2 kolu TUT alırsa H10/H11 + D4 kartı açılır.",
+         "Koşullar ancak test açılınca sağlandı; seçim döngüsü Tur~5'te kapanmıştı; test sonrası yeni kol eklenmez.",
+         "H10 $\\leftrightarrow$ H08c kıyası omurga ile augmentasyonu karıştırır (bkz. E1)."),
+        ("Lezyon-kümeli bootstrap" + kay(f"MOD:40 ({z('SAP-LKB-karar')})", "LKB"),
+         "Test sonrası analiz ``keşifsel'' etiketiyle, ayrı bölümde (§6.3).",
+         f"Yazar kararıyla (hakem önerisi) dondurulmuş tahminlerde yapıldı; önce {bin_} alan birebir yeniden üretildi.",
+         f"Karar ve Holm sonuçları aynı; {lkb['toplam_satir']} GA'dan {lkb['deger']}'ünün konumu değişti, hepsi betimsel "
+         "ya da ikincil (Ek~\\ref{sec:ek-lkb})."),
+        ("C1 dengeli ACC ve mel duyarlılığı" + kay("ON:201", "C1M (2026-11-03)"),
+         "§4.3: C1 dengeli ACC GA'larıyla; yön H10 $-$ H02c ve H08c $-$ H02c $> 0$. Mel ön-kayıtlı değil.",
+         "Dengeli GA'lar ilk sürümde verilmemişti, Tablo~\\ref{tab:protokol}'e eklendi. Mel test sonrası hesaplandı, "
+         "aynı tabloda § işaretiyle verildi (§6.3 ``ayrı bölüm'' koşulundan sapma).",
+         f"Dengeli yön iki çiftte desteklendi ({p('C1-K-h10-h02-dengeli_acc')}; {p('C1-K-h08-h02-dengeli_acc')}). Mel: "
+         f"yalnız H08c $-$ H02c GA'sı sıfırın üstünde; n~=~{nmel}, GA geniş."),
+        ("E1 / H14: H10 + D4 (C1)" + kay(f"EP §2b ({z('SAP-E1', 'zaman')})", "OD:15"),
+         f"Test sonrası yeni kol yok (§6.3); H10 + D4 sınırlılık ({z('SAP-karar12')}).",
+         "Yazar kararıyla (dış eleştiri) C1'de ``test sonrası keşifsel'' kol; H14 ön-kayıt kartı koşumdan önce yazılacak.",
+         "\\textit{Beklemede.} Hiçbir mevcut kararı değiştirmeyecek."),
+    ]
+    BAS = ("\\begin{tabularx}{\\textwidth}{>{\\raggedright\\arraybackslash\\hsize=0.80\\hsize}X "
+           ">{\\raggedright\\arraybackslash\\hsize=0.95\\hsize}X >{\\raggedright\\arraybackslash\\hsize=1.35\\hsize}X "
+           ">{\\raggedright\\arraybackslash\\hsize=0.90\\hsize}X}")
+
+    def govde(satirlar):
+        g = [BAS, "\\toprule", "Madde (kaynak) & Ön-kayıtlı plan & Gerçekleşen ve sapma & Sonuca etkisi \\\\", "\\midrule"]
+        for i, (m, a, b, c) in enumerate(satirlar):
+            g.append(f"{m} & {a} & {b} & {c} \\\\")
+            if i < len(satirlar) - 1:
+                g.append("\\addlinespace")
+        return g + ["\\botrule", "\\end{tabularx}"]
+
+    notlar = ("\\textit{Kaynaklar} (dosya:satır; zamanlar yerel saat): H08 = \\texttt{hipotezler/H08.md}; "
+              "SIR = \\texttt{hipotezler/SIRALAMA.md}; ON = \\texttt{hipotezler/K5-ONKAYIT.md}; "
+              "ONb = \\texttt{hipotezler/K5-ONKAYIT-b.md}; UN = \\texttt{hipotezler/K5-C1-UYGULAMA-NOTU.md}; "
+              "BK = \\texttt{sonuclar/beklenti-k5-c1-*.md}; KR = \\texttt{sonuclar/karar.md}; "
+              "GN = \\texttt{gunluk/deney-gunlugu.md}; OD = \\texttt{orkestrasyon\\_durumu.md}; "
+              "MOD, EP = makale çalışma notları; LKB, C1M = \\texttt{evidence/lkb}, \\texttt{evidence/c1mel} çıktıları.")
+    tablo(ad, "Ek: ön-kayıtlı plan, gerçekleşen akış, sapma ve sonuca etkisi (1/2: test öncesi ve test geçişi).",
+          "tab:sapma", govde(A), notlar=notlar)
+    KULLANILAN["tab_sapma_b"] = list(KULLANILAN[ad])
+    tablo("tab_sapma_b", "Ek: ön-kayıt sapmaları (2/2: test sonrası). Kaynak kısaltmaları Tablo~\\ref{tab:sapma} "
+                         "altında; son satır beklemededir.", "tab:sapma-devam", govde(B))
+
+
 if __name__ == "__main__":
     tab_ana()
     tab_kiyas()
@@ -527,4 +656,5 @@ if __name__ == "__main__":
     tab_t4()
     tab_basarisiz()
     tab_lkb()
+    tab_sapma()
     (OUT / "KULLANILAN_IDLER.json").write_text(json.dumps(KULLANILAN, ensure_ascii=False, indent=1), encoding="utf-8")

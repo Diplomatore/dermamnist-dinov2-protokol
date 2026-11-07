@@ -256,3 +256,4 @@ k3-baseline-yerel bitince: kosum.py durum → replikasyon_kapisi.py → K3.5. Be
 ## K6 DEVİR (2026-10-12)
 - Makale workspace: `<MAKALE_WS>` (notes/brief.md, notes/taslak.md). Kapsam = A2 (protokol duyarlılığı). → /makale-uret Faz 1.
 - Fazlar: K0–K5 ✔, K6 ✔ (devredildi).
+- 2026-11-03 (revizyon E1): H14 kartı yazıldı (hipotez-tasarimcisi; 8 görünümlü fp16 blok-8 önbellek, ≈26,2 GB Colab yerel diski; tahmin ≈1,6 L4-sa, koşullu H10r ile ≈2,8; tavan 5,0). Ajan SIRALAMA.md'yi tümden yeniden yazmıştı (CRLF→LF, mtime) → şef orijinal baytlarla GERİ YÜKLEDİ (SHA256 e017899a…, mtime 2026-10-11 17:53:06, kaynak GitHub depo kopyası); E1 girdisi `hipotezler/SIRALAMA-E1.md`'ye taşındı. Sırada: deney-yurutucu uygulama + `colab/e1-h14.ipynb` (koşum kullanıcıda).

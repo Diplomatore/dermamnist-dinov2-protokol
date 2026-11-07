@@ -1,0 +1,21 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: SAP-H08-esik, SAP-H08-val-dengeli, T-K-h08-h02-dengeli_acc, T-G2-H08-bayrak, T-DOG-H08, T-K-h10-h02-dSdN, T-K-h10-h02-tab_std_dS_eksi_dN, T-K-h08-h02-dSdN, T-K-h08-h02-tab_std_dS_eksi_dN, ON-tarih-ekb, ON-tarih-dondurma, T-meta-tarih, SAP-C1-A-a1, SAP-C1-Av2-a1, SAP-C1-Av3-a1, SAP-C1-Av3-a3, SAP-C1-B-a1, SAP-C1-B-a3, SAP-C1-kuyruk-kol, BUT-toplam, T-t4-auc, SAP-T4-auc-denetim, SENS-LKB-ozet, SENS-LKB-dogrulama, C1-K-h10-h02-dengeli_acc, C1-K-h08-h02-dengeli_acc, C1-REV-K-h10-h02-duyarlilik_mel, C1-REV-K-h08-h02-duyarlilik_mel, C1-REV-K-h10-h08-duyarlilik_mel, C1-REV-n-mel, SAP-E1, SAP-C2-kapi, SAP-T4-plan, SAP-ON-6-3, SAP-H10D4-plan, SAP-C1-dengeli-onkayit, SAP-C1-A-neden, SAP-H08-yolA, SAP-karar12, T-AILE2-h08-h02, ON-ekb-val-ham, ON-ekb-val-tab, SAP-C2-karar, SAP-karar10, SAP-LKB-karar
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Ek: ön-kayıtlı plan, gerçekleşen akış, sapma ve sonuca etkisi (1/2: test öncesi ve test geçişi).}\label{tab:sapma}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash\hsize=0.80\hsize}X >{\raggedright\arraybackslash\hsize=0.95\hsize}X >{\raggedright\arraybackslash\hsize=1.35\hsize}X >{\raggedright\arraybackslash\hsize=0.90\hsize}X}
+\toprule
+Madde (kaynak) & Ön-kayıtlı plan & Gerçekleşen ve sapma & Sonuca etkisi \\
+\midrule
+H08 bayrağı, teste taşınma\newline{\itshape H08:30; SIR:626 (2026-10-11 09:42); KR §2.1, §12 (2026-10-12)} & Dengeli ACC $\Delta >$ 6,5 puan ise İNCELE, TUT yok; test yolu öngörülmemiş. & Doğrulamada $\Delta$ +8,06 [+4,97; +11,79]; arıza bulunmadı, TUT verilmedi. Yazar kararıyla test doğrulama adayı oldu (yol~A); kuralı test öncesi yazıldı. Testte bayrak yine aşıldı: +8,41 [+5,85; +11,22]. & Kazanan (H10) değişmedi. H08c kuralı geçti ($\Delta$ACC +2,62), ResNet-18 satırı oldu; eşik gevşetilmedi. \\
+\addlinespace
+S/N kural nesnesi (ek~b)\newline{\itshape ONb; GN:33 (2026-10-11 18:55); dondurma 2026-10-11 18:54} & §2.6 kuralının nesnesi (ham ya da tabaka-std. $\Delta_S-\Delta_N$) belirsiz; düzeltme yalnız ek~b ile, test öncesi. & Ek~b ham farkı seçti; iki ölçünün doğrulama değerleri (+5,13; +3,92) görülmüştü. Ek dondurmaya girdi, test açılışından (21:12) önce. & T-SN1 iki ölçüde aynı. T-SN2 ham ölçüde tutmadı; tabaka-std. ölçüde (+0,89 [\textminus{}2,04; +3,65]) tutardı. \\
+\addlinespace
+C1 kuyruk tekrarları (A, A-v2, A-v3)\newline{\itshape BK; UN; GN:71--72; koşum config} & §4.2: C1 tarifleri, kolları, seed'leri donmuş; kapı İHLAL'inde düzeltme ve yeni kuyruk adı. & Kuyruk A (B, H01c, H02c): a1 21:52 İHLAL (iki duman rc = 1) $\to$ üç yardımcı betik düzeltildi; A-v2 a1 22:56 İHLAL (kapı kuralı dumana da uygulandı) $\to$ yalnız kapsam düzeltildi; A-v3 GEÇTİ (02:10). H08c ve H10 kuyruk B'de bir kez koştu (00:07). & Geçersiz ölçüm koşumu yok (yalnız duman). Tarif, kural ve analiz betiği aynı; üç betiğin SHA256'sı dondurmayla uyuşmaz. \\
+\addlinespace
+C2 (yayımlanmış C pikselleri)\newline{\itshape ON:214; GN:35 (2026-10-11 23:10); GN:56} & İkincil; C1 sonunda defter $\leq$ 28,8~sa ise koşulur, değilse sınırlılık. & Yazar kararıyla C1 sürerken atlandı; kapı işletilmedi. C1 sonu defter 30,6 oturum-sa (koşum toplamı 26,4~sa). & C2 $-$ C1 görüntü hazırlama etkisi ölçülmedi; C1 kararları etkilenmez. \\
+\botrule
+\end{tabularx}
+\par\smallskip\raggedright \textit{Kaynaklar} (dosya:satır; zamanlar yerel saat): H08 = \texttt{hipotezler/H08.md}; SIR = \texttt{hipotezler/SIRALAMA.md}; ON = \texttt{hipotezler/K5-ONKAYIT.md}; ONb = \texttt{hipotezler/K5-ONKAYIT-b.md}; UN = \texttt{hipotezler/K5-C1-UYGULAMA-NOTU.md}; BK = \texttt{sonuclar/beklenti-k5-c1-*.md}; KR = \texttt{sonuclar/karar.md}; GN = \texttt{gunluk/deney-gunlugu.md}; OD = \texttt{orkestrasyon\_durumu.md}; MOD, EP = makale çalışma notları; LKB, C1M = \texttt{evidence/lkb}, \texttt{evidence/c1mel} çıktıları.
+\end{table}

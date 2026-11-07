@@ -1,0 +1,22 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: SAP-H08-esik, SAP-H08-val-dengeli, T-K-h08-h02-dengeli_acc, T-G2-H08-bayrak, T-DOG-H08, T-K-h10-h02-dSdN, T-K-h10-h02-tab_std_dS_eksi_dN, T-K-h08-h02-dSdN, T-K-h08-h02-tab_std_dS_eksi_dN, ON-tarih-ekb, ON-tarih-dondurma, T-meta-tarih, SAP-C1-A-a1, SAP-C1-Av2-a1, SAP-C1-Av3-a1, SAP-C1-Av3-a3, SAP-C1-B-a1, SAP-C1-B-a3, SAP-C1-kuyruk-kol, BUT-toplam, T-t4-auc, SAP-T4-auc-denetim, SENS-LKB-ozet, SENS-LKB-dogrulama, C1-K-h10-h02-dengeli_acc, C1-K-h08-h02-dengeli_acc, C1-REV-K-h10-h02-duyarlilik_mel, C1-REV-K-h08-h02-duyarlilik_mel, C1-REV-K-h10-h08-duyarlilik_mel, C1-REV-n-mel, SAP-E1, SAP-C2-kapi, SAP-T4-plan, SAP-ON-6-3, SAP-H10D4-plan, SAP-C1-dengeli-onkayit, SAP-C1-A-neden, SAP-H08-yolA, SAP-karar12, T-AILE2-h08-h02, ON-ekb-val-ham, ON-ekb-val-tab, SAP-C2-karar, SAP-karar10, SAP-LKB-karar
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Ek: ön-kayıt sapmaları (2/2: test sonrası). Kaynak kısaltmaları Tablo~\ref{tab:sapma} altında; son satır beklemededir.}\label{tab:sapma-devam}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash\hsize=0.80\hsize}X >{\raggedright\arraybackslash\hsize=0.95\hsize}X >{\raggedright\arraybackslash\hsize=1.35\hsize}X >{\raggedright\arraybackslash\hsize=0.90\hsize}X}
+\toprule
+Madde (kaynak) & Ön-kayıtlı plan & Gerçekleşen ve sapma & Sonuca etkisi \\
+\midrule
+T4 (H08c $\oplus$ H10)\newline{\itshape ON:68; KR §2.2, §12 (2026-10-12)} & Ek tabloda; iddia yalnız H08 doğrulanırsa; kazanan olamaz. & H08 doğrulandı; yine de yalnız betimsel ek satır. Test AUC'si 0,9904 ($> 0{,}99$) için teste yeniden bakılmadı. & Plandan dar iddia; karar ya da Holm ailesi yok; AUC bayrağı açık. \\
+\addlinespace
+H10 + D4 birleşim kartı\newline{\itshape SIR:86--87; GN:32 (2026-10-11 18:14); ON §6.3; KR §12} & H08 K5'te doğrulanır ve DINOv2 kolu TUT alırsa H10/H11 + D4 kartı açılır. & Koşullar ancak test açılınca sağlandı; seçim döngüsü Tur~5'te kapanmıştı; test sonrası yeni kol eklenmez. & H10 $\leftrightarrow$ H08c kıyası omurga ile augmentasyonu karıştırır (bkz. E1). \\
+\addlinespace
+Lezyon-kümeli bootstrap\newline{\itshape MOD:40 (2026-10-17); LKB} & Test sonrası analiz ``keşifsel'' etiketiyle, ayrı bölümde (§6.3). & Yazar kararıyla (hakem önerisi) dondurulmuş tahminlerde yapıldı; önce 2.211 alan birebir yeniden üretildi. & Karar ve Holm sonuçları aynı; 44 GA'dan 3'ünün konumu değişti, hepsi betimsel ya da ikincil (Ek~\ref{sec:ek-lkb}). \\
+\addlinespace
+C1 dengeli ACC ve mel duyarlılığı\newline{\itshape ON:201; C1M (2026-11-03)} & §4.3: C1 dengeli ACC GA'larıyla; yön H10 $-$ H02c ve H08c $-$ H02c $> 0$. Mel ön-kayıtlı değil. & Dengeli GA'lar ilk sürümde verilmemişti, Tablo~\ref{tab:protokol}'e eklendi. Mel test sonrası hesaplandı, aynı tabloda § işaretiyle verildi (§6.3 ``ayrı bölüm'' koşulundan sapma). & Dengeli yön iki çiftte desteklendi (+5,74; +9,15). Mel: yalnız H08c $-$ H02c GA'sı sıfırın üstünde; n~=~70, GA geniş. \\
+\addlinespace
+E1 / H14: H10 + D4 (C1)\newline{\itshape EP §2b (2026-11-03); OD:15} & Test sonrası yeni kol yok (§6.3); H10 + D4 sınırlılık (2026-10-12). & Yazar kararıyla (dış eleştiri) C1'de ``test sonrası keşifsel'' kol; H14 ön-kayıt kartı koşumdan önce yazılacak. & \textit{Beklemede.} Hiçbir mevcut kararı değiştirmeyecek. \\
+\botrule
+\end{tabularx}
+\end{table}

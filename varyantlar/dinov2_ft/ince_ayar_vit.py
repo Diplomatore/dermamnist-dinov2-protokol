@@ -40,6 +40,25 @@ Tarif (varsayılanlar; literatür: Wu & Papież 2025 arXiv:2501.14685 — AdamW,
 tepe_ram_ozel_mb (tepe özel commit; memmap hariç), egitim_img_s_kararli (ilk 5 optimizasyon adımı hariç),
 epoch_egitim_sn_ort / epoch_val_sn_ort, onbellek_yazma_sn (yalnız bu koşumda yazıldıysa), onbellek_bayt.
 
+H14 / E1 bayrakları (2026-11-03; hipotezler/H14.md "Uygulama notu"; VARSAYILANLARI KAPALI → H10 yolu DEĞİŞMEZ):
+- `--onbellek-gorunum {1,8}` (varsayılan 1 = H10 yolu). 8 (yalnız kısmi mod): train için D4'ün 8 görünümü önbelleğe alınır.
+  g0 = H10'un tek görünümlü `..._tok_train.npy` dosyası (aynı ad, aynı yazıcı `onbellek_olustur`); g1..g7 =
+  `..._tok_d4g{k}_train.npy` (görüntü önce `ortak.dihedral.donustur(x, k)`, sonra `donuk_ileri`, fp16). Val yalnız g0.
+  Meta `..._tok_d4.json` (görünüm başına bayt + ilk/son satır SHA256, `oz_sinama()`, `disk_bos_gb_once`).
+  Yazımdan ÖNCE boş disk < `--disk-min-gb` (40) → DUR (H14 kural b). Her koşumda ilk 8 train görüntüsünde her k için
+  tam ağ (fp32, T_k(görüntü)) ↔ önbellek g_k normlanmış CLS maks |fark| → `onbellek_gorunum_tutarlilik_maks_fark`
+  (> 5e-3 → DUR) ve görünüm çifti × görüntü özdeşlik sayısı → `onbellek_gorunum_ozdes_cift` (> 0 → DUR; kural g).
+  Train girdisi her zaman `gorunum_topla` (tok_g[v][j[k == v]]) ile okunur; D4 kapalıyken k ≡ 0 → g0 (kontrol kolu).
+- `--augment-d4` (`--onbellek-gorunum 8` gerektirir): `j_all` sıralandıktan sonra
+  k = torch.randint(0, 8, (len(j_all),), generator=g_aug), g_aug = torch.Generator("cpu").manual_seed(seed + 100_003)
+  (ana üreteç g'ye dokunulmaz → batch sırası H10 ile aynı); k, j ile birlikte mikro-batch'lere bölünür. Sayaçlar H08 ile
+  aynı adlarla: gecmis `augment_sayim`, metrics `augment_frekans_{0..7}`, `augment_frekans_maks_sapma`, `augment_d4`,
+  `augment_toplam_ornek`. D4 kapalıyken augment_* anahtarları YAZILMAZ.
+- `--ozdeslik-ref R` (kontrol kolu): R = run_id (runs/ ya da runs_colab/ altında) | mutlak yol | `@<kuyruk_onek>/<varyant>`
+  (aynı seed, rc=0 tek koşum). Referansın metrics.json + tahmin_val.npy + config.json'ı okunur → `kontrol_ilk_adim_loss_fark`,
+  `kontrol_argmax_oran`, `kontrol_p_maks_fark`, `kontrol_val_acc_fark`, sürüm karşılaştırması (torch/CUDA/cuDNN/timm) ve
+  H14 kural (f) Durum A/B/C (`kontrol_durum`). Durum C → metrics yazılır, çıkış kodu 5 (DUR; kuyruk kapısı durur).
+
 Kullanım (WS kökünden):
   env/.venv/Scripts/python.exe varyantlar/dinov2_ft/ince_ayar_vit.py --mod kismi --son-k 2 --seed 0 --epoch 1 --out {RUN_DIR}/metrics.json
   env/.venv/Scripts/python.exe varyantlar/dinov2_ft/ince_ayar_vit.py --mod kismi --son-k 4 --sadece-onbellek --out {RUN_DIR}/metrics.json
@@ -235,6 +254,227 @@ def etiket_yukle(alt_kume=None, n_val_goruntu: int = 8) -> dict:
     return out
 
 
+# ── H14 / E1: 8 görünümlü (D4) önbellek, görünüm toplama, kontrol kolu (varsayılan KAPALI; H10 yolu kullanmaz) ──
+D4_TUTARLILIK_ESIK = 5e-3   # H14 kural (g): her görünüm için tam ağ ↔ önbellek; fp16 payı H10 C1'de 1,5e-3
+D4_GORUNUM = 8
+
+
+def d4_yollari(kok: Path) -> dict:
+    """g0 = H10 tek görünüm train dosyası (aynı ad); g1..g7 ayrı dosyalar; val yalnız g0 (onbellek_yollari['val'])."""
+    tr = {0: kok.with_name(kok.name + "_train.npy")}
+    tr.update({k: kok.with_name(kok.name + f"_d4g{k}_train.npy") for k in range(1, D4_GORUNUM)})
+    return {"train": tr, "meta": kok.with_name(kok.name + "_d4.json"), "kilit": kok.with_name(kok.name + "_d4.kilit")}
+
+
+def npz_ilk_satirlar(yol: Path, anahtar: str, n: int) -> np.ndarray:
+    """npz üyesinin YALNIZ ilk n satırını okur (zip akışı; tüm diziyi açmaz). Görünüm tutarlılığı için ilk 8 train görüntüsü."""
+    import zipfile
+    with zipfile.ZipFile(yol) as zf, zf.open(anahtar + ".npy") as f:
+        surum = np.lib.format.read_magic(f)
+        oku = np.lib.format.read_array_header_1_0 if surum == (1, 0) else np.lib.format.read_array_header_2_0
+        sekil, fortran, dtype = oku(f)
+        if fortran:
+            raise SystemExit(f"HATA: {anahtar} Fortran sıralı (beklenmiyor)")
+        n = min(n, sekil[0])
+        satir = int(np.prod(sekil[1:], dtype=np.int64)) * dtype.itemsize
+        buf = f.read(n * satir)
+    return np.frombuffer(buf, dtype=dtype).reshape((n,) + tuple(sekil[1:])).copy()
+
+
+def _satir_sha(a) -> str:
+    import hashlib
+    return hashlib.sha256(np.ascontiguousarray(a).tobytes()).hexdigest()
+
+
+def gorunum_topla(tok_g: list, j: np.ndarray, k) -> np.ndarray:
+    """Train mini-batch'i: her v için tok_g[v][j[k == v]] okunur, yerine konur (j sıralı → memmap yerelliği korunur).
+    k None → hepsi g0 (D4 kapalı kontrol kolu; H10 ile aynı satırlar)."""
+    if k is None:
+        k = np.zeros(len(j), dtype=np.int64)
+    out = np.empty((len(j),) + tuple(tok_g[0].shape[1:]), dtype=tok_g[0].dtype)
+    for v in range(len(tok_g)):
+        s = k == v
+        if s.any():
+            out[s] = tok_g[v][j[s]]
+    return np.ascontiguousarray(out)
+
+
+def onbellek_d4_olustur(m, model: str, L0: int, x_tr: np.ndarray, yol8: dict, hazirla, cihaz, bs: int, alt_kume,
+                        veri_bilgi: dict, agirlik: dict, disk_bos_gb_once: float, run_dir: Path, log=print) -> dict:
+    """g1..g7 train görünümlerini yazar (g0 ve val `onbellek_olustur` ile yazılır/yazılmıştır). Görüntü → hazirla →
+    D4.donustur(·, k) → donuk_ileri → fp16 (H08 sırası: normalizasyon sonrası dönüşüm; kanal başına normalizasyon uzamsal
+    permütasyonla değişmeli olduğundan eşdeğer)."""
+    import torch
+    from ortak import dihedral as D4
+    if not D4.oz_sinama():
+        raise SystemExit("DUR (H14): D4 öz-sınaması başarısız (ortak/dihedral.py)")
+    OZN_DIZIN.mkdir(parents=True, exist_ok=True)
+    try:
+        fd = os.open(str(yol8["kilit"]), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(fd, f"{os.getpid()} {datetime.now().isoformat()}".encode())
+        os.close(fd)
+    except FileExistsError:
+        raise SystemExit(f"HATA: {yol8['kilit']} var (başka süreç yazıyor ya da yetim kilit; elle sil)")
+    try:
+        m.eval()
+        if cihaz.type == "cuda":
+            torch.cuda.synchronize()
+        t0 = time.time()
+        n = len(x_tr)
+        toplam = n * (D4_GORUNUM - 1)
+        islenen, son_p, maks_abs, sureler = 0, 0, 0.0, {}
+        T, Dm = None, None
+        for k in range(1, D4_GORUNUM):
+            tmp = yol8["train"][k].with_name(yol8["train"][k].stem + ".tmp.npy")
+            mm = None
+            t_k = time.time()
+            with torch.no_grad():
+                for i in range(0, n, bs):
+                    t = donuk_ileri(m, D4.donustur(hazirla(torch.from_numpy(x_tr[i:i + bs])), k), L0)
+                    ma = float(t.abs().max())
+                    if not math.isfinite(ma) or ma >= 65504.0:
+                        raise SystemExit(f"HATA: token değeri fp16 aralığı dışında / sonlu değil (g{k}, maks|x| {ma})")
+                    maks_abs = max(maks_abs, ma)
+                    if mm is None:
+                        T, Dm = int(t.shape[1]), int(t.shape[2])
+                        mm = np.lib.format.open_memmap(tmp, mode="w+", dtype=np.float16, shape=(n, T, Dm))
+                    mm[i:i + len(t)] = t.half().cpu().numpy()
+                    islenen += len(t)
+                    if islenen - son_p >= 500 or islenen == toplam:
+                        son_p = islenen
+                        g = time.time() - t0
+                        progress_yaz(run_dir, adim=0, asama_ad="onbellek_d4", gorunum=k, islenen=islenen, toplam=toplam,
+                                     img_s=round(islenen / max(g, 1e-9), 2), gecen_sn=round(g, 1))
+                        log(f"[vit] D4 önbellek g{k}: {islenen}/{toplam} ({islenen / max(g, 1e-9):.1f} img/s)")
+            mm.flush()
+            del mm
+            os.replace(tmp, yol8["train"][k])
+            sureler[f"g{k}"] = round(time.time() - t_k, 2)
+        sure = round(time.time() - t0, 2)
+        import timm
+        bayt, sha = {}, {}
+        for k in range(D4_GORUNUM):
+            a_ = np.load(yol8["train"][k], mmap_mode="r")
+            bayt[str(k)] = int(yol8["train"][k].stat().st_size)
+            sha[str(k)] = {"ilk": _satir_sha(a_[0]), "son": _satir_sha(a_[-1])}
+            del a_
+        meta = {
+            "model": MODELLER[model][0], "model_kisa": MODELLER[model][1], "timm": timm.__version__,
+            "torch": torch.__version__, "agirlik": agirlik, "donuk_blok": L0, "gorunum": D4_GORUNUM,
+            "donusumler": D4.AD, "oz_sinama": True, "donusum_kaynagi": "varyantlar/ortak/dihedral.py donustur(x, k)",
+            "icerik": "train görüntüsü → ImageNet norm → D4.donustur(k) → patch_embed → pos_embed → blocks[:L0] (son norm ÖNCESİ)",
+            "dosyalar": {str(k): yol8["train"][k].name for k in range(D4_GORUNUM)},
+            "g0_notu": "g0 = H10 tek görünümlü train önbelleği (onbellek_olustur; aynı ad ve içerik)",
+            "val": "yalnız g0 (kimlik görünümü)", "sekil": [n, T, Dm], "dtype": "float16",
+            "veri": veri_bilgi, "alt_kume": alt_kume, "n_train": int(n), "bs": bs,
+            "bayt": bayt, "bayt_toplam": int(sum(bayt.values())), "satir_sha256": sha,
+            "token_maks_abs": maks_abs, "sure_sn": sure, "sure_gorunum_sn": sureler,
+            "img_s": round(toplam / max(sure, 1e-9), 2), "disk_bos_gb_once": disk_bos_gb_once,
+            "tarih": datetime.now().isoformat(timespec="seconds"),
+        }
+        atomik_json(yol8["meta"], meta)
+        log(f"[vit] D4 önbellek yazıldı: g1..g7 {sure}s ({meta['img_s']} img/s), toplam {meta['bayt_toplam'] / 2**30:.2f} GiB (g0 dahil)")
+        return meta
+    finally:
+        try:
+            yol8["kilit"].unlink()
+        except OSError:
+            pass
+
+
+def onbellek_d4_dogrula(meta8: dict, model: str, L0: int, n_train: int, veri_bilgi: dict, yol8: dict):
+    hatalar = []
+    if meta8.get("model") != MODELLER[model][0]:
+        hatalar.append(f"model {meta8.get('model')}")
+    if meta8.get("donuk_blok") != L0:
+        hatalar.append(f"donuk_blok {meta8.get('donuk_blok')}")
+    if meta8.get("gorunum") != D4_GORUNUM or not meta8.get("oz_sinama"):
+        hatalar.append("gorunum/oz_sinama")
+    if (meta8.get("veri") or {}).get("md5") != veri_bilgi["md5"]:
+        hatalar.append("girdi npz md5")
+    if meta8.get("n_train") != n_train:
+        hatalar.append("n_train")
+    for k in range(D4_GORUNUM):
+        p_ = yol8["train"][k]
+        if not p_.exists() or p_.stat().st_size != (meta8.get("bayt") or {}).get(str(k)):
+            hatalar.append(f"g{k} bayt")
+    if hatalar:
+        raise SystemExit(f"HATA: D4 önbellek meta uyuşmazlığı ({', '.join(hatalar)}) — --zorla-onbellek ile yeniden yaz")
+
+
+def d4_metrikleri(on8_meta: dict, d4_tut: dict, d4_yazma_sn, disk_bos_gb_once) -> dict:
+    mt = {"onbellek_gorunum_sayisi": D4_GORUNUM, "onbellek_gorunum_tutarlilik_maks_fark": d4_tut["maks"],
+          **{f"onbellek_gorunum_tutarlilik_{g}": v for g, v in d4_tut["k"].items()},   # metrics düz (ortak.kayit)
+          "onbellek_gorunum_ozdes_cift": d4_tut["ozdes"],
+          "onbellek_gorunum_denetim_n": d4_tut["n"], "onbellek_d4_bayt_toplam": on8_meta["bayt_toplam"],
+          "d4_oz_sinama": int(bool(on8_meta.get("oz_sinama"))), "onbellek_d4_yazildi": int(d4_yazma_sn is not None)}
+    if d4_yazma_sn is not None:  # yalnız önbelleği YAZAN satır (beklenti: disk_bos_gb_once yalnız bu satırda)
+        mt.update({"onbellek_d4_yazma_sn": d4_yazma_sn, "onbellek_d4_img_s": on8_meta["img_s"],
+                   "disk_bos_gb_once": disk_bos_gb_once})
+    return mt
+
+
+def ref_coz(deger: str, seed: int) -> Path:
+    """--ozdeslik-ref: run_id (WS/runs, WS/runs_colab) | mutlak yol | '@<kuyruk_onek>/<varyant>' (aynı seed, rc=0, tek)."""
+    if deger.startswith("@"):
+        onek, varyant = deger[1:].split("/", 1)
+        bulunan = []
+        for d in sorted((WS / "runs").glob("*/")):
+            cf, dn = d / "config.json", d / ".done"
+            if not (cf.exists() and dn.exists() and (d / "metrics.json").exists()):
+                continue
+            c = json.loads(cf.read_text(encoding="utf-8"))
+            if c.get("varyant") == varyant and str(c.get("seed")) == str(seed) and \
+                    str(c.get("kuyruk", "")).startswith(onek) and json.loads(dn.read_text(encoding="utf-8")).get("rc") in (0, 5):
+                bulunan.append(d)
+        if len(bulunan) != 1:
+            raise SystemExit(f"HATA: --ozdeslik-ref {deger}: tek koşum bekleniyordu, bulunan {[d.name for d in bulunan]}")
+        return bulunan[0]
+    p_ = Path(deger)
+    if p_.is_absolute():
+        return p_
+    for kok in (WS / "runs", WS / "runs_colab"):
+        if (kok / deger / "metrics.json").exists():
+            return kok / deger
+    raise SystemExit(f"HATA: --ozdeslik-ref {deger} bulunamadı (runs/, runs_colab/)")
+
+
+def kontrol_hesapla(ref: Path, ilk_adim_loss: float, val_acc: float, p_val: np.ndarray, y_val: np.ndarray, surum: dict) -> dict:
+    """H14 kural (f): kontrol kolu ↔ referans. Durum A: |Δ ilk_adim_loss| ≤ 1e-6 ∧ argmax N/N ∧ maks|Δp| ≤ 1e-5.
+    Durum B: A değil ∧ |Δ| ≤ 1e-3 ∧ argmax ≥ 570/573 (oran ≥ 570/573) ∧ torch/CUDA/cuDNN/timm'den en az biri farklı.
+    Durum C: diğer her şey."""
+    rm = json.loads((ref / "metrics.json").read_text(encoding="utf-8"))
+    rp = np.load(ref / "tahmin_val.npy").astype(np.float64)
+    ry = np.load(ref / "etiket_val.npy").reshape(-1).astype(np.int64) if (ref / "etiket_val.npy").exists() else None
+    if rp.shape != p_val.shape or (ry is not None and not np.array_equal(ry, y_val)):
+        raise SystemExit(f"HATA: --ozdeslik-ref {ref.name}: val şekli/etiketleri hizasız ({rp.shape} ↔ {p_val.shape})")
+    rc_ = json.loads((ref / "config.json").read_text(encoding="utf-8")) if (ref / "config.json").exists() else {}
+    if not (rc_.get("donanim") or {}).get("torch") and (ref / "varyant_bilgi.json").exists():  # kosum.py'siz koşum
+        rc_ = json.loads((ref / "varyant_bilgi.json").read_text(encoding="utf-8"))
+    rd_ = rc_.get("donanim") or {}
+    ref_surum = {"torch": rd_.get("torch"), "cuda": rd_.get("cuda"), "cudnn": rd_.get("cudnn"),
+                 "timm": rd_.get("timm") or (rc_.get("model") or {}).get("timm")}
+    fark_surum = {k: [ref_surum.get(k), surum.get(k)] for k in surum if str(ref_surum.get(k)) != str(surum.get(k))}
+    d_loss = abs(float(ilk_adim_loss) - float(rm["ilk_adim_loss"]))
+    ayni = int((p_val.argmax(1) == rp.argmax(1)).sum())
+    n = len(y_val)
+    p_maks = float(np.max(np.abs(p_val.astype(np.float64) - rp)))
+    if d_loss <= 1e-6 and ayni == n and p_maks <= 1e-5:
+        durum = "A"
+    elif d_loss <= 1e-3 and ayni * 573 >= 570 * n and fark_surum:
+        durum = "B"
+    else:
+        durum = "C"
+    return {"kontrol_ilk_adim_loss_fark": d_loss, "kontrol_argmax_ayni": ayni, "kontrol_argmax_oran": ayni / n,
+            "kontrol_p_maks_fark": p_maks, "kontrol_val_acc_fark": abs(float(val_acc) - float(rm["val_acc"])),
+            "kontrol_ref": ref.name, "kontrol_ref_ilk_adim_loss": float(rm["ilk_adim_loss"]),
+            **{f"kontrol_surum_bu_{k}": str(v) for k, v in surum.items()},          # metrics düz (ortak.kayit)
+            **{f"kontrol_surum_ref_{k}": str(v) for k, v in ref_surum.items()},
+            "kontrol_surum_farkli": int(bool(fark_surum)),
+            "kontrol_surum_fark": "; ".join(f"{k}: {a} → {b}" for k, (a, b) in fark_surum.items()),
+            "kontrol_durum": durum, "kontrol_durum_kod": {"A": 1, "B": 2, "C": 3}[durum]}
+
+
 # ── ana ────────────────────────────────────────────────────────────────────────────────────
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace", line_buffering=True)
@@ -265,7 +505,20 @@ def main():
     p.add_argument("--cihaz", choices=["cuda", "cpu"], default="cuda")
     p.add_argument("--cpu-izin", action="store_true")
     p.add_argument("--threads", type=int, default=None)
+    # H14 / E1 (varsayılanlar KAPALI → H10 yolu)
+    p.add_argument("--onbellek-gorunum", type=int, choices=[1, D4_GORUNUM], default=1,
+                   help="H14: 8 → train önbelleği D4'ün 8 görünümü (g0 = H10 dosyası); 1 = H10 yolu")
+    p.add_argument("--augment-d4", action="store_true",
+                   help="H14: train'de örnek başına düzgün D4 görünümü (g_aug seed+100003); --onbellek-gorunum 8 gerektirir")
+    p.add_argument("--ozdeslik-ref", default=None,
+                   help="H14 kontrol kolu: referans koşum (run_id | yol | @<kuyruk_onek>/<varyant>) → kontrol_*, Durum A/B/C")
+    p.add_argument("--disk-min-gb", type=float, default=40.0, help="H14 kural (b): 8 görünüm yazımı öncesi boş disk alt sınırı")
     a = p.parse_args()
+    gorunum8 = a.onbellek_gorunum == D4_GORUNUM
+    if (gorunum8 or a.augment_d4) and a.mod != "kismi":
+        p.error("--onbellek-gorunum 8 / --augment-d4 yalnız --mod kismi ile")
+    if a.augment_d4 and not gorunum8:
+        p.error("--augment-d4 için --onbellek-gorunum 8 gerekir (H14: önbellek görünümü)")
 
     import torch
     import torch.nn as nn
@@ -318,9 +571,22 @@ def main():
     veri_bilgi = V.npz_dogrula(GIRIS_PX)
     t_yuk = time.time()
     on_meta, onbellek_yazma_sn = None, None
+    tok_g, on8_meta, d4_yazma_sn, disk_bos_gb_once, d4_tut = None, None, None, None, None
     if kismi:
         yol = onbellek_yollari(onbellek_kok(a.model, L0, a.alt_kume))
         var = all(yol[b].exists() for b in ("train", "val", "meta"))
+        if gorunum8:  # H14: yazım gerekiyorsa ÖNCE disk (kural b)
+            yol8 = d4_yollari(onbellek_kok(a.model, L0, a.alt_kume))
+            var8 = all(yol8["train"][k].exists() for k in range(1, D4_GORUNUM)) and yol8["meta"].exists()
+            yaz8 = bool(a.zorla_onbellek or not var or not var8)
+            if yaz8:
+                OZN_DIZIN.mkdir(parents=True, exist_ok=True)
+                import shutil
+                disk_bos_gb_once = round(shutil.disk_usage(OZN_DIZIN).free / 1e9, 2)
+                print(f"[vit] H14 disk: boş {disk_bos_gb_once} GB ({OZN_DIZIN}); alt sınır {a.disk_min_gb} GB")
+                if disk_bos_gb_once < a.disk_min_gb:
+                    raise SystemExit(f"DUR (H14 kural b): boş disk {disk_bos_gb_once} GB < {a.disk_min_gb} GB — 8 görünüm "
+                                     "önbelleği yazılmadı (alternatif: H14b canlı ileri geçiş; kullanıcıya bildir)")
         if a.zorla_onbellek or not var:
             D = V.yukle(GIRIS_PX, ("train", "val"), alt_kume=a.alt_kume)
             m.to(cihaz)
@@ -333,6 +599,19 @@ def main():
             D = etiket_yukle(a.alt_kume)
             print(f"[vit] önbellek mevcut: {yol['meta'].name} ({on_meta['bayt'] / 2**30:.2f} GiB)")
         onbellek_dogrula(on_meta, a.model, L0, D, veri_bilgi)
+        if gorunum8:  # H14: g1..g7 (g0/val yukarıda; aynı yazıcı)
+            if yaz8:
+                x_tr = D["train"]["x"] if D["train"]["x"] is not None else \
+                    V.yukle(GIRIS_PX, ("train",), alt_kume=a.alt_kume)["train"]["x"]
+                m.to(cihaz)
+                on8_meta = onbellek_d4_olustur(m, a.model, L0, x_tr, yol8, hazirla, cihaz, a.onbellek_bs, a.alt_kume,
+                                               veri_bilgi, agirlik, disk_bos_gb_once, run_dir)
+                d4_yazma_sn = on8_meta["sure_sn"]
+                del x_tr
+            else:
+                on8_meta = json.loads(yol8["meta"].read_text(encoding="utf-8"))
+                print(f"[vit] D4 önbellek mevcut: {yol8['meta'].name} ({on8_meta['bayt_toplam'] / 2**30:.2f} GiB, 8 görünüm)")
+            onbellek_d4_dogrula(on8_meta, a.model, L0, len(D["train"]["y"]), veri_bilgi, yol8)
         mmode = None if a.onbellek_ram else "r"
         tok = {b: np.load(yol[b], mmap_mode=mmode) for b in ("train", "val")}
         for b in ("train", "val"):
@@ -356,6 +635,29 @@ def main():
         print(f"[vit] önbellek tutarlılık maks|ΔCLS| {tutarlilik:.3g} (fp16 yuvarlama payı {fp16_fark:.3g}; |CLS| maks {cls_olcek:.2f})")
         if tutarlilik > max(10 * fp16_fark, 1e-3) + 1e-6:
             raise SystemExit("HATA: önbellek tam ağla tutarsız (yanlış blok derinliği / bozuk dosya?)")
+        if gorunum8:  # H14 kural (g): her görünüm k için tam ağ T_k(görüntü) ↔ önbellek g_k; görünüm çifti özdeşliği
+            from ortak import dihedral as D4
+            tok_g = [tok["train"]] + [np.load(yol8["train"][k], mmap_mode=mmode) for k in range(1, D4_GORUNUM)]
+            for k in range(1, D4_GORUNUM):
+                if tok_g[k].shape != tok["train"].shape:
+                    raise SystemExit(f"HATA: D4 önbellek g{k} şekli {tok_g[k].shape} ≠ g0 {tok['train'].shape}")
+            n8 = min(8, len(D["train"]["y"]))
+            x8 = D["train"]["x"][:n8] if D["train"]["x"] is not None else \
+                npz_ilk_satirlar(V.npz_yolu(GIRIS_PX), "train_images", n8)
+            d4_tut = {}
+            with torch.no_grad():
+                for k in range(D4_GORUNUM):
+                    c_t = cls_(donuk_ileri(m, D4.donustur(hazirla(torch.from_numpy(np.ascontiguousarray(x8))), k), L0))
+                    c_o = cls_(torch.from_numpy(np.array(tok_g[k][:n8])).to(cihaz).float())
+                    d4_tut[f"g{k}"] = float((c_t - c_o).abs().max())
+            ozdes = sum(int(np.array_equal(tok_g[u][i], tok_g[v][i])) for u in range(D4_GORUNUM)
+                        for v in range(u + 1, D4_GORUNUM) for i in range(n8))
+            d4_tut_maks = max(d4_tut.values())
+            print(f"[vit] D4 görünüm tutarlılığı maks|ΔCLS| {d4_tut_maks:.3g} ({d4_tut}) · özdeş görünüm çifti×görüntü {ozdes}")
+            if d4_tut_maks > D4_TUTARLILIK_ESIK or ozdes > 0:
+                raise SystemExit(f"DUR (H14 kural g): D4 önbellek görünümleri tutarsız (maks {d4_tut_maks:.3g} > "
+                                 f"{D4_TUTARLILIK_ESIK}) ya da özdeş görünüm ({ozdes}) — dönüşüm uygulanmamış/bozuk dosya")
+            d4_tut = {"maks": d4_tut_maks, "k": d4_tut, "ozdes": ozdes, "n": n8}
         # donuk kısım GPU'dan iner (bellek); eğitilen kısım GPU'da kalır
         for mod_ in (m.patch_embed, *m.blocks[:L0]):
             mod_.to("cpu")
@@ -372,6 +674,8 @@ def main():
             if cihaz.type == "cuda":
                 mt["tepe_gpu_bellek_mb"] = round(torch.cuda.max_memory_allocated() / 2**20, 1)
             mt.update(ram_tepe_mb())
+            if gorunum8:
+                mt.update(d4_metrikleri(on8_meta, d4_tut, d4_yazma_sn, disk_bos_gb_once))
             if a.alt_kume:
                 mt["hata_ayiklama"] = 1
             metrics_yaz(out, mt)
@@ -436,11 +740,16 @@ def main():
     sch = torch.optim.lr_scheduler.LambdaLR(opt, lr_carpan)
     i_bas = next(i_ for i_, g_ in enumerate(param_gruplari) if g_["ad"].startswith("bas"))
     g = torch.Generator(device="cpu").manual_seed(a.seed)
+    if a.augment_d4:  # H14: ayrı üreteç (ana üreteç g'ye ve global RNG'ye dokunmaz → batch sırası H10 ile aynı; H08 kuralı)
+        g_aug = torch.Generator(device="cpu").manual_seed(a.seed + 100_003)
+        aug_sayim_top = np.zeros(D4_GORUNUM, dtype=np.int64)
     print(f"[vit] eğitilen {n_egitilen:,} param ({len(param_gruplari)} grup) · etkin bs {a.bs} = mikro {mikro} × "
           f"≤{math.ceil(a.bs / mikro)} · grad_ckpt {int(grad_ckpt)} · adım/epoch {adim_epoch} · toplam {T_top}")
 
-    def girdi(bolum: str, j: np.ndarray):
+    def girdi(bolum: str, j: np.ndarray, k=None):
         if kismi:
+            if tok_g is not None and bolum == "train":  # H14: 8 görünüm yolu (D4 kapalıyken k = None → g0)
+                return torch.from_numpy(gorunum_topla(tok_g, j, k)).to(cihaz, non_blocking=True).float().contiguous()
             return torch.from_numpy(np.ascontiguousarray(tok[bolum][j])).to(cihaz, non_blocking=True).float()
         return hazirla(torch.from_numpy(D[bolum]["x"][j]))
 
@@ -479,14 +788,20 @@ def main():
         t_ep = time.time()
         perm = torch.randperm(N, generator=g).numpy()
         top, n_ornek, adim = 0.0, 0, 0
+        aug_sayim_ep = np.zeros(D4_GORUNUM, dtype=np.int64) if a.augment_d4 else None
         for i in range(0, N, a.bs):
             j_all = np.sort(perm[i:i + a.bs])  # batch bir kümedir; sıralı okuma memmap yerelliği için
+            k_all = None
+            if a.augment_d4:  # H14: örnek başına düzgün D4 görünümü (sıralı j_all ile hizalı)
+                k_all = torch.randint(0, D4_GORUNUM, (len(j_all),), generator=g_aug).numpy()
+                aug_sayim_ep += np.bincount(k_all, minlength=D4_GORUNUM)
             opt.zero_grad(set_to_none=True)
             loss_top = 0.0
             for c in range(0, len(j_all), mikro):
                 j = j_all[c:c + mikro]
                 yb = ytr[torch.from_numpy(j)].to(cihaz, non_blocking=True)
-                loss = F.cross_entropy(ileri(girdi("train", j)), yb, reduction="sum") / len(j_all)
+                xg = girdi("train", j) if k_all is None else girdi("train", j, k_all[c:c + mikro])
+                loss = F.cross_entropy(ileri(xg), yb, reduction="sum") / len(j_all)
                 loss.backward()
                 loss_top += float(loss.detach())
             opt.step()
@@ -537,6 +852,9 @@ def main():
         satir = {"epoch": ep, "train_loss": tr_loss, "val_acc": acc, "val_auc": auc, "val_dengeli_acc": den,
                  "egitim_sn": round(egitim_sn, 2), "val_sn": round(val_sn, 2), "n_ornek": n_ornek, "adim": adim,
                  "epoch_sn": round(time.time() - t_ep, 2), "lr_bas": opt.param_groups[i_bas]["lr"]}
+        if aug_sayim_ep is not None:
+            satir["augment_sayim"] = aug_sayim_ep.tolist()
+            aug_sayim_top += aug_sayim_ep
         gecmis.append(satir)
         progress_yaz(run_dir, adim=ep, epoch_toplam=a.epoch, loss=tr_loss, val_acc=acc, val_auc=auc,
                      val_dengeli_acc=den, val_acc_eniyi=en["acc"], epoch_sn=satir["epoch_sn"], gecen_sn=round(time.time() - t0, 1))
@@ -590,13 +908,39 @@ def main():
                         "fp16_cls_maks_fark": fp16_fark, "onbellek_ram": int(a.onbellek_ram)})
         if onbellek_yazma_sn is not None:
             metrics["onbellek_yazma_sn"] = onbellek_yazma_sn
+    kontrol = None
+    if gorunum8:  # H14
+        metrics.update(d4_metrikleri(on8_meta, d4_tut, d4_yazma_sn, disk_bos_gb_once))
+    if a.augment_d4:  # H14 (H08 ile aynı anahtar adları)
+        fr = aug_sayim_top / max(int(aug_sayim_top.sum()), 1)
+        metrics.update({f"augment_frekans_{k_}": float(fr[k_]) for k_ in range(D4_GORUNUM)})
+        metrics["augment_frekans_maks_sapma"] = float(np.max(np.abs(fr - 1.0 / D4_GORUNUM)))
+        metrics["augment_d4"] = 1
+        metrics["augment_toplam_ornek"] = int(aug_sayim_top.sum())
+    if a.ozdeslik_ref:  # H14 kural (f): kontrol kolu ↔ referans (Durum A/B/C)
+        surum = {"torch": torch.__version__, "cuda": torch.version.cuda,
+                 "cudnn": torch.backends.cudnn.version() if torch.backends.cudnn.is_available() else None,
+                 "timm": timm.__version__}
+        kontrol = kontrol_hesapla(ref_coz(a.ozdeslik_ref, a.seed), ilk_adim_loss, mt["val_acc"],
+                                  np.asarray(en["p"], dtype=np.float64), yva, surum)
+        metrics.update(kontrol)
     if cihaz.type == "cuda":
         metrics["tepe_gpu_bellek_mb"] = round(torch.cuda.max_memory_allocated() / 2**20, 1)
         metrics["tepe_gpu_ayrilan_mb"] = round(torch.cuda.max_memory_reserved() / 2**20, 1)
     metrics.update(ram_tepe_mb())
     if a.alt_kume or a.azami_adim:
         metrics["hata_ayiklama"] = 1
+    h14_ek = {}
+    if gorunum8 or a.augment_d4 or a.ozdeslik_ref:  # H14 kayıtları (H10 yolunda config DEĞİŞMEZ)
+        h14_ek = {"h14": {
+            "onbellek_gorunum": a.onbellek_gorunum,
+            "onbellek_d4": (str(onbellek_kok(a.model, L0, a.alt_kume)) + "_d4g{1..7}_train.npy (+ g0 = _train.npy; fp16)")
+            if gorunum8 else None,
+            "augment": ("D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003" if a.augment_d4 else "yok"),
+            "ozdeslik_ref": a.ozdeslik_ref, "kontrol_ref_run": (kontrol or {}).get("kontrol_ref"),
+            "kontrol_durum": (kontrol or {}).get("kontrol_durum"), "disk_min_gb": a.disk_min_gb}}
     config_ekle(run_dir, {
+        **h14_ek,
         "donanim": {**donanim_bilgisi(), "cihaz": cihaz_ad}, "veri": veri_bilgi,
         "model": {"ad": ad, "kisa": kisa, "img_size": GIRIS_PX, "agirlik": agirlik, "param_sayisi": n_param,
                   "param_egitilen": n_egitilen, "bas": f"Linear({Dm},{V.SINIF_SAYISI}) CLS (son norm sonrası)",
@@ -607,7 +951,8 @@ def main():
                      "weight_decay": a.wd, "wd_muaf": "1-B parametreler + no_weight_decay()",
                      "takvim": f"adım başına kosinüs (T={T_top}), ısınma {T_isin} adım", "bs_etkin": a.bs,
                      "mikro_bs": mikro, "grad_ckpt": grad_ckpt, "fused_attn": a.fused_attn, "drop_path": a.drop_path,
-                     "epoch": a.epoch, "kayip": "CrossEntropy (Σ / etkin batch)", "augment": "yok",
+                     "epoch": a.epoch, "kayip": "CrossEntropy (Σ / etkin batch)",
+                     "augment": ("D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003" if a.augment_d4 else "yok"),
                      "normalizasyon": "ImageNet (GPU'da)", "hassasiyet": "fp32 (TF32 kapalı; önbellek fp16 saklama)",
                      "secim": "val ACC kesin artış (eşitlikte val AUC); ek: val AUC seçimi (rakip kuralı)",
                      "seed": a.seed, "cudnn_deterministic": True, "alt_kume": a.alt_kume, "azami_adim": a.azami_adim,
@@ -618,6 +963,13 @@ def main():
     print(f"[vit] BİTTİ {sure}s · en iyi epoch {en['epoch']} · val_acc {mt['val_acc']:.4f} val_auc {mt['val_auc']:.4f} "
           f"· tepe GPU {metrics.get('tepe_gpu_bellek_mb')} MB · RAM ws {metrics.get('tepe_ram_ws_mb')} / özel "
           f"{metrics.get('tepe_ram_ozel_mb')} MB → {out}", flush=True)
+    if kontrol is not None:
+        print(f"[vit] H14 kontrol ↔ {kontrol['kontrol_ref']}: |Δ ilk_adim_loss| {kontrol['kontrol_ilk_adim_loss_fark']:.3g} · "
+              f"argmax {kontrol['kontrol_argmax_ayni']}/{len(yva)} · maks|Δp| {kontrol['kontrol_p_maks_fark']:.3g} · "
+              f"sürüm farkı {kontrol['kontrol_surum_fark'] or 'yok'} → DURUM {kontrol['kontrol_durum']}", flush=True)
+        if kontrol["kontrol_durum"] == "C":
+            print("[vit] ✖ DURUM C (H14 kural f): kod yolu hatası şüphesi — DUR, teşhis, -v2 (dumandan). rc=5", flush=True)
+            return 5
     return 0
 
 

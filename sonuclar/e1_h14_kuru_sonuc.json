@@ -1,0 +1,622 @@
+{
+ "kuru": true,
+ "tarih": "2026-11-03T23:13:13",
+ "betik_sha256": "c38cba390fc05ba742bcce6230603eb976ad6d205f83aa57ed94bd580606826b",
+ "kart_sha256": "1991c2441e2ea8f12f8a52970bb4911369f8d1907d3391e0c948f476f22b5d2a",
+ "k5_test_sha256": "13a71cf1375fc98a2e8c891bb4f5fdc884e43deb6819ba740aa4035428179b4c",
+ "runs": "<WS>\\runs_colab",
+ "arsiv": "<WS>\\runs_colab",
+ "yontem": "k5_test.Bootstrap (B=2000, rng 0, aynı W iki kola) + k5_test.kiyas; mel duyarlılığı aynı W ile; seed t iki yönlü (bilgi); düzeltme yok",
+ "yeniden_neden": null,
+ "kuru_ozdeslik": {
+  "gecti": true,
+  "tolerans_puan": 0.005,
+  "satirlar": {
+   "h10-h08": {
+    "delta_puan": -0.9616951915240424,
+    "ga_puan": [
+     -2.102689486552567,
+     0.17929910350448228
+    ],
+    "k5_c1_delta_puan": -0.9616951915240424,
+    "k5_c1_ga_puan": [
+     -2.102689486552567,
+     0.17929910350448228
+    ],
+    "maks_fark_puan": 0.0,
+    "gecti": true
+   },
+   "h08-h02": {
+    "delta_puan": 2.0863895680521596,
+    "ga_puan": [
+     1.2387938060309698,
+     2.966585167074165
+    ],
+    "k5_c1_delta_puan": 2.0863895680521596,
+    "k5_c1_ga_puan": [
+     1.2387938060309698,
+     2.966585167074165
+    ],
+    "maks_fark_puan": 0.0,
+    "gecti": true
+   },
+   "h10-h02": {
+    "delta_puan": 1.1246943765281174,
+    "ga_puan": [
+     -0.049307253463732895,
+     2.2982885085574574
+    ],
+    "k5_c1_delta_puan": 1.1246943765281174,
+    "k5_c1_ga_puan": [
+     -0.049307253463732895,
+     2.2982885085574574
+    ],
+    "maks_fark_puan": 0.0,
+    "gecti": true
+   },
+   "kol_h02_acc": {
+    "bu": 0.9048084759576203,
+    "k5_c1": 0.9048084759576203,
+    "fark": 0.0
+   },
+   "kol_h08_acc": {
+    "bu": 0.9256723716381418,
+    "k5_c1": 0.9256723716381418,
+    "fark": 0.0
+   },
+   "kol_h10_acc": {
+    "bu": 0.9160554197229015,
+    "k5_c1": 0.9160554197229015,
+    "fark": 0.0
+   }
+  },
+  "kosumlar": {
+   "h02": {
+    "0": "20261012-020838_h02_c1-test_s0",
+    "1": "20261012-020856_h02_c1-test_s1",
+    "2": "20261012-020913_h02_c1-test_s2",
+    "3": "20261012-020931_h02_c1-test_s3",
+    "4": "20261012-020949_h02_c1-test_s4"
+   },
+   "h08": {
+    "0": "20261012-000300_h08_c1-test_s0",
+    "1": "20261012-000334_h08_c1-test_s1",
+    "2": "20261012-000351_h08_c1-test_s2",
+    "3": "20261012-000409_h08_c1-test_s3",
+    "4": "20261012-000426_h08_c1-test_s4"
+   },
+   "h10": {
+    "0": "20261012-000445_h10_c1-test_s0",
+    "1": "20261012-000517_h10_c1-test_s1",
+    "2": "20261012-000549_h10_c1-test_s2",
+    "3": "20261012-000620_h10_c1-test_s3",
+    "4": "20261012-000652_h10_c1-test_s4"
+   }
+  }
+ },
+ "kosumlar": {
+  "H14 (kuru = arşiv h10_c1-test)": {
+   "0": "20261012-000445_h10_c1-test_s0",
+   "1": "20261012-000517_h10_c1-test_s1",
+   "2": "20261012-000549_h10_c1-test_s2",
+   "3": "20261012-000620_h10_c1-test_s3",
+   "4": "20261012-000652_h10_c1-test_s4"
+  },
+  "h02": {
+   "0": "20261012-020838_h02_c1-test_s0",
+   "1": "20261012-020856_h02_c1-test_s1",
+   "2": "20261012-020913_h02_c1-test_s2",
+   "3": "20261012-020931_h02_c1-test_s3",
+   "4": "20261012-020949_h02_c1-test_s4"
+  },
+  "h08": {
+   "0": "20261012-000300_h08_c1-test_s0",
+   "1": "20261012-000334_h08_c1-test_s1",
+   "2": "20261012-000351_h08_c1-test_s2",
+   "3": "20261012-000409_h08_c1-test_s3",
+   "4": "20261012-000426_h08_c1-test_s4"
+  },
+  "h10": {
+   "0": "20261012-000445_h10_c1-test_s0",
+   "1": "20261012-000517_h10_c1-test_s1",
+   "2": "20261012-000549_h10_c1-test_s2",
+   "3": "20261012-000620_h10_c1-test_s3",
+   "4": "20261012-000652_h10_c1-test_s4"
+  }
+ },
+ "durum": {
+  "durum": "KURU (atlandı)",
+  "k1_karsilastirici": "h10_c1 (arşiv)",
+  "ayrinti": "kuru koşu: kontrol kolu yok; Durum A/B/C gerçek analizde kontrol_* metriklerinden"
+ },
+ "n_seed": 5,
+ "egitim": {
+  "kosumlar": {
+   "0": "20261011-225511_h10_c1_s0",
+   "1": "20261011-230845_h10_c1_s1",
+   "2": "20261011-232219_h10_c1_s2",
+   "3": "20261011-233553_h10_c1_s3",
+   "4": "20261011-234926_h10_c1_s4"
+  },
+  "seed": {
+   "0": {
+    "val_acc": 0.9319371727748691,
+    "en_iyi_epoch": 6,
+    "train_loss_ep5": 0.03447580994472443,
+    "son3_artiyor": false,
+    "epoch_sure_ort_sn": 53.021333333333324,
+    "val_ece": 0.04338543962225655,
+    "augment_frekans_maks_sapma": null,
+    "onbellek_gorunum_tutarlilik_maks_fark": null,
+    "onbellek_gorunum_ozdes_cift": null
+   },
+   "1": {
+    "val_acc": 0.924956369982548,
+    "en_iyi_epoch": 2,
+    "train_loss_ep5": 0.03020390330774713,
+    "son3_artiyor": false,
+    "epoch_sure_ort_sn": 53.004666666666665,
+    "val_ece": 0.019476638778550093,
+    "augment_frekans_maks_sapma": null,
+    "onbellek_gorunum_tutarlilik_maks_fark": null,
+    "onbellek_gorunum_ozdes_cift": null
+   },
+   "2": {
+    "val_acc": 0.9197207678883071,
+    "en_iyi_epoch": 10,
+    "train_loss_ep5": 0.029336911113620964,
+    "son3_artiyor": false,
+    "epoch_sure_ort_sn": 52.98266666666666,
+    "val_ece": 0.05630112906193026,
+    "augment_frekans_maks_sapma": null,
+    "onbellek_gorunum_tutarlilik_maks_fark": null,
+    "onbellek_gorunum_ozdes_cift": null
+   },
+   "3": {
+    "val_acc": 0.9284467713787086,
+    "en_iyi_epoch": 8,
+    "train_loss_ep5": 0.03720296747286419,
+    "son3_artiyor": false,
+    "epoch_sure_ort_sn": 52.980000000000004,
+    "val_ece": 0.050841747518193287,
+    "augment_frekans_maks_sapma": null,
+    "onbellek_gorunum_tutarlilik_maks_fark": null,
+    "onbellek_gorunum_ozdes_cift": null
+   },
+   "4": {
+    "val_acc": 0.924956369982548,
+    "en_iyi_epoch": 9,
+    "train_loss_ep5": 0.05358384532408422,
+    "son3_artiyor": false,
+    "epoch_sure_ort_sn": 53.01733333333334,
+    "val_ece": 0.05219244915361394,
+    "augment_frekans_maks_sapma": null,
+    "onbellek_gorunum_tutarlilik_maks_fark": null,
+    "onbellek_gorunum_ozdes_cift": null
+   }
+  },
+  "cval_acc_ort": 0.9260034904013962,
+  "secilen_epoch_ort": 7.0,
+  "epoch_sure_ort_sn": 53.0012,
+  "kural_e_az_egitim": false
+ },
+ "kiyaslar": {
+  "K1: H14 − H10": {
+   "n_seed": 5,
+   "acc": {
+    "A": 0.9160554197229014,
+    "B": 0.9160554197229014,
+    "delta_puan": 0.0,
+    "ga_puan": [
+     0.0,
+     0.0
+    ],
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)",
+    "p_ust": 1.0,
+    "p_alt": 1.0
+   },
+   "dengeli_acc": {
+    "A": 0.7621674101170963,
+    "B": 0.7621674101170963,
+    "delta_puan": 0.0,
+    "ga_puan": [
+     0.0,
+     0.0
+    ],
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "dengeli_acc_5sinif": {
+    "A": 0.7426226094580526,
+    "B": 0.7426226094580526,
+    "delta_puan": 0.0,
+    "ga_puan": [
+     0.0,
+     0.0
+    ],
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "mel_duyarlilik": {
+    "A": 0.6685714285714285,
+    "B": 0.6685714285714285,
+    "delta_puan": 0.0,
+    "ga_puan": [
+     0.0,
+     0.0
+    ],
+    "p_ust": 1.0,
+    "p_alt": 1.0,
+    "n_mel": 70,
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "t_acc": {
+    "fark_seed_puan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ort_puan": 0.0,
+    "p_iki_yonlu_bilgi": 1.0
+   },
+   "t_dengeli": {
+    "fark_seed_puan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ort_puan": 0.0,
+    "p_iki_yonlu_bilgi": 1.0
+   },
+   "farkli_dogru_goruntu": 0
+  },
+  "K2: H14 − H08c": {
+   "n_seed": 5,
+   "acc": {
+    "A": 0.9256723716381418,
+    "B": 0.9160554197229014,
+    "delta_puan": -0.9616951915240424,
+    "ga_puan": [
+     -2.102689486552567,
+     0.17929910350448228
+    ],
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)",
+    "p_ust": 0.9510244877561219,
+    "p_alt": 0.049475262368815595
+   },
+   "dengeli_acc": {
+    "A": 0.7962725136084353,
+    "B": 0.7621674101170963,
+    "delta_puan": -3.4105103491338995,
+    "ga_puan": [
+     -8.29935693886686,
+     1.4248481472392323
+    ],
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "dengeli_acc_5sinif": {
+    "A": 0.7756638719929859,
+    "B": 0.7426226094580526,
+    "delta_puan": -3.3041262534933336,
+    "ga_puan": [
+     -7.5740016358438105,
+     0.9721101219189744
+    ],
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "mel_duyarlilik": {
+    "A": 0.6628571428571429,
+    "B": 0.6685714285714285,
+    "delta_puan": 0.5714285714285561,
+    "ga_puan": [
+     -8.255952380952374,
+     9.032866707242846
+    ],
+    "p_ust": 0.46026986506746626,
+    "p_alt": 0.5517241379310345,
+    "n_mel": 70,
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "t_acc": {
+    "fark_seed_puan": [
+     -0.08149959250204342,
+     -1.9559902200488977,
+     -1.7114914425427785,
+     0.0,
+     -1.0594947025264867
+    ],
+    "ort_puan": -0.9616951915240414,
+    "p_iki_yonlu_bilgi": 0.07582281410887953
+   },
+   "t_dengeli": {
+    "fark_seed_puan": [
+     -3.4640058555067688,
+     -4.069762542531397,
+     -3.0592513184790726,
+     -0.6102556097237422,
+     -5.84927641942854
+    ],
+    "ort_puan": -3.4105103491339035,
+    "p_iki_yonlu_bilgi": 0.015781306687083364
+   },
+   "farkli_dogru_goruntu": 190
+  },
+  "betimsel: H14 − H02c": {
+   "n_seed": 5,
+   "acc": {
+    "A": 0.9048084759576203,
+    "B": 0.9160554197229014,
+    "delta_puan": 1.1246943765281174,
+    "ga_puan": [
+     -0.049307253463732895,
+     2.2982885085574574
+    ],
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)",
+    "p_ust": 0.030984507746126936,
+    "p_alt": 0.9710144927536232
+   },
+   "dengeli_acc": {
+    "A": 0.7047399696357254,
+    "B": 0.7621674101170963,
+    "delta_puan": 5.742744048137094,
+    "ga_puan": [
+     1.2090432527925334,
+     10.173722724942348
+    ],
+    "etiket": "H14 üstün (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "dengeli_acc_5sinif": {
+    "A": 0.7228124280782507,
+    "B": 0.7426226094580526,
+    "delta_puan": 1.981018137980184,
+    "ga_puan": [
+     -2.046420736990558,
+     6.107605382087272
+    ],
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "mel_duyarlilik": {
+    "A": 0.5971428571428571,
+    "B": 0.6685714285714285,
+    "delta_puan": 7.14285714285714,
+    "ga_puan": [
+     -2.1071770334928406,
+     16.12942090944422
+    ],
+    "p_ust": 0.06446776611694154,
+    "p_alt": 0.9410294852573713,
+    "n_mel": 70,
+    "etiket": "ayırt edilemedi (test sonrası keşifsel, düzeltmesiz)"
+   },
+   "t_acc": {
+    "fark_seed_puan": [
+     0.4074979625101838,
+     1.4669926650366816,
+     2.037489812550941,
+     0.6519967400163029,
+     1.0594947025264867
+    ],
+    "ort_puan": 1.1246943765281192,
+    "p_iki_yonlu_bilgi": 0.018050356684141462
+   },
+   "t_dengeli": {
+    "fark_seed_puan": [
+     3.8564597300369985,
+     9.832276984441645,
+     2.867195209499218,
+     7.24921614215307,
+     4.908572174554527
+    ],
+    "ort_puan": 5.742744048137092,
+    "p_iki_yonlu_bilgi": 0.010224082855660134
+   },
+   "farkli_dogru_goruntu": 209
+  }
+ },
+ "kollar": {
+  "H14": {
+   "ort": {
+    "acc": 0.9160554197229015,
+    "auc": 0.9856376246458302,
+    "dengeli_acc": 0.7621674101170963,
+    "dengeli_acc_5sinif": 0.7426226094580525,
+    "makro_f1": 0.7804083184677436,
+    "ece15": 0.04871995366970119,
+    "nll": 0.32966209641105315,
+    "nv_payi": 0.784841075794621,
+    "duyarlilik_akiec": 0.5828571428571429,
+    "duyarlilik_bcc": 0.7727272727272727,
+    "duyarlilik_bkl": 0.7104761904761905,
+    "duyarlilik_df": 0.775,
+    "duyarlilik_mel": 0.6685714285714285,
+    "duyarlilik_nv": 0.978481012658228,
+    "duyarlilik_vasc": 0.8470588235294118
+   },
+   "std": {
+    "acc": 0.0039926483174949606,
+    "auc": 0.001051161191705599,
+    "dengeli_acc": 0.019194164647275382,
+    "dengeli_acc_5sinif": 0.016455949682462015,
+    "makro_f1": 0.009754421688123332,
+    "ece15": 0.011868603886511545,
+    "nll": 0.03968918906568898,
+    "nv_payi": 0.0015247177615215657,
+    "duyarlilik_akiec": 0.0823134873765025,
+    "duyarlilik_bcc": 0.03214121732666126,
+    "duyarlilik_bkl": 0.021925456063278705,
+    "duyarlilik_df": 0.13693063937629152,
+    "duyarlilik_mel": 0.06177642374411331,
+    "duyarlilik_nv": 0.00218738832841014,
+    "duyarlilik_vasc": 0.06706914265289048
+   },
+   "acc_eksi_cogunluk": 0.14345541972290154,
+   "mel_to_nv": 14.6,
+   "nv_to_mel": 9.4,
+   "bkl_to_nv": 13.6,
+   "seed_cifti_argmax_anlasmazlik_ort": 0.04898125509372453,
+   "guven_eksi_acc": 0.042061465113942195
+  },
+  "H10": {
+   "ort": {
+    "acc": 0.9160554197229015,
+    "auc": 0.9856376246458302,
+    "dengeli_acc": 0.7621674101170963,
+    "dengeli_acc_5sinif": 0.7426226094580525,
+    "makro_f1": 0.7804083184677436,
+    "ece15": 0.04871995366970119,
+    "nll": 0.32966209641105315,
+    "nv_payi": 0.784841075794621,
+    "duyarlilik_akiec": 0.5828571428571429,
+    "duyarlilik_bcc": 0.7727272727272727,
+    "duyarlilik_bkl": 0.7104761904761905,
+    "duyarlilik_df": 0.775,
+    "duyarlilik_mel": 0.6685714285714285,
+    "duyarlilik_nv": 0.978481012658228,
+    "duyarlilik_vasc": 0.8470588235294118
+   },
+   "std": {
+    "acc": 0.0039926483174949606,
+    "auc": 0.001051161191705599,
+    "dengeli_acc": 0.019194164647275382,
+    "dengeli_acc_5sinif": 0.016455949682462015,
+    "makro_f1": 0.009754421688123332,
+    "ece15": 0.011868603886511545,
+    "nll": 0.03968918906568898,
+    "nv_payi": 0.0015247177615215657,
+    "duyarlilik_akiec": 0.0823134873765025,
+    "duyarlilik_bcc": 0.03214121732666126,
+    "duyarlilik_bkl": 0.021925456063278705,
+    "duyarlilik_df": 0.13693063937629152,
+    "duyarlilik_mel": 0.06177642374411331,
+    "duyarlilik_nv": 0.00218738832841014,
+    "duyarlilik_vasc": 0.06706914265289048
+   },
+   "acc_eksi_cogunluk": 0.14345541972290154,
+   "mel_to_nv": 14.6,
+   "nv_to_mel": 9.4,
+   "bkl_to_nv": 13.6,
+   "seed_cifti_argmax_anlasmazlik_ort": 0.04898125509372453,
+   "guven_eksi_acc": 0.042061465113942195
+  },
+  "H08c": {
+   "ort": {
+    "acc": 0.9256723716381418,
+    "auc": 0.9861415339937878,
+    "dengeli_acc": 0.7962725136084352,
+    "dengeli_acc_5sinif": 0.7756638719929858,
+    "makro_f1": 0.8063378437065211,
+    "ece15": 0.04065633704726447,
+    "nll": 0.2680932210325282,
+    "nv_payi": 0.7791361043194784,
+    "duyarlilik_akiec": 0.6628571428571429,
+    "duyarlilik_bcc": 0.7590909090909091,
+    "duyarlilik_bkl": 0.8171428571428571,
+    "duyarlilik_df": 0.825,
+    "duyarlilik_mel": 0.6628571428571428,
+    "duyarlilik_nv": 0.9763713080168775,
+    "duyarlilik_vasc": 0.8705882352941176
+   },
+   "std": {
+    "acc": 0.00594444418217128,
+    "auc": 0.001236822734116384,
+    "dengeli_acc": 0.018187850862169914,
+    "dengeli_acc_5sinif": 0.012562596409041182,
+    "makro_f1": 0.012521555931166937,
+    "ece15": 0.005656527347372809,
+    "nll": 0.018291056690591136,
+    "nv_payi": 0.0038226697309074226,
+    "duyarlilik_akiec": 0.02390457218668788,
+    "duyarlilik_bcc": 0.03803000120609436,
+    "duyarlilik_bkl": 0.034601718332542754,
+    "duyarlilik_df": 0.06846531968814577,
+    "duyarlilik_mel": 0.037252585172586526,
+    "duyarlilik_nv": 0.0037739543924047384,
+    "duyarlilik_vasc": 0.06443794794178427
+   },
+   "acc_eksi_cogunluk": 0.1530723716381418,
+   "mel_to_nv": 14.4,
+   "nv_to_mel": 10.6,
+   "bkl_to_nv": 10.4,
+   "seed_cifti_argmax_anlasmazlik_ort": 0.0582722086389568,
+   "guven_eksi_acc": 0.03780375841000065
+  },
+  "H02c": {
+   "ort": {
+    "acc": 0.9048084759576203,
+    "auc": 0.9775528092691248,
+    "dengeli_acc": 0.7047399696357253,
+    "dengeli_acc_5sinif": 0.7228124280782509,
+    "makro_f1": 0.7333383193233043,
+    "ece15": 0.04203808631659914,
+    "nll": 0.33133631469619107,
+    "nv_payi": 0.7843520782396088,
+    "duyarlilik_akiec": 0.5142857142857142,
+    "duyarlilik_bcc": 0.7954545454545455,
+    "duyarlilik_bkl": 0.7352380952380952,
+    "duyarlilik_df": 0.625,
+    "duyarlilik_mel": 0.5971428571428572,
+    "duyarlilik_nv": 0.9719409282700422,
+    "duyarlilik_vasc": 0.6941176470588235
+   },
+   "std": {
+    "acc": 0.00992155031363208,
+    "auc": 0.002537313483960922,
+    "dengeli_acc": 0.033236856992366504,
+    "dengeli_acc_5sinif": 0.02809566107483106,
+    "makro_f1": 0.027901241517803165,
+    "ece15": 0.016158565033337405,
+    "nll": 0.03497445871814608,
+    "nv_payi": 0.009049758202113322,
+    "duyarlilik_akiec": 0.07284313590846833,
+    "duyarlilik_bcc": 0.04545454545454547,
+    "duyarlilik_bkl": 0.042271125754613635,
+    "duyarlilik_df": 0.1767766952966369,
+    "duyarlilik_mel": 0.048864661075677364,
+    "duyarlilik_nv": 0.008292508019845398,
+    "duyarlilik_vasc": 0.10522672835293126
+   },
+   "acc_eksi_cogunluk": 0.1322084759576203,
+   "mel_to_nv": 17.6,
+   "nv_to_mel": 13.0,
+   "bkl_to_nv": 14.4,
+   "seed_cifti_argmax_anlasmazlik_ort": 0.07269763651181743,
+   "guven_eksi_acc": 0.032366675021887434
+  }
+ },
+ "gorulmemis": {
+  "(i) K1 Δ > +4,2": false,
+  "(ii) H14 C-test ACC > 0,9457": false,
+  "(iii) H14 C-val ACC > 0,96": false,
+  "(iv) dengeli Δ(K1) > +16,0": false,
+  "INCELE": false
+ },
+ "notlar": {
+  "manipulasyon_s0_ep5_loss": 0.03447580994472443,
+  "manipulasyon_esik_>0,069": false,
+  "kural_j_notu": true,
+  "secilen_epoch_ort": 7.0,
+  "secilen_epoch_>7,0": false,
+  "cval_acc_ort": 0.9260034904013962,
+  "epoch_sure_ort_sn": 53.0012,
+  "kural_e_az_egitim": false,
+  "ece_H14_<=_K1ref": true,
+  "nv_yanliligi_notu": false,
+  "kural_j": "D4 devrede ama ezberi geciktirmedi"
+ },
+ "cumleler": {
+  "K2_etiketi": "ayırt edilemedi",
+  "K2_cumle": "Augmentasyon simetrik hâle getirildiğinde de (H14 = H10 + D4) DINOv2-B ile D4'lü ResNet-18 lezyon-ayrık C1 bölmesinde ayırt edilemedi (Δ −0,96 puan [−2,10; +0,18]). Bu, asimetrik kıyasın ana bulguyu değiştirmediği yönünde keşifsel bir kanıttır. GA genişliği yaklaşık ±1,14 puanlık farkları dışlamaz. Analiz test sonrası ve düzeltmesizdir.",
+  "K1_etiketi": "ayırt edilemedi",
+  "K1_eslik_cumle": "D4 augmentasyonu DINOv2-B'de C1'de ayırt edilebilir bir değişiklik yaratmadı (Δ +0,00 [+0,00; +0,00]). Karşılaştırma için aynı augmentasyonun ResNet-18'e kazancı +2,09 [+1,24; +2,97] idi.",
+  "dengeli_mel_cumle": "K1 (H14 − H10): dengeli doğruluk Δ +0,00 puan [+0,00; +0,00] (ayırt edilemedi); mel duyarlılığı Δ +0,00 puan [+0,00; +0,00] (ayırt edilemedi; n_mel = 70); K2 (H14 − H08c): dengeli doğruluk Δ −3,41 puan [−8,30; +1,42] (ayırt edilemedi); mel duyarlılığı Δ +0,57 puan [−8,26; +9,03] (ayırt edilemedi; n_mel = 70) (test sonrası keşifsel, düzeltmesiz).",
+  "n_seed": 5,
+  "sonuctan_bagimsiz_oneri": "Özet ve sonuç bölümündeki H08c ↔ H10 cümlesine '(ResNet-18'e D4 eklendi, DINOv2-B'ye eklenmedi; simetrik kıyas için bkz. Bölüm [E1])' kaydı (yazım kararı makale-yazıcı/kullanıcıda)."
+ },
+ "kuru_beklenen": {
+  "K1_delta_puan_sifir": true,
+  "K1_ga_sifir": true,
+  "K2_eşittir_H10-H08": true
+ }
+}
