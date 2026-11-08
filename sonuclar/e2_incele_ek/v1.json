@@ -1,0 +1,1595 @@
+{
+ "medmnist_label": {
+  "0": "actinic keratoses and intraepithelial carcinoma",
+  "1": "basal cell carcinoma",
+  "2": "benign keratosis-like lesions",
+  "3": "dermatofibroma",
+  "4": "melanoma",
+  "5": "melanocytic nevi",
+  "6": "vascular lesions"
+ },
+ "SINIF_KISA": [
+  "akiec",
+  "bcc",
+  "bkl",
+  "df",
+  "mel",
+  "nv",
+  "vasc"
+ ],
+ "train_pay": [
+  0.0325,
+  0.0512,
+  0.1097,
+  0.0114,
+  0.1112,
+  0.6698,
+  0.0141
+ ],
+ "kal_esleme": [
+  {
+   "id": "ISIC_0033494",
+   "idx": 6917,
+   "dx_liste": "akiec",
+   "isic_dx3": "Solar or actinic keratosis",
+   "npz_label": 0,
+   "npz_ad": "akiec"
+  },
+  {
+   "id": "ISIC_0025760",
+   "idx": 3155,
+   "dx_liste": "nv",
+   "isic_dx3": "Nevus",
+   "npz_label": 5,
+   "npz_ad": "nv"
+  },
+  {
+   "id": "ISIC_0033319",
+   "idx": 6209,
+   "dx_liste": "nv",
+   "isic_dx3": "Nevus",
+   "npz_label": 5,
+   "npz_ad": "nv"
+  },
+  {
+   "id": "ISIC_0032451",
+   "idx": 3445,
+   "dx_liste": "nv",
+   "isic_dx3": "Nevus",
+   "npz_label": 5,
+   "npz_ad": "nv"
+  },
+  {
+   "id": "ISIC_0028029",
+   "idx": 331,
+   "dx_liste": "mel",
+   "isic_dx3": "Melanoma, NOS",
+   "npz_label": 4,
+   "npz_ad": "mel"
+  },
+  {
+   "id": "ISIC_0031303",
+   "idx": 2121,
+   "dx_liste": "mel",
+   "isic_dx3": "Melanoma, NOS",
+   "npz_label": 4,
+   "npz_ad": "mel"
+  },
+  {
+   "id": "ISIC_0024688",
+   "idx": 4188,
+   "dx_liste": "mel",
+   "isic_dx3": "Melanoma, NOS",
+   "npz_label": 4,
+   "npz_ad": "mel"
+  },
+  {
+   "id": "ISIC_0033003",
+   "idx": 3980,
+   "dx_liste": "nv",
+   "isic_dx3": "Nevus",
+   "npz_label": 5,
+   "npz_ad": "nv"
+  }
+ ],
+ "bcn_dx_say": {
+  "MEL": 2857,
+  "SCC": 431,
+  "NV": 4206,
+  "BCC": 2809,
+  "BKL": 1138,
+  "AK": 737,
+  "DF": 124,
+  "VASC": 111
+ },
+ "esleme_E1": {
+  "NV": [
+   5,
+   "nv"
+  ],
+  "MEL": [
+   4,
+   "mel"
+  ],
+  "BCC": [
+   1,
+   "bcc"
+  ],
+  "BKL": [
+   2,
+   "bkl"
+  ],
+  "DF": [
+   3,
+   "df"
+  ],
+  "VASC": [
+   6,
+   "vasc"
+  ],
+  "AK": [
+   0,
+   "akiec"
+  ]
+ },
+ "hiza": {
+  "e2_files": [
+   "images",
+   "bcn_filename"
+  ],
+  "etiketli_files": [
+   "images",
+   "bcn_filename",
+   "diagnosis",
+   "lesion_id"
+  ],
+  "n_e": 12413,
+  "n_l": 12413,
+  "sira_ayni": true,
+  "sira_sha_e": true,
+  "sirali": true,
+  "tekil": true,
+  "shape_dtype": [
+   "(12413, 224, 224, 3)",
+   "uint8",
+   "(12413, 224, 224, 3)",
+   "uint8"
+  ],
+  "goruntu_bayt_ayni": true,
+  "icerik_sha_eslesti": true,
+  "npz_diag_csv_ayni": true
+ },
+ "kanal": {
+  "bcn_ort": [
+   148.03,
+   128.69,
+   123.79
+  ],
+  "bcn_std": [
+   65.41,
+   61.84,
+   63.09
+  ],
+  "dm_ort": [
+   195.48,
+   136.7,
+   142.8
+  ],
+  "dm_std": [
+   35.01,
+   40.04,
+   44.86
+  ],
+  "dm_val_shape": "(1003, 224, 224, 3)",
+  "dm_dtype": "uint8"
+ },
+ "kopyasiz": {
+  "n_goruntu": 11933,
+  "n_lezyon": 3451,
+  "n_dislanan": 49,
+  "dislanan_hepsi_csvde": true,
+  "sinif_goruntu": [
+   729,
+   2802,
+   1124,
+   124,
+   2847,
+   4196,
+   111
+  ]
+ },
+ "birlesik": [
+  {
+   "cift": [
+    "BCN_0001604",
+    "BCN_0004816"
+   ],
+   "kopyasizda": [
+    true,
+    true
+   ],
+   "goruntu_sayisi": [
+    3,
+    3
+   ],
+   "dx": [
+    "BKL",
+    "BKL"
+   ],
+   "dislanan_goruntu": [
+    [
+     "BCN_0000011138.jpg",
+     "BCN_0000019120.jpg"
+    ],
+    [
+     "BCN_0000012525.jpg"
+    ]
+   ]
+  },
+  {
+   "cift": [
+    "BCN_0002049",
+    "BCN_0002919"
+   ],
+   "kopyasizda": [
+    true,
+    false
+   ],
+   "goruntu_sayisi": [
+    5,
+    5
+   ],
+   "dx": [
+    "NV",
+    "NV"
+   ],
+   "dislanan_goruntu": [
+    [],
+    [
+     "BCN_0000010052.jpg",
+     "BCN_0000011407.jpg",
+     "BCN_0000018118.jpg",
+     "BCN_0000018923.jpg",
+     "BCN_0000019155.jpg"
+    ]
+   ]
+  }
+ ],
+ "celiskili_dislanan": [],
+ "zip_cols": [
+  "ad",
+  "boyut",
+  "sikistirilmis",
+  "crc32",
+  "tarih"
+ ],
+ "kopya_turet": {
+  "grup": 47,
+  "fazla": 47,
+  "celiskili_grup": [
+   [
+    [
+     "BCN_0000014439.jpg",
+     "BCN_0000014930.jpg"
+    ],
+    [
+     "MEL",
+     "NV"
+    ]
+   ],
+   [
+    [
+     "BCN_0000015995.jpg",
+     "BCN_0000018062.jpg"
+    ],
+    [
+     "NV",
+     "MEL"
+    ]
+   ]
+  ],
+  "dislanan_ayni": true,
+  "n_yeniden": 49
+ },
+ "nn_tam": {
+  "n_bcn": 12413,
+  "n_ref": 10015,
+  "nn_rmse": {
+   "min": 7.67,
+   "p1": 11.72,
+   "medyan": 28.83
+  },
+  "esik5_alti": 0,
+  "esik10_alti": 20,
+  "esik15_alti": 1005,
+  "esik10_ref_tekrar": [
+   [
+    "train:1853",
+    7
+   ],
+   [
+    "val:123",
+    2
+   ],
+   [
+    "train:4191",
+    1
+   ]
+  ],
+  "esik10_dx": {
+   "NV": 5,
+   "BCC": 9,
+   "BKL": 3,
+   "AK": 2,
+   "SCC": 1
+  }
+ },
+ "kol_tab": [
+  [
+   "h10",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-000356_e2_h10-bcn_s0"
+   }
+  ],
+  [
+   "h10",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-000721_e2_h10-bcn_s1"
+   }
+  ],
+  [
+   "h10",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-001051_e2_h10-bcn_s2"
+   }
+  ],
+  [
+   "h10",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-001422_e2_h10-bcn_s3"
+   }
+  ],
+  [
+   "h10",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-001752_e2_h10-bcn_s4"
+   }
+  ],
+  [
+   "h02c",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 5.21540641784668e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-002123_e2_h02c-bcn_s0"
+   }
+  ],
+  [
+   "h02c",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 6.616115570068359e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-002208_e2_h02c-bcn_s1"
+   }
+  ],
+  [
+   "h02c",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 9.59634780883789e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-002253_e2_h02c-bcn_s2"
+   }
+  ],
+  [
+   "h02c",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 5.185604095458984e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-002338_e2_h02c-bcn_s3"
+   }
+  ],
+  [
+   "h02c",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "B",
+    "val_acc=kaynak": true,
+    "maxdp": 1.239776611328125e-05,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-002423_e2_h02c-bcn_s4"
+   }
+  ],
+  [
+   "h10_c1",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-002507_e2_h10_c1-bcn_s0"
+   }
+  ],
+  [
+   "h10_c1",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-002833_e2_h10_c1-bcn_s1"
+   }
+  ],
+  [
+   "h10_c1",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-003202_e2_h10_c1-bcn_s2"
+   }
+  ],
+  [
+   "h10_c1",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-003530_e2_h10_c1-bcn_s3"
+   }
+  ],
+  [
+   "h10_c1",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-003859_e2_h10_c1-bcn_s4"
+   }
+  ],
+  [
+   "h02_c1",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 6.5267086029052734e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-004228_e2_h02_c1-bcn_s0"
+   }
+  ],
+  [
+   "h02_c1",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 2.771615982055664e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-004314_e2_h02_c1-bcn_s1"
+   }
+  ],
+  [
+   "h02_c1",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 3.129243850708008e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-004359_e2_h02_c1-bcn_s2"
+   }
+  ],
+  [
+   "h02_c1",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 4.827976226806641e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-004444_e2_h02_c1-bcn_s3"
+   }
+  ],
+  [
+   "h02_c1",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 5.841255187988281e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-004530_e2_h02_c1-bcn_s4"
+   }
+  ],
+  [
+   "h08c",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 5.0067901611328125e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-004615_e2_h08c-bcn_s0"
+   }
+  ],
+  [
+   "h08c",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 5.602836608886719e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-004700_e2_h08c-bcn_s1"
+   }
+  ],
+  [
+   "h08c",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 5.245208740234375e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-004745_e2_h08c-bcn_s2"
+   }
+  ],
+  [
+   "h08c",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 5.185604095458984e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-004830_e2_h08c-bcn_s3"
+   }
+  ],
+  [
+   "h08c",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 4.887580871582031e-06,
+    "size": 224,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-004915_e2_h08c-bcn_s4"
+   }
+  ],
+  [
+   "h08_c1",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 6.139278411865234e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-005000_e2_h08_c1-bcn_s0"
+   }
+  ],
+  [
+   "h08_c1",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 8.165836334228516e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-005045_e2_h08_c1-bcn_s1"
+   }
+  ],
+  [
+   "h08_c1",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 5.304813385009766e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-005131_e2_h08_c1-bcn_s2"
+   }
+  ],
+  [
+   "h08_c1",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 4.798173904418945e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-005217_e2_h08_c1-bcn_s3"
+   }
+  ],
+  [
+   "h08_c1",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 4.291534423828125e-06,
+    "size": 224,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, GPU, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-005302_e2_h08_c1-bcn_s4"
+   }
+  ],
+  [
+   "h14_c1",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-005347_e2_h14_c1-bcn_s0"
+   }
+  ],
+  [
+   "h14_c1",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-005713_e2_h14_c1-bcn_s1"
+   }
+  ],
+  [
+   "h14_c1",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-010042_e2_h14_c1-bcn_s2"
+   }
+  ],
+  [
+   "h14_c1",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-010416_e2_h14_c1-bcn_s3"
+   }
+  ],
+  [
+   "h14_c1",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "D4 düzgün, örnek başına, önbellek görünümü, g_aug seed+100003",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-010749_e2_h14_c1-bcn_s4"
+   }
+  ],
+  [
+   "h11",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-011122_e2_h11-bcn_s0"
+   }
+  ],
+  [
+   "h11",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-011250_e2_h11-bcn_s1"
+   }
+  ],
+  [
+   "h11",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-011418_e2_h11-bcn_s2"
+   }
+  ],
+  [
+   "h11",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-011546_e2_h11-bcn_s3"
+   }
+  ],
+  [
+   "h11",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "ImageNet (GPU'da)",
+    "augment": "yok",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-011714_e2_h11-bcn_s4"
+   }
+  ],
+  [
+   "h01c",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-011843_e2_h01c-bcn_s0"
+   }
+  ],
+  [
+   "h01c",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012204_e2_h01c-bcn_s1"
+   }
+  ],
+  [
+   "h01c",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012232_e2_h01c-bcn_s2"
+   }
+  ],
+  [
+   "h01c",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012300_e2_h01c-bcn_s3"
+   }
+  ],
+  [
+   "h01c",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012328_e2_h01c-bcn_s4"
+   }
+  ],
+  [
+   "h12",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012355_e2_h12-bcn_s0"
+   }
+  ],
+  [
+   "h12",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012517_e2_h12-bcn_s1"
+   }
+  ],
+  [
+   "h12",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012544_e2_h12-bcn_s2"
+   }
+  ],
+  [
+   "h12",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012612_e2_h12-bcn_s3"
+   }
+  ],
+  [
+   "h12",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": false,
+    "bcn_dosya": "20261108-012640_e2_h12-bcn_s4"
+   }
+  ],
+  [
+   "h01_c1",
+   0,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-012707_e2_h01_c1-bcn_s0"
+   }
+  ],
+  [
+   "h01_c1",
+   1,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-012737_e2_h01_c1-bcn_s1"
+   }
+  ],
+  [
+   "h01_c1",
+   2,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-012807_e2_h01_c1-bcn_s2"
+   }
+  ],
+  [
+   "h01_c1",
+   3,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-012837_e2_h01_c1-bcn_s3"
+   }
+  ],
+  [
+   "h01_c1",
+   4,
+   {
+    "kaynak=kollar": true,
+    "ebeveyn": true,
+    "kilit": true,
+    "komut_kol": true,
+    "seed": true,
+    "src_varyant": true,
+    "src_config_sha": true,
+    "durum": "A",
+    "val_acc=kaynak": true,
+    "maxdp": 0.0,
+    "size": null,
+    "src_npz": "dermamnist_c_resmipiksel_224.npz",
+    "giris_cozunurluk": 224,
+    "normalizasyon": "None",
+    "augment": "None",
+    "c_bolme": true,
+    "bcn_dosya": "20261108-012906_e2_h01_c1-bcn_s4"
+   }
+  ]
+ ],
+ "kol_sorun": []
+}

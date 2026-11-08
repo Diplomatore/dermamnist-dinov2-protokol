@@ -1,0 +1,431 @@
+{
+ "_aciklama": "ÖN-KAYIT (kuyruk e2-degerlendirme; E2 = H15, BCN20000 dış merkez, yeniden eğitimsiz, tek seferlik kilitli; KULLANICI KARARI 13, 2026-11-07; hiçbir e2_* koşumundan ÖNCE yazıldı; koşum sonrası DEĞİŞTİRİLMEZ). Kaynak: hipotezler/H15.md. KESİNLEŞTİRME: deney-yürütücü, 2026-11-07, KULLANICI ONAYI H15 sonrası (kart SHA256 eeef871456c78ee3…, mtime 19:46:24), kuyruk satırlarından ÖNCE; taslak SHA256 2bd91eb178d21ac5…. Ayrıntı hipotezler/H15-UYGULAMA-NOTU.md.",
+ "_notlar": [
+  "Aralıklar ARIZA ALARMIDIR, sonuç beklentisi değildir. Çıkarım satırları BCN etiketini OKUMAZ (bcn_etiket_okundu = 0); etiketli metrikler yalnız scripts/e2_bcn_analiz.py tarafından, KİLİT sonrası bir kez hesaplanır. Bu yüzden B1/B2 beklentileri bu dosyada değil, kartta (§Beklentiler).",
+  "ikincil_aralik kuralı varyant filtresi taşımaz; anahtar yalnız onu yazan satırlara uygulanır: kal_* yalnız duman, dis_kilit_var/bcn_geometri_sayisi/bcn_ikinci_cikarim yalnız a3 satırları yazar.",
+  "Durum A/B/C (H15 K-c) analizde ozdeslik_* değerlerinden mekanik olarak belirlenir; kapı yalnız Durum C'nin kaba ihlallerini yakalar.",
+  "Kuru koşu (H15 K-d) kuyruk satırı değildir: e2_bcn_analiz.py önce --sadece-kuru ile a2 sonunda çalışır (BCN'siz), sonra a3 sonunda aynı betik kuru koşuyu yeniden yapıp BCN'yi açar; |fark| > 0,005 puan → DUR.",
+  "val_acc = iç val yeniden çıkarımı (resmî kollar resmî val 1.003, C1 kolları C-val 573; val_kumesi_dogru = 1 bunu doğrular). Resmî test ve C-test hiçbir satırda okunmaz.",
+  "a1'de e2_veri_kapisi (bcn_veri.py kapi; metrik anahtarları kapi_*) ve c_bolme_veri_c1 satırları val_acc yazmaz → kapının 'başarılı koşum' sayımına ve ikincil_aralik kurallarına girmez; rc ≠ 0 (DUR) ise mekanik İHLAL olur. a3'teki e2_kilit_ac satırı da aynıdır (KİLİT yazılamazsa rc ≠ 0; o zaman 55 çıkarım satırı KİLİT bulamaz ve rc 7 ile biter).",
+  "e2_cikarim.py çıkış kodları: 4 özdeşlik Durum C / yanlış val kümesi (BCN AÇILMAZ) · 5 dejenere BCN çıktısı (K-e) · 7 KİLİT yok/uyuşmaz · 8 aynı kol-seed için ikinci BCN tahmini · 9 BCN girdisi içerik SHA256'sı uyuşmaz. Hepsi rc ≠ 0 → İHLAL.",
+  "a1 kal_girdi_sha_eslesti [1, 1] kartta yazılı değildir; kalibrasyon girdisinin a0'da donan içerik SHA256'sıyla aynı olmasını ister (daha sıkı kural; gevşetme değil).",
+  "ozdeslik_durum_kod (1 A · 2 B · 3 C) ve ozdeslik_surum_farkli her satırda yazılır; Durum A/B ayrımı analizde ve KİLİT'te."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN — e2_h10_duman: H10 s0, BCN ilk 48 görüntü (ETİKETSİZ) + 8 HAM kalibrasyon görüntüsü ön-işleme hattı denetimi",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 1
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h10_duman",
+     "alt": 0.86,
+     "ust": 0.93,
+     "kaynak": "H10 Colab val ort. 0,8947 (karar.md §1.2); özdeşlik ayrıca ozdeslik_* ile"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_gecti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H15 K-c (Durum A ya da B)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_argmax_oran",
+     "alt": 0.995,
+     "ust": 1.0,
+     "kaynak": "H15 K-c Durum B alt sınırı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_p_maks_fark",
+     "alt": 0.0,
+     "ust": 0.001,
+     "kaynak": "H15 K-c Durum B üst sınırı (Durum A ≤ 1e-5 analizde)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_kumesi_dogru",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "resmî kol → resmî val (H15 K-h)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_etiket_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "H15 a1: duman etiketsiz"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_n",
+     "alt": 48,
+     "ust": 48,
+     "kaynak": "duman ≤ 50 görüntü"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_tahmin_sonlu",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H15 K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_olasilik_toplam_maks_sapma",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "softmax toplamı 1"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_tahmin_sinif_maks_pay",
+     "alt": 0.0,
+     "ust": 0.95,
+     "kaynak": "H15 K-e dejenere çıktı alarmı (etiketsiz)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kal_argmax_uyum",
+     "alt": 7,
+     "ust": 8,
+     "kaynak": "H15 a1: 8 HAM kalibrasyon görüntüsü, BCN yolu ↔ resmî dermamnist_224.npz (RMSE 1,76)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "resmi_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "iç test açılmaz"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "c_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "iç test açılmaz"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tepe_gpu_bellek_mb",
+     "alt": 1,
+     "ust": 22500,
+     "kaynak": "L4 23.034 MiB"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "kal_girdi_sha_eslesti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "a0 kuyruk/e2_bcn_beklenen.json kal_images içerik SHA256 (daha sıkı kural)"
+    }
+   ]
+  },
+  "2": {
+   "aciklama": "ÖN-UÇUŞ — e2_<kol>_onucus: 11 kol × s0–4, yalnız iç val yeniden çıkarımı + arşiv özdeşliği (BCN YOK)",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 55
+    },
+    {
+     "tur": "farkli_seedler_farkli"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h01c_onucus",
+     "alt": 0.79,
+     "ust": 0.85,
+     "kaynak": "H01c Colab val 0,8223"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h02c_onucus",
+     "alt": 0.83,
+     "ust": 0.9,
+     "kaynak": "H02c Colab val 0,8656"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h08c_onucus",
+     "alt": 0.85,
+     "ust": 0.92,
+     "kaynak": "H08c Colab val 0,8865"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h10_onucus",
+     "alt": 0.86,
+     "ust": 0.93,
+     "kaynak": "H10 Colab val 0,8947"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h11_onucus",
+     "alt": 0.84,
+     "ust": 0.92,
+     "kaynak": "H11 Colab val 0,8800"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h12_onucus",
+     "alt": 0.79,
+     "ust": 0.85,
+     "kaynak": "H12 Colab val 0,8187"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h01_c1_onucus",
+     "alt": 0.82,
+     "ust": 0.94,
+     "kaynak": "C-val; h01_c1 değeri kartta yok, geniş alarm"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h02_c1_onucus",
+     "alt": 0.86,
+     "ust": 0.96,
+     "kaynak": "C-val; h02_c1 değeri kartta yok, geniş alarm (üst K5-ONKAYIT §4.2 0,96)"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h08_c1_onucus",
+     "alt": 0.9,
+     "ust": 0.96,
+     "kaynak": "h08_c1 C-val 0,9309"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h10_c1_onucus",
+     "alt": 0.9,
+     "ust": 0.95,
+     "kaynak": "h10_c1 C-val 0,926"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h14_c1_onucus",
+     "alt": 0.9,
+     "ust": 0.96,
+     "kaynak": "h14_c1 C-val 0,9277"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_gecti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H15 K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_argmax_oran",
+     "alt": 0.995,
+     "ust": 1.0,
+     "kaynak": "H15 K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_p_maks_fark",
+     "alt": 0.0,
+     "ust": 0.001,
+     "kaynak": "H15 K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_kumesi_dogru",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H15 K-h: C1 kolu yalnız C-val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_etiket_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "a2'de BCN yok"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "resmi_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "iç test açılmaz"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "c_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "iç test açılmaz"
+    }
+   ]
+  },
+  "3": {
+   "aciklama": "TAM (KİLİT) — sonuclar/e2_bcn.KILIT yazıldıktan sonra e2_<kol>-bcn: 11 kol × s0–4, val özdeşliği + BCN 12.413 görüntü × 2 geometri (merkez_kare, cerceve), ETİKETSİZ; ardından e2_bcn_analiz.py bir kez",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 55
+    },
+    {
+     "tur": "farkli_seedler_farkli"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h10-bcn",
+     "alt": 0.86,
+     "ust": 0.93,
+     "kaynak": "val yeniden çıkarımı (a2 ile aynı)"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h02c-bcn",
+     "alt": 0.83,
+     "ust": 0.9,
+     "kaynak": "val yeniden çıkarımı"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h10_c1-bcn",
+     "alt": 0.9,
+     "ust": 0.95,
+     "kaynak": "C-val yeniden çıkarımı"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e2_h02_c1-bcn",
+     "alt": 0.86,
+     "ust": 0.96,
+     "kaynak": "C-val yeniden çıkarımı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_gecti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H15 K-c (satır içi tekrar)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_argmax_oran",
+     "alt": 0.995,
+     "ust": 1.0,
+     "kaynak": "H15 K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_p_maks_fark",
+     "alt": 0.0,
+     "ust": 0.001,
+     "kaynak": "H15 K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_kumesi_dogru",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H15 K-h"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "dis_kilit_var",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H15 K-f: KİLİT olmadan BCN çıkarımı yok"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_ikinci_cikarim",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "H15 K-f: kol-seed başına tek BCN tahmini"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_npz_sha_eslesti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "kuyruk/e2_bcn_beklenen.json (a0)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_n",
+     "alt": 12413,
+     "ust": 12413,
+     "kaynak": "figshare train tamamı; eşleme/maske analizde"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_geometri_sayisi",
+     "alt": 2,
+     "ust": 2,
+     "kaynak": "merkez_kare (ana) + cerceve (S9)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_etiket_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "etiket yalnız analizde"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_tahmin_sonlu",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "H15 K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_olasilik_toplam_maks_sapma",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "softmax toplamı 1"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_tahmin_sinif_maks_pay",
+     "alt": 0.0,
+     "ust": 0.95,
+     "kaynak": "H15 K-e (etiketsiz dejenere çıktı alarmı)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "resmi_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "iç test açılmaz"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "c_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "iç test açılmaz"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tepe_gpu_bellek_mb",
+     "alt": 1,
+     "ust": 22500,
+     "kaynak": "L4 23.034 MiB"
+    }
+   ]
+  }
+ }
+}

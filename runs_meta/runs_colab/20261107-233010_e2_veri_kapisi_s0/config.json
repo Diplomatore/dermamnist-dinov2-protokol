@@ -1,0 +1,21 @@
+{
+  "run_id": "20261107-233010_e2_veri_kapisi_s0",
+  "varyant": "e2_veri_kapisi",
+  "seed": "0",
+  "etiket": "E2 a1 VERİ KAPISI: K-a nn_tam=0, K-b sayılar, BCN girdisi dosya+içerik SHA256 (CPU)",
+  "ebeveyn": null,
+  "hipotez": "H15",
+  "kuyruk": "e2-degerlendirme",
+  "asama": 1,
+  "kural": null,
+  "komut": [
+    "python",
+    "varyantlar/e2/bcn_veri.py",
+    "kapi",
+    "--out",
+    "/content/is/runs/20261107-233010_e2_veri_kapisi_s0/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-11-07T23:30:10",
+  "makine": "43ad33f8c3cc"
+}

@@ -1,0 +1,95 @@
+{
+  "e2": {
+    "kol": "h10",
+    "kip": "bcn",
+    "kaynak_run": "20261011-161411_h10_dinov2b_k4_ft224_s1",
+    "kaynak_varyant": "h10_dinov2b_k4_ft224",
+    "tur": "vit_kismi",
+    "veri": "resmi",
+    "kaynak_veri": "resmi",
+    "kaynak_sha256": {
+      "best_model.pth": "5e9d8255f59781c66b0bc54191feee2befbc34062bddf4037b10411d1ffed3ae",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "29ab1587013962a9219985c1b8ead69fc0e7968ae5a80cf70df60e8e770f2a10",
+      "etiket_val.npy": "0a25a91b92c1c4cba4c7b9daa2693c2efee9dae6f5ae0a77042773ba7e929499",
+      "metrics.json": "fa3fed2a9df104cc1566a1d8af09a7efae06e9ba8952750e6f0d700de46bd8ac",
+      "config.json": "900d2bb8ae8ada2f8ef374675052224637614974edf33936dfe233d00e3f0e51"
+    },
+    "sinama": false,
+    "beklenen_sha256": "d81fccdc6f679803d7610899f1b5476cbf4f3365856ff32df4a183b9682d9cb6",
+    "kilit": {
+      "yol": "/content/is/sonuclar/e2_bcn.KILIT",
+      "sha256": "c87edb1f2fbdc123426654a9dbef1b2614b951468cc5a663dd38f742fd338d32",
+      "denetim": "tamam"
+    },
+    "onceki_bcn": [],
+    "veri_npz": {
+      "npz": "dermamnist_224.npz",
+      "kok": "/content/is/data/medmnist",
+      "md5": "8974907d8e169bef5f5b96bc506ae45d",
+      "md5_resmi": "8974907d8e169bef5f5b96bc506ae45d",
+      "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d",
+      "bayt": 1091112502
+    },
+    "surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "vit": {
+      "timm_ad": "vit_base_patch14_dinov2.lvd142m",
+      "mod": "kismi",
+      "donuk_blok": 8,
+      "onbellek_bs": 32,
+      "val_bs": 64,
+      "fused_attn": 1,
+      "bcn_parca": 1024
+    },
+    "ozdeslik": {
+      "durum": "A",
+      "tol_A": 1e-05,
+      "tol_B": 0.001,
+      "argmax_B": 0.995
+    },
+    "bcn_girdi": {
+      "merkez_kare": {
+        "icerik_eslesti": true,
+        "n": 12413,
+        "sure_sn": 85.3
+      },
+      "cerceve": {
+        "icerik_eslesti": true,
+        "n": 12413,
+        "sure_sn": 86.3
+      }
+    },
+    "bcn_sira_sha256": "66904b9baf3bf44678baf42b0f7a732786d19d51cdb9b7e4f2700f8ec387b0bc",
+    "bcn_tahmin_sha256": {
+      "merkez_kare": "f30cc609cca490c3bea8f24ea6de59876f2a4028b1fdb886083f8fff275df989",
+      "cerceve": "74ec00fb7e77ba2c8b5ef6ee291b9fad44a61af0023882d74d9ea67eb776a765"
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "43ad33f8c3cc",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

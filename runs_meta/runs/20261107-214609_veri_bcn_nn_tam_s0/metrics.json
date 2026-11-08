@@ -1,0 +1,14 @@
+{
+  "asama": "nn_tam",
+  "sure_sn": 3.6,
+  "n_bcn": 12413,
+  "n_ref": 10015,
+  "nn_rmse_min": 7.67,
+  "nn_rmse_p1": 11.72,
+  "nn_rmse_medyan": 28.83,
+  "koyu_kose_orani_bcn_28px(<40)": 0.4198,
+  "koyu_kose_orani_dermamnist_train_28px(<40)": 0.0004,
+  "esik5_alti": 0,
+  "esik10_alti": 20,
+  "esik15_alti": 1005
+}

@@ -1,0 +1,13 @@
+{
+ "kural": "aynı görüntüyü paylaşan AYNI etiketli farklı lezyon kimlikleri tek bootstrap kümesi (H15 §2)",
+ "birlesik": [
+  [
+   "BCN_0001604",
+   "BCN_0004816"
+  ],
+  [
+   "BCN_0002049",
+   "BCN_0002919"
+  ]
+ ]
+}

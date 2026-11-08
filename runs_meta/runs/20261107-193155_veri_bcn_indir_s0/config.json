@@ -1,0 +1,23 @@
+{
+  "run_id": "20261107-193155_veri_bcn_indir_s0",
+  "varyant": "veri_bcn_indir",
+  "seed": "0",
+  "etiket": "HAZIRLIK E2: BCN20000 train zip tam indirme (figshare 45833178, 6.368.901.290 B, MD5 2293c9c6...; ~1 MB/s ile ~1,8 sa; ölçüm değil)",
+  "ebeveyn": null,
+  "hipotez": null,
+  "kuyruk": "e2-veri",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>/env/.venv/Scripts/python.exe",
+    "-I",
+    "scripts/indir_bcn20000.py",
+    "--asama",
+    "indir",
+    "--metrics",
+    "<WS>\\runs\\20261107-193155_veri_bcn_indir_s0/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-11-07T19:31:55",
+  "makine": "LAPTOP-SKK5GIC3"
+}

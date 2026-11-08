@@ -1,0 +1,8 @@
+{
+  "n": 12413,
+  "boyut": 28,
+  "geometri": "merkez_kare",
+  "interpolasyon": "skimage_o1_aa",
+  "kalibrasyon_ref": "merkez_kare|skimage_o1_aa",
+  "sha256": "8222636f0d7c3bca29dc286080afac5fa709ed8559dc2bbb1acd06b0d26145ca"
+}

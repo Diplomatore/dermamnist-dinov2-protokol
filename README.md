@@ -1,4 +1,4 @@
-# DermaMNIST'te bölme protokolü: resmî bölme ve lezyon-ayrık DermaMNIST-C (ResNet-18 ve DINOv2-B)
+# Resmî bölmede şişen, dış merkezde büyüyen fark: DermaMNIST'te DINOv2-B ve ResNet-18 (lezyon-ayrık ve dış merkezli ön-kayıtlı değerlendirme)
 
 Bu depo, aşağıdaki makalenin kodunu, ön-kayıtlarını ve dondurulmuş sonuçlarını içerir:
 
@@ -9,12 +9,15 @@ MedMNIST 28-px benchmark code, pinned) and DINOv2-B variants on DermaMNIST. We a
 advantage measured on the official image-level split still holds under the lesion-disjoint DermaMNIST-C split
 (Abhishek et al., 2025), where images of the same lesion never cross train/val/test. All hypotheses, decision rules
 and the test-time analysis script were frozen (SHA-256) before the test set was opened. The official test set was
-opened once under a lock file, and each arm was evaluated on the C-test once. The repository holds code, hypothesis cards, expectation files,
+opened once under a lock file, and each arm was evaluated on the C-test once. Two post-test revisions followed, each
+pre-registered before running: E1 (H14, DINOv2-B with D4 augmentation, C1 split only, exploratory) and E2 (H15, a
+retraining-free evaluation of all frozen arms on BCN20000, a different centre with audited image/lesion overlap,
+under its own lock). The repository holds code, hypothesis cards, expectation files,
 run metadata and the frozen result files with their SHA-256 sidecars. Data and model weights are not included.
 Run `python tools/dogrula.py` to verify the pre-registration chain.
 
 ## Çalışmanın amacı
-- **Soru:** DermaMNIST'te DINOv2-B'nin ResNet-18'e üstünlüğü bölme protokolüne bağlı mı?
+- **Soru:** DermaMNIST'te DINOv2-B'nin ResNet-18'e iç test üstünlüğü bölme protokolüne bağlı mı ve yeniden eğitimsiz farklı bir merkeze (BCN20000) nasıl taşınıyor?
   Karşılaştırılan iki bölme: resmî MedMNIST bölmesi (görüntü düzeyi, aynı lezyonun görüntüleri bölümler arasında
   dağılabilir) ve lezyon-ayrık **DermaMNIST-C** bölmesi (8.215 / 573 / 1.227).
 - **Kollar:** resmî ResNet-18 (28 px, sıfırdan; `MedMNIST/experiments@70b6b3a`), ImageNet önağırlıklı ResNet-18
@@ -23,6 +26,13 @@ Run `python tools/dogrula.py` to verify the pre-registration chain.
   hiperparametre seçimi yalnız val üzerinde yapıldı. K5 test protokolü (`hipotezler/K5-ONKAYIT.md`, `-b.md`) ve
   analiz betiği (`scripts/k5_test.py`) test açılmadan SHA256 ile donduruldu (`sonuclar/k5_dondurma.json`). Resmî
   test bir kez açıldı (`sonuclar/k5_test.KILIT`, `ikinci_acilis: null`). C-test her kol için bir kez açıldı.
+- **Test sonrası revizyonlar (ikisi de koşumdan önce kartla ön-kayıtlı):**
+  - **E1 / H14** (`hipotezler/H14.md`): H10 + D4 augmentasyonu, yalnız C1 bölmesinde, keşifsel; analiz
+    `scripts/e1_h14_analiz.py` → `sonuclar/e1_h14_sonuc.{json,md}`.
+  - **E2 / H15** (`hipotezler/H15.md`): dondurulmuş kolların BCN20000 dış merkez verisinde **yeniden eğitimsiz**
+    değerlendirmesi; ayrı kilit (`sonuclar/e2_bcn.KILIT`), ayrı Holm ailesi (B1, B2). Kod: `scripts/indir_bcn20000.py`,
+    `scripts/e2_bcn_hazirla.py`, `varyantlar/e2/`, `scripts/e2_bcn_analiz.py` → `sonuclar/e2_bcn_sonuc.{json,md}`;
+    beklenti ihlali soruşturması `sonuclar/e2_incele.md`.
 - **İstatistik:** eşleştirilmiş görüntü-bootstrap (B=2000, rng 0) ve seed-eşli tek yönlü t, Holm düzeltmesiyle
   (`varyantlar/ortak/eslestirilmis_bootstrap.py`, `scripts/k5_test.py`).
 
@@ -34,7 +44,7 @@ Run `python tools/dogrula.py` to verify the pre-registration chain.
 | `tools/` | Orkestra betikleri (`kosum.py`, `kuyruk.py`, `beklenti_kontrol.py`, `leaderboard.py`, `replikasyon_kapisi.py`) ve `dogrula.py` (SHA256 doğrulaması) |
 | `rakip/` | Rakip kurulum notu ve pinli resmî kodu getirme betiği. Resmî kod depoda yok |
 | `colab/` | Colab L4 hattı: defterler (`hat/3-1-colab-*.ipynb`), defter üreticileri, `fp32_kos.py` (TF32 kapatma), `veri_listesi.json` (URL, MD5, SHA256) |
-| `hipotezler/` | Hipotez kartları H01–H13, sıralamalar, K5 ön-kaydı (`K5-ONKAYIT.md`, `-b.md`), ön koşul kontrolü, C1 uygulama notu |
+| `hipotezler/` | Hipotez kartları H01–H15 (H14 = E1, H15 = E2), sıralamalar, K5 ön-kaydı (`K5-ONKAYIT.md`, `-b.md`), ön koşul kontrolü, C1 uygulama notu |
 | `kuyruk/` | Kuyruk tanımları (`*.jsonl`), beklenti dosyaları (`*.beklenti.json`), gruplar, C bölmesi beklenen özeti |
 | `sonuclar/` | Leaderboard'lar, replikasyon kapısı, tur tahlilleri, `beklenti-*.md` kapı raporları, `karar.md`, dondurulmuş K5 sonuçları ve `.sha256` dosyaları |
 | `runs_meta/` | Her koşumun JSON damgaları (`config.json`, `metrics.json`, `varyant_bilgi.json`, `fp32_durum.json` …): `runs/` yerel, `runs_colab/` Colab. Arşiv manifesti `runs_colab/ARSIV_MANIFEST.json` |
@@ -55,7 +65,7 @@ Kod çalıştırılırken yolu argüman ya da ortam değişkeni olarak verin.
 
 | amaç | ortam |
 |---|---|
-| Yerel (duman testleri, K3 replikasyonu, analiz) | Python 3.11.16; `torch==2.5.1+cu121`, `torchvision==0.20.1+cu121`, `timm==1.0.30`, `medmnist==3.0.2`, `scikit-learn==1.9.1`, `numpy==2.2.6`; tam liste `env/requirements.lock` (46 paket) |
+| Yerel (duman testleri, K3 replikasyonu, analiz) | Python 3.11.16; `torch==2.5.1+cu121`, `torchvision==0.20.1+cu121`, `timm==1.0.30`, `medmnist==3.0.2`, `scikit-learn==1.9.1`, `numpy==2.2.6`; tam liste `env/requirements.lock` (47 paket; E2 için `opencv-python-headless`) |
 | Colab ölçüm koşumları (K4/K5, raporlanan tüm test/C1 sayıları) | NVIDIA L4 24 GB; Python 3.13.15, `torch==2.11.0+cu130`, `torchvision==0.26.0+cu130`, `timm==1.0.30`, `medmnist==3.0.2`, `scikit-learn==1.6.1`, `numpy==2.1.3`. Her koşumun `runs_meta/runs_colab/<id>/config.json` → `donanim` alanında kayıtlı |
 
 ```bash
@@ -87,6 +97,12 @@ C1 npz'nin beklenen içerik özeti `kuyruk/k5_c_bolme_beklenen.json` dosyasında
 dosyalarındadır. Önağırlıkların SHA256 değerleri `colab/hat/veri_listesi.json` → `agirliklar` altındadır:
 `timm/vit_base_patch14_dinov2.lvd142m`, `vit_small_patch14_dinov2.lvd142m`, `torchvision resnet18-f37072fd`.
 
+**Dış merkez verisi (E2):** BCN20000 (Hernández-Pérez vd., 2024; figshare 10.6084/m9.figshare.24140028.v1,
+**CC BY 4.0**), yalnız etiketli eğitim bölümü (12.413 görüntü); ISIC Arşivi'ndeki gizli test etiketleri kullanılmadı.
+`python scripts/indir_bcn20000.py --asama ...` ve `python scripts/e2_bcn_hazirla.py --asama hepsi` (eşleme AK→akiec,
+SCC dışlanır; kopyasız ana küme 11.933 görüntü / 3.451 lezyon; HAM10000 örtüşme ve piksel en yakın komşu denetimi).
+Manifest: `data/dis_veri_manifest.md`; npz özetleri `data/bcn20000/e2_a0_rapor.md`. Görüntüler depoda yok.
+
 ## Koşumların yeniden üretimi
 - **Donanım ve sayısal ayarlar:** Colab Pro, NVIDIA L4. Her komut `colab/hat/fp32_kos.py` ile sarılır. Bu sarmalayıcı
   TF32'yi kapatır (`allow_tf32=False`, `fp32_precision="ieee"`, `NVIDIA_TF32_OVERRIDE=0`), cuDNN'i deterministik
@@ -112,6 +128,8 @@ Zincirin sırası:
    betikleri, k5 kuyruk ve beklenti dosyaları ile val tahminlerinin SHA256 değerlerini içerir.
 4. Test açılışı: `sonuclar/k5_test.KILIT`, 21:12:03.
 5. `k5_test_sonuc.json` ve `.sha256`; `k5_dondurma_ek_c1.json`; ardından C1 (`k5_c1_sonuc.json` ve `.sha256`).
+6. E1: `hipotezler/H14.md` (2026-11-03) → `sonuclar/e1_h14_sonuc.json` ve `.sha256`.
+7. E2: `hipotezler/H15.md` (2026-11-07) → `sonuclar/e2_bcn.KILIT` → `sonuclar/e2_bcn_sonuc.json` ve `.sha256`.
 
 Doğrulama: ayrıntılar `DOGRULA.md` dosyasında.
 ```bash
@@ -135,6 +153,7 @@ SHA1 değerlerini her koşumda doğrular. Ayrıntı: `rakip/KURULUM.md`.
   eşlemeleri bulunur. Eşlemelerde HAM10000 `image_id`, `lesion_id` ve `dx` alanları vardır; bunlar HAM10000
   metadata'sından türetilmiştir (Tschandl vd., 2018, CC BY-NC 4.0). Bu dosyaları kullanırken özgün veri
   kümelerine atıf yapın.
+- BCN20000 (CC BY 4.0) görüntüleri depoda yer almaz; depodaki BCN dosya adları/eşleme kayıtları özgün veriden türetilmiştir. Kullanırken Hernández-Pérez vd. (2024) atfı zorunludur.
 - Resmî rakip kodu Apache-2.0 lisanslıdır ve depoda yer almaz.
 
 ## Atıf

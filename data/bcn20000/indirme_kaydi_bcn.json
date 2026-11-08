@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "zaman": "2026-11-07T19:26:50+03:00",
+    "figshare": {
+      "doi": "10.6084/m9.figshare.24140028.v1",
+      "lisans": "CC BY 4.0",
+      "boyut_toplam": 9697528445,
+      "yayim": "2024-09-19T12:35:52Z",
+      "dosyalar": [
+        {
+          "ad": "bcn_20k_train.csv",
+          "bayt": 945681,
+          "md5": "5fd3522a69512dcf5b3c225dc1664ec6",
+          "md5_resmi": "5fd3522a69512dcf5b3c225dc1664ec6",
+          "sha256": "0f219633f49c07b0a1c844c4faa0fa1fc26690743f2c44dc7337a7a4135bc40b"
+        },
+        {
+          "ad": "bcn_20k_test.csv",
+          "bayt": 446244,
+          "md5": "4917fd7e99a90a273cb4a853ce7fca2f",
+          "md5_resmi": "4917fd7e99a90a273cb4a853ce7fca2f",
+          "sha256": "703f7f81c09f9e1dcb870e8cd92929993ebe1d66116d8b4029e461c75c4a04f9"
+        },
+        {
+          "ad": "BCN_20k_test.zip",
+          "bayt_resmi": 3327235230,
+          "md5_resmi": "eeae0d7d675f1ce05250496815c94466",
+          "durum": "indirilmedi (meta aşaması)"
+        },
+        {
+          "ad": "BCN_20k_train.zip",
+          "bayt_resmi": 6368901290,
+          "md5_resmi": "2293c9c654a3f76d6506a57ad17cddd1",
+          "durum": "indirilmedi (meta aşaması)"
+        }
+      ]
+    },
+    "isic2019": [
+      {
+        "ad": "ISIC_2019_Training_Metadata.csv",
+        "url": "https://isic-archive.s3.amazonaws.com/challenges/2019/ISIC_2019_Training_Metadata.csv",
+        "bayt": 1214351,
+        "sha256": "d93994a8ed201d474de9a7af7e17ec30929cbc4a5220659ecbde17cbe83e9316"
+      },
+      {
+        "ad": "ISIC_2019_Training_GroundTruth.csv",
+        "url": "https://isic-archive.s3.amazonaws.com/challenges/2019/ISIC_2019_Training_GroundTruth.csv",
+        "bayt": 1291479,
+        "sha256": "aa88e9638fe4df9ef330dc4ba22fa4bd475c44af692fffb870c73091ab25cdcd"
+      }
+    ],
+    "cassidy": [
+      {
+        "ad": "cassidy_06_all_train_duplicates.txt",
+        "url": "https://raw.githubusercontent.com/mmu-dermatology-research/isic_duplicate_removal_strategy/b785b75fc1b1440d7be7b17d2cb2348de6c76102/file_lists/06%20-%20all_train_duplicates_deleted_(all%20but%20newest).txt",
+        "bayt": 1021979,
+        "sha256": "44db850019f29696aea2ebcceebf3aa8d218c2df0f8b2248f845968b349022bb"
+      },
+      {
+        "ad": "cassidy_README.md",
+        "url": "https://raw.githubusercontent.com/mmu-dermatology-research/isic_duplicate_removal_strategy/b785b75fc1b1440d7be7b17d2cb2348de6c76102/README.md",
+        "bayt": 11576,
+        "sha256": "ae90ac971372f718fa6ab177989839e6f9daa2906f4f691c4f736b311fcdcbea"
+      }
+    ],
+    "isic_koleksiyon": {
+      "249": {
+        "ad": "BCN20000",
+        "kayit": 18946,
+        "public": true,
+        "sha256_jsonl": "3f2465b547d9ab6fcdc8418f52a36be52b0f19358f3a71ebf3f0f3675b2da208"
+      },
+      "212": {
+        "ad": "HAM10000",
+        "kayit": 11720,
+        "public": true,
+        "sha256_jsonl": "7b147c7c125e168eb0623e2e7787950f45be351504cf2f8c6401ec887bca79c1"
+      }
+    }
+  },
+  "zipliste": {
+    "BCN_20k_train.zip": {
+      "giris": 12413,
+      "dosya": 12413,
+      "klasor": 0,
+      "uzanti": {
+        ".jpg": 12413
+      },
+      "acik_boyut_toplam": 6413593124,
+      "sikistirilmis_toplam": 6366469356,
+      "zip_boyut": 6368901290,
+      "range_istek": 5,
+      "range_bayt": 1314926,
+      "sure_sn": 4.4,
+      "liste": "data\\bcn20000\\meta\\zip_icerik_train.csv"
+    },
+    "BCN_20k_test.zip": {
+      "giris": 6501,
+      "dosya": 6501,
+      "klasor": 0,
+      "uzanti": {
+        ".jpg": 6501
+      },
+      "acik_boyut_toplam": 3350990217,
+      "sikistirilmis_toplam": 3326000018,
+      "zip_boyut": 3327235230,
+      "range_istek": 3,
+      "range_bayt": 656687,
+      "sure_sn": 3.8,
+      "liste": "data\\bcn20000\\meta\\zip_icerik_test.csv"
+    }
+  },
+  "tam_indirme": {
+    "dosya": "BCN_20k_train.zip",
+    "bayt": 6368901290,
+    "md5": "2293c9c654a3f76d6506a57ad17cddd1",
+    "sha256": "319c2895d6c07e9e36645bea9d09bac4456c16c96ba368130cc32e1dd895fc9f",
+    "sure_sn": 6333.7
+  }
+}

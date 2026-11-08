@@ -1,0 +1,8 @@
+{
+  "n": 12413,
+  "boyut": 224,
+  "geometri": "merkez_kare",
+  "interpolasyon": "PIL_BILINEAR",
+  "kalibrasyon_ref": "merkez_kare|PIL_BILINEAR",
+  "sha256": "8bd8a529043bb2a802bb08a00b5e7e4455115edfd80366fd5c4aed449a3b75d3"
+}

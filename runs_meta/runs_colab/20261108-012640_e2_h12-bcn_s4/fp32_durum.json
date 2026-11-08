@@ -1,0 +1,34 @@
+{
+ "zaman": "2026-11-08T01:26:44",
+ "betik": "/content/is/varyantlar/e2/e2_cikarim.py",
+ "torch": "2.11.0+cu130",
+ "cuda": "13.0",
+ "cudnn": 91900,
+ "ortam": {
+  "NVIDIA_TF32_OVERRIDE": "0",
+  "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+  "HF_HUB_OFFLINE": "1",
+  "TZ": "Europe/Istanbul",
+  "PYTHONHASHSEED": null
+ },
+ "baslangic": {
+  "cuda.matmul.allow_tf32": false,
+  "cudnn.allow_tf32": false,
+  "float32_matmul_precision": "highest",
+  "cudnn.deterministic": true,
+  "cudnn.benchmark": false,
+  "cuda.matmul.fp32_precision": "ieee",
+  "cudnn.conv.fp32_precision": "ieee"
+ },
+ "paket_surum": "742ac80f1f5b",
+ "bitis": {
+  "cuda.matmul.allow_tf32": false,
+  "cudnn.allow_tf32": false,
+  "float32_matmul_precision": "highest",
+  "cudnn.deterministic": true,
+  "cudnn.benchmark": false,
+  "cuda.matmul.fp32_precision": "ieee",
+  "cudnn.conv.fp32_precision": "none"
+ },
+ "bitis_zaman": "2026-11-08T01:27:06"
+}

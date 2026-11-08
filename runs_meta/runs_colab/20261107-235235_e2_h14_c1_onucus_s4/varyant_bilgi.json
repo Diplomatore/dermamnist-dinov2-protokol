@@ -1,0 +1,74 @@
+{
+  "e2": {
+    "kol": "h14_c1",
+    "kip": "onucus",
+    "kaynak_run": "20261107-173053_h14_c1_s4",
+    "kaynak_varyant": "h14_c1",
+    "tur": "vit_kismi",
+    "veri": "c1",
+    "kaynak_veri": "c1",
+    "kaynak_sha256": {
+      "best_model.pth": "6e2f4b091126da463f09eb1916eeee94d8d96c1c59bc7affecfe6093e5d4f141",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "681d174b2e59bf74991021f0e5e579a3cfdd43a41728ba2121f303b10efbeb65",
+      "etiket_val.npy": "5d8734f0dbf0c364a8e23b89cbd003b4dabf52594c731317437b740ea2dcfdb8",
+      "metrics.json": "4e275c9ad636b89824851ffa43f2923e1e5cfc798880ea38d1e00bbeca84a41f",
+      "config.json": "987a3ef93879b05c2842e8469602d1a11df3549e98251048eda4d08c96d0e08c"
+    },
+    "sinama": false,
+    "veri_npz": {
+      "npz": "dermamnist_c_resmipiksel_224.npz",
+      "kok": "/content/is/data",
+      "md5": "3e07c0de4b4cf307ba8145ec6db0f964",
+      "sha256": "b9b2db5626be2675647c89b4bd3b1b5d6fd93f5b9404fbb9cdf914aa4c8bbc0d",
+      "bayt": 1507641200,
+      "veri": "c1",
+      "md5_resmi": "3e07c0de4b4cf307ba8145ec6db0f964",
+      "icerik_sha256": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba",
+      "beklenen": "k5_c_bolme_beklenen.json"
+    },
+    "surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "vit": {
+      "timm_ad": "vit_base_patch14_dinov2.lvd142m",
+      "mod": "kismi",
+      "donuk_blok": 8,
+      "onbellek_bs": 32,
+      "val_bs": 64,
+      "fused_attn": 1,
+      "bcn_parca": 1024
+    },
+    "ozdeslik": {
+      "durum": "A",
+      "tol_A": 1e-05,
+      "tol_B": 0.001,
+      "argmax_B": 0.995
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "43ad33f8c3cc",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

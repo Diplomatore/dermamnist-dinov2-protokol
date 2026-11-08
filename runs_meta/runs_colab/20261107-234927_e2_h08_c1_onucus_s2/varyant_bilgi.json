@@ -1,0 +1,65 @@
+{
+  "e2": {
+    "kol": "h08_c1",
+    "kip": "onucus",
+    "kaynak_run": "20261011-222952_h08_c1_s2",
+    "kaynak_varyant": "h08_c1",
+    "tur": "r18",
+    "veri": "c1",
+    "kaynak_veri": "c1",
+    "kaynak_sha256": {
+      "best_model.pth": "b51e698abb61dd1e8e96a74a6ea1a466e19000b68fa6ba38156a7d6e8cf85020",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "7450f7cb7b45726e6fb7bf5fa79917d97365d2b10e027b741a3ac8c44e004670",
+      "etiket_val.npy": "5d8734f0dbf0c364a8e23b89cbd003b4dabf52594c731317437b740ea2dcfdb8",
+      "metrics.json": "4912bf4253e04e4fc534fc76ae2c0d00d7fbc7d1b8bc8f42695feb88a7dfa1ff",
+      "config.json": "84daa4f460d6b2b2c033af45ffa6fdc9e5d786a320793630e49cc9f87d0a3d07"
+    },
+    "sinama": false,
+    "veri_npz": {
+      "npz": "dermamnist_c_resmipiksel_224.npz",
+      "kok": "/content/is/data",
+      "md5": "3e07c0de4b4cf307ba8145ec6db0f964",
+      "sha256": "b9b2db5626be2675647c89b4bd3b1b5d6fd93f5b9404fbb9cdf914aa4c8bbc0d",
+      "bayt": 1507641200,
+      "veri": "c1",
+      "md5_resmi": "3e07c0de4b4cf307ba8145ec6db0f964",
+      "icerik_sha256": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba",
+      "beklenen": "k5_c_bolme_beklenen.json"
+    },
+    "surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "ozdeslik": {
+      "durum": "A",
+      "tol_A": 1e-05,
+      "tol_B": 0.001,
+      "argmax_B": 0.995
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "43ad33f8c3cc",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

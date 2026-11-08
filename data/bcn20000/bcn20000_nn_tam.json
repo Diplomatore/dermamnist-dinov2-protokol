@@ -1,0 +1,196 @@
+{
+  "n_bcn": 12413,
+  "n_ref": 10015,
+  "nn_rmse": {
+    "min": 7.67,
+    "p1": 11.72,
+    "medyan": 28.83
+  },
+  "koyu_kose_orani_bcn_28px(<40)": 0.4198,
+  "koyu_kose_orani_dermamnist_train_28px(<40)": 0.0004,
+  "esik5_alti": 0,
+  "esik10_alti": 20,
+  "esik15_alti": 1005,
+  "en_yakin_30": [
+    {
+      "bcn": "BCN_0000005700.jpg",
+      "dx": "NV",
+      "ref": "train:4191",
+      "rmse": 7.67
+    },
+    {
+      "bcn": "BCN_0000005708.jpg",
+      "dx": "BCC",
+      "ref": "train:1853",
+      "rmse": 8.62
+    },
+    {
+      "bcn": "BCN_0000020298.jpg",
+      "dx": "BCC",
+      "ref": "train:3695",
+      "rmse": 8.88
+    },
+    {
+      "bcn": "BCN_0000002293.jpg",
+      "dx": "BKL",
+      "ref": "train:1853",
+      "rmse": 9.09
+    },
+    {
+      "bcn": "BCN_0000001550.jpg",
+      "dx": "NV",
+      "ref": "train:4310",
+      "rmse": 9.11
+    },
+    {
+      "bcn": "BCN_0000013182.jpg",
+      "dx": "NV",
+      "ref": "val:585",
+      "rmse": 9.21
+    },
+    {
+      "bcn": "BCN_0000011346.jpg",
+      "dx": "NV",
+      "ref": "test:458",
+      "rmse": 9.24
+    },
+    {
+      "bcn": "BCN_0000014337.jpg",
+      "dx": "BCC",
+      "ref": "train:4029",
+      "rmse": 9.39
+    },
+    {
+      "bcn": "BCN_0000004658.jpg",
+      "dx": "BCC",
+      "ref": "train:1853",
+      "rmse": 9.46
+    },
+    {
+      "bcn": "BCN_0000018479.jpg",
+      "dx": "BKL",
+      "ref": "test:1286",
+      "rmse": 9.47
+    },
+    {
+      "bcn": "BCN_0000010091.jpg",
+      "dx": "BCC",
+      "ref": "train:1853",
+      "rmse": 9.68
+    },
+    {
+      "bcn": "BCN_0000005471.jpg",
+      "dx": "AK",
+      "ref": "train:1853",
+      "rmse": 9.68
+    },
+    {
+      "bcn": "BCN_0000000902.jpg",
+      "dx": "BKL",
+      "ref": "test:187",
+      "rmse": 9.7
+    },
+    {
+      "bcn": "BCN_0000015864.jpg",
+      "dx": "AK",
+      "ref": "train:1853",
+      "rmse": 9.7
+    },
+    {
+      "bcn": "BCN_0000015600.jpg",
+      "dx": "NV",
+      "ref": "train:4200",
+      "rmse": 9.72
+    },
+    {
+      "bcn": "BCN_0000003603.jpg",
+      "dx": "BCC",
+      "ref": "train:612",
+      "rmse": 9.8
+    },
+    {
+      "bcn": "BCN_0000011383.jpg",
+      "dx": "SCC",
+      "ref": "train:1853",
+      "rmse": 9.83
+    },
+    {
+      "bcn": "BCN_0000007047.jpg",
+      "dx": "BCC",
+      "ref": "val:817",
+      "rmse": 9.95
+    },
+    {
+      "bcn": "BCN_0000011154.jpg",
+      "dx": "BCC",
+      "ref": "val:123",
+      "rmse": 9.95
+    },
+    {
+      "bcn": "BCN_0000013016.jpg",
+      "dx": "BCC",
+      "ref": "val:123",
+      "rmse": 9.95
+    },
+    {
+      "bcn": "BCN_0000006770.jpg",
+      "dx": "AK",
+      "ref": "test:1048",
+      "rmse": 10.09
+    },
+    {
+      "bcn": "BCN_0000016417.jpg",
+      "dx": "NV",
+      "ref": "test:1494",
+      "rmse": 10.1
+    },
+    {
+      "bcn": "BCN_0000004482.jpg",
+      "dx": "AK",
+      "ref": "val:585",
+      "rmse": 10.11
+    },
+    {
+      "bcn": "BCN_0000002702.jpg",
+      "dx": "NV",
+      "ref": "test:458",
+      "rmse": 10.19
+    },
+    {
+      "bcn": "BCN_0000002245.jpg",
+      "dx": "NV",
+      "ref": "train:6807",
+      "rmse": 10.22
+    },
+    {
+      "bcn": "BCN_0000015754.jpg",
+      "dx": "SCC",
+      "ref": "train:2484",
+      "rmse": 10.29
+    },
+    {
+      "bcn": "BCN_0000004531.jpg",
+      "dx": "NV",
+      "ref": "test:947",
+      "rmse": 10.34
+    },
+    {
+      "bcn": "BCN_0000010575.jpg",
+      "dx": "BCC",
+      "ref": "train:3087",
+      "rmse": 10.36
+    },
+    {
+      "bcn": "BCN_0000018908.jpg",
+      "dx": "NV",
+      "ref": "test:458",
+      "rmse": 10.37
+    },
+    {
+      "bcn": "BCN_0000010188.jpg",
+      "dx": "AK",
+      "ref": "train:1853",
+      "rmse": 10.39
+    }
+  ]
+}

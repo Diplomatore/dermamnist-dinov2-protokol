@@ -1,0 +1,71 @@
+{
+  "e2": {
+    "kol": "h11",
+    "kip": "onucus",
+    "kaynak_run": "20261011-161247_h11_dinov2s_ft224_s1",
+    "kaynak_varyant": "h11_dinov2s_ft224",
+    "tur": "vit_tam",
+    "veri": "resmi",
+    "kaynak_veri": "resmi",
+    "kaynak_sha256": {
+      "best_model.pth": "5a8341c6ea23d246f1163950f032b9b4a603ed6d1a7e4571035fb262315ad3be",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "9f2d916335335e7b45c4ddf2d893c9fe58700162a0c2889f706075f412ceecb7",
+      "etiket_val.npy": "0a25a91b92c1c4cba4c7b9daa2693c2efee9dae6f5ae0a77042773ba7e929499",
+      "metrics.json": "07a88e05e280f88dd8f449888d71515c31d7c2266dd7eff467a9d401526a97c6",
+      "config.json": "1d58fe65018ead674735e89760de894c24a371fc2f2344fb6250f205de838b38"
+    },
+    "sinama": false,
+    "veri_npz": {
+      "npz": "dermamnist_224.npz",
+      "kok": "/content/is/data/medmnist",
+      "md5": "8974907d8e169bef5f5b96bc506ae45d",
+      "md5_resmi": "8974907d8e169bef5f5b96bc506ae45d",
+      "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d",
+      "bayt": 1091112502
+    },
+    "surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "vit": {
+      "timm_ad": "vit_small_patch14_dinov2.lvd142m",
+      "mod": "tam",
+      "donuk_blok": 0,
+      "onbellek_bs": 32,
+      "val_bs": 64,
+      "fused_attn": 1,
+      "bcn_parca": 1024
+    },
+    "ozdeslik": {
+      "durum": "A",
+      "tol_A": 1e-05,
+      "tol_B": 0.001,
+      "argmax_B": 0.995
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "43ad33f8c3cc",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

@@ -1,0 +1,88 @@
+% F6 — E2 / H15: BCN20000 dış merkez (revizyon 2026-11-08). Veri: figures/data/fig_e2_{sacilim,bant,fark,fark_yl}.dat
+% (üretici figures/scripts/fig_e2.py; kaynak DW/sonuclar/e2_bcn_sonuc.json S6.sacilim, ana.kol.*.dengeli_ga, ana.S.h10-h02;
+%  bant: hipotezler/H15.md §Beklentiler düşüş aralığı). Sayı gömülü değil. Kol paleti nötr kategorik (karar kodlaması yok).
+\providecommand{\figveri}{figures/data}
+\providecolor{renkH01}{RGB}{160,160,160}
+\providecolor{renkH02}{RGB}{25,25,25}
+\providecolor{renkH08}{RGB}{217,130,0}
+\providecolor{renkH10}{RGB}{118,42,131}
+\providecolor{renkH11}{RGB}{0,128,128}
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}
+\pgfplotsset{e2ortak/.style={table/col sep=tab, every tick label/.append style={font=\footnotesize},
+  label style={font=\footnotesize}, title style={font=\footnotesize}, tick align=outside, tick pos=left,
+  grid style={gray!20}},
+  e2nokta/.style={only marks, mark size=2.1pt, error bars/.cd, y dir=both, y explicit,
+  error bar style={line width=1.0pt}, /pgfplots/.cd}}
+% ---------------- (a) iç lezyon-ayrık ↔ BCN dengeli doğruluk; renk = aile, işaretçi = eğitim bölmesi
+\begin{axis}[e2ortak, name=a, scale only axis, width=6.9cm, height=5.0cm,
+  xmin=0.57, xmax=0.83, ymin=0.20, ymax=0.56,
+  xlabel={Internal lesion-disjoint balanced accuracy}, ylabel={BCN20000 balanced accuracy},
+  title={(a) Per arm, mean of 5 seeds}, xmajorgrids, ymajorgrids,
+  xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+  legend style={font=\footnotesize, at={(1.03,1.0)}, anchor=north west, draw=gray!50, cells={anchor=west}}]
+\addplot[fill=gray!18, draw=gray!60, densely dashed, line width=0.8pt, forget plot]
+  table[x=x, y=y] {\figveri/fig_e2_bant.dat} -- cycle;
+\addplot[renkH10, e2nokta, mark=*] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{11:11}] {\figveri/fig_e2_sacilim.dat};
+\addlegendentry{DINOv2-B, last 4 blocks}
+\addplot[renkH11, e2nokta, mark=*] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{21:21}] {\figveri/fig_e2_sacilim.dat};
+\addlegendentry{DINOv2-S, full fine-tune}
+\addplot[renkH01, e2nokta, mark=*] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{31:31}] {\figveri/fig_e2_sacilim.dat};
+\addlegendentry{Frozen DINOv2 probe}
+\addplot[renkH02, e2nokta, mark=*] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{41:41}] {\figveri/fig_e2_sacilim.dat};
+\addlegendentry{ImageNet ResNet-18}
+\addplot[renkH08, e2nokta, mark=*] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{51:51}] {\figveri/fig_e2_sacilim.dat};
+\addlegendentry{ResNet-18 + D4}
+% C1 kolları (protokol 2): aynı renk, kare işaretçi; lejantta yalnız şekil anahtarı
+\addplot[renkH10, e2nokta, mark=square*, forget plot] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{12:12}] {\figveri/fig_e2_sacilim.dat};
+\addplot[renkH01, e2nokta, mark=square*, forget plot] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{32:32}] {\figveri/fig_e2_sacilim.dat};
+\addplot[renkH02, e2nokta, mark=square*, forget plot] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{42:42}] {\figveri/fig_e2_sacilim.dat};
+\addplot[renkH08, e2nokta, mark=square*, forget plot] table[x=ic, y=dis, y error minus=em, y error plus=ep,
+  restrict expr to domain={\thisrow{grup}*10+\thisrow{protokol}}{52:52}] {\figveri/fig_e2_sacilim.dat};
+\addlegendimage{only marks, mark=*, black, mark size=2.1pt}
+\addlegendentry{trained on official split}
+\addlegendimage{only marks, mark=square*, black, mark size=2.1pt}
+\addlegendentry{retrained on C1}
+\addlegendimage{area legend, fill=gray!18, draw=gray!60, densely dashed}
+\addlegendentry{pre-registered drop}
+\end{axis}
+% ---------------- (b) H10 − H02c farkı: iç ↔ dış
+\begin{axis}[e2ortak, at={(a.south west)}, anchor=north west, yshift=-2.1cm, xshift=2.2cm,
+  scale only axis, width=5.6cm, height=6.0cm, clip=false,
+  xmin=-5, xmax=22, ymin=-0.2, ymax=11.4,
+  ytick={0.4,1.4,2.4,3.4,4.4,6.6,7.6,8.6,9.6,10.6}, yticklabels from table={\figveri/fig_e2_fark_yl.dat}{lab},
+  xlabel={H10 $-$ H02c difference (pp)}, title={(b) DINOv2-B minus ImageNet ResNet-18 [95\% CI]},
+  xmajorgrids]
+\addplot[densely dashed, gray, forget plot] coordinates {(0,-0.2) (0,11.4)};
+\addplot[gray!65!black, only marks, mark=o, mark size=2.0pt, line width=1.2pt,
+  error bars/.cd, x dir=both, x explicit, error bar style={line width=1.2pt}, error mark options={rotate=90, mark size=2.5pt}]
+  table[x=d, y=y, x error minus=em, x error plus=ep, restrict expr to domain={\thisrow{tur}}{0:0}]
+  {\figveri/fig_e2_fark.dat};
+\addplot[renkH10, only marks, mark=*, mark size=2.0pt, line width=1.2pt,
+  error bars/.cd, x dir=both, x explicit, error bar style={line width=1.2pt}, error mark options={rotate=90, mark size=2.5pt}]
+  table[x=d, y=y, x error minus=em, x error plus=ep, restrict expr to domain={\thisrow{tur}}{1:1}]
+  {\figveri/fig_e2_fark.dat};
+% değer sütunu: eksenin sağında, verinin dışında (çakışma yok)
+\addplot[gray!65!black, draw=none, mark=none, point meta=explicit symbolic, nodes near coords,
+  nodes near coords style={font=\footnotesize, anchor=west, inner sep=1pt}]
+  table[x expr=22.6, y=y, meta=lab, restrict expr to domain={\thisrow{tur}}{0:0}] {\figveri/fig_e2_fark.dat};
+\addplot[renkH10, draw=none, mark=none, point meta=explicit symbolic, nodes near coords,
+  nodes near coords style={font=\footnotesize, anchor=west, inner sep=1pt}]
+  table[x expr=22.6, y=y, meta=lab, restrict expr to domain={\thisrow{tur}}{1:1}] {\figveri/fig_e2_fark.dat};
+\node[font=\footnotesize\itshape, anchor=east, fill=white, inner sep=1pt] at (axis cs:21.7,11.0) {balanced acc.};
+\node[font=\footnotesize\itshape, anchor=east, fill=white, inner sep=1pt] at (axis cs:21.7,5.3) {accuracy};
+\end{axis}
+\end{tikzpicture}
+\caption{BCN20000 dış merkez değerlendirmesi (E2, yeniden eğitimsiz). (a) Kol başına iç lezyon-ayrık ve BCN dengeli doğruluğu; çubuk: lezyon-kümeli \%95 GA; gri bant: ön-kayıtlı düşüş beklentisi. (b) H10 $-$ H02c farkı [puan]; çubuk: iki düzeyli bootstrap \%95 GA.}
+\label{fig:e2}
+\end{figure}

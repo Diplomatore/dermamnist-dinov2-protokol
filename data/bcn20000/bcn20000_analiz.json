@@ -1,0 +1,711 @@
+{
+  "zaman": "2026-11-07T19:26:53+03:00",
+  "csv": {
+    "train_satir": 12413,
+    "test_satir": 6533,
+    "train_split_degerleri": {
+      "train": 12413
+    },
+    "test_split_degerleri": {
+      "test": 6533
+    },
+    "test_tani_dolu": 0,
+    "train_tani_bos": 0,
+    "dosya_adi_tekil": 18946,
+    "train_test_dosya_kesisim": 0
+  },
+  "sinif": {
+    "goruntu": {
+      "NV": 4206,
+      "MEL": 2857,
+      "BCC": 2809,
+      "BKL": 1138,
+      "AK": 737,
+      "SCC": 431,
+      "DF": 124,
+      "VASC": 111
+    },
+    "lezyon_tek_tanili": {
+      "NV": 1281,
+      "BCC": 983,
+      "MEL": 524,
+      "BKL": 353,
+      "AK": 236,
+      "SCC": 122,
+      "DF": 40,
+      "VASC": 37
+    },
+    "lezyon_coklu_tanili": 0,
+    "dengesizlik_max_min": 37.89
+  },
+  "lezyon": {
+    "train_lezyon": 3576,
+    "goruntu_per_lezyon_hist": {
+      "1": 488,
+      "2": 1069,
+      "3": 815,
+      "4": 433,
+      "5": 243,
+      "6": 194,
+      "7": 112,
+      "8": 59,
+      "9": 54,
+      "10": 24,
+      "11": 18,
+      "12": 19,
+      "13": 10,
+      "14": 7,
+      "15": 3,
+      "16": 3,
+      "17": 5,
+      "18": 3,
+      "19": 6,
+      "20": 6,
+      "21": 1,
+      "24": 1,
+      "26": 1,
+      "27": 1,
+      "31": 1
+    },
+    "maks": 31,
+    "ort": 3.471,
+    "test_lezyon": 1864,
+    "test_goruntu_per_lezyon_hist": {
+      "1": 327,
+      "2": 514,
+      "3": 369,
+      "4": 229,
+      "5": 153,
+      "6": 90,
+      "7": 54,
+      "8": 25,
+      "9": 25,
+      "10": 19,
+      "11": 15,
+      "12": 10,
+      "13": 11,
+      "14": 5,
+      "15": 3,
+      "16": 2,
+      "17": 3,
+      "18": 1,
+      "20": 1,
+      "21": 2,
+      "22": 1,
+      "23": 1,
+      "24": 2,
+      "27": 1,
+      "31": 1
+    },
+    "train_test_lesion_id_kesisim_ham": 0,
+    "lesion_id_bicim": {
+      "train_ornek": "BCN_0003884",
+      "test_ornek": "BCN4657"
+    },
+    "train_test_lesion_id_kesisim_rakam_normalize": 0
+  },
+  "tarih": {
+    "train": [
+      "2011-01-01",
+      "2016-12-22"
+    ],
+    "test": [
+      "2011-01-01",
+      "2016-12-22"
+    ],
+    "train_bos": 0,
+    "test_bos": 0
+  },
+  "demografi_train": {
+    "cinsiyet": {
+      "male": 6499,
+      "female": 5840,
+      "bos": 74
+    },
+    "bolge": {
+      "anterior torso": 5086,
+      "head/neck": 3223,
+      "lower extremity": 2173,
+      "upper extremity": 1319,
+      "palms/soles": 380,
+      "bos": 173,
+      "oral/genital": 59
+    }
+  },
+  "isic2019": {
+    "satir": 25331,
+    "lesion_id_oneki": {
+      "BOS": 2084,
+      "MSK4": 819,
+      "HAM": 10015,
+      "BCN": 12413
+    },
+    "bcn_satir": 12413,
+    "ham_satir": 10015,
+    "bcn_sinif": {
+      "NV": 4206,
+      "MEL": 2857,
+      "BCC": 2809,
+      "BKL": 1138,
+      "AK": 737,
+      "SCC": 431,
+      "DF": 124,
+      "VASC": 111
+    },
+    "bcn_lezyon": 3576,
+    "bcn_ham_lesion_kesisim": 0,
+    "bcn_ham_image_kesisim": 0,
+    "dermamnist_image_in_isic2019": 10015,
+    "dermamnist_image_in_isic2019_ham_onekli": 10015,
+    "dermamnist_image_in_isic2019_bcn_onekli": 0,
+    "dermamnist_lesion_in_bcn_onekli": 0,
+    "figshare_train_lezyon_vs_isic2019_bcn_lezyon": {
+      "figshare": 3576,
+      "isic2019": 3576,
+      "ham_kesisim": 3576,
+      "rakam_normalize_kesisim": 3576,
+      "ornek_isic2019": [
+        "BCN_0000001",
+        "BCN_0000002",
+        "BCN_0000003"
+      ],
+      "ornek_figshare": [
+        "BCN_0000001",
+        "BCN_0000002",
+        "BCN_0000003"
+      ]
+    }
+  },
+  "ham10000": {
+    "kaynak_dataset_alani": {
+      "vidir_modern": 3363,
+      "rosendahl": 2259,
+      "vienna_dias": 439,
+      "vidir_molemax": 3954
+    }
+  },
+  "isic_arsiv": {
+    "bcn_kayit": 18946,
+    "ham_kayit": 11720,
+    "isic_id_kesisim": 0,
+    "lesion_id_kesisim": 0,
+    "bcn_lesion_id_dolu": 18946,
+    "ham_lesion_id_dolu": 11720,
+    "patient_id_kesisim": 0,
+    "bcn_patient_id_dolu": 0,
+    "ham_patient_id_dolu": 0,
+    "bcn_atif": {
+      "Hospital Clínic de Barcelona": 18946
+    },
+    "ham_atif": {
+      "MILK study team": 11720
+    },
+    "bcn_lisans": {
+      "CC-BY-NC": 18946
+    },
+    "ham_lisans": {
+      "CC-BY-NC": 11720
+    },
+    "bcn_piksel": {
+      "1024x1024": 18946
+    },
+    "bcn_image_type": {
+      "dermoscopic": 18946
+    },
+    "bcn_dermamnist_image_kesisim": 0,
+    "ham_koleksiyon_dermamnist_kapsama": 10015,
+    "bcn_isic2019_egitim_kesisim": 12413,
+    "bcn_isic2019_disi": 6533,
+    "bcn_tani_d3": {
+      "Nevus": 5647,
+      "Melanoma, NOS": 4003,
+      "Basal cell carcinoma": 3676,
+      "Seborrheic keratosis": 1268,
+      "YOK": 1156,
+      "Solar or actinic keratosis": 1088,
+      "Melanoma metastasis": 633,
+      "Squamous cell carcinoma, NOS": 559,
+      "Scar": 314,
+      "Solar lentigo": 283,
+      "Dermatofibroma": 168,
+      "Benign soft tissue proliferations - Vascular": 151
+    },
+    "bcn_isic2019egitim_tani": {
+      "Benign|Benign melanocytic proliferations|Nevus": 4206,
+      "Malignant|Malignant melanocytic proliferations (Melanoma)|Melanoma, NOS": 2857,
+      "Malignant|Malignant adnexal epithelial proliferations - Follicular|Basal cell carcinoma": 2809,
+      "Benign|Benign epidermal proliferations|Seborrheic keratosis": 929,
+      "Indeterminate|Indeterminate epidermal proliferations|Solar or actinic keratosis": 737,
+      "Malignant|Malignant epidermal proliferations|Squamous cell carcinoma, NOS": 431,
+      "Benign|Benign epidermal proliferations|Solar lentigo": 209,
+      "Benign|Benign soft tissue proliferations - Fibro-histiocytic|Dermatofibroma": 124,
+      "Benign|Benign soft tissue proliferations - Vascular|": 111
+    },
+    "bcn_isic2019disi_tani": {
+      "Benign|Benign melanocytic proliferations|Nevus": 1441,
+      "||": 1156,
+      "Malignant|Malignant melanocytic proliferations (Melanoma)|Melanoma, NOS": 1146,
+      "Malignant|Malignant adnexal epithelial proliferations - Follicular|Basal cell carcinoma": 867,
+      "Malignant|Malignant melanocytic proliferations (Melanoma)|Melanoma metastasis": 633,
+      "Indeterminate|Indeterminate epidermal proliferations|Solar or actinic keratosis": 351,
+      "Benign|Benign epidermal proliferations|Seborrheic keratosis": 339,
+      "Benign|Benign soft tissue proliferations - Fibro-histiocytic|Scar": 314,
+      "Malignant|Malignant epidermal proliferations|Squamous cell carcinoma, NOS": 128,
+      "Benign|Benign epidermal proliferations|Solar lentigo": 74,
+      "Benign|Benign soft tissue proliferations - Fibro-histiocytic|Dermatofibroma": 44,
+      "Benign|Benign soft tissue proliferations - Vascular|": 40
+    },
+    "bcn_isic2019disi_tani_dolu": 5377,
+    "bcn_isic2019disi_lezyon": 1864,
+    "bcn_isic2019egitim_lezyon": 3576,
+    "bcn_egitim_disi_lezyon_kesisim": 0,
+    "bcn_isic_lezyon_toplam": 5440,
+    "bcn_isic_patient_toplam": 0,
+    "bcn_patient_goruntu_hist": {},
+    "bcn_isic_lezyon_goruntu_hist": {
+      "1": 815,
+      "2": 1583,
+      "3": 1184,
+      "4": 662,
+      "5": 396,
+      "6": 284,
+      "7": 166,
+      "8": 84,
+      "9": 79,
+      "10": 43,
+      "11": 33,
+      "12": 29,
+      "13": 21,
+      "14": 12,
+      "15": 6,
+      "16": 5,
+      "17": 8,
+      "18": 4,
+      "19": 6,
+      "20": 7,
+      "21": 3,
+      "22": 1,
+      "23": 1,
+      "24": 3,
+      "26": 1,
+      "27": 2,
+      "31": 2
+    },
+    "bcn_isic_egitim_lezyon_goruntu_hist": {
+      "1": 488,
+      "2": 1069,
+      "3": 815,
+      "4": 433,
+      "5": 243,
+      "6": 194,
+      "7": 112,
+      "8": 59,
+      "9": 54,
+      "10": 24,
+      "11": 18,
+      "12": 19,
+      "13": 10,
+      "14": 7,
+      "15": 3,
+      "16": 3,
+      "17": 5,
+      "18": 3,
+      "19": 6,
+      "20": 6,
+      "21": 1,
+      "24": 1,
+      "26": 1,
+      "27": 1,
+      "31": 1
+    },
+    "bcn_dosya_boyutu_ort": 61047.0,
+    "bcn_dosya_boyutu_toplam": 1156598435,
+    "bcn_egitim_dosya_boyutu_toplam": 757823281
+  },
+  "ornek": {
+    "n": 40,
+    "boyutlar": {
+      "1024x1024": 40
+    },
+    "kose_ort_parlaklik_medyan": 47.2,
+    "koyu_kose_(<40)": 19,
+    "dosya_bayt_ort": 537356.0,
+    "nn_rmse_dermamnist10015": {
+      "min": 13.05,
+      "medyan": 26.49,
+      "maks": 85.05,
+      "esik5_alti": 0,
+      "esik10_alti": 0
+    },
+    "nn_onisleme": "merkez_kare|skimage_o1_aa"
+  },
+  "zip_csv": {
+    "train": {
+      "zip": 12413,
+      "csv": 12413,
+      "ortak": 12413,
+      "csvde_var_zipte_yok": 0,
+      "zipte_var_csvde_yok": 0,
+      "eksik_ornek": []
+    },
+    "test": {
+      "zip": 6501,
+      "csv": 6533,
+      "ortak": 6501,
+      "csvde_var_zipte_yok": 32,
+      "zipte_var_csvde_yok": 0,
+      "eksik_ornek": [
+        "BCN_0000000705.jpg",
+        "BCN_0000000790.jpg",
+        "BCN_0000001537.jpg",
+        "BCN_0000001982.jpg",
+        "BCN_0000002709.jpg",
+        "BCN_0000004050.jpg",
+        "BCN_0000004729.jpg",
+        "BCN_0000005305.jpg",
+        "BCN_0000005378.jpg",
+        "BCN_0000005952.jpg",
+        "BCN_0000006009.jpg",
+        "BCN_0000006292.jpg",
+        "BCN_0000007219.jpg",
+        "BCN_0000007709.jpg",
+        "BCN_0000009219.jpg",
+        "BCN_0000009730.jpg",
+        "BCN_0000011791.jpg",
+        "BCN_0000012599.jpg",
+        "BCN_0000012792.jpg",
+        "BCN_0000012907.jpg",
+        "BCN_0000013561.jpg",
+        "BCN_0000014460.jpg",
+        "BCN_0000014727.jpg",
+        "BCN_0000015045.jpg",
+        "BCN_0000015655.jpg",
+        "BCN_0000016048.jpg",
+        "BCN_0000016402.jpg",
+        "BCN_0000017661.jpg",
+        "BCN_0000018722.jpg",
+        "BCN_0000018743.jpg",
+        "BCN_0000019885.jpg",
+        "BCN_0000019892.jpg"
+      ]
+    }
+  },
+  "zip_crc_kopya": {
+    "train_grup": 47,
+    "train_fazla_goruntu": 47,
+    "train_ayni_lezyon": 37,
+    "train_farkli_lezyon": 10,
+    "train_farkli_tani": [
+      [
+        [
+          "BCN_0000014439.jpg",
+          "BCN_0003560",
+          "MEL"
+        ],
+        [
+          "BCN_0000014930.jpg",
+          "BCN_0000237",
+          "NV"
+        ]
+      ],
+      [
+        [
+          "BCN_0000015995.jpg",
+          "BCN_0000237",
+          "NV"
+        ],
+        [
+          "BCN_0000018062.jpg",
+          "BCN_0003560",
+          "MEL"
+        ]
+      ]
+    ],
+    "train_farkli_lezyon_gruplar": [
+      [
+        [
+          "BCN_0000000581.jpg",
+          "BCN_0002049",
+          "NV"
+        ],
+        [
+          "BCN_0000011407.jpg",
+          "BCN_0002919",
+          "NV"
+        ]
+      ],
+      [
+        [
+          "BCN_0000003930.jpg",
+          "BCN_0004816",
+          "BKL"
+        ],
+        [
+          "BCN_0000019120.jpg",
+          "BCN_0001604",
+          "BKL"
+        ]
+      ],
+      [
+        [
+          "BCN_0000007766.jpg",
+          "BCN_0002049",
+          "NV"
+        ],
+        [
+          "BCN_0000019155.jpg",
+          "BCN_0002919",
+          "NV"
+        ]
+      ],
+      [
+        [
+          "BCN_0000009069.jpg",
+          "BCN_0002049",
+          "NV"
+        ],
+        [
+          "BCN_0000010052.jpg",
+          "BCN_0002919",
+          "NV"
+        ]
+      ],
+      [
+        [
+          "BCN_0000010131.jpg",
+          "BCN_0004816",
+          "BKL"
+        ],
+        [
+          "BCN_0000011138.jpg",
+          "BCN_0001604",
+          "BKL"
+        ]
+      ],
+      [
+        [
+          "BCN_0000010497.jpg",
+          "BCN_0002049",
+          "NV"
+        ],
+        [
+          "BCN_0000018118.jpg",
+          "BCN_0002919",
+          "NV"
+        ]
+      ],
+      [
+        [
+          "BCN_0000010855.jpg",
+          "BCN_0002049",
+          "NV"
+        ],
+        [
+          "BCN_0000018923.jpg",
+          "BCN_0002919",
+          "NV"
+        ]
+      ],
+      [
+        [
+          "BCN_0000012473.jpg",
+          "BCN_0001604",
+          "BKL"
+        ],
+        [
+          "BCN_0000012525.jpg",
+          "BCN_0004816",
+          "BKL"
+        ]
+      ],
+      [
+        [
+          "BCN_0000014439.jpg",
+          "BCN_0003560",
+          "MEL"
+        ],
+        [
+          "BCN_0000014930.jpg",
+          "BCN_0000237",
+          "NV"
+        ]
+      ],
+      [
+        [
+          "BCN_0000015995.jpg",
+          "BCN_0000237",
+          "NV"
+        ],
+        [
+          "BCN_0000018062.jpg",
+          "BCN_0003560",
+          "MEL"
+        ]
+      ]
+    ],
+    "test_grup": 0,
+    "train_test_kesisim": 0
+  },
+  "esleme_secenekleri_figshare_train": {
+    "E1_AK>akiec_SCC_disla|ham": {
+      "goruntu": 11982,
+      "lezyon": 3454,
+      "dislanan_goruntu": 431,
+      "sinif_goruntu": {
+        "akiec": 737,
+        "bcc": 2809,
+        "bkl": 1138,
+        "df": 124,
+        "mel": 2857,
+        "nv": 4206,
+        "vasc": 111
+      },
+      "sinif_lezyon": {
+        "akiec": 236,
+        "bcc": 983,
+        "bkl": 353,
+        "df": 40,
+        "mel": 524,
+        "nv": 1281,
+        "vasc": 37
+      },
+      "cogunluk_payi": 0.351
+    },
+    "E1_AK>akiec_SCC_disla|kopyasiz": {
+      "goruntu": 11933,
+      "lezyon": 3451,
+      "dislanan_goruntu": 480,
+      "sinif_goruntu": {
+        "akiec": 729,
+        "bcc": 2802,
+        "bkl": 1124,
+        "df": 124,
+        "mel": 2847,
+        "nv": 4196,
+        "vasc": 111
+      },
+      "sinif_lezyon": {
+        "akiec": 236,
+        "bcc": 983,
+        "bkl": 353,
+        "df": 40,
+        "mel": 523,
+        "nv": 1279,
+        "vasc": 37
+      },
+      "cogunluk_payi": 0.3516
+    },
+    "E2_AK+SCC>akiec|ham": {
+      "goruntu": 12413,
+      "lezyon": 3576,
+      "dislanan_goruntu": 0,
+      "sinif_goruntu": {
+        "akiec": 1168,
+        "bcc": 2809,
+        "bkl": 1138,
+        "df": 124,
+        "mel": 2857,
+        "nv": 4206,
+        "vasc": 111
+      },
+      "sinif_lezyon": {
+        "akiec": 358,
+        "bcc": 983,
+        "bkl": 353,
+        "df": 40,
+        "mel": 524,
+        "nv": 1281,
+        "vasc": 37
+      },
+      "cogunluk_payi": 0.3388
+    },
+    "E2_AK+SCC>akiec|kopyasiz": {
+      "goruntu": 12364,
+      "lezyon": 3573,
+      "dislanan_goruntu": 49,
+      "sinif_goruntu": {
+        "akiec": 1160,
+        "bcc": 2802,
+        "bkl": 1124,
+        "df": 124,
+        "mel": 2847,
+        "nv": 4196,
+        "vasc": 111
+      },
+      "sinif_lezyon": {
+        "akiec": 358,
+        "bcc": 983,
+        "bkl": 353,
+        "df": 40,
+        "mel": 523,
+        "nv": 1279,
+        "vasc": 37
+      },
+      "cogunluk_payi": 0.3394
+    },
+    "E3_AK_ve_SCC_disla_6sinif|ham": {
+      "goruntu": 11245,
+      "lezyon": 3218,
+      "dislanan_goruntu": 1168,
+      "sinif_goruntu": {
+        "akiec": 0,
+        "bcc": 2809,
+        "bkl": 1138,
+        "df": 124,
+        "mel": 2857,
+        "nv": 4206,
+        "vasc": 111
+      },
+      "sinif_lezyon": {
+        "akiec": 0,
+        "bcc": 983,
+        "bkl": 353,
+        "df": 40,
+        "mel": 524,
+        "nv": 1281,
+        "vasc": 37
+      },
+      "cogunluk_payi": 0.374
+    },
+    "E3_AK_ve_SCC_disla_6sinif|kopyasiz": {
+      "goruntu": 11204,
+      "lezyon": 3215,
+      "dislanan_goruntu": 1209,
+      "sinif_goruntu": {
+        "akiec": 0,
+        "bcc": 2802,
+        "bkl": 1124,
+        "df": 124,
+        "mel": 2847,
+        "nv": 4196,
+        "vasc": 111
+      },
+      "sinif_lezyon": {
+        "akiec": 0,
+        "bcc": 983,
+        "bkl": 353,
+        "df": 40,
+        "mel": 523,
+        "nv": 1279,
+        "vasc": 37
+      },
+      "cogunluk_payi": 0.3745
+    }
+  },
+  "kopya_temizleme": {
+    "kopya_fazla_goruntu": 47,
+    "celiskili_etiket_goruntu": 4
+  },
+  "cassidy06": {
+    "satir": 12038,
+    "yil_klasoru": {
+      "2016": 824,
+      "2020": 433,
+      "2017": 717,
+      "2018": 10015,
+      "2019": 49
+    },
+    "bcn_isic2019_id_silinen": 47,
+    "dermamnist_id_silinen": 10015
+  }
+}

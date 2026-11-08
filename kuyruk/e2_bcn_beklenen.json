@@ -1,0 +1,274 @@
+{
+ "_aciklama": "H15 (E2) a0 donmuş veri beklentisi (scripts/e2_bcn_hazirla.py). E2 çıkarımı, KİLİT ve analiz bu dosyayla doğrular; uyuşmazlık → DUR (K-b). Model çıktısına bakılmadan yazıldı.",
+ "zaman": "2026-11-07T21:50:44",
+ "n": 12413,
+ "dosyalar": {
+  "bcn_e2_merkez_kare_224.npz": {
+   "sha256": "4382880cc0715a0134d2a232111880a71bc3d7c22ad9533a7153197e3538af38",
+   "bayt": 1196527773
+  },
+  "bcn_e2_cerceve_fark_224.npz": {
+   "sha256": "2fbcb1ed5d5f5de3a6ce4e8c92f6fa61387af9338fd7847e50f1fa8dd93af3ca",
+   "bayt": 229980209
+  },
+  "bcn_e2_kal_224.npz": {
+   "sha256": "05ba97dbd836caf227a7ed9771d8b22e802c484269f5fc852b5bd47f21af7e9a",
+   "bayt": 809495
+  }
+ },
+ "icerik": {
+  "merkez_kare": "7e7a93d00af1f3062fbd07c937c59de40b6c59af2c108b9fbe71cdfbf61a7727",
+  "cerceve": "c285946ed85bc9d4ee33bba95121ed292838ecb8e9704e8b8fc53d25399ebabc",
+  "sira": "8dd121bc9a6ceb5f42f7bace49055ada515df6fae552150234cfd36928803db6",
+  "kal_images": "61d8828b9e5f6fba585bfabb99e0198a1aa441c387fa82ff7230ed35a2a14e21"
+ },
+ "kal_idx": [
+  6917,
+  3155,
+  6209,
+  3445,
+  331,
+  2121,
+  4188,
+  3980
+ ],
+ "sira_sha256": "66904b9baf3bf44678baf42b0f7a732786d19d51cdb9b7e4f2700f8ec387b0bc",
+ "kopyasiz_liste": {
+  "yol": "data/bcn20000/kopyasiz_liste.json",
+  "sha256": "a03ad15a09b56f3bf9754e7b4a81b8c74789971e5884a62c4b8556881cb5cb52"
+ },
+ "lezyon_kumeleri": {
+  "yol": "data/bcn20000/lezyon_kumeleri.json",
+  "sha256": "e7259653a48466231ca4c370428df3b1d9a2cc8ac96fca3cd4b8b20111c56af7"
+ },
+ "esleme": {
+  "E1": {
+   "NV": 5,
+   "MEL": 4,
+   "BCC": 1,
+   "BKL": 2,
+   "DF": 3,
+   "VASC": 6,
+   "AK": 0
+  },
+  "E2": {
+   "NV": 5,
+   "MEL": 4,
+   "BCC": 1,
+   "BKL": 2,
+   "DF": 3,
+   "VASC": 6,
+   "AK": 0,
+   "SCC": 0
+  }
+ },
+ "dm_siniflar": [
+  "akiec",
+  "bcc",
+  "bkl",
+  "df",
+  "mel",
+  "nv",
+  "vasc"
+ ],
+ "etiket_kaynagi": {
+  "yol": "data/bcn20000/meta/bcn_20k_train.csv",
+  "md5": "5fd3522a69512dcf5b3c225dc1664ec6",
+  "sha256": "0f219633f49c07b0a1c844c4faa0fa1fc26690743f2c44dc7337a7a4135bc40b"
+ },
+ "sayilar": {
+  "E1|ham": {
+   "goruntu": 11982,
+   "lezyon": 3454,
+   "sinif_goruntu": {
+    "akiec": 737,
+    "bcc": 2809,
+    "bkl": 1138,
+    "df": 124,
+    "mel": 2857,
+    "nv": 4206,
+    "vasc": 111
+   },
+   "sinif_lezyon": {
+    "akiec": 236,
+    "bcc": 983,
+    "bkl": 353,
+    "df": 40,
+    "mel": 524,
+    "nv": 1281,
+    "vasc": 37
+   }
+  },
+  "E1|kopyasiz": {
+   "goruntu": 11933,
+   "lezyon": 3451,
+   "sinif_goruntu": {
+    "akiec": 729,
+    "bcc": 2802,
+    "bkl": 1124,
+    "df": 124,
+    "mel": 2847,
+    "nv": 4196,
+    "vasc": 111
+   },
+   "sinif_lezyon": {
+    "akiec": 236,
+    "bcc": 983,
+    "bkl": 353,
+    "df": 40,
+    "mel": 523,
+    "nv": 1279,
+    "vasc": 37
+   }
+  },
+  "E2|ham": {
+   "goruntu": 12413,
+   "lezyon": 3576,
+   "sinif_goruntu": {
+    "akiec": 1168,
+    "bcc": 2809,
+    "bkl": 1138,
+    "df": 124,
+    "mel": 2857,
+    "nv": 4206,
+    "vasc": 111
+   },
+   "sinif_lezyon": {
+    "akiec": 358,
+    "bcc": 983,
+    "bkl": 353,
+    "df": 40,
+    "mel": 524,
+    "nv": 1281,
+    "vasc": 37
+   }
+  },
+  "E2|kopyasiz": {
+   "goruntu": 12364,
+   "lezyon": 3573,
+   "sinif_goruntu": {
+    "akiec": 1160,
+    "bcc": 2802,
+    "bkl": 1124,
+    "df": 124,
+    "mel": 2847,
+    "nv": 4196,
+    "vasc": 111
+   },
+   "sinif_lezyon": {
+    "akiec": 358,
+    "bcc": 983,
+    "bkl": 353,
+    "df": 40,
+    "mel": 523,
+    "nv": 1279,
+    "vasc": 37
+   }
+  }
+ },
+ "kapilar": {
+  "K-a": {
+   "esik5_alti": 0,
+   "esik10_alti_bilgi": 20,
+   "gecti": true
+  },
+  "K-b": {
+   "gecti": true
+  }
+ },
+ "nn_tam": {
+  "n_bcn": 12413,
+  "n_ref": 10015,
+  "nn_rmse": {
+   "min": 7.67,
+   "p1": 11.72,
+   "medyan": 28.83
+  },
+  "koyu_kose_orani_bcn_28px(<40)": 0.4198,
+  "koyu_kose_orani_dermamnist_train_28px(<40)": 0.0004,
+  "esik5_alti": 0,
+  "esik10_alti": 20,
+  "esik15_alti": 1005,
+  "sha256": "4800eed03f8bfd2656232f14c4166dd255b773d656ea2100d306d8aa673fb6dd"
+ },
+ "cerceve": {
+  "n": 12413,
+  "kirpilan": 2210,
+  "oran": 0.178,
+  "neden": {
+   "oran_dusuk": 10203,
+   "kirp": 2210
+  },
+  "boyutlar": {
+   "1024x1024": 12413
+  },
+  "yon_uyusmaz": 0,
+  "ana_yol_kontrol": {
+   "n": 249,
+   "fark": 0
+  },
+  "es_degerlik": {
+   "n": 25,
+   "esit": 25,
+   "uint8_ozgun_farkli": 25,
+   "numpy": "2.2.6"
+  },
+  "cv2": "4.12.0",
+  "image_cropper_sha256": "103d0a3df048bb37473b2fac2b574380fb3e8e05c0a4e60d6e836fa3bbaf74d6",
+  "cerceve_py_sha256": "6fa5b1f086def318951b42fb4b2b2e9f7a5e535705db8ee83bf66706090346b6",
+  "sure_sn": 135.6,
+  "kayit_sha256": "39bd77901a9e25d5f9729cb0db2cba4ba2b559546cb60262e4bc626029b5cf06"
+ },
+ "girdi": {
+  "kaynak_npz": "data\\bcn20000\\bcn20000_train_merkez_kare_224.npz",
+  "kaynak_npz_sha256": "8bd8a529043bb2a802bb08a00b5e7e4455115edfd80366fd5c4aed449a3b75d3",
+  "n": 12413,
+  "kal": {
+   "n": 8,
+   "idx": [
+    6917,
+    3155,
+    6209,
+    3445,
+    331,
+    2121,
+    4188,
+    3980
+   ],
+   "rmse_ort": 1.759,
+   "rmse_maks": 2.115,
+   "beklenen_rmse_ort": 1.76
+  }
+ },
+ "esleme_sinama": {
+  "E1": {
+   "NV": 5,
+   "MEL": 4,
+   "BCC": 1,
+   "BKL": 2,
+   "DF": 3,
+   "VASC": 6,
+   "AK": 0
+  },
+  "E2": {
+   "NV": 5,
+   "MEL": 4,
+   "BCC": 1,
+   "BKL": 2,
+   "DF": 3,
+   "VASC": 6,
+   "AK": 0,
+   "SCC": 0
+  },
+  "dm_siniflar": [
+   "akiec",
+   "bcc",
+   "bkl",
+   "df",
+   "mel",
+   "nv",
+   "vasc"
+  ],
+  "gecti": true
+ }
+}

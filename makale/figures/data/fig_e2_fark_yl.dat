@@ -1,0 +1,11 @@
+y	lab
+0.4	{BCN ACC$_{\pi_C}$, C1 arms}
+1.4	{BCN ACC$_{\pi_R}$, official arms}
+2.4	{Internal ACC, C1}
+3.4	{Internal ACC, C0}
+4.4	{Internal ACC, official split}
+6.6	{BCN, C1 arms (S1)}
+7.6	{BCN, official-split arms (B1)}
+8.6	{Internal, C1 (retrained)}
+9.6	{Internal, C0}
+10.6	{Internal, official split}

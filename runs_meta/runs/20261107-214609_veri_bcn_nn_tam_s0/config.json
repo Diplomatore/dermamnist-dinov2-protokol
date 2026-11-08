@@ -1,0 +1,23 @@
+{
+  "run_id": "20261107-214609_veri_bcn_nn_tam_s0",
+  "varyant": "veri_bcn_nn_tam",
+  "seed": "0",
+  "etiket": "HAZIRLIK E2: BCN train 28 px -> DermaMNIST 10.015 piksel-NN HAM çakışma denetimi (RMSE<=5 kopya eşiği)",
+  "ebeveyn": null,
+  "hipotez": null,
+  "kuyruk": "e2-veri",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>/env/.venv/Scripts/python.exe",
+    "-I",
+    "scripts/indir_bcn20000.py",
+    "--asama",
+    "nn_tam",
+    "--metrics",
+    "<WS>\\runs\\20261107-214609_veri_bcn_nn_tam_s0/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-11-07T21:46:09",
+  "makine": "LAPTOP-SKK5GIC3"
+}

@@ -1,0 +1,185 @@
+{
+  "n": 8,
+  "boyut": {
+    "28": {
+      "adaylar": {
+        "gerdir|PIL_NEAREST": {
+          "rmse_ort": 16.14,
+          "rmse_maks": 25.593
+        },
+        "gerdir|PIL_BILINEAR": {
+          "rmse_ort": 14.496,
+          "rmse_maks": 24.358
+        },
+        "gerdir|PIL_BICUBIC": {
+          "rmse_ort": 14.931,
+          "rmse_maks": 24.887
+        },
+        "gerdir|PIL_LANCZOS": {
+          "rmse_ort": 15.138,
+          "rmse_maks": 25.091
+        },
+        "gerdir|PIL_BOX": {
+          "rmse_ort": 14.907,
+          "rmse_maks": 24.729
+        },
+        "gerdir|skimage_o1_aa": {
+          "rmse_ort": 14.374,
+          "rmse_maks": 24.147
+        },
+        "gerdir|skimage_o3_aa": {
+          "rmse_ort": 14.375,
+          "rmse_maks": 24.149
+        },
+        "gerdir|skimage_o1_noaa": {
+          "rmse_ort": 16.035,
+          "rmse_maks": 25.594
+        },
+        "merkez_kare|PIL_NEAREST": {
+          "rmse_ort": 7.755,
+          "rmse_maks": 10.434
+        },
+        "merkez_kare|PIL_BILINEAR": {
+          "rmse_ort": 4.575,
+          "rmse_maks": 6.249
+        },
+        "merkez_kare|PIL_BICUBIC": {
+          "rmse_ort": 5.18,
+          "rmse_maks": 6.905
+        },
+        "merkez_kare|PIL_LANCZOS": {
+          "rmse_ort": 5.544,
+          "rmse_maks": 7.252
+        },
+        "merkez_kare|PIL_BOX": {
+          "rmse_ort": 5.205,
+          "rmse_maks": 6.809
+        },
+        "merkez_kare|skimage_o1_aa": {
+          "rmse_ort": 4.398,
+          "rmse_maks": 6.054
+        },
+        "merkez_kare|skimage_o3_aa": {
+          "rmse_ort": 4.401,
+          "rmse_maks": 6.055
+        },
+        "merkez_kare|skimage_o1_noaa": {
+          "rmse_ort": 7.573,
+          "rmse_maks": 10.155
+        }
+      },
+      "en_iyi": "merkez_kare|skimage_o1_aa",
+      "en_iyi_rmse": {
+        "rmse_ort": 4.398,
+        "rmse_maks": 6.054
+      }
+    },
+    "224": {
+      "adaylar": {
+        "gerdir|PIL_NEAREST": {
+          "rmse_ort": 17.47,
+          "rmse_maks": 27.33
+        },
+        "gerdir|PIL_BILINEAR": {
+          "rmse_ort": 17.18,
+          "rmse_maks": 27.086
+        },
+        "gerdir|PIL_BICUBIC": {
+          "rmse_ort": 17.308,
+          "rmse_maks": 27.192
+        },
+        "gerdir|PIL_LANCZOS": {
+          "rmse_ort": 17.359,
+          "rmse_maks": 27.233
+        },
+        "gerdir|PIL_BOX": {
+          "rmse_ort": 17.303,
+          "rmse_maks": 27.295
+        },
+        "gerdir|skimage_o1_aa": {
+          "rmse_ort": 17.247,
+          "rmse_maks": 27.14
+        },
+        "gerdir|skimage_o3_aa": {
+          "rmse_ort": 17.29,
+          "rmse_maks": 27.177
+        },
+        "gerdir|skimage_o1_noaa": {
+          "rmse_ort": 17.383,
+          "rmse_maks": 27.257
+        },
+        "merkez_kare|PIL_NEAREST": {
+          "rmse_ort": 2.635,
+          "rmse_maks": 3.141
+        },
+        "merkez_kare|PIL_BILINEAR": {
+          "rmse_ort": 1.759,
+          "rmse_maks": 2.115
+        },
+        "merkez_kare|PIL_BICUBIC": {
+          "rmse_ort": 1.903,
+          "rmse_maks": 2.27
+        },
+        "merkez_kare|PIL_LANCZOS": {
+          "rmse_ort": 2.034,
+          "rmse_maks": 2.417
+        },
+        "merkez_kare|PIL_BOX": {
+          "rmse_ort": 2.202,
+          "rmse_maks": 2.557
+        },
+        "merkez_kare|skimage_o1_aa": {
+          "rmse_ort": 1.893,
+          "rmse_maks": 2.246
+        },
+        "merkez_kare|skimage_o3_aa": {
+          "rmse_ort": 2.05,
+          "rmse_maks": 2.426
+        },
+        "merkez_kare|skimage_o1_noaa": {
+          "rmse_ort": 2.122,
+          "rmse_maks": 2.479
+        }
+      },
+      "en_iyi": "merkez_kare|PIL_BILINEAR",
+      "en_iyi_rmse": {
+        "rmse_ort": 1.759,
+        "rmse_maks": 2.115
+      }
+    }
+  },
+  "orijinal_boyutlar": [
+    [
+      600,
+      450
+    ],
+    [
+      600,
+      450
+    ],
+    [
+      600,
+      450
+    ],
+    [
+      600,
+      450
+    ],
+    [
+      600,
+      450
+    ],
+    [
+      600,
+      450
+    ],
+    [
+      600,
+      450
+    ],
+    [
+      600,
+      450
+    ]
+  ]
+}

@@ -1,0 +1,42 @@
+{
+ "zaman": "2026-11-08T00:17:54",
+ "kural": "E2 bütçe (H15 K-g: e2-degerlendirme koşum toplamı > 3,0 L4-sa → DUR)",
+ "kuyruk_onek": "e2-degerlendirme",
+ "baslangic_sa_yerel": 0.0,
+ "colab_l4_sa": 0.681,
+ "colab_damgali_kosum": 63,
+ "colab_kosan_kosum": 0,
+ "colab_yetim_kosum": 0,
+ "dokum": {
+  "toplam_sa": 0.680833,
+  "damgali_n": 63,
+  "damgali_sa": 0.680833,
+  "kosan_n": 0,
+  "kosan_sa": 0.0,
+  "yetim_n": 0,
+  "yetim_sa": 0.0,
+  "kuyruk_sa": {
+   "e2-degerlendirme": 0.680833
+  }
+ },
+ "tanim": "tüm eşzamanlı Colab oturumları: damgalı sure_sn + damgasız/yetim .heartbeat gecen_sn",
+ "sayac": 0.681,
+ "esik": 3.0,
+ "karar": "DEVAM",
+ "komut": [
+  "python",
+  "colab/fp32_kos.py",
+  "varyantlar/e2/e2_cikarim.py",
+  "--kol",
+  "h10",
+  "--kaynak",
+  "20261011-165010_h10_dinov2b_k4_ft224_s4",
+  "--seed",
+  "4",
+  "--kip",
+  "bcn",
+  "--dis-kilit-acik",
+  "--out",
+  "/content/is/runs/20261108-001752_e2_h10-bcn_s4/metrics.json"
+ ]
+}

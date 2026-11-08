@@ -1,0 +1,107 @@
+{
+  "e2": {
+    "kol": "h12",
+    "kip": "bcn",
+    "kaynak_run": "20261011-175135_h12_dinov2s_lp_r224_s2",
+    "kaynak_varyant": "h12_dinov2s_lp_r224",
+    "tur": "sonda",
+    "veri": "resmi",
+    "kaynak_veri": "resmi",
+    "kaynak_sha256": {
+      "best_model.pth": null,
+      "sonda_agirlik.npz": "7248c6dee2384ce438112df735395f410f609bfe7ada958efcdc97d72a43092c",
+      "tahmin_val.npy": "39fabd9a73f27a979e2e6496f5465c406ed2c71fcc235231a0770f98c2a74a5c",
+      "etiket_val.npy": "0a25a91b92c1c4cba4c7b9daa2693c2efee9dae6f5ae0a77042773ba7e929499",
+      "metrics.json": "469c1034d734a20f0a357c89a98ab0135899695c311ed3bead8a810b4eb4e7cf",
+      "config.json": "b911e5504c230344806e1c9849ee845fcaf525b02a0ccb62886cb3f22a5857b5"
+    },
+    "sinama": false,
+    "beklenen_sha256": "d81fccdc6f679803d7610899f1b5476cbf4f3365856ff32df4a183b9682d9cb6",
+    "kilit": {
+      "yol": "/content/is/sonuclar/e2_bcn.KILIT",
+      "sha256": "c87edb1f2fbdc123426654a9dbef1b2614b951468cc5a663dd38f742fd338d32",
+      "denetim": "tamam"
+    },
+    "onceki_bcn": [],
+    "veri_npz": {
+      "npz": "dermamnist_224.npz",
+      "kok": "/content/is/data/medmnist",
+      "md5": "8974907d8e169bef5f5b96bc506ae45d",
+      "md5_resmi": "8974907d8e169bef5f5b96bc506ae45d",
+      "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d",
+      "bayt": 1091112502
+    },
+    "surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "sonda": {
+      "model": "vit_small_patch14_dinov2.lvd142m",
+      "C": 0.1,
+      "kaynak_px": 224,
+      "scaler_ort_maks_fark": 0.0,
+      "ozn_meta_val": {
+        "determinizm_maks_fark": 0.0,
+        "img_s": 517.78,
+        "sure_sn": 15.47
+      },
+      "bcn_onbellek": {
+        "merkez_kare": {
+          "yol": "dinov2_vits14_bcn_merkez_kare_7e7a93d00af1f306.npy",
+          "yeniden_kullanildi": true
+        },
+        "cerceve": {
+          "yol": "dinov2_vits14_bcn_cerceve_c285946ed85bc9d4.npy",
+          "yeniden_kullanildi": true
+        }
+      }
+    },
+    "ozdeslik": {
+      "durum": "A",
+      "tol_A": 1e-05,
+      "tol_B": 0.001,
+      "argmax_B": 0.995
+    },
+    "bcn_girdi": {
+      "merkez_kare": {
+        "icerik_eslesti": true,
+        "n": 12413,
+        "sure_sn": 0.1
+      },
+      "cerceve": {
+        "icerik_eslesti": true,
+        "n": 12413,
+        "sure_sn": 0.1
+      }
+    },
+    "bcn_sira_sha256": "66904b9baf3bf44678baf42b0f7a732786d19d51cdb9b7e4f2700f8ec387b0bc",
+    "bcn_tahmin_sha256": {
+      "merkez_kare": "8a28af672ff770032692534ede589573501a7fb4e0851a6581bdeaf84484b2f9",
+      "cerceve": "9e9bf6e4bace15136dc7f140ef33b1268791496c3a41793029c18f06ccd16594"
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "43ad33f8c3cc",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

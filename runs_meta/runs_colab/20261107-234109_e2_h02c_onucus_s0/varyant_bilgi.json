@@ -1,0 +1,62 @@
+{
+  "e2": {
+    "kol": "h02c",
+    "kip": "onucus",
+    "kaynak_run": "20261011-130855_h02_r18in_ft224_colab_s0",
+    "kaynak_varyant": "h02_r18in_ft224_colab",
+    "tur": "r18",
+    "veri": "resmi",
+    "kaynak_veri": "resmi",
+    "kaynak_sha256": {
+      "best_model.pth": "213f38e59b813c444ab65412b9aa9f49f6e5eaedf2f62b67c46d4295bea0dab4",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "20fccf7f9a9a61098adf6a4473e58e9ee885d5722ee5a77c1ca2d2496b812ba6",
+      "etiket_val.npy": "0a25a91b92c1c4cba4c7b9daa2693c2efee9dae6f5ae0a77042773ba7e929499",
+      "metrics.json": "c2b1a5dc5b16b87fc213d8141fa1948f4e1a7e72d8b83210985f672d3a32eed9",
+      "config.json": "300bd6648d0251e89eaa417b9932c58d20e25057d186967c13f766bd2287efb1"
+    },
+    "sinama": false,
+    "veri_npz": {
+      "npz": "dermamnist_224.npz",
+      "kok": "/content/is/data/medmnist",
+      "md5": "8974907d8e169bef5f5b96bc506ae45d",
+      "md5_resmi": "8974907d8e169bef5f5b96bc506ae45d",
+      "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d",
+      "bayt": 1091112502
+    },
+    "surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "ozdeslik": {
+      "durum": "A",
+      "tol_A": 1e-05,
+      "tol_B": 0.001,
+      "argmax_B": 0.995
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "43ad33f8c3cc",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

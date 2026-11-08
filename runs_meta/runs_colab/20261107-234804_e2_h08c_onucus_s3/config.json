@@ -1,0 +1,104 @@
+{
+  "run_id": "20261107-234804_e2_h08c_onucus_s3",
+  "varyant": "e2_h08c_onucus",
+  "seed": "3",
+  "etiket": "E2 ön-uçuş: H08c s3 val yeniden çıkarımı ↔ arşiv (K-c; BCN YOK)",
+  "ebeveyn": "20261011-140837_h08_r18in_ft224_d4_colab_s3",
+  "hipotez": "H15",
+  "kuyruk": "e2-degerlendirme",
+  "asama": 2,
+  "kural": {
+    "nan_kes": true,
+    "ilerleme_zorunlu_sn": 600,
+    "sabit_sn": 600
+  },
+  "komut": [
+    "python",
+    "colab/erteleme_kapisi.py",
+    "--esik",
+    "3.0",
+    "--baslangic-sa",
+    "0",
+    "--kuyruk-onek",
+    "e2-degerlendirme",
+    "--kural",
+    "E2 bütçe (H15 K-g: e2-degerlendirme koşum toplamı > 3,0 L4-sa → DUR)",
+    "--",
+    "python",
+    "colab/fp32_kos.py",
+    "varyantlar/e2/e2_cikarim.py",
+    "--kol",
+    "h08c",
+    "--kaynak",
+    "20261011-140837_h08_r18in_ft224_d4_colab_s3",
+    "--seed",
+    "3",
+    "--kip",
+    "onucus",
+    "--out",
+    "/content/is/runs/20261107-234804_e2_h08c_onucus_s3/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-11-07T23:48:05",
+  "makine": "43ad33f8c3cc",
+  "e2": {
+    "kol": "h08c",
+    "kip": "onucus",
+    "kaynak_run": "20261011-140837_h08_r18in_ft224_d4_colab_s3",
+    "kaynak_varyant": "h08_r18in_ft224_d4_colab",
+    "tur": "r18",
+    "veri": "resmi",
+    "kaynak_veri": "resmi",
+    "kaynak_sha256": {
+      "best_model.pth": "6e6d56df9c9982bfb5cda10ed34746a908a258b65bd214ac2e26eb1856d79d4e",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "1b468ae3064d6761d97d0d9bb257f0cdebcfad7db165cbfd7e1e8c77ee1271ff",
+      "etiket_val.npy": "0a25a91b92c1c4cba4c7b9daa2693c2efee9dae6f5ae0a77042773ba7e929499",
+      "metrics.json": "667dd04005231495b4e29dadda3416695e677e50c1b1891ebccac47dab579d73",
+      "config.json": "cc1e4249330e51920f863ac3eb02d64772f674f65511bc71cd0014334f61f764"
+    },
+    "sinama": false,
+    "veri_npz": {
+      "npz": "dermamnist_224.npz",
+      "kok": "/content/is/data/medmnist",
+      "md5": "8974907d8e169bef5f5b96bc506ae45d",
+      "md5_resmi": "8974907d8e169bef5f5b96bc506ae45d",
+      "sha256": "0143c9ae425867916d9d2a7769ed1a9b7b8c5eb9324a4bb384be6ef4d42da22d",
+      "bayt": 1091112502
+    },
+    "surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "ozdeslik": {
+      "durum": "A",
+      "tol_A": 1e-05,
+      "tol_B": 0.001,
+      "argmax_B": 0.995
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "43ad33f8c3cc",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

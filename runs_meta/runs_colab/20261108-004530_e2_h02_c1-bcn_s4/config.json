@@ -1,0 +1,132 @@
+{
+  "run_id": "20261108-004530_e2_h02_c1-bcn_s4",
+  "varyant": "e2_h02_c1-bcn",
+  "seed": "4",
+  "etiket": "E2 BCN (KİLİT): h02_c1 s4 — val özdeşliği + 12.413 × 2 geometri, etiketsiz, bir kez",
+  "ebeveyn": "20261012-005014_h02_c1_s4",
+  "hipotez": "H15",
+  "kuyruk": "e2-degerlendirme",
+  "asama": 3,
+  "kural": {
+    "nan_kes": true,
+    "ilerleme_zorunlu_sn": 600,
+    "sabit_sn": 600
+  },
+  "komut": [
+    "python",
+    "colab/erteleme_kapisi.py",
+    "--esik",
+    "3.0",
+    "--baslangic-sa",
+    "0",
+    "--kuyruk-onek",
+    "e2-degerlendirme",
+    "--kural",
+    "E2 bütçe (H15 K-g: e2-degerlendirme koşum toplamı > 3,0 L4-sa → DUR)",
+    "--",
+    "python",
+    "colab/fp32_kos.py",
+    "varyantlar/e2/e2_cikarim.py",
+    "--kol",
+    "h02_c1",
+    "--kaynak",
+    "20261012-005014_h02_c1_s4",
+    "--seed",
+    "4",
+    "--kip",
+    "bcn",
+    "--dis-kilit-acik",
+    "--out",
+    "/content/is/runs/20261108-004530_e2_h02_c1-bcn_s4/metrics.json"
+  ],
+  "cwd": "/content/is",
+  "baslangic": "2026-11-08T00:45:32",
+  "makine": "43ad33f8c3cc",
+  "e2": {
+    "kol": "h02_c1",
+    "kip": "bcn",
+    "kaynak_run": "20261012-005014_h02_c1_s4",
+    "kaynak_varyant": "h02_c1",
+    "tur": "r18",
+    "veri": "c1",
+    "kaynak_veri": "c1",
+    "kaynak_sha256": {
+      "best_model.pth": "50713fcf88da594c8ceab1de2c60c30786b85c8a5a03ae556f0753ed09b460d6",
+      "sonda_agirlik.npz": null,
+      "tahmin_val.npy": "59cc36d9d7e6aa7b753f83d29749f1aaeafd0b0f3a6170e7d3bc3ad531eb3860",
+      "etiket_val.npy": "5d8734f0dbf0c364a8e23b89cbd003b4dabf52594c731317437b740ea2dcfdb8",
+      "metrics.json": "4c63db3aa373820c5ebc08e99d3a0b06f8a69a6709b48ca871daac816c5558c3",
+      "config.json": "6d39d062b3fc7fbc93cc72229e335828adda8faa9d1a8b62119c92557a5e3b80"
+    },
+    "sinama": false,
+    "beklenen_sha256": "d81fccdc6f679803d7610899f1b5476cbf4f3365856ff32df4a183b9682d9cb6",
+    "kilit": {
+      "yol": "/content/is/sonuclar/e2_bcn.KILIT",
+      "sha256": "c87edb1f2fbdc123426654a9dbef1b2614b951468cc5a663dd38f742fd338d32",
+      "denetim": "tamam"
+    },
+    "onceki_bcn": [],
+    "veri_npz": {
+      "npz": "dermamnist_c_resmipiksel_224.npz",
+      "kok": "/content/is/data",
+      "md5": "3e07c0de4b4cf307ba8145ec6db0f964",
+      "sha256": "b9b2db5626be2675647c89b4bd3b1b5d6fd93f5b9404fbb9cdf914aa4c8bbc0d",
+      "bayt": 1507641200,
+      "veri": "c1",
+      "md5_resmi": "3e07c0de4b4cf307ba8145ec6db0f964",
+      "icerik_sha256": "3b4d8b7dcfe81503974abe907fe5821f4fd946a6f5b0d5dbddf048468a7a12ba",
+      "beklenen": "k5_c_bolme_beklenen.json"
+    },
+    "surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 91900,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "ozdeslik": {
+      "durum": "A",
+      "tol_A": 1e-05,
+      "tol_B": 0.001,
+      "argmax_B": 0.995
+    },
+    "bcn_girdi": {
+      "merkez_kare": {
+        "icerik_eslesti": true,
+        "n": 12413,
+        "sure_sn": 7.6
+      },
+      "cerceve": {
+        "icerik_eslesti": true,
+        "n": 12413,
+        "sure_sn": 7.6
+      }
+    },
+    "bcn_sira_sha256": "66904b9baf3bf44678baf42b0f7a732786d19d51cdb9b7e4f2700f8ec387b0bc",
+    "bcn_tahmin_sha256": {
+      "merkez_kare": "b2b896c335fa45489edd3034777386e016f86c4f375e82ef32046600fa6b6760",
+      "cerceve": "dac4d6945418ae01d9a1114a01a4c752cb4f20b2f6dc28da2391f0c6c3f79f01"
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA L4, 580.82.07, 23034 MiB",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "cudnn": 91900,
+    "numpy": "2.4.6",
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "makine": "43ad33f8c3cc",
+    "torch_threads": 6,
+    "torchvision": "0.26.0+cu130",
+    "timm": "1.0.30",
+    "sklearn": "1.6.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA L4"
+  }
+}

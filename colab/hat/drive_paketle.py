@@ -11,6 +11,11 @@ Paket (Drive çalışma kökü yz/3-1/; Colab'da <DRIVE_KOK>/3-1):
   data/         data_manifest.json + splits/*.csv + meta/*.csv  (npz YOK — Colab'da Zenodo'dan iner)
   colab/        WS/colab/hat/: fp32_kos.py, erteleme_kapisi.py, oz_sinama.py, defter_yardim.py, oturum_sar.py, veri_listesi.json, yerel_ref/
   kuyruk/       kc1-tekrar, kc2-tur4-h12/-h10/-h11, k5-test, k5-c1-A/-B, k5-c2 (.jsonl + .beklenti.json), gruplar.json  (KALICI; başlamış kuyruk EZİLMEZ)
+                E2 (H15; 2026-11-07): kuyruk/e2-degerlendirme.jsonl VARSA e2-degerlendirme (.jsonl + .beklenti.json) + a0'ın
+                kuyruk/e2_bcn_beklenen.json'u ve onaylı kart (hipotezler/H15.md → kuyruk/e2_H15_kart.md, bayt bayt) da girer
+                (beklenen yoksa HATA: önce scripts/e2_bcn_hazirla.py; ya da --e2-haric).
+                e2_bcn_beklenen.json e2-degerlendirme başladıktan sonra EZİLMEZ. BCN npz'leri pakete GİRMEZ
+                (colab/hat/e2_veri_kopya.py → yz/3-1/veri_dis/, yönetilen dizin değil, silinmez). Defter: colab/e2-h15.ipynb.
   OKU-BENI.md, PAKET.json
   ../3-1-colab-<SEKME>.ipynb   (yz/ kökünde; v2 paralel sekme defterleri = defter_uret.py çıktısı colab/hat/3-1-colab-*.ipynb)
   ../3-1-colab.ipynb           v1 tek defter (kc1-tekrar oturumu) — YAZILMAZ: Colab açık sekmenin çıktılarını otomatik kaydeder;
@@ -40,6 +45,11 @@ KUYRUKLAR = ["kc1-tekrar", "kc2-tur4-h12", "kc2-tur4-h10", "kc2-tur4-h11",
              "k5-test", "k5-c1-A", "k5-c1-B", "k5-c2", "k5-c1-A-v2", "k5-c1-A-v3",  # K5 (2026-10-11; colab/hat/k5_kuyruk_yaz.py)
              "e1-h14", "e1-h10r"]  # E1 / H14 (2026-11-03; colab/hat/e1_kuyruk_yaz.py)
 E1_DEFTER = WS / "colab" / "e1-h14.ipynb"   # E1 defteri (colab/hat/defter_uret_e1.py) → yz/e1-h14.ipynb
+E2_KUYRUK = "e2-degerlendirme"               # E2 / H15 (2026-11-07; colab/hat/e2_kuyruk_yaz.py) — yalnız .jsonl varsa pakete girer
+E2_BEKLENEN = "e2_bcn_beklenen.json"         # a0 (scripts/e2_bcn_hazirla.py) — E2 kuyruğuyla birlikte zorunlu
+E2_DEFTER = WS / "colab" / "e2-h15.ipynb"   # E2 defteri (colab/hat/defter_uret_e2.py) → yz/e2-h15.ipynb
+E2_KART = ("hipotezler/H15.md", "kuyruk/e2_H15_kart.md")   # onaylı kart → Colab'da KİLİT satırı SHA256'sını denetler
+KORUMA = {E2_BEKLENEN: E2_KUYRUK, Path(E2_KART[1]).name: E2_KUYRUK}   # kuyruk dışı ön-kayıt dosyası → hangi kuyruk başlayınca ezilemez
 HARIC_PARCA = {"__pycache__", ".git", ".venv"}
 HARIC_UZANTI = {".pyc", ".pth", ".pt", ".ckpt", ".npz", ".npy", ".tmp"}
 YONETILEN = ["scripts", "varyantlar", "rakip", "orkestra", "colab", "data"]
@@ -77,11 +87,18 @@ def kod_girdileri():
     return g
 
 
-def kuyruk_girdileri():
+def e2_dahil(haric: bool = False) -> bool:
+    return not haric and (WS / "kuyruk" / f"{E2_KUYRUK}.jsonl").exists()
+
+
+def kuyruk_girdileri(e2: bool = False):
     g = [(WS / "kuyruk" / "gruplar.json", "kuyruk/gruplar.json")]
-    for ad in KUYRUKLAR:
+    for ad in KUYRUKLAR + ([E2_KUYRUK] if e2 else []):
         g.append((WS / "kuyruk" / f"{ad}.jsonl", f"kuyruk/{ad}.jsonl"))
         g.append((WS / "kuyruk" / f"{ad}.beklenti.json", f"kuyruk/{ad}.beklenti.json"))
+    if e2:
+        g.append((WS / "kuyruk" / E2_BEKLENEN, f"kuyruk/{E2_BEKLENEN}"))
+        g.append((WS / E2_KART[0], E2_KART[1]))
     return g
 
 
@@ -93,6 +110,8 @@ Defterler (`yz/` içinde):
 - `3-1-colab.ipynb` — v1 tek defter (kc1-tekrar). Yalnız o oturum koparsa yeniden açılır.
 - `3-1-colab-A.ipynb`, `-B`, `-C` — v2 paralel sekmeler. Hepsi aynı kod; yalnız ilk hücre (SEKME, KUYRUK) farklı.
 - E1 (2026-11-03): `e1-h14.ipynb` — H14 (H10 C1 + D4; test sonrası keşifsel). Adımlar: WS `colab/E1-OKU-BENI.md`.
+- E2 (2026-11-07): `e2-h15.ipynb` — H15, BCN20000 dış merkez (yeniden eğitimsiz, KİLİTLİ). Veri `yz/3-1/veri_dis/`.
+  Adımlar: WS `colab/E2-OKU-BENI.md`.
 - K5: `3-1-colab-K5-test.ipynb` (resmî test; tek sekme), `3-1-colab-K5-C1-A.ipynb` + `-K5-C1-B.ipynb` (C1; test SONRASI, iki sekme),
   `3-1-colab-K5-C2.ipynb` (C2; C1 bitince tek sekme). Her biri şef izni ister. **Aynı anda en çok 2 Colab oturumu.**
 
@@ -115,15 +134,21 @@ def main():
     ap.add_argument("--drive", default="<DRIVE_KOK>")
     ap.add_argument("--kuru", action="store_true", help="yalnız listele, yazma")
     ap.add_argument("--defter-ez", action="store_true", help="Colab'da kaydedilmiş v2 defterini de ez (sekme KAPALIYKEN)")
+    ap.add_argument("--e2-haric", action="store_true", help="E2 kuyruğunu/defterini pakete KOYMA (a0 bitmeden paket gerekiyorsa)")
     a = ap.parse_args()
     yz = Path(a.drive)
     hedef = yz / "3-1"
     if not yz.exists():
         raise SystemExit(f"HATA: Drive klasörü yok: {yz}")
-    kod, kuy = kod_girdileri(), kuyruk_girdileri()
+    e2 = e2_dahil(a.e2_haric)
+    kod, kuy = kod_girdileri(), kuyruk_girdileri(e2)
     eksik = [str(k) for k, _ in kod + kuy if not k.exists()]
+    if e2 and not (WS / "kuyruk" / E2_BEKLENEN).exists():
+        eksik.append(f"kuyruk/{E2_BEKLENEN} (E2 a0: önce scripts/e2_bcn_hazirla.py --asama hepsi; ya da --e2-haric)")
+    if e2 and not E2_DEFTER.exists():
+        eksik.append(f"{E2_DEFTER} (önce colab/hat/defter_uret_e2.py)")
     defter = HAT / "3-1-colab.ipynb"   # v1 (yalnız kayıt; Drive'a yazılmaz)
-    sekme_defterleri = sorted(HAT.glob("3-1-colab-*.ipynb")) + ([E1_DEFTER] if E1_DEFTER.exists() else [])
+    sekme_defterleri = sorted(HAT.glob("3-1-colab-*.ipynb")) + ([E1_DEFTER] if E1_DEFTER.exists() else [])         + ([E2_DEFTER] if e2 and E2_DEFTER.exists() else [])
     if not defter.exists():
         eksik.append(str(defter))
     if not sekme_defterleri:
@@ -138,7 +163,7 @@ def main():
     # başlamış kuyruğun dosyaları EZİLMEZ (ön-kayıt)
     for k, ad in kuy:
         d = hedef / ad
-        q = Path(ad).name.split(".")[0]
+        q = KORUMA.get(Path(ad).name, Path(ad).name.split(".")[0])
         if d.exists() and sha256(d) != sha256(k) and (hedef / "runs" / "kuyruklar").exists() and \
                 any((hedef / "runs" / "kuyruklar").glob(f"{q}*.baslat.json")):
             raise SystemExit(f"HATA: {ad} Drive'da farklı ve kuyruk BAŞLAMIŞ — ön-kayıt ezilemez")

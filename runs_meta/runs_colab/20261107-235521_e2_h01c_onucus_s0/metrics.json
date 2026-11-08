@@ -1,0 +1,33 @@
+{
+  "bcn_etiket_okundu": 0,
+  "ozdeslik_argmax_ayni": 1003,
+  "ozdeslik_argmax_oran": 1.0,
+  "ozdeslik_p_maks_fark": 0.0,
+  "ozdeslik_gecti": 1,
+  "ozdeslik_durum_kod": 1,
+  "ozdeslik_surum_farkli": 1,
+  "val_kumesi_dogru": 1,
+  "tepe_gpu_bellek_mb": 667.8,
+  "val_acc": 0.8245264207377866,
+  "val_auc": 0.9562931979973534,
+  "val_dengeli_acc": 0.6523296691914959,
+  "val_n": 1003,
+  "kaynak_val_acc": 0.8245264207377866,
+  "veri_c": 0,
+  "resmi_test_okundu": 0,
+  "c_test_okundu": 0,
+  "egitim_sure_sn": 76.11,
+  "sure_sn": 76.11,
+  "param_sayisi": 5383,
+  "seed": 0,
+  "cihaz": "cuda:0 / NVIDIA L4",
+  "alt_grup": {
+    "sinif_0": 0.6363636363636364,
+    "sinif_1": 0.7692307692307693,
+    "sinif_2": 0.5727272727272728,
+    "sinif_3": 0.3333333333333333,
+    "sinif_4": 0.5315315315315315,
+    "sinif_5": 0.9374068554396423,
+    "sinif_6": 0.7857142857142857
+  }
+}

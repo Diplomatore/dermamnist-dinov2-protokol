@@ -1,0 +1,35 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: E2-B1, E2-B2, E2-S-h10-h02-ic_R_dengeli, T-K-h10-h02-dengeli_acc, E2-S-h10-h02-ic_C1_dengeli, C1-K-h10-h02-dengeli_acc, E2-S-h10-h02-dis_C1_dengeli, E2-S-h10-h02-ic_R_acc, T-AILE2-h10-h02, E2-S-h10-h02-dis_R_accpiR, E2-S-h10-h02-e_R_pi, E2-S-h10-h02-ic_C1_acc, C1-A2-h10-h02, E2-S-h10-h02-dis_C1_accpiC, E2-S-h10-h02-e_C1_pi, E2-B1-seedsabit, E2-S7-B1, E2-S8-B1, E2-S9-B1, E2-S10-B1, E2-B2-cozunurluk
+\begin{table}[!htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{E2: H10 $-$ H02c farkının BCN20000'de birincil sınamaları, iç ve dış bileşenleri ve duyarlılık analizleri.}\label{tab:e2-kiyas}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+Nicelik (H10 $-$ H02c) & \begin{tabular}[c]{@{}c@{}}$\Delta$\\\relax [puan]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\%95 GA\\\relax [puan]\end{tabular} & $p$ & \begin{tabular}[c]{@{}c@{}}Karar /\\\relax kapsama\end{tabular} \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Birincil aile (Holm, $m=2$)}} \\
+B1: $\Delta_{\text{dış},R}$ dengeli & \iyi{+16,34} & [+13,86; +18,99] & $4{,}0{\times}10^{-4}$ & DINOv2 üstün \\
+B2: $D_\pi=|e_R|-|e_{C1}|$ & \textminus{}1,63 & [\textminus{}3,23; +0,63] & 0,180 & ayırt edilemedi \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Bileşenler: iç (\textdagger) ve dış farklar, öngörü hataları}} \\
+$\Delta_{\text{iç},R}$ dengeli & +6,03\rlap{\textdagger} & [+2,32; +9,90] & 0,003 & -- \\
+$\Delta_{\text{iç},C1}$ dengeli & +5,74\rlap{\textdagger} & [+0,45; +11,56] & 0,031 & -- \\
+$\Delta_{\text{dış},C1}$ dengeli (S1) & +15,98 & [+13,16; +18,83] & $2{,}0{\times}10^{-4}$ & GA $>0$ \\
+$\Delta_{\text{iç},R}$ ACC & +2,26\rlap{\textdagger} & [+1,06; +3,48] & $4{,}0{\times}10^{-4}$ & -- \\
+$\Delta_{\text{dış},R}$ ACC$_{\pi_R}$ & +1,71 & [+0,45; +2,94] & 0,009 & GA $>0$ \\
+$e_R$ (ACC$_{\pi}$) & +0,55 & [\textminus{}1,13; +2,24] & 0,531 & uyumlu \\
+$\Delta_{\text{iç},C1}$ ACC & +1,12\rlap{\textdagger} & [\textminus{}0,20; +2,51] & 0,102 & -- \\
+$\Delta_{\text{dış},C1}$ ACC$_{\pi_C}$ & \textminus{}1,06 & [\textminus{}2,84; +1,02] & 0,293 & ayırt edilemedi \\
+$e_{C1}$ (ACC$_{\pi}$) & +2,18 & [+0,05; +4,25] & 0,045 & uyumsuz \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{B1 duyarlılıkları (etiket vermez)}} \\
+Seed sabit, yalnız veri bootstrap'ı & +16,34 & [+14,18; +18,60] & $2{,}0{\times}10^{-4}$ & GA $>0$ \\
+S7: SCC $\to$ akiec eşlemesi & +16,64 & [+14,14; +19,22] & $2{,}0{\times}10^{-4}$ & GA $>0$ \\
+S8: kopyalar dahil ham küme & +16,34 & [+13,82; +18,94] & $2{,}0{\times}10^{-4}$ & GA $>0$ \\
+S9: siyah çerçeve kırpılmış & +16,40 & [+13,92; +18,93] & $2{,}0{\times}10^{-4}$ & GA $>0$ \\
+S10: lezyon ağırlıklı dengeli & +16,53 & [+14,05; +19,05] & $2{,}0{\times}10^{-4}$ & GA $>0$ \\
+\botrule
+\end{tabular*}
+\par\smallskip\raggedright GA: iki düzeyli eşleştirilmiş bootstrap (seed + sınıf tabakalı lezyon kümesi; B = 10.000, rng 0). \textdagger{} İç farkların noktası donmuş değerlerle aynıdır; GA'ları seed düzeyi eklendiği için Tablo~\ref{tab:protokol}'dekilerden geniştir. $e_p=\Delta_{\text{iç},p}-\Delta_{\text{dış},p}$; kapsama: $e_p$ GA'sı sıfırı içeriyor mu. B2'nin çözünürlüğü 1,14 puanla sınırlı. B1 ve B2 satırlarında $p$ Holm düzeltmelidir ($m=2$); diğer $p$'ler iki yönlü, düzeltmesiz. Mavi kalın: ön-kayıtlı birincil sınamada Holm-anlamlı fark; ikinciller keşifsel, vurgusuz.
+\end{table}

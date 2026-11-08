@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="460" font-family="sans-serif" font-size="11">
+<text x="280.0" y="20" text-anchor="middle" font-size="13">E2: iç lezyon-ayrık ↔ dış dengeli doğruluk (KURU VEKİL)</text>
+<line x1="60.0" y1="400.0" x2="500.0" y2="60.0" stroke="#999" stroke-dasharray="4 3"/>
+<rect x="60" y="60" width="440" height="340" fill="none" stroke="#333"/>
+<text x="60.0" y="416" text-anchor="middle">0.54</text>
+<text x="54" y="404.0" text-anchor="end">0.54</text>
+<text x="170.00000000000003" y="416" text-anchor="middle">0.63</text>
+<text x="54" y="319.0" text-anchor="end">0.63</text>
+<text x="280.0" y="416" text-anchor="middle">0.71</text>
+<text x="54" y="234.0" text-anchor="end">0.71</text>
+<text x="390.0" y="416" text-anchor="middle">0.79</text>
+<text x="54" y="149.0" text-anchor="end">0.79</text>
+<text x="500.0" y="416" text-anchor="middle">0.85</text>
+<text x="54" y="64.0" text-anchor="end">0.85</text>
+<text x="280.0" y="442" text-anchor="middle">iç lezyon-ayrık dengeli doğruluk (probit)</text>
+<text x="16" y="230.0" transform="rotate(-90 16 230.0)" text-anchor="middle">BCN dengeli doğruluk (probit)</text>
+<circle cx="356.2268805927049" cy="168.1361418272711" r="5" fill="#1f77b4"/>
+<text x="363.2268805927049" y="162.1361418272711">H10</text>
+<circle cx="290.62855938229893" cy="224.5187507183062" r="5" fill="#1f77b4"/>
+<text x="297.62855938229893" y="218.5187507183062">H02c</text>
+<circle cx="351.2220381860238" cy="165.43809692200662" r="5" fill="#d62728"/>
+<text x="358.2220381860238" y="159.43809692200662">h10_c1</text>
+<circle cx="268.17336090422407" cy="242.8428949339212" r="5" fill="#d62728"/>
+<text x="275.17336090422407" y="236.8428949339212">h02_c1</text>
+<circle cx="417.97984989494796" cy="131.21271271712965" r="5" fill="#1f77b4"/>
+<text x="424.97984989494796" y="125.21271271712965">H08c</text>
+<circle cx="405.77377053360016" cy="134.08451385991276" r="5" fill="#d62728"/>
+<text x="412.77377053360016" y="128.08451385991276">h08_c1</text>
+<rect x="413.09006714371435" y="109.94055714671907" width="10" height="10" fill="#d62728"/>
+<text x="425.09006714371435" y="108.94055714671907">h14_c1</text>
+<circle cx="375.50234058980146" cy="156.1203684134025" r="5" fill="#1f77b4"/>
+<text x="382.50234058980146" y="150.1203684134025">H11</text>
+<circle cx="176.06997858240317" cy="316.3186554684537" r="5" fill="#1f77b4"/>
+<text x="183.06997858240317" y="310.3186554684537">H01c</text>
+<circle cx="222.91905123542955" cy="274.05316497204905" r="5" fill="#1f77b4"/>
+<text x="229.91905123542955" y="268.05316497204905">H12</text>
+<circle cx="132.9539644097551" cy="345.05944285328087" r="5" fill="#d62728"/>
+<text x="139.9539644097551" y="339.05944285328087">h01_c1</text>
+<text x="70" y="52" fill="#1f77b4">● resmî bölme kolları</text><text x="230" y="52" fill="#d62728">● C1 kolları (■ h14_c1)</text>
+</svg>
