@@ -1,0 +1,15 @@
+{
+ "asama": "hepsi",
+ "gecti": 1,
+ "sure_sn": 261.1,
+ "n_val": 1003,
+ "test_kesisim": 0,
+ "test_okundu": 0,
+ "eksik": 0,
+ "hat_n": 1003,
+ "q_bcn": 100,
+ "q_bcn_n": 500,
+ "rmse_hat_medyan": 1.6954,
+ "rmse_hat_maks": 4.0509,
+ "tani_uyusmaz_oran": 0.0
+}

@@ -1,0 +1,120 @@
+{
+  "run_id": "20261108-161941_e3_h08c_s1",
+  "varyant": "e3_h08c",
+  "seed": "1",
+  "etiket": "E3 a3 tam: h08c s1 yerel + 4 hat (etiket-kör; tahmin dosyaları)",
+  "ebeveyn": "20261011-135335_h08_r18in_ft224_d4_colab_s1",
+  "hipotez": "H16",
+  "kuyruk": "e3-onisleme",
+  "asama": 3,
+  "kural": {
+    "nan_kes": true,
+    "ilerleme_zorunlu_sn": 600,
+    "sabit_sn": 600
+  },
+  "komut": [
+    "<WS>\\env\\.venv\\Scripts\\python.exe",
+    "-I",
+    "varyantlar/e3/e3_cikarim.py",
+    "--kol",
+    "h08c",
+    "--seed",
+    "1",
+    "--kip",
+    "tam",
+    "--out",
+    "<WS>\\runs\\20261108-161941_e3_h08c_s1/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-11-08T16:19:44",
+  "makine": "LAPTOP-SKK5GIC3",
+  "e3": {
+    "kol": "h08c",
+    "kip": "tam",
+    "varyant": "e3_h08c",
+    "sinama": false,
+    "butce": {
+      "harcanan_sa": 0.4454166666666666,
+      "kalan_tahmin_sa": 0.11088888888888888,
+      "toplam_tahmin_sa": 0.5563055555555555,
+      "a2_sure_sn": {
+        "h10": 208.7,
+        "h02c": 23.2,
+        "h08c": 23.3,
+        "h11": 61.2
+      },
+      "eksik_a2": [],
+      "gecti": true
+    },
+    "tahmin_sha256": {
+      "hat": "5a266d28ce9c5a44c5847ed2a815d70d1a584d7e8ca0d32d5b1156f0315863af",
+      "jpeg": "9bb9be3ee602b1831e9a114b15865289841238021641e0a5b626419c8e7597f5",
+      "z125": "940ea40213341d3fb24351e45e58363608dc86e9f24366b113e3f01820e826cc",
+      "z080": "914246663d6e56ffe616e30a87eeb44de5c5535c173b6677b7050349c42625bb"
+    },
+    "kaynak_run": "20261011-135335_h08_r18in_ft224_d4_colab_s1",
+    "kaynak_dizin": "<DRIVE_KOK>\\3-1\\runs\\20261011-135335_h08_r18in_ft224_d4_colab_s1",
+    "tur": "r18",
+    "hatlar": [
+      "hat",
+      "jpeg",
+      "z125",
+      "z080"
+    ],
+    "durum": "A",
+    "surum": {
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "cudnn": 90100,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "vit": {},
+    "sureler_sn": {
+      "yerel": 1.9,
+      "hat": 1.6,
+      "jpeg": 1.6,
+      "z125": 1.6,
+      "z080": 1.6
+    },
+    "beklenen_sha256": "7876429e3834e473e1877ded26bb97cd19533829ed236778ec078e994d2bb24a",
+    "hat_dizin": "<WS>\\data\\ham_val_isic",
+    "beklenen_q_BCN": 100,
+    "tasima": {
+      "kaynak": "sonuclar/e2_incele_ek/v3_model.py",
+      "kaynak_sha256": "3ba5d836098cddc94f3bd657378cd10953f516bf6e91d0ff1efb4004b3b91879",
+      "satirlar": "45-80 (yerel, kol_yukle: r18 + vit_kismi/vit_tam dalları); 19-21 (hazirla)"
+    },
+    "betik_sha256": "ba6ed609049b868af1b5de78c919d95cc64e4f517ef5ea215c42003fb629363d",
+    "npz_okunan_anahtarlar": {
+      "val_images": 1,
+      "val_labels": 1
+    },
+    "tol": {
+      "A": 1e-05,
+      "B": 0.001,
+      "argmax_B": 0.995
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA GeForce GTX 1650, 555.97, 4096 MiB",
+    "torch": "2.5.1+cu121",
+    "cuda": "12.1",
+    "cudnn": 90100,
+    "numpy": "2.2.6",
+    "python": "3.11.16",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "makine": "LAPTOP-SKK5GIC3",
+    "torch_threads": 4,
+    "torchvision": "0.20.1+cu121",
+    "timm": "1.0.30",
+    "sklearn": "1.9.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA GeForce GTX 1650"
+  }
+}

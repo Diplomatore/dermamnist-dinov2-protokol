@@ -100,13 +100,24 @@ def kelime(s):
     return len([w for w in re.split(r"\s+", s.replace("~", " ")) if re.search(r"\w", w)])
 
 
-def tablo(ad, baslik, etiket, govde, notlar=None):
+def pdeg_taban(p, n_gecerli=None, carpan=1):
+    """Bootstrap çözünürlük tabanındaki p'yi '≤' ile yazar (revizyon E2-C, K1): iki yönlü p'nin en küçük
+    değeri 2/(B+1); Holm (m) sonrası m·2/(B+1). B = kaydın n_gecerli'si, yoksa 10.000 (E2/E3 bootstrap'ı)."""
+    taban = carpan * 2 / ((n_gecerli or 10000) + 1)
+    s = pdeg(p)
+    if p is not None and p <= taban * (1 + 1e-9):
+        assert s.startswith("$"), s
+        s = "$\\leq" + s[1:]
+    return s
+
+
+def tablo(ad, baslik, etiket, govde, notlar=None, boyut="small", sep="4pt"):
     n = kelime(baslik)
     if n > 25:
         raise SystemExit(f"{ad}: başlık {n} kelime > 25")
     satir = ["% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)",
              f"% kullanılan kanıt id'leri: {', '.join(dict.fromkeys(KULLANILAN.get(ad, [])))}",
-             "\\begin{table}[!htbp]", "\\centering\\small", "\\setlength{\\tabcolsep}{4pt}",
+             "\\begin{table}[!htbp]", f"\\centering\\{boyut}", f"\\setlength{{\\tabcolsep}}{{{sep}}}",
              f"\\caption{{{baslik}}}\\label{{{etiket}}}"] + govde
     if notlar:
         satir.append("\\par\\smallskip\\raggedright " + notlar)
@@ -159,7 +170,7 @@ def tab_ana():
     g.append("B son-epoch (ikincil) & " + " & ".join(h) + " \\\\")
     g += ["\\botrule", "\\end{tabularx}"]
     tablo(ad, "Resmî test sonuçları (n = 2.005; 5 seed, ort.\\,$\\pm$\\,std). Kollar arası "
-              "üstünlük için Tablo~\\ref{tab:kiyas} ve Tablo~\\ref{tab:protokol}'deki GA'lara bakınız.", "tab:ana", g)
+              "üstünlük için Tablo~\\ref{tab:kiyas} ve Tablo~\\ref{tab:protokol}'teki GA'lara bakınız.", "tab:ana", g)
 
 
 # ------------------------------------------------------------------ (b) Aile 1 + Aile 2 (+ C1)
@@ -354,10 +365,11 @@ def tab_protokol():
     if sorted(isaretlenen) != sorted(LKB_DEG):
         raise SystemExit(f"tab_protokol: ‡ işareti eksik/fazla: {sorted(isaretlenen)} ↔ {sorted(LKB_DEG)}")
     kirmizi = " Altında kırmızı eğik." if kotu_var else ""
-    tablo(ad, "S/N ayrışımı, lezyon-ayrık değerlendirmeler. Mavi kalın: $\\Delta$ACC, $\\Delta_S$, $\\Delta_N$, "
-              f"C0, C1 satırlarında GA sıfırın üstünde.{kirmizi} $^{{\\dagger}}$Betimsel, renksiz. "
-              "$^{\\ddagger}$Lezyon-kümeli GA sıfırı kapsar. $^{\\S}$Test-sonrası analiz, renksiz.", "tab:protokol", g,
-          notlar=None)
+    # revizyon E2-C (K8): başlık kısaltıldı; renk ve †/‡/§ açıklamaları tablo altı notuna taşındı (main.tex ile eş)
+    tablo(ad, "S/N ayrışımı ve lezyon-ayrık değerlendirmeler: H10, H08c ve H02c arasındaki farklar.", "tab:protokol", g,
+          notlar="Mavi kalın: $\\Delta$ACC, $\\Delta_S$, $\\Delta_N$, C0 ve C1 satırlarında GA sıfırın üstünde."
+                 f"{kirmizi} $^{{\\dagger}}$Betimsel, renksiz. $^{{\\ddagger}}$Lezyon-kümeli GA sıfırı kapsar. "
+                 "$^{\\S}$Test sonrası analiz, renksiz.")
 
 
 # ------------------------------------------------------------------ (e) replikasyon
@@ -585,6 +597,20 @@ def tab_sapma():
     assert e2but["deger"] < e2but["kart_tavani"]
     od_e2 = ", ".join(str(k["satir"]) for k in e2g["kaynaklar"])
     un2 = ", ".join(f"§{i}" for i in (2, 3))
+    # E3 gerçekleşen (revizyon 2026-11-08; H16, keşifsel-sonradan): SAP-E3 + E3-* (niteleyiciler assert edilir)
+    e3g, e3oz, e3bi = R("SAP-E3", ad), R("E3-ozdeslik", ad), R("E3-birincil", ad)
+    assert e3g["deger"] == "tamamlandı" and R("E3-kilit", ad)["deger"] == 1
+    assert e3g["kart_mtime"] < e3g["kosum_baslangic"] < e3g["kosum_bitis"]
+    assert e3oz["durum_ozet"]["C"] == 0 and e3oz["argmax_oran_min"] == 1.0
+    assert R("E3-incele", ad)["deger"] is False and e3bi["karar"] == "KÜÇÜK-BELİRSİZ"
+    e3bek = R("E3-beklenti", ad)
+    assert e3bek["deger"] == 6 and e3bek["toplam"] == 24  # "6'sı" eki bu sayıya göre yazıldı
+    assert sorted(b["id"] for b in e3bek["ihlaller"]) == sorted(
+        ["E3-h10-uyum", "E3-h10-p_maks_fark", "E3-h11-uyum", "E3-h11-p_maks_fark", "E3-birincil", "E3-S7-z080"])
+    e3c, e3but = R("E3-ortam", ad), R("E3-butce", ad)
+    assert e3but["deger"] < e3but["kart_tavani"]
+    e3m, e3G = R("E3-esik-m", ad), R("E3-esik-G", ad)
+    od_e3 = ", ".join(str(k["satir"]) for k in e3g["kaynaklar"] if k["dosya"] == "orkestrasyon_durumu.md")
     for k in ("SAP-C2-kapi", "SAP-T4-plan", "SAP-ON-6-3", "SAP-H10D4-plan", "SAP-C1-dengeli-onkayit", "SAP-C1-A-neden"):
         R(k, ad)  # kaynak satırı defterde olmalı (kullanılan id listesine girer)
     bin_ = format(lkbd["deger"], ",").replace(",", ".")
@@ -640,6 +666,10 @@ def tab_sapma():
          "aynı tabloda § işaretiyle verildi (§6.3 ``ayrı bölüm'' koşulundan sapma).",
          f"Dengeli yön iki çiftte desteklendi ({p('C1-K-h10-h02-dengeli_acc')}; {p('C1-K-h08-h02-dengeli_acc')}). Mel: "
          f"yalnız H08c $-$ H02c GA'sı sıfırın üstünde; n~=~{nmel}, GA geniş."),
+    ]
+    # E3 eklenince 2/2 floatı sayfaya sığmıyordu (önceden de "Float too large 24,6pt"): revizyon deneyleri E1–E3
+    # ayrı floata (3/3) alındı; yazı boyu öteki tablolarla aynı (\small) kalır.
+    C = [
         ("E1 / H14: H10 + D4 (C1)" + kay(f"EP §2b ({z('SAP-E1', 'zaman')})", "OD:15",
                                           f"OD:{od_e1} ({z('SAP-E1-gerceklesen', 'zaman')})"),
          f"Test sonrası yeni kol yok (§6.3); H10 + D4 sınırlılık ({z('SAP-karar12')}).",
@@ -659,6 +689,18 @@ def tab_sapma():
          "geçti, hata yok. İki uygulama sapması bit-eşitlikle sınandı.",
          "K5 kararı ve Holm aileleri aynı. B1 ön-kayıtlı aralığın dışında, beyanla raporlandı "
          "(Tablo~\\ref{tab:e2-kiyas}); mekanizma keşifsel."),
+        ("E3 / H16: ön-işleme hattı denetimi" + kay(f"H16 ({z('SAP-E3', 'kart_zaman')})", "UN3 §2", f"OD:{od_e3}"),
+         "Hakem önerisiyle, E2 sonucu görülerek: resmî doğrulama kümesinde yeniden eğitimsiz, kilitli tek analiz; test "
+         f"ve BCN etiketi açılmaz. Etiket $\\Delta_{{\\text{{hat}}}}$'ten mekanik (eşikler {sayi(e3m['deger'], 2)} ve "
+         f"{sayi(e3G['deger'], 2)} puan).",
+         f"Yazar onaylı kart koşumdan önce yazıldı; koşum {z('SAP-E3', 'kosum_baslangic')[11:16]}--"
+         f"{z('SAP-E3', 'kosum_bitis')[11:16]}. {e3oz['deger']} kol-seed, Durum~A {e3oz['durum_ozet']['A']} + B "
+         f"{e3oz['durum_ozet']['B']} (cuDNN {e3c['karsi_ekim']} $\\to$ {e3c['deger']}); {sayi(e3but['deger'], 2)}~GPU-sa. "
+         f"$\\Delta_{{\\text{{hat}}}}$ {pg('E3-birincil')} $\\to$ {e3bi['karar']}; İNCELE kapalı. Veri kapısı ayrı "
+         "kuyrukta koştu, bir kayıt anahtarının adı değişti.",
+         f"K5 ve E2 kararları, Holm aileleri aynı. Ön-kayıtlı {e3bek['toplam']} betimsel beklentinin {e3bek['deger']}'sı "
+         "tutmadı (ViT argmax uyumu ve maks$|\\Delta p|$, GA yarı genişliği, $\\times$0,8 ölçek); arıza bulunmadı, "
+         "beyanla raporlandı (Tablo~\\ref{tab:e3})."),
     ]
     BAS = ("\\begin{tabularx}{\\textwidth}{>{\\raggedright\\arraybackslash\\hsize=0.80\\hsize}X "
            ">{\\raggedright\\arraybackslash\\hsize=0.95\\hsize}X >{\\raggedright\\arraybackslash\\hsize=1.35\\hsize}X "
@@ -679,12 +721,16 @@ def tab_sapma():
               "GN = \\texttt{gunluk/deney-gunlugu.md}; OD = \\texttt{orkestrasyon\\_durumu.md}; "
               "MOD, EP = makale çalışma notları; LKB, C1M = \\texttt{evidence/lkb}, \\texttt{evidence/c1mel} çıktıları; "
               "H15 = \\texttt{hipotezler/H15.md}; UN2 = \\texttt{hipotezler/H15-UYGULAMA-NOTU.md}; "
-              "İN = \\texttt{sonuclar/e2\\_incele.md}.")
-    tablo(ad, "Ek: ön-kayıtlı plan, gerçekleşen akış, sapma ve sonuca etkisi (1/2: test öncesi ve test geçişi).",
+              "İN = \\texttt{sonuclar/e2\\_incele.md}; H16 = \\texttt{hipotezler/H16.md}; "
+              "UN3 = \\texttt{hipotezler/H16-UYGULAMA-NOTU.md}.")
+    tablo(ad, "Ek: ön-kayıtlı plan, gerçekleşen akış, sapma ve sonuca etkisi (1/3: test öncesi ve test geçişi).",
           "tab:sapma", govde(A), notlar=notlar)
     KULLANILAN["tab_sapma_b"] = list(KULLANILAN[ad])
-    tablo("tab_sapma_b", "Ek: ön-kayıt sapmaları (2/2: test sonrası). Kaynak kısaltmaları Tablo~\\ref{tab:sapma} "
-                         "altındadır.", "tab:sapma-devam", govde(B))
+    KULLANILAN["tab_sapma_c"] = list(KULLANILAN[ad])
+    tablo("tab_sapma_b", "Ek: ön-kayıt sapmaları (2/3: test sonrası analizler). Kaynak kısaltmaları "
+                         "Tablo~\\ref{tab:sapma} altındadır.", "tab:sapma-devam", govde(B))
+    tablo("tab_sapma_c", "Ek: ön-kayıt sapmaları (3/3: test sonrası revizyon deneyleri E1--E3). Kaynak kısaltmaları "
+                         "Tablo~\\ref{tab:sapma} altındadır.", "tab:sapma-revizyon", govde(C))
 
 
 # ------------------------------------------------------------------ (i) E1 / H14 (revizyon 2026-11-07; test sonrası keşifsel)
@@ -781,7 +827,9 @@ def tab_e2_kiyas():
     KARAR_AD = {"DINOv2 üstün": "DINOv2 üstün", "protokoller ayırt edilemedi": "ayırt edilemedi"}
 
     def satir(etiket, r, holm=None, karar=None, isaret="", vurgu=False):
-        pp = pdeg(holm) if holm is not None else pdeg(r.get("p"))
+        # revizyon E2-C (K1): bootstrap çözünürlük tabanındaki p '≤' ile (Holm m = 2 → taban × 2)
+        pp = (pdeg_taban(holm, r.get("n_gecerli"), 2) if holm is not None
+              else pdeg_taban(r.get("p"), r.get("n_gecerli")))
         d = isaretli(r['deger'])
         if vurgu:  # yalnız ön-kayıtlı birincil ailede Holm-anlamlı fark (B1)
             d = "\iyi{" + d + "}"
@@ -792,16 +840,21 @@ def tab_e2_kiyas():
 
     g = ["\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}lcccc}", "\\toprule",
          "Nicelik (H10 $-$ H02c) & " + " & ".join([iki("$\\Delta$", "[puan]"), iki("\\%95 GA", "[puan]"),
-                                                   "$p$", iki("Karar /", "kapsama")]) + " \\\\", "\\midrule",
+                                                   "$p$", iki("Etiket (B1, B2) /", "kapsama")]) + " \\\\", "\\midrule",
          "\\multicolumn{5}{@{}l}{\\textit{Birincil aile (Holm, $m=2$)}} \\\\",
          satir("B1: $\\Delta_{\\text{dış},R}$ dengeli", b1, b1["holm_p"], KARAR_AD[b1["karar"]], vurgu=b1["holm_p"] < 0.05),
          satir("B2: $D_\\pi=|e_R|-|e_{C1}|$", b2, b2["holm_p"], KARAR_AD[b2["karar"]]),
-         "\\midrule", "\\multicolumn{5}{@{}l}{\\textit{Bileşenler: iç (\\textdagger) ve dış farklar, öngörü hataları}} \\\\"]
+         "\\midrule",
+         "\\multicolumn{5}{@{}l}{\\textit{Bileşenler: iç (\\textdagger) ve dış farklar, öngörü hataları (keşifsel)}} \\\\"]
+    # revizyon E2-C (B1, Ö2): e_R / e_C1 dengeli (S5) ve Δ_dış,R ACC_π_C (S2) satırları eklendi (main.tex ile eş)
     for kid, et in [("E2-S-h10-h02-ic_R_dengeli", "$\\Delta_{\\text{iç},R}$ dengeli"),
                     ("E2-S-h10-h02-ic_C1_dengeli", "$\\Delta_{\\text{iç},C1}$ dengeli"),
                     ("E2-S-h10-h02-dis_C1_dengeli", "$\\Delta_{\\text{dış},C1}$ dengeli (S1)"),
+                    ("E2-S-h10-h02-e_R_dengeli", "$e_R$ (dengeli; S5)"),
+                    ("E2-S-h10-h02-e_C1_dengeli", "$e_{C1}$ (dengeli; S5)"),
                     ("E2-S-h10-h02-ic_R_acc", "$\\Delta_{\\text{iç},R}$ ACC"),
                     ("E2-S-h10-h02-dis_R_accpiR", "$\\Delta_{\\text{dış},R}$ ACC$_{\\pi_R}$"),
+                    ("E2-S-h10-h02-dis_R_accpiC", "$\\Delta_{\\text{dış},R}$ ACC$_{\\pi_C}$ (S2)"),
                     ("E2-S-h10-h02-e_R_pi", "$e_R$ (ACC$_{\\pi}$)"),
                     ("E2-S-h10-h02-ic_C1_acc", "$\\Delta_{\\text{iç},C1}$ ACC"),
                     ("E2-S-h10-h02-dis_C1_accpiC", "$\\Delta_{\\text{dış},C1}$ ACC$_{\\pi_C}$"),
@@ -824,15 +877,84 @@ def tab_e2_kiyas():
         g.append(satir(et, r, karar=konum(r)))
     g += ["\\botrule", "\\end{tabular*}"]
     assert sum(("\iyi" in x) for x in g) == 1 and not any("\kotu" in x for x in g)  # yalnız B1
-    cz = R("E2-B2-cozunurluk", ad)
+    # revizyon E2-C: "B2'nin çözünürlüğü … sınırlı" alt nottan çıktı (gövdede, E2-B2-cozunurluk); "≤" açıklaması eklendi
+    assert sum("\\leq" in x for x in g) == 8, "≤ işaretli p sayısı main.tex E2-C ile (B1 + 7 taban satırı) uyuşmuyor"
     notlar = ("GA: iki düzeyli eşleştirilmiş bootstrap (seed + sınıf tabakalı lezyon kümesi; B = 10.000, rng 0). "
               "\\textdagger{} İç farkların noktası donmuş değerlerle aynıdır; GA'ları seed düzeyi eklendiği için "
-              "Tablo~\\ref{tab:protokol}'dekilerden geniştir. $e_p=\\Delta_{\\text{iç},p}-\\Delta_{\\text{dış},p}$; "
-              f"kapsama: $e_p$ GA'sı sıfırı içeriyor mu. B2'nin çözünürlüğü {sayi(cz['deger'], 2)} puanla "
-              "sınırlı. B1 ve B2 satırlarında $p$ Holm düzeltmelidir ($m=2$); diğer $p$'ler iki yönlü, düzeltmesiz. "
+              "Tablo~\\ref{tab:protokol}'tekilerden geniştir. $e_p=\\Delta_{\\text{iç},p}-\\Delta_{\\text{dış},p}$; "
+              "kapsama: $e_p$ GA'sı sıfırı içeriyor mu. S1, S2, S5: ön-kayıtlı ikinciller. "
+              "B1 ve B2 satırlarında $p$ Holm düzeltmelidir ($m=2$); diğer $p$'ler iki yönlü, düzeltmesiz; "
+              "``$\\leq$'': bootstrap çözünürlük tabanı. "
               "Mavi kalın: ön-kayıtlı birincil sınamada Holm-anlamlı fark; ikinciller keşifsel, vurgusuz.")
     tablo(ad, "E2: H10 $-$ H02c farkının BCN20000'de birincil sınamaları, iç ve dış bileşenleri ve duyarlılık "
-              "analizleri.", "tab:e2-kiyas", g, notlar=notlar)
+              "analizleri.", "tab:e2-kiyas", g, notlar=notlar, boyut="footnotesize", sep="2pt")
+
+
+# ------------------------------------------------------------------ (l) E3 / H16 (revizyon 2026-11-08; ön-işleme hattı)
+def tab_e3():
+    """H16: BCN ön-işleme hattının resmî val'de H10 − H02c dengeli farkına etkisi. Keşifsel, sonradan (hakem önerisi)
+    → renk/vurgu YOK (tab_e1/tab_e2 ilkesi). Hücreler yalnız E3-* kayıtlarından. Ek'e uygun tek float."""
+    ad = "tab_e3"
+    assert R("E3-kilit", ad)["deger"] == 1 and R("E3-incele", ad)["deger"] is False
+    assert R("E3-veri-eksik", ad)["deger"] == 0 and R("E3-veri-test-kesisim", ad)["deger"] == 0
+    KOL = [("h10", "H10"), ("h02c", "H02c"), ("h08c", "H08c"), ("h11", "H11")]
+    g = ["\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}lcccc}", "\\toprule",
+         "Kol (yerel $\\to$ hat) & " + " & ".join(k for _, k in KOL) + " \\\\", "\\midrule"]
+
+    def kol_satir(etiket, f):
+        g.append(f"{etiket} & " + " & ".join(f(k) for k, _ in KOL) + " \\\\")
+
+    kol_satir("Dengeli, yerel [puan]", lambda k: sayi(R(f"E3-{k}-dengeli_yerel", ad)["deger"], 2))
+    kol_satir("Dengeli, hat [puan]", lambda k: sayi(R(f"E3-{k}-dengeli_hat", ad)["deger"], 2))
+    kol_satir("$D_k$ [puan; GA]",
+              lambda k: iki(isaretli(R(f"E3-{k}-D", ad)["deger"]), ga(R(f"E3-{k}-D", ad)["ga"])))
+    kol_satir("ACC değişimi [puan]", lambda k: isaretli(R(f"E3-{k}-acc_degisim", ad)["deger"]))
+    kol_satir("nv payı değişimi [oran]", lambda k: isaretli(R(f"E3-{k}-nv_pay_degisim", ad)["deger"], 3))
+    kol_satir("Argmax uyumu (en düşük)",
+              lambda k: f"{sayi(R(f'E3-{k}-uyum', ad)['deger'], 3)} ({sayi(R(f'E3-{k}-uyum', ad)['min'], 3)})")
+    kol_satir("maks$|\\Delta p|$", lambda k: sayi(R(f"E3-{k}-p_maks_fark", ad)["deger"], 3))
+    kol_satir("Dönen tahmin [görüntü]", lambda k: sayi(R(f"E3-{k}-donme", ad)["deger"], 1))
+    g += ["\\midrule", "Fark (H10 $-$ H02c) & " + " & ".join(
+        [iki("$\\Delta$", "[puan]"), iki("\\%95 GA", "[puan]"), "$p$", "Etiket"]) + " \\\\", "\\midrule"]
+
+    def fark(etiket, kid, et=None, parantez=False):
+        r = R(kid, ad)
+        e = et if et is not None else (r.get("karar") or r.get("aralik_etiketi") or "--")
+        if parantez and e != "--":
+            e = f"({e})"
+        g.append(f"{etiket} & {isaretli(r['deger'])} & {ga(r['ga'])} & {pdeg_taban(r.get('p'), r.get('n_gecerli'))} & "
+                 f"{e} \\\\")
+
+    n, nN, nS = R("E3-veri-n", ad), R("E3-S4-N", ad), R("E3-S4-S", ad)
+    fark("$\\Delta_{\\text{deng}}$, yerel girdi", "E3-delta-yerel", et="--")
+    fark("$\\Delta_{\\text{deng}}$, BCN hattı", "E3-delta-bcn-hatti", et="--")
+    fark(f"$\\Delta_{{\\text{{hat}}}}$ (n~=~{format(n['deger'], ',').replace(',', '.')})", "E3-birincil")
+    assert R("E3-birincil", ad)["karar"] == "KÜÇÜK-BELİRSİZ"
+    fark("\\quad S8: seed sabit", "E3-S8-seedsabit", et="--")
+    fark(f"\\quad S4, N (n~=~{nN['n']})", "E3-S4-N")
+    fark(f"\\quad S4, S (n~=~{nS['n']})", "E3-S4-S", parantez=True)
+    fark("S3: H10 $-$ H08c", "E3-S3-h10-h08c", et="--")
+    fark("S3: H11 $-$ H02c", "E3-S3-h11-h02c", et="--")
+    q = R("E3-veri-qbcn", ad)["deger"]
+    fark(f"S5: JPEG ($q={q}$)", "E3-S5-jpeg", parantez=True)
+    fark("S6: ölçek $\\times$1,25", "E3-S6-z125", parantez=True)
+    fark("S7: ölçek $\\times$0,8", "E3-S7-z080", parantez=True)
+    g += ["\\botrule", "\\end{tabular*}"]
+    assert not any("\\iyi" in x or "\\kotu" in x for x in g)  # keşifsel: vurgu yok
+    m_, G_ = R("E3-esik-m", ad), R("E3-esik-G", ad)
+    rm = R("E3-veri-rmse-medyan", ad)
+    notlar = ("$\\Delta_{\\text{hat}}=\\Delta_{\\text{deng}}(\\text{hat})-\\Delta_{\\text{deng}}(\\text{yerel})$. Yerel: "
+              "resmî doğrulama görüntülerinin MedMNIST+ girdisi; hat: aynı görüntülerin HAM10000 özgün JPEG'inden BCN "
+              f"ön-işleme hattıyla üretilen girdisi (RMSE medyanı {sayi(rm['deger'], 2)} gri düzey). $D_k$: kolun "
+              "dengeli doğruluk değişimi (hat $-$ yerel); uyum ve maks$|\\Delta p|$: hat $\\leftrightarrow$ yerel, seed ortalaması (en "
+              "düşük seed) ve seed içi en büyük. N/S: lezyonu resmî eğitim kümesinde olmayan/olan görüntüler. S3: aynı "
+              "nicelik başka kol çiftinde. S5--S7: birincil hatta JPEG yeniden sıkıştırma ya da merkezden yakınlaştırma "
+              "(S6) / uzaklaştırma (S7; kenarlar yansıtmalı dolgu). Kollar yeniden eğitimsiz, 5 seed ortalaması. "
+              "GA: iki düzeyli eşleştirilmiş bootstrap (seed + sınıf tabakalı lezyon kümesi; B = 10.000, rng 0); $p$ iki "
+              f"yönlü, düzeltmesiz. Etiket eşikleri {sayi(m_['deger'], 2)} ve {sayi(G_['deger'], 2)} puan (E2'den); "
+              "parantezli etiketler betimseldir, karar vermez. Keşifsel, sonradan (hakem önerisi); vurgu yok.")
+    tablo(ad, "E3: BCN ön-işleme hattının resmî doğrulama kümesinde kol başına etkisi ve H10 $-$ H02c dengeli farkına "
+              "katkısı.", "tab:e3", g, notlar=notlar, boyut="footnotesize", sep="2pt")
 
 
 if __name__ == "__main__":
@@ -848,4 +970,5 @@ if __name__ == "__main__":
     tab_e1()
     tab_e2()
     tab_e2_kiyas()
+    tab_e3()
     (OUT / "KULLANILAN_IDLER.json").write_text(json.dumps(KULLANILAN, ensure_ascii=False, indent=1), encoding="utf-8")

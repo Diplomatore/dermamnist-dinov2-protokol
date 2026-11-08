@@ -33,6 +33,10 @@ Run `python tools/dogrula.py` to verify the pre-registration chain.
     değerlendirmesi; ayrı kilit (`sonuclar/e2_bcn.KILIT`), ayrı Holm ailesi (B1, B2). Kod: `scripts/indir_bcn20000.py`,
     `scripts/e2_bcn_hazirla.py`, `varyantlar/e2/`, `scripts/e2_bcn_analiz.py` → `sonuclar/e2_bcn_sonuc.{json,md}`;
     beklenti ihlali soruşturması `sonuclar/e2_incele.md`.
+  - **E3 / H16** (`hipotezler/H16.md`; hakem önerisi, keşifsel): ön-işleme hattı denetimi — resmî val'in 1.003
+    görüntüsü HAM10000 özgün JPEG'lerinden BCN ile aynı kodla yeniden üretilir; H02c, H08c, H10, H11 yeniden
+    eğitimsiz. Kod: `scripts/e3_ham_val_hazirla.py`, `varyantlar/e3/`, `scripts/e3_onisleme_analiz.py` →
+    `sonuclar/e3_onisleme_sonuc.{json,md}` (kilit `sonuclar/e3_onisleme.KILIT`). HAM görüntüleri depoda yok.
 - **İstatistik:** eşleştirilmiş görüntü-bootstrap (B=2000, rng 0) ve seed-eşli tek yönlü t, Holm düzeltmesiyle
   (`varyantlar/ortak/eslestirilmis_bootstrap.py`, `scripts/k5_test.py`).
 
@@ -44,7 +48,7 @@ Run `python tools/dogrula.py` to verify the pre-registration chain.
 | `tools/` | Orkestra betikleri (`kosum.py`, `kuyruk.py`, `beklenti_kontrol.py`, `leaderboard.py`, `replikasyon_kapisi.py`) ve `dogrula.py` (SHA256 doğrulaması) |
 | `rakip/` | Rakip kurulum notu ve pinli resmî kodu getirme betiği. Resmî kod depoda yok |
 | `colab/` | Colab L4 hattı: defterler (`hat/3-1-colab-*.ipynb`), defter üreticileri, `fp32_kos.py` (TF32 kapatma), `veri_listesi.json` (URL, MD5, SHA256) |
-| `hipotezler/` | Hipotez kartları H01–H15 (H14 = E1, H15 = E2), sıralamalar, K5 ön-kaydı (`K5-ONKAYIT.md`, `-b.md`), ön koşul kontrolü, C1 uygulama notu |
+| `hipotezler/` | Hipotez kartları H01–H16 (H14 = E1, H15 = E2, H16 = E3), sıralamalar, K5 ön-kaydı (`K5-ONKAYIT.md`, `-b.md`), ön koşul kontrolü, C1 uygulama notu |
 | `kuyruk/` | Kuyruk tanımları (`*.jsonl`), beklenti dosyaları (`*.beklenti.json`), gruplar, C bölmesi beklenen özeti |
 | `sonuclar/` | Leaderboard'lar, replikasyon kapısı, tur tahlilleri, `beklenti-*.md` kapı raporları, `karar.md`, dondurulmuş K5 sonuçları ve `.sha256` dosyaları |
 | `runs_meta/` | Her koşumun JSON damgaları (`config.json`, `metrics.json`, `varyant_bilgi.json`, `fp32_durum.json` …): `runs/` yerel, `runs_colab/` Colab. Arşiv manifesti `runs_colab/ARSIV_MANIFEST.json` |
@@ -130,6 +134,7 @@ Zincirin sırası:
 5. `k5_test_sonuc.json` ve `.sha256`; `k5_dondurma_ek_c1.json`; ardından C1 (`k5_c1_sonuc.json` ve `.sha256`).
 6. E1: `hipotezler/H14.md` (2026-11-03) → `sonuclar/e1_h14_sonuc.json` ve `.sha256`.
 7. E2: `hipotezler/H15.md` (2026-11-07) → `sonuclar/e2_bcn.KILIT` → `sonuclar/e2_bcn_sonuc.json` ve `.sha256`.
+8. E3: `hipotezler/H16.md` (2026-11-08 15:20) → `sonuclar/e3_onisleme.KILIT` → `sonuclar/e3_onisleme_sonuc.json` ve `.sha256`.
 
 Doğrulama: ayrıntılar `DOGRULA.md` dosyasında.
 ```bash

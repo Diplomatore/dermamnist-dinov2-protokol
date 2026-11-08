@@ -1,0 +1,91 @@
+{
+  "e3": {
+    "kol": "h08c",
+    "kip": "tam",
+    "varyant": "e3_h08c",
+    "sinama": false,
+    "butce": {
+      "harcanan_sa": 0.46477777777777773,
+      "kalan_tahmin_sa": 0.0914722222222222,
+      "toplam_tahmin_sa": 0.5562499999999999,
+      "a2_sure_sn": {
+        "h10": 208.7,
+        "h02c": 23.2,
+        "h08c": 23.3,
+        "h11": 61.2
+      },
+      "eksik_a2": [],
+      "gecti": true
+    },
+    "tahmin_sha256": {
+      "hat": "88ee5c08c6eea76b66d30f00dc9405686bfd55596c9c783c33dfc9c768368639",
+      "jpeg": "36b4c736516b68b349c74a49d6e9dcf464d3faa6efa2415397e8203549f9166d",
+      "z125": "39490dddba2b8bbac447d36a977fdcba26c8b07f100401bb5d4a3c0544e4ca50",
+      "z080": "a9558454b960c871e27995babb54efef1d86a13228bf778b7faab6f083cb9b17"
+    },
+    "kaynak_run": "20261011-141608_h08_r18in_ft224_d4_colab_s4",
+    "kaynak_dizin": "<DRIVE_KOK>\\3-1\\runs\\20261011-141608_h08_r18in_ft224_d4_colab_s4",
+    "tur": "r18",
+    "hatlar": [
+      "hat",
+      "jpeg",
+      "z125",
+      "z080"
+    ],
+    "durum": "A",
+    "surum": {
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "cudnn": 90100,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "vit": {},
+    "sureler_sn": {
+      "yerel": 1.9,
+      "hat": 1.6,
+      "jpeg": 1.6,
+      "z125": 1.6,
+      "z080": 1.6
+    },
+    "beklenen_sha256": "7876429e3834e473e1877ded26bb97cd19533829ed236778ec078e994d2bb24a",
+    "hat_dizin": "<WS>\\data\\ham_val_isic",
+    "beklenen_q_BCN": 100,
+    "tasima": {
+      "kaynak": "sonuclar/e2_incele_ek/v3_model.py",
+      "kaynak_sha256": "3ba5d836098cddc94f3bd657378cd10953f516bf6e91d0ff1efb4004b3b91879",
+      "satirlar": "45-80 (yerel, kol_yukle: r18 + vit_kismi/vit_tam dalları); 19-21 (hazirla)"
+    },
+    "betik_sha256": "ba6ed609049b868af1b5de78c919d95cc64e4f517ef5ea215c42003fb629363d",
+    "npz_okunan_anahtarlar": {
+      "val_images": 1,
+      "val_labels": 1
+    },
+    "tol": {
+      "A": 1e-05,
+      "B": 0.001,
+      "argmax_B": 0.995
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA GeForce GTX 1650, 555.97, 4096 MiB",
+    "torch": "2.5.1+cu121",
+    "cuda": "12.1",
+    "cudnn": 90100,
+    "numpy": "2.2.6",
+    "python": "3.11.16",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "makine": "LAPTOP-SKK5GIC3",
+    "torch_threads": 4,
+    "torchvision": "0.20.1+cu121",
+    "timm": "1.0.30",
+    "sklearn": "1.9.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA GeForce GTX 1650"
+  }
+}

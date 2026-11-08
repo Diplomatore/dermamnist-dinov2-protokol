@@ -1,0 +1,74 @@
+{
+  "e3": {
+    "kol": "h10",
+    "kip": "duman",
+    "varyant": "e3_h10_duman",
+    "sinama": false,
+    "tahmin_sha256": {
+      "hat": "c68a78bdaadab67efde66e3fb4a33c5bde36de9bdfb8a79feecde8f4182be7f7"
+    },
+    "kaynak_run": "20261011-160211_h10_dinov2b_k4_ft224_s0",
+    "kaynak_dizin": "<DRIVE_KOK>\\3-1\\runs\\20261011-160211_h10_dinov2b_k4_ft224_s0",
+    "tur": "vit_kismi",
+    "hatlar": [
+      "hat"
+    ],
+    "durum": "B",
+    "surum": {
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "cudnn": 90100,
+      "timm": "1.0.30"
+    },
+    "kaynak_surum": {
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "cudnn": 92700,
+      "timm": "1.0.30"
+    },
+    "vit": {
+      "timm_ad": "vit_base_patch14_dinov2.lvd142m",
+      "mod": "kismi",
+      "donuk_blok": 8,
+      "fused_attn": 1
+    },
+    "sureler_sn": {
+      "yerel": 38.7,
+      "hat": 38.4
+    },
+    "beklenen_sha256": "7876429e3834e473e1877ded26bb97cd19533829ed236778ec078e994d2bb24a",
+    "hat_dizin": "<WS>\\data\\ham_val_isic",
+    "beklenen_q_BCN": 100,
+    "tasima": {
+      "kaynak": "sonuclar/e2_incele_ek/v3_model.py",
+      "kaynak_sha256": "3ba5d836098cddc94f3bd657378cd10953f516bf6e91d0ff1efb4004b3b91879",
+      "satirlar": "45-80 (yerel, kol_yukle: r18 + vit_kismi/vit_tam dalları); 19-21 (hazirla)"
+    },
+    "betik_sha256": "ba6ed609049b868af1b5de78c919d95cc64e4f517ef5ea215c42003fb629363d",
+    "npz_okunan_anahtarlar": {
+      "val_images": 1,
+      "val_labels": 1
+    },
+    "tol": {
+      "A": 1e-05,
+      "B": 0.001,
+      "argmax_B": 0.995
+    }
+  },
+  "donanim": {
+    "nvidia_smi": "NVIDIA GeForce GTX 1650, 555.97, 4096 MiB",
+    "torch": "2.5.1+cu121",
+    "cuda": "12.1",
+    "cudnn": 90100,
+    "numpy": "2.2.6",
+    "python": "3.11.16",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "makine": "LAPTOP-SKK5GIC3",
+    "torch_threads": 4,
+    "torchvision": "0.20.1+cu121",
+    "timm": "1.0.30",
+    "sklearn": "1.9.1",
+    "medmnist": "3.0.2",
+    "cihaz": "cuda:0 / NVIDIA GeForce GTX 1650"
+  }
+}

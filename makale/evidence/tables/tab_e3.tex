@@ -1,0 +1,36 @@
+% OTOMATİK — evidence/scripts/build_tables.py; elle düzenlemeyin (kaynak: evidence/evidence.json)
+% kullanılan kanıt id'leri: E3-kilit, E3-incele, E3-veri-eksik, E3-veri-test-kesisim, E3-h10-dengeli_yerel, E3-h02c-dengeli_yerel, E3-h08c-dengeli_yerel, E3-h11-dengeli_yerel, E3-h10-dengeli_hat, E3-h02c-dengeli_hat, E3-h08c-dengeli_hat, E3-h11-dengeli_hat, E3-h10-D, E3-h02c-D, E3-h08c-D, E3-h11-D, E3-h10-acc_degisim, E3-h02c-acc_degisim, E3-h08c-acc_degisim, E3-h11-acc_degisim, E3-h10-nv_pay_degisim, E3-h02c-nv_pay_degisim, E3-h08c-nv_pay_degisim, E3-h11-nv_pay_degisim, E3-h10-uyum, E3-h02c-uyum, E3-h08c-uyum, E3-h11-uyum, E3-h10-p_maks_fark, E3-h02c-p_maks_fark, E3-h08c-p_maks_fark, E3-h11-p_maks_fark, E3-h10-donme, E3-h02c-donme, E3-h08c-donme, E3-h11-donme, E3-veri-n, E3-S4-N, E3-S4-S, E3-delta-yerel, E3-delta-bcn-hatti, E3-birincil, E3-S8-seedsabit, E3-S3-h10-h08c, E3-S3-h11-h02c, E3-veri-qbcn, E3-S5-jpeg, E3-S6-z125, E3-S7-z080, E3-esik-m, E3-esik-G, E3-veri-rmse-medyan
+\begin{table}[!htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
+\caption{E3: BCN ön-işleme hattının resmî doğrulama kümesinde kol başına etkisi ve H10 $-$ H02c dengeli farkına katkısı.}\label{tab:e3}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+Kol (yerel $\to$ hat) & H10 & H02c & H08c & H11 \\
+\midrule
+Dengeli, yerel [puan] & 79,77 & 71,00 & 77,63 & 75,76 \\
+Dengeli, hat [puan] & 78,73 & 68,32 & 74,68 & 74,99 \\
+$D_k$ [puan; GA] & \begin{tabular}[c]{@{}c@{}}\textminus{}1,04\\\relax [\textminus{}3,32; +0,93]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}2,68\\\relax [\textminus{}4,98; \textminus{}0,39]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}2,95\\\relax [\textminus{}6,01; \textminus{}0,63]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textminus{}0,77\\\relax [\textminus{}1,93; +0,61]\end{tabular} \\
+ACC değişimi [puan] & \textminus{}0,76 & \textminus{}0,64 & \textminus{}1,14 & \textminus{}0,54 \\
+nv payı değişimi [oran] & \textminus{}0,004 & +0,014 & +0,014 & +0,010 \\
+Argmax uyumu (en düşük) & 0,966 (0,964) & 0,953 (0,935) & 0,955 (0,943) & 0,975 (0,968) \\
+maks$|\Delta p|$ & 0,817 & 0,837 & 0,894 & 0,703 \\
+Dönen tahmin [görüntü] & 33,8 & 47,2 & 45,6 & 24,8 \\
+\midrule
+Fark (H10 $-$ H02c) & \begin{tabular}[c]{@{}c@{}}$\Delta$\\\relax [puan]\end{tabular} & \begin{tabular}[c]{@{}c@{}}\%95 GA\\\relax [puan]\end{tabular} & $p$ & Etiket \\
+\midrule
+$\Delta_{\text{deng}}$, yerel girdi & +8,77 & [+3,69; +14,07] & $4{,}0{\times}10^{-4}$ & -- \\
+$\Delta_{\text{deng}}$, BCN hattı & +10,41 & [+5,59; +15,28] & $\leq2{,}0{\times}10^{-4}$ & -- \\
+$\Delta_{\text{hat}}$ (n~=~1.003) & +1,64 & [\textminus{}1,90; +4,89] & 0,332 & KÜÇÜK-BELİRSİZ \\
+\quad S8: seed sabit & +1,64 & [\textminus{}0,58; +3,81] & 0,148 & -- \\
+\quad S4, N (n~=~655) & +1,05 & [\textminus{}2,56; +4,13] & 0,512 & KÜÇÜK-BELİRSİZ \\
+\quad S4, S (n~=~348) & +2,51 & [\textminus{}4,16; +8,93] & 0,443 & (KISMEN) \\
+S3: H10 $-$ H08c & +1,90 & [\textminus{}1,28; +5,15] & 0,229 & -- \\
+S3: H11 $-$ H02c & +1,91 & [\textminus{}0,63; +4,39] & 0,136 & -- \\
+S5: JPEG ($q=100$) & +1,63 & [\textminus{}2,20; +4,97] & 0,372 & (KÜÇÜK-BELİRSİZ) \\
+S6: ölçek $\times$1,25 & +7,44 & [+2,91; +12,34] & 0,002 & (KISMEN) \\
+S7: ölçek $\times$0,8 & \textminus{}13,61 & [\textminus{}20,06; \textminus{}7,44] & $\leq2{,}0{\times}10^{-4}$ & (TERS) \\
+\botrule
+\end{tabular*}
+\par\smallskip\raggedright $\Delta_{\text{hat}}=\Delta_{\text{deng}}(\text{hat})-\Delta_{\text{deng}}(\text{yerel})$. Yerel: resmî doğrulama görüntülerinin MedMNIST+ girdisi; hat: aynı görüntülerin HAM10000 özgün JPEG'inden BCN ön-işleme hattıyla üretilen girdisi (RMSE medyanı 1,70 gri düzey). $D_k$: kolun dengeli doğruluk değişimi (hat $-$ yerel); uyum ve maks$|\Delta p|$: hat $\leftrightarrow$ yerel, seed ortalaması (en düşük seed) ve seed içi en büyük. N/S: lezyonu resmî eğitim kümesinde olmayan/olan görüntüler. S3: aynı nicelik başka kol çiftinde. S5--S7: birincil hatta JPEG yeniden sıkıştırma ya da merkezden yakınlaştırma (S6) / uzaklaştırma (S7; kenarlar yansıtmalı dolgu). Kollar yeniden eğitimsiz, 5 seed ortalaması. GA: iki düzeyli eşleştirilmiş bootstrap (seed + sınıf tabakalı lezyon kümesi; B = 10.000, rng 0); $p$ iki yönlü, düzeltmesiz. Etiket eşikleri 2,48 ve 10,31 puan (E2'den); parantezli etiketler betimseldir, karar vermez. Keşifsel, sonradan (hakem önerisi); vurgu yok.
+\end{table}

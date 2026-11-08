@@ -1,0 +1,25 @@
+{
+  "run_id": "20261108-154713_e3_a0_veri_s0",
+  "varyant": "e3_a0_veri",
+  "seed": "0",
+  "etiket": "E3 a0 VERİ KAPISI (CPU+ağ): val 1.003 HAM ISIC JPEG indirme + q_BCN (zip başlığı, ilk 500) + 4 hat npz + RMSE/tanı kapıları + kuyruk/e3_onisleme_beklenen.json; model YOK",
+  "ebeveyn": null,
+  "hipotez": "H16",
+  "kuyruk": "e3-veri",
+  "asama": 3,
+  "kural": null,
+  "komut": [
+    "<WS>\\env\\.venv\\Scripts\\python.exe",
+    "-I",
+    "scripts/e3_ham_val_hazirla.py",
+    "--asama",
+    "hepsi",
+    "--isci",
+    "6",
+    "--metrics",
+    "<WS>\\runs\\20261108-154713_e3_a0_veri_s0/metrics.json"
+  ],
+  "cwd": "<WS>",
+  "baslangic": "2026-11-08T15:47:13",
+  "makine": "LAPTOP-SKK5GIC3"
+}

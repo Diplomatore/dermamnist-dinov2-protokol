@@ -1,0 +1,453 @@
+{
+ "_aciklama": "ÖN-KAYIT (kuyruk e3-onisleme; H16 = hakem B3 ön-işleme hattı denetimi, KULLANICI KARARI 15, 2026-11-08; hiçbir e3 koşumundan ÖNCE yazıldı; koşum sonrası DEĞİŞTİRİLMEZ). Kaynak: hipotezler/H16.md §Beklenti dosyası taslağı (kart SHA256 f3c6998196e0624801979b01da5226747c8f876502bd8e9c785bd5c6d2157109), açık kararlar kapandıktan sonra deney-yürütücü tarafından kesinleştirildi.",
+ "_notlar": [
+  "Aralıklar ARIZA ALARMIDIR. Etiket ve karar scripts/e3_onisleme_analiz.py ile (bir kez) verilir; hat kolu çıkarım satırlarında etiket-kördür.",
+  "Durum A/B/C sınıflaması (H16 K-c) analizde mekaniktir; kapı yalnız kaba ihlalleri yakalar.",
+  "test_okundu, bcn_okundu ve c1_kol her satırda 0 olmalıdır (K-a, K-g).",
+  "Açık kararlar (şef, 2026-11-08): (1) duyarlılık kolları S5–S7 DAHİL → a2/a3 hat_gecis_sayisi = 4; (2) q_BCN BCN zip başlıklarından (ilk 500 dosya) kestirilir → kuyruk/e3_onisleme_beklenen.json.",
+  "Taslaktan tek fark: 'test_okundu' anahtarı 'resmi_test_okundu' olarak adlandırıldı (ortak/kayit.metrics_yaz test_ önekli anahtarı M4 gereği reddeder; E2'de aynı ad). Değiştirilen kural sayısı: 3. Aralık ve eşik DEĞİŞMEDİ."
+ ],
+ "metrik": "val_acc",
+ "yon": "max",
+ "asama": {
+  "1": {
+   "aciklama": "DUMAN: H02c s0 ve H10 s0; yerel + birincil hat; etiket-kör",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 2
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h02c_duman",
+     "alt": 0.83,
+     "ust": 0.9,
+     "kaynak": "H15 a2 H02c"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h10_duman",
+     "alt": 0.86,
+     "ust": 0.93,
+     "kaynak": "H15 a2 H10 (val 0,8947)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_argmax_oran",
+     "alt": 0.995,
+     "ust": 1.0,
+     "kaynak": "H16 K-c Durum B alt sınırı"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_p_maks_fark",
+     "alt": 0.0,
+     "ust": 0.001,
+     "kaynak": "H16 K-c (v3 yerel ≤ 1,1e-4)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_n",
+     "alt": 993,
+     "ust": 1003,
+     "kaynak": "H16 K-b (≤ 10 eksik)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_gecis_sayisi",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "duman yalnız birincil hat"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_girdi_sha_eslesti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "e3_onisleme_beklenen.json"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_tahmin_sonlu",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_olasilik_toplam_maks_sapma",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_tahmin_sinif_maks_pay",
+     "alt": 0.0,
+     "ust": 0.95,
+     "kaynak": "K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_argmax_uyum",
+     "alt": 0.5,
+     "ust": 1.0,
+     "kaynak": "kaba alarm (kanal/hiza); sonuç beklentisi kartta"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_etiketle_degerlendirildi",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "etiket-kör çıkarım"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "resmi_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-a (anahtar adı: M4 koruması test_ önekini reddeder; E2 emsali)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-g"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "c1_kol",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-g / H14 kural i"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tepe_gpu_bellek_mb",
+     "alt": 1,
+     "ust": 3800,
+     "kaynak": "GTX 1650 4 GB"
+    }
+   ]
+  },
+  "2": {
+   "aciklama": "ÖN-UÇUŞ: 4 kol × s0; 5 geçiş (yerel, hat, jpeg, z125, z080); süre → a3 bütçe tahmini",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 4
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h02c_onucus",
+     "alt": 0.83,
+     "ust": 0.9,
+     "kaynak": "H15 a2"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h08c_onucus",
+     "alt": 0.85,
+     "ust": 0.92,
+     "kaynak": "H15 a2"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h10_onucus",
+     "alt": 0.86,
+     "ust": 0.93,
+     "kaynak": "H15 a2"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h11_onucus",
+     "alt": 0.84,
+     "ust": 0.92,
+     "kaynak": "H15 a2"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_argmax_oran",
+     "alt": 0.995,
+     "ust": 1.0,
+     "kaynak": "K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_p_maks_fark",
+     "alt": 0.0,
+     "ust": 0.001,
+     "kaynak": "K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_n",
+     "alt": 993,
+     "ust": 1003,
+     "kaynak": "K-b"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_gecis_sayisi",
+     "alt": 4,
+     "ust": 4,
+     "kaynak": "hat + jpeg + z125 + z080"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_girdi_sha_eslesti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "beklenen.json (4 npz)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_tahmin_sonlu",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_olasilik_toplam_maks_sapma",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_tahmin_sinif_maks_pay",
+     "alt": 0.0,
+     "ust": 0.95,
+     "kaynak": "K-e (4 geçişin en büyüğü)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_argmax_uyum",
+     "alt": 0.5,
+     "ust": 1.0,
+     "kaynak": "kaba alarm (birincil hat)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_etiketle_degerlendirildi",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "etiket-kör"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "resmi_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-a (anahtar adı: M4 koruması test_ önekini reddeder; E2 emsali)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-g"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "c1_kol",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-g"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "cikarim_sure_sn",
+     "alt": 1,
+     "ust": 900,
+     "kaynak": "v3: H10 ≤ 307 s / 5 koşul; 3× pay"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tepe_gpu_bellek_mb",
+     "alt": 1,
+     "ust": 3800,
+     "kaynak": "GTX 1650"
+    }
+   ]
+  },
+  "3": {
+   "aciklama": "TAM: 4 kol × s0–s4; 5 geçiş; etiket-kör. Analiz ayrı ve bir kez yapılır.",
+   "kurallar": [
+    {
+     "tur": "sonlu"
+    },
+    {
+     "tur": "min_kosum",
+     "n": 20
+    },
+    {
+     "tur": "farkli_seedler_farkli"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h02c",
+     "alt": 0.83,
+     "ust": 0.9,
+     "kaynak": "H15 a2"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h08c",
+     "alt": 0.85,
+     "ust": 0.92,
+     "kaynak": "H15 a2"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h10",
+     "alt": 0.86,
+     "ust": 0.93,
+     "kaynak": "H15 a2"
+    },
+    {
+     "tur": "aralik",
+     "varyant": "e3_h11",
+     "alt": 0.84,
+     "ust": 0.92,
+     "kaynak": "H15 a2"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_argmax_oran",
+     "alt": 0.995,
+     "ust": 1.0,
+     "kaynak": "K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "ozdeslik_p_maks_fark",
+     "alt": 0.0,
+     "ust": 0.001,
+     "kaynak": "K-c"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "val_n",
+     "alt": 1003,
+     "ust": 1003,
+     "kaynak": "resmî val"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_n",
+     "alt": 993,
+     "ust": 1003,
+     "kaynak": "K-b"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_gecis_sayisi",
+     "alt": 4,
+     "ust": 4,
+     "kaynak": "hat + jpeg + z125 + z080"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_girdi_sha_eslesti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "beklenen.json"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_sira_sha_eslesti",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "index sırası"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_tahmin_sonlu",
+     "alt": 1,
+     "ust": 1,
+     "kaynak": "K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_olasilik_toplam_maks_sapma",
+     "alt": 0.0,
+     "ust": 0.0001,
+     "kaynak": "K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_tahmin_sinif_maks_pay",
+     "alt": 0.0,
+     "ust": 0.95,
+     "kaynak": "K-e"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_argmax_uyum",
+     "alt": 0.5,
+     "ust": 1.0,
+     "kaynak": "kaba alarm"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "hat_etiketle_degerlendirildi",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "etiket-kör"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "resmi_test_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-a (anahtar adı: M4 koruması test_ önekini reddeder; E2 emsali)"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "bcn_okundu",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-g"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "c1_kol",
+     "alt": 0,
+     "ust": 0,
+     "kaynak": "K-g"
+    },
+    {
+     "tur": "ikincil_aralik",
+     "metrik": "tepe_gpu_bellek_mb",
+     "alt": 1,
+     "ust": 3800,
+     "kaynak": "GTX 1650"
+    }
+   ]
+  }
+ },
+ "_kaynak_kart_sha256": "f3c6998196e0624801979b01da5226747c8f876502bd8e9c785bd5c6d2157109"
+}

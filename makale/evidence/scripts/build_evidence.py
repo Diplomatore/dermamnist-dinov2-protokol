@@ -2033,6 +2033,447 @@ def e2_kayitlari():
                     "E2-B2", "E2-rakip-dislandi"])
 
 
+# ---------------------------------------------------------------- Revizyon E3 (2026-11-08): H16 = BCN ön-işleme hattı denetimi
+KIP_E3 = ("keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları "
+          "görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden "
+          "üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis "
+          "null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez")
+ETIKET_E3 = ["keşifsel, sonradan (hakem önerisi; E3/H16)"]
+ETIKET_E3_BIR = ETIKET_E3 + ["birincil nicelik (tek; düzeltmesiz, etiket mekanik)"]
+ETIKET_E3_IK = ETIKET_E3 + ["ön-kayıtlı ikincil, düzeltmesiz, karar vermez"]
+VS_E3 = "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı"
+E3_KOLLAR = [("h10", "H10", "DINOv2-B kısmi ince ayar"), ("h02c", "H02c", "ResNet-18"),
+             ("h08c", "H08c", "ResNet-18 + D4"), ("h11", "H11", "DINOv2-S tam ince ayar")]
+E3_HAT_AD = {"jpeg": ("S5", "JPEG yeniden sıkıştırma (q_BCN)"), "z125": ("S6", "ölçek ×1,25 (yakınlaştırma)"),
+             "z080": ("S7", "ölçek ×0,8 (uzaklaştırma, yansıtmalı dolgu)")}
+
+
+def _tr(x, n=2, isaret=True):
+    s = f"{x:+.{n}f}" if isaret else f"{x:.{n}f}"
+    return s.replace("-", "−").replace(".", ",")
+
+
+def e3_kayitlari():
+    rel = "sonuclar/e3_onisleme_sonuc.json"
+    if not (DW / rel).exists():
+        print("UYARI: e3_onisleme_sonuc.json yok — E3-* kayıtları atlandı")
+        return
+    d = jload(rel)
+    kil_rel = "sonuclar/e3_onisleme.KILIT"
+    kil = jload(kil_rel)
+    kuru_rel = "sonuclar/e3_onisleme_kuru_sonuc.json"
+    kart_rel, un_rel = "hipotezler/H16.md", "hipotezler/H16-UYGULAMA-NOTU.md"
+    ix = {r["id"]: r for r in KAYIT}
+    # --- bütünlük: .sha256, kart/betik SHA'sı, KİLİT, tek analiz, kuru koşu
+    beyan = (DW / (rel + ".sha256")).read_text(encoding="utf-8").split()[0]
+    if beyan != sha(DW / rel):
+        raise SystemExit("E3: e3_onisleme_sonuc.json SHA256 .sha256 beyanıyla uyuşmuyor")
+    if (DW / (kuru_rel + ".sha256")).read_text(encoding="utf-8").split()[0] != sha(DW / kuru_rel):
+        raise SystemExit("E3: kuru sonuç SHA256 .sha256 beyanıyla uyuşmuyor")
+    if d["kart_sha256"] != sha(DW / kart_rel) or d["betik_sha256"] != sha(DW / "scripts/e3_onisleme_analiz.py"):
+        raise SystemExit("E3: kart/betik SHA256 sonuç dosyasındakiyle uyuşmuyor")
+    if kil["sha256"]["kart"] != d["kart_sha256"] or kil["sha256"]["analiz"] != d["betik_sha256"]:
+        raise SystemExit("E3: KİLİT SHA256'ları sonuç dosyasıyla uyuşmuyor")
+    if d["kuru"] or not d["kuru_kosu"]["gecti"] or d["ikinci_acilis"] is not None or kil["ikinci_acilis"] is not None:
+        raise SystemExit("E3: kuru/kuru-koşu/ikinci açılış durumu beklenen değil")
+    if len(kil["analiz_acilislari"]) != 1 or not d["kart_onayli"]:
+        raise SystemExit("E3: analiz birden çok kez açılmış ya da kart onaysız")
+    kuru = jload(kuru_rel)
+    if not (kuru["kuru"] and kuru["kuru_kosu"]["gecti"]):
+        raise SystemExit("E3: kuru sonuç dosyası kuru koşu GEÇTİ değil")
+    i_ok, s_ok = satir_bul("orkestrasyon_durumu.md", "**KULLANICI KARARI 15 (2026-11-08")
+    i_sk, s_sk = satir_bul("orkestrasyon_durumu.md", "2026-11-08: H16 kartı yazıldı")
+    i_a0, s_a0 = satir_bul("orkestrasyon_durumu.md", "e3-veri BİTTİ (a0 GEÇTİ")
+    i_an, s_an = satir_bul("orkestrasyon_durumu.md", "e3-onisleme KUYRUK-BİTTİ 26/26")
+    i_mt, s_mt = satir_bul(un_rel, "2026-11-08 15:20:08")
+    kart_mtime = "2026-11-08T15:20:08"
+    a0_dir = "runs/20261108-154713_e3_a0_veri_s0"
+    a0 = jload(a0_dir + "/metrics.json")
+    a0_cfg = jload(a0_dir + "/config.json")
+    if not kart_mtime < a0_cfg["baslangic"]:
+        raise SystemExit("E3: kart mtime ilk e3 koşumundan (a0) sonra")
+    ekle("E3-kilit", "E3 analizinin açılış sayısı (KİLİT; ikinci açılış yok)", "e3_onisleme_analiz.py", VS_E3,
+         len(kil["analiz_acilislari"]), "açılış", kil_rel, "analiz_acilislari, ikinci_acilis", KIP_E3, etiket=ETIKET_E3,
+         kilit_acilis=kil["acilis_zamani"], analiz_zamani=kil["analiz_zamani"], ikinci_acilis=None,
+         kart_sha256=d["kart_sha256"], betik_sha256=d["betik_sha256"], sonuc_sha256=beyan,
+         kart_onay=f"orkestrasyon_durumu.md satır {i_ok} (KULLANICI KARARI 15)", kart_mtime=kart_mtime,
+         kart_mtime_kaynak=f"{un_rel} satır {i_mt}", ilk_kosum=a0_cfg["baslangic"], ilk_kosum_run=a0_dir,
+         statu="keşifsel, sonradan (hakem önerisi B3): kart E2 sonuçları görülerek yazıldı (M1 beyanı, H16.md)",
+         kaynaklar=[{"dosya": rel, "alan": "kuru, ikinci_acilis, kart_sha256, betik_sha256, kart_onayli"},
+                    {"dosya": kil_rel, "alan": "analiz_acilislari"}, {"dosya": "orkestrasyon_durumu.md", "satir": i_an}],
+         not_="kart mtime (15:20:08) ilk e3 koşumundan (a0, 15:47:13) önce; sonuç dosyası .sha256 ile eşleşir")
+
+    # (1) K-d kuru koşu (hat tahminleri okunmadan): yerel kollar v3'ü yeniden üretti, öz-sınama, eşikler
+    kk = d["kuru_kosu"]
+    maks_fark = max(abs(v["fark"]) for v in kk["kol"].values())
+    ekle("E3-kuru", "K-d kuru koşu: yerel kol val dengelisi ↔ v3 'orijinal' en büyük mutlak fark (4 kol)",
+         "e3_onisleme_analiz.py", VS_E3, maks_fark, "puan", rel, "kuru_kosu.kol.*.fark", KIP_E3, etiket=ETIKET_E3,
+         gecti=kk["gecti"], tolerans_puan=kk["tol_puan"], delta_yerel=kk["delta_yerel"],
+         oz_sinama={"nokta": kk["oz_sinama"]["nokta"], "ga": kk["oz_sinama"]["ga"], "gecti": kk["oz_sinama"]["gecti"]},
+         kaynak_vekil=kk["kaynak"], kuru_dosya=kuru_rel, kuru_dosya_gecti=kuru["kuru_kosu"]["gecti"],
+         uygulama_notu=f"{un_rel} §4")
+
+    # (2) veri kapısı (a0; CPU + ağ, model yok)
+    m_rel = a0_dir + "/metrics.json"
+    if not a0["gecti"] or (a0["n_val"], a0["hat_n"], a0["eksik"], a0["test_kesisim"], a0["test_okundu"]) != (1003, 1003, 0, 0, 0):
+        raise SystemExit(f"E3: a0 veri kapısı beklenen değil {a0}")
+    cfg, bo = d["cfg"], d["beklenen_ozet"]
+    if (cfg["n"], bo["n"], bo["q_BCN"]) != (a0["n_val"], a0["n_val"], a0["q_bcn"]):
+        raise SystemExit("E3: a0 ↔ sonuç cfg/beklenen_ozet uyuşmuyor")
+    if abs(d["S9"]["rmse"]["hat"]["medyan"] - a0["rmse_hat_medyan"]) > 1e-9 or \
+            abs(d["S9"]["rmse"]["hat"]["maks"] - a0["rmse_hat_maks"]) > 1e-9:
+        raise SystemExit("E3: RMSE a0 ↔ S9 uyuşmuyor")
+    veri_ort = dict(etiket=ETIKET_E3 + ["veri kapısı (K-a/K-b)"], kaynaklar=[{"dosya": m_rel},
+                    {"dosya": "orkestrasyon_durumu.md", "satir": i_a0}])
+    ekle("E3-veri-n", "yeniden üretilen resmî val görüntüsü (HAM10000 özgün JPEG → BCN hattı; iki kolda da aynı)",
+         "e3_ham_val_hazirla.py", VS_E3, a0["hat_n"], "görüntü", m_rel, "hat_n, n_val", KIP_VERI, lezyon=cfg["lezyon"],
+         sinif_goruntu=dict(zip(E2_SINIF, cfg["sinif_goruntu"])), sinif_lezyon=dict(zip(E2_SINIF, cfg["sinif_lezyon"])),
+         tani_uyusmaz_oran=a0["tani_uyusmaz_oran"], tani_eslenemedi=bo["tani"]["eslenemedi"], lisans=bo["lisans"],
+         sure_sn=a0["sure_sn"], **veri_ort)
+    ekle("E3-veri-eksik", "indirilemeyen (dışlanan) val görüntüsü (K-b: > 10 ise DUR)", "e3_ham_val_hazirla.py", VS_E3,
+         a0["eksik"], "görüntü", m_rel, "eksik", KIP_VERI, **veri_ort)
+    ekle("E3-veri-test-kesisim", "indirme listesi ∩ resmî test image_id (K-a: ≠ 0 ise DUR); test okunmadı",
+         "e3_ham_val_hazirla.py", VS_E3, a0["test_kesisim"], "görüntü", m_rel, "test_kesisim, test_okundu", KIP_VERI,
+         test_okundu=a0["test_okundu"], **veri_ort)
+    ekle("E3-veri-qbcn", "BCN JPEG kalitesi q_BCN (zip'teki ilk 500 dosyanın nicemleme tablolarından; etiketsiz, piksel "
+         "çözülmeden)", "e3_ham_val_hazirla.py", "BCN20000 figshare train zip (ilk 500 dosya; yalnız JPEG başlığı)",
+         a0["q_bcn"], "kalite", m_rel, "q_bcn, q_bcn_n", KIP_VERI, q_bcn_n=a0["q_bcn_n"],
+         alt_ornekleme=bo["subsampling"], alt_ornekleme_kaynak=f"{rel} beklenen_ozet.subsampling (2 = 4:2:0)",
+         uygulama_notu=f"{un_rel} §2-5", **veri_ort)
+    rh = d["S9"]["rmse"]["hat"]
+    ekle("E3-veri-rmse-medyan", "görüntü başına RMSE medyanı, BCN-hattı 224 ↔ MedMNIST+ val 224 (K-b: [1; 3] dışı DUR)",
+         "birincil hat", VS_E3, a0["rmse_hat_medyan"], "gri düzey", m_rel, "rmse_hat_medyan", KIP_VERI,
+         ort=rh["ort"], p95=rh["p95"], min=rh["min"], n_gt15=rh["n_gt15"], kanal_ort_fark_RGB=rh["kanal_ort_fark_RGB"],
+         kalibrasyon_rmse_ort=ix["E2-veri-cerceve"]["kalibrasyon_rmse_ort"], kalibrasyon_id="E2-veri-cerceve",
+         ikinci_kaynak=f"{rel} S9.rmse.hat", **veri_ort)
+    ekle("E3-veri-rmse-maks", "görüntü başına RMSE en büyüğü, BCN-hattı ↔ MedMNIST+ val (K-b: > 15 olan varsa DUR)",
+         "birincil hat", VS_E3, a0["rmse_hat_maks"], "gri düzey", m_rel, "rmse_hat_maks", KIP_VERI,
+         ikinci_kaynak=f"{rel} S9.rmse.hat.maks", **veri_ort)
+
+    # (3) eşikler (E2'nin donmuş sayılarından; serbest parametre yok)
+    es = kk["esikler"]
+    b1, icR = ix["E2-B1"], ix["E2-S-h10-h02-ic_R_dengeli"]
+    if abs(es["m_kaynak"] - (b1["deger"] - b1["ga"][0])) > 1e-5 or abs(es["G_kaynak"] - (b1["deger"] - icR["deger"])) > 1e-5:
+        raise SystemExit("E3: eşikler E2-B1 / E2-S-h10-h02-ic_R_dengeli ile uyuşmuyor")
+    i_m, _ = satir_bul(kart_rel, "**m = B1 − GA_alt(B1) = 16,34 − 13,86 = 2,48 puan.**")
+    i_g, _ = satir_bul(kart_rel, "**G = B1 − iç resmî dengeli Δ = 16,34 − 6,03 = 10,31 puan.**")
+    i_et, _ = satir_bul(kart_rel, "| **KÜÇÜK-BELİRSİZ** |")
+    ekle("E3-esik-m", "eşdeğerlik bandı m = B1 − GA_alt(B1) (Δ_hat etiket eşiği; kartta sabit)", "H16 karar kuralı", "—",
+         es["m_sabit"], "puan", kart_rel, f"satır {i_m}", KIP_E3, etiket=ETIKET_E3, kaynak_deger=es["m_kaynak"],
+         kaynak_id=["E2-B1"], turetim="E2-B1.deger − E2-B1.ga[0]", tolerans=es["tol"], gecti=es["gecti"])
+    ekle("E3-esik-G", "büyüme payı G = B1 − Δ_iç,R dengeli (= −e_R dengeli; YORUM DEĞİŞİR eşiği)", "H16 karar kuralı", "—",
+         es["G_sabit"], "puan", kart_rel, f"satır {i_g}", KIP_E3, etiket=ETIKET_E3, kaynak_deger=es["G_kaynak"],
+         kaynak_id=["E2-B1", "E2-S-h10-h02-ic_R_dengeli"], turetim="E2-B1.deger − E2-S-h10-h02-ic_R_dengeli.deger",
+         tolerans=es["tol"], gecti=es["gecti"], etiket_tablosu=f"{kart_rel} satır {i_et - 3}–{i_et + 3}")
+
+    # beklenti tablosu (betimsel; ön-kayıtlı aralıklar) → ilgili kayda bağlanır
+    BEK = {}
+    for j, b in enumerate(d["beklenti_icinde"]):
+        BEK[b["nicelik"]] = dict(b, alan=f"beklenti_icinde[{j}]")
+
+    def bek(*adlar):
+        out = []
+        for ad in adlar:
+            b = BEK.pop(ad)
+            out.append({"nicelik": ad, "olculen": b["olculen"], "aralik": b["aralik"], "icinde": b["icinde"],
+                        "kaynak": f"{rel} {b['alan']}"})
+        ihl = [b for b in out if not b["icinde"]]
+        uy = None
+        if ihl:
+            uy = ("Beklenti ihlali (betimsel; İNCELE değil): " + "; ".join(
+                f"{b['nicelik']} = {b['olculen']:.4g}, ön-kayıtlı aralık [{b['aralik'][0]}; {b['aralik'][1]}]" for b in ihl)
+                + ". Aralık 8 HAM eğitim görüntüsündeki kalibrasyondan türetilmişti (E2-incele-kal); görülmemiş val "
+                  "görüntülerinde ViT de hatta duyarlı çıktı. Makalede beyanla verilir (E3-beklenti).")
+        return {"beklenti": out, "uyari": uy}
+
+    ix_rmse = next(r for r in KAYIT if r["id"] == "E3-veri-rmse-medyan")
+    ix_rmse.update({k: v for k, v in bek("RMSE medyanı (hat ↔ yerel)").items() if v is not None})
+
+    # (4) birincil Δ_hat + bileşenleri
+    bi = d["birincil"]
+    dh = bi["delta_hat"]
+    if dh["etiket"] != "KÜÇÜK-BELİRSİZ" or d["cumleler"]["etiket"] != dh["etiket"]:
+        raise SystemExit("E3: birincil etiket beklenen değil")
+    m_ = es["m_sabit"]
+    if not (abs(dh["nokta"]) < m_ and not (-m_ < dh["ga"][0] and dh["ga"][1] < m_)):
+        raise SystemExit("E3: KÜÇÜK-BELİRSİZ koşulu (|nokta| < 2,48 ∧ DIŞLANDI değil) sayılarla tutmuyor")
+    if abs(dh["nokta"] - (bi["delta_bcn_hatti"]["nokta"] - bi["delta_yerel"]["nokta"])) > 1e-9:
+        raise SystemExit("E3: Δ_hat ≠ Δ_hat_hatti − Δ_yerel")
+    ekle("E3-birincil", "Δ_hat = Δ_deng(H10 − H02c | BCN-hattı val) − Δ_deng(H10 − H02c | yerel val)", "H10 − H02c",
+         VS_E3, round(dh["nokta"], 6), "puan", rel, "birincil.delta_hat", KIP_E3, etiket=ETIKET_E3_BIR,
+         ga=[round(g, 6) for g in dh["ga"]], p=dh["p"], n_gecerli=dh["n_gecerli"], yari_genislik=dh["yari_genislik"],
+         karar=dh["etiket"], esik_id=["E3-esik-m", "E3-esik-G"],
+         kural="KÜÇÜK-BELİRSİZ: |nokta| < 2,48 ∧ GA ±2,48 bandının içinde değil (kart Karar kuralı)",
+         ga_tanim="iki düzeyli eşleştirilmiş bootstrap (seed + sınıf tabakalı val lezyon kümesi), B = 10.000, rng 0",
+         onkayitli_cumle=d["cumleler"]["birincil"], cumle_id="E3-cumle-birincil",
+         **bek("Δ_hat (birincil)", "Δ_hat GA yarı genişliği"))
+    for k_, et in [("delta_yerel", "Δ_deng(H10 − H02c), yerel (MedMNIST+) val girdisi"),
+                   ("delta_bcn_hatti", "Δ_deng(H10 − H02c), BCN-hattı val girdisi")]:
+        x = bi[k_]
+        ekle(f"E3-{k_.replace('_', '-')}", et, "H10 − H02c", VS_E3, round(x["nokta"], 6), "puan", rel, f"birincil.{k_}",
+             KIP_E3, etiket=ETIKET_E3_IK, ga=[round(g, 6) for g in x["ga"]], p=x["p"], n_gecerli=x["n_gecerli"])
+    s8 = d["S8"]
+    if abs(s8["nokta"] - dh["nokta"]) > 1e-12:
+        raise SystemExit("E3: S8 noktası birincilden farklı")
+    ekle("E3-S8-seedsabit", "S8: Δ_hat seed sabit, yalnız lezyon bootstrap'ı (etiket vermez)", "H10 − H02c", VS_E3,
+         round(s8["nokta"], 6), "puan", rel, "S8", KIP_E3, etiket=ETIKET_E3_IK + ["duyarlılık"],
+         ga=[round(g, 6) for g in s8["ga"]], p=s8["p"], yari_genislik=s8["yari_genislik"])
+
+    # (5) kol başına S1/S2 (keşifsel, düzeltmesiz)
+    v3_id = {"h10": "E2-MEK-sent-h10-orijinal", "h02c": "E2-MEK-sent-h02c-orijinal",
+             "h08c": "E2-MEK-sent-h08c-orijinal", "h11": "E2-MEK-sent-h11-orijinal"}
+    for k, ad, aile in E3_KOLLAR:
+        s1, s2 = d["S1"][k], d["S2"][k]
+        if abs((s1["dengeli_hat"] - s1["dengeli_yerel"]) - s1["D"]["nokta"]) > 1e-9:
+            raise SystemExit(f"E3: {k} D ≠ hat − yerel")
+        if abs(100 * ix[v3_id[k]]["deger"] - s1["dengeli_yerel"]) > 1e-3:
+            raise SystemExit(f"E3: {k} yerel dengeli ↔ {v3_id[k]} uyuşmuyor")
+        if abs(min(s2["uyum_seed"]) - s2["uyum_min"]) > 1e-12 or abs(max(s2["p_maks_fark_seed"]) - s2["p_maks_fark"]) > 1e-12:
+            raise SystemExit(f"E3: {k} uyum/maks|Δp| seed özeti uyuşmuyor")
+        ort = dict(etiket=ETIKET_E3_IK, aile=aile, n_seed=len(s2["uyum_seed"]))
+        ekle(f"E3-{k}-D", "S1: dengeli doğruluk değişimi D_k = dengeli(hat) − dengeli(yerel)", ad, VS_E3,
+             round(s1["D"]["nokta"], 6), "puan", rel, f"S1.{k}.D", KIP_E3, ga=[round(g, 6) for g in s1["D"]["ga"]],
+             p=s1["D"]["p"], yari_genislik=s1["D"]["yari_genislik"], **ort, **bek(f"D_k {k}"))
+        ekle(f"E3-{k}-dengeli_yerel", "val dengeli doğruluk, yerel (MedMNIST+) girdi (5 seed ort.)", ad, VS_E3,
+             round(s1["dengeli_yerel"], 6), "puan", rel, f"S1.{k}.dengeli_yerel", KIP_E3, yon="yuksek",
+             duyarlilik=s1["duyarlilik_yerel"], v3_id=v3_id[k], **ort)
+        ekle(f"E3-{k}-dengeli_hat", "val dengeli doğruluk, BCN-hattı girdi (5 seed ort.)", ad, VS_E3,
+             round(s1["dengeli_hat"], 6), "puan", rel, f"S1.{k}.dengeli_hat", KIP_E3, yon="yuksek",
+             duyarlilik=s1["duyarlilik_hat"], **ort)
+        ekle(f"E3-{k}-acc_degisim", "S2: ACC değişimi (hat − yerel; 5 seed ort.)", ad, VS_E3, round(s2["acc_degisim"], 6),
+             "puan", rel, f"S2.{k}.acc_degisim", KIP_E3, acc_yerel=s2["acc_yerel"], acc_hat=s2["acc_hat"], **ort)
+        ekle(f"E3-{k}-nv_pay_degisim", "S2: tahmin nv payı değişimi (hat − yerel)", ad, VS_E3,
+             round(s2["nv_pay_degisim"], 6), "oran", rel, f"S2.{k}.nv_pay_degisim", KIP_E3,
+             nv_pay_yerel=s2["nv_pay_yerel"], nv_pay_hat=s2["nv_pay_hat"], **ort, **bek(f"nv payı değişimi {k}"))
+        ekle(f"E3-{k}-uyum", "S2: argmax uyumu hat ↔ yerel (kol-seed ortalaması; en düşüğü alanda)", ad, VS_E3,
+             round(s2["uyum_ort"], 6), "oran", rel, f"S2.{k}.uyum_ort", KIP_E3, min=s2["uyum_min"],
+             seed_degerleri=s2["uyum_seed"], donme_orani=round(1 - s2["uyum_ort"], 6), **ort,
+             **bek(f"argmax uyumu {k}"))
+        ekle(f"E3-{k}-p_maks_fark", "S2: maks|Δp| hat ↔ yerel (5 seed içinde en büyüğü)", ad, VS_E3,
+             round(s2["p_maks_fark"], 6), "olasılık", rel, f"S2.{k}.p_maks_fark", KIP_E3,
+             seed_degerleri=s2["p_maks_fark_seed"], p_ort_fark=s2["p_ort_fark"], **ort, **bek(f"maks|Δp| {k}"))
+        ekle(f"E3-{k}-donme", "S2: argmax'ı değişen görüntü (seed ortalaması; dönme matrisi alanda)", ad, VS_E3,
+             round(s2["donme_toplam"], 6), "görüntü", rel, f"S2.{k}.donme_toplam", KIP_E3,
+             donme_matrisi_seed_ort=s2["donme_matrisi_seed_ort"], donme_satir_toplam=s2["donme_satir_toplam"],
+             donme_nv_sutunu=s2["donme_nv_sutunu"], satir_sutun_sirasi=E2_SINIF,
+             not_="satır: yerel argmax, sütun: hat argmax; nv sütunu = nv'ye dönen", **ort)
+
+    # (6) S3 (diğer kol çiftleri) ve S4 (N/S alt kümeleri)
+    for cift, ad in [("h10-h08c", "H10 − H08c"), ("h11-h02c", "H11 − H02c")]:
+        x = d["S3"][cift]
+        ekle(f"E3-S3-{cift}", f"S3: Δ_hat ({ad})", ad, VS_E3, round(x["nokta"], 6), "puan", rel, f"S3.{cift}", KIP_E3,
+             etiket=ETIKET_E3_IK, ga=[round(g, 6) for g in x["ga"]], p=x["p"], yari_genislik=x["yari_genislik"])
+    for alt, ad in [("N", "görülmemiş lezyon (lezyonunun resmî train'de görüntüsü yok)"),
+                    ("S", "görülmüş lezyon (betimsel)")]:
+        x = d["S4"][alt]
+        dx = x["delta_hat"]
+        ekle(f"E3-S4-{alt}", f"S4: Δ_hat, {alt} alt kümesi — {ad}", "H10 − H02c",
+             f"DermaMNIST resmî val, {alt} alt kümesi (n={x['n']}; {x['lezyon']} lezyon)", round(dx["nokta"], 6), "puan",
+             rel, f"S4.{alt}.delta_hat", KIP_E3, etiket=ETIKET_E3_IK, ga=[round(g, 6) for g in dx["ga"]], p=dx["p"],
+             n_gecerli=dx["n_gecerli"], yari_genislik=dx["yari_genislik"], karar=dx["etiket"], n=x["n"],
+             lezyon=x["lezyon"],
+             kural=("görülmemiş-lezyon tutucu kuralı: N etiketi birincilden şiddetliyse N cümlesi eklenir; aynı ya da "
+                    "hafifse yalnız birincil cümle" if alt == "N" else "S alt kümesi betimseldir; etiketi karar vermez"),
+             **(bek("S4 Δ_hat (N)") if alt == "N" else {}))
+        for k, kad, _ in E3_KOLLAR:
+            y = x["D"][k]
+            ekle(f"E3-S4-{alt}-{k}-D", f"S4: D_k, {alt} alt kümesi", kad,
+                 f"DermaMNIST resmî val, {alt} alt kümesi (n={x['n']})", round(y["nokta"], 6), "puan", rel,
+                 f"S4.{alt}.D.{k}", KIP_E3, etiket=ETIKET_E3_IK, ga=[round(g, 6) for g in y["ga"]], p=y["p"])
+    if d["S4"]["N"]["delta_hat"]["etiket"] != d["cumleler"]["S4_N_etiketi"]:
+        raise SystemExit("E3: S4 N etiketi cümle alanıyla uyuşmuyor")
+
+    # (7) S5–S7 duyarlılık kolları (betimsel; karar vermez) + S9 RMSE
+    BEK_HAT = {"jpeg": "S5 Δ (JPEG)", "z125": "S6/S7 Δ (z125)", "z080": "S6/S7 Δ (z080)"}
+    for h, (skod, had) in E3_HAT_AD.items():
+        x = d["S5_S7"][h]
+        dx, rm = x["delta"], d["S9"]["rmse"][h]
+        ekle(f"E3-{skod}-{h}", f"{skod}: Δ (H10 − H02c), {had} ↔ yerel", "H10 − H02c", VS_E3, round(dx["nokta"], 6), "puan",
+             rel, f"S5_S7.{h}.delta", KIP_E3, etiket=ETIKET_E3_IK + ["duyarlılık kolu (karar vermez)"],
+             ga=[round(g, 6) for g in dx["ga"]], p=dx["p"], yari_genislik=dx["yari_genislik"],
+             aralik_etiketi=dx["etiket_araligi"], uyum=x["uyum"],
+             D={k: {"nokta": round(x["D"][k]["nokta"], 6), "ga": [round(g, 6) for g in x["D"][k]["ga"]],
+                    "p": x["D"][k]["p"]} for k, *_ in E3_KOLLAR},
+             rmse={kk_: rm[kk_] for kk_ in ("medyan", "ort", "p95", "maks", "n_gt5", "n_gt15")},
+             kanal_ort_fark_RGB=rm["kanal_ort_fark_RGB"], **bek(BEK_HAT[h]))
+        for k, kad, _ in E3_KOLLAR:
+            y = x["D"][k]
+            ekle(f"E3-{skod}-{h}-{k}-D", f"{skod}: D_k, {had}", kad, VS_E3, round(y["nokta"], 6), "puan", rel,
+                 f"S5_S7.{h}.D.{k}", KIP_E3, etiket=ETIKET_E3_IK + ["duyarlılık kolu (karar vermez)"],
+                 ga=[round(g, 6) for g in y["ga"]], p=y["p"], uyum=x["uyum"][k])
+    s9 = d["S9"]
+    ekle("E3-S9-kanal", "S9: BCN − DermaMNIST kanal ortalaması farkı R (G, B alanda; hat − yerel farkıyla aynı tabloda)",
+         "—", "BCN 1.500 rastgele görüntü ↔ DermaMNIST (E2 v1 piksel istatistikleri)", s9["bcn_eksi_dermamnist_kanal"][0],
+         "gri düzey", rel, "S9.bcn_eksi_dermamnist_kanal", KIP_E3, etiket=ETIKET_E3_IK,
+         bcn_eksi_dermamnist_RGB=s9["bcn_eksi_dermamnist_kanal"], kaynak_kanal=s9["kaynak_kanal"],
+         hat_eksi_yerel_RGB=s9["rmse"]["hat"]["kanal_ort_fark_RGB"], ilgili_id=["E2-MEK-kanal", "E3-veri-rmse-medyan"])
+
+    # (8) S10: görülmemiş val ↔ 8 eğitim görüntüsü kalibrasyonu
+    s10 = d["S10"]
+    kal = ix["E2-incele-kal"]["tur_ozet"]["r18"]
+    if s10["kalibrasyon"] != f"{kal['toplam'] - kal['uyum']}/{kal['toplam']}":
+        raise SystemExit("E3: S10 kalibrasyon payı E2-incele-kal ile uyuşmuyor")
+    r18_val = st.mean(1 - d["S2"][k]["uyum_ort"] for k in ("h02c", "h08c"))
+    if abs(r18_val - s10["r18_donme_val"]) > 1e-12 or abs(1 - d["S2"]["h10"]["uyum_ort"] - s10["vit_donme_val"]) > 1e-12:
+        raise SystemExit("E3: S10 dönme oranları S2 uyumlarıyla uyuşmuyor")
+    ekle("E3-S10-oran", "S10: R18 argmax dönme oranı, görülmemiş val (hat ↔ yerel) / 8 eğitim görüntüsü kalibrasyonu",
+         "H02c, H08c (ResNet-18)", VS_E3, round(s10["oran"], 6), "kat", rel, "S10.oran", KIP_E3, etiket=ETIKET_E3_IK,
+         r18_donme_val=s10["r18_donme_val"], r18_donme_kalibrasyon=s10["r18_donme_kalibrasyon"],
+         kalibrasyon=s10["kalibrasyon"], vit_donme_val=s10["vit_donme_val"], vit_kaynak="H10 (1 − E3-h10-uyum)",
+         kalibrasyon_id="E2-incele-kal", onkayitli_cumle=d["cumleler"]["S10"], cumle_id="E3-cumle-S10",
+         **bek("S10 dönme oranı (görülmemiş / eğitim)"))
+
+    # (9) İNCELE (görülmemiş) bayrakları, beklenti tablosu
+    gr = d["gorulmemis"]
+    i_inc, _ = satir_bul(kart_rel, "| Literatürde görülmemiş kadar iyi eşiği | Aşağıdakilerden biri açılırsa **İNCELE**")
+    ekle("E3-incele", "kart 'görülmemiş' (İNCELE) bayrağı açıldı mı (4 madde)", "H16", VS_E3, gr["INCELE"], "mantıksal",
+         rel, "gorulmemis", KIP_E3, etiket=ETIKET_E3, maddeler={k: v for k, v in gr.items() if k != "INCELE"},
+         acik_madde=sum(bool(v) for k, v in gr.items() if k != "INCELE"),
+         kart_kaynak=f"{kart_rel} satır {i_inc}",
+         not_="(i) Δ_hat > 8, (ii) Δ_hat < −6, (iii) ViT D_k < −5, (iv) R18 uyumu < 0,90 — hiçbiri açılmadı")
+    if BEK:
+        raise SystemExit(f"E3: kayda bağlanmamış beklenti maddesi: {sorted(BEK)}")
+    tum = [b for b in d["beklenti_icinde"]]
+    ihl = [b for b in tum if not b["icinde"]]
+    i_gn, s_gn = satir_bul("gunluk/deney-gunlugu.md", "H16 betimsel beklenti ihlalleri")
+    ihl_id = {}
+    for r in KAYIT:
+        for b in r.get("beklenti", []) if r["id"].startswith("E3-") else []:
+            if not b["icinde"]:
+                ihl_id[b["nicelik"]] = r["id"]
+    ekle("E3-beklenti", "ön-kayıtlı betimsel beklentilerden aralık dışında kalan madde sayısı (toplam alanda)", "H16",
+         VS_E3, len(ihl), "madde", rel, "beklenti_icinde[*].icinde", KIP_E3, etiket=ETIKET_E3, toplam=len(tum),
+         icinde=len(tum) - len(ihl),
+         ihlaller=[{"nicelik": b["nicelik"], "olculen": b["olculen"], "aralik": b["aralik"], "id": ihl_id[b["nicelik"]]}
+                   for b in ihl],
+         maddeler=[{"nicelik": b["nicelik"], "olculen": b["olculen"], "aralik": b["aralik"], "icinde": b["icinde"]}
+                   for b in tum],
+         gunluk=f"gunluk/deney-gunlugu.md satır {i_gn}", orkestrasyon=f"orkestrasyon_durumu.md satır {i_an}",
+         uyari=("Beklenti ihlalleri (betimsel; İNCELE eşikleri tetiklenmedi): ViT kollarında (H10, H11) argmax uyumu ve "
+                "maks|Δp| kalibrasyondan türetilen aralığın dışında; Δ_hat GA yarı genişliği > 2,5; ×0,8 ölçek Δ aralık "
+                "dışında (TERS yönde). Günlük teşhisi: arıza değil, beklenti kaynağı zayıf (8 ezberlenmiş eğitim "
+                "görüntüsü) — hakem B3'ün öngördüğü yön. Makalede 'ViT ön-işlemeye kayıtsız' yazılamaz; ihlaller "
+                "beyanla verilir."))
+
+    # (10) koşum denetimleri: Durum A/B (K-c), etiket-körlük, ortam, bütçe, kapılar
+    a3 = kil["kosumlar"]
+    kos = {p.name: json.loads((p / "metrics.json").read_text(encoding="utf-8"))
+           for p in sorted((DW / "runs").glob("*_e3_*")) if (p / "metrics.json").exists()}
+    beyan_a3 = sorted(x["run"] for v in a3.values() for x in v)
+    a3m = {k: kos[k] for k in beyan_a3}
+    if len(a3m) != 20 or sorted(d["a3_denetim"]["kosumlar"]) != sorted(a3):
+        raise SystemExit("E3: a3 koşumları KİLİT ile uyuşmuyor")
+    durum = {"A": sum(m["ozdeslik_durum_kod"] == 1 for m in a3m.values()),
+             "B": sum(m["ozdeslik_durum_kod"] == 2 for m in a3m.values())}
+    durum["C"] = 20 - durum["A"] - durum["B"]
+    if {"A": durum["A"], "B": durum["B"]} != kil["durum_ozet"] or durum["C"] != 0:
+        raise SystemExit(f"E3: Durum özeti metrics.json ile uyuşmuyor {durum} ↔ {kil['durum_ozet']}")
+    pk = max(a3m, key=lambda k: a3m[k]["ozdeslik_p_maks_fark"])
+    kol_durum = {k: "".join(x["durum"] for x in v) for k, v in a3.items()}
+    ekle("E3-ozdeslik", "K-c val özdeşliği: yerel kolun yeniden çıkarımı arşiv tahmin_val.npy'yi üreten kol-seed",
+         "4 kol × 5 seed", VS_E3, sum(m["ozdeslik_gecti"] for m in a3m.values()), "kol-seed",
+         "runs/*_e3_h*_s[0-4]/metrics.json", "ozdeslik_gecti, ozdeslik_durum_kod, ozdeslik_argmax_oran, "
+         "ozdeslik_p_maks_fark", KIP_E3, etiket=ETIKET_E3, durum_ozet=durum, kol_durum=kol_durum,
+         argmax_oran_min=min(m["ozdeslik_argmax_oran"] for m in a3m.values()),
+         p_maks_fark_maks=a3m[pk]["ozdeslik_p_maks_fark"], p_maks_fark_kosum=pk, kilit=f"{kil_rel} durum_ozet",
+         kural="A: argmax 100% ∧ maks|Δp| ≤ 1e-5; B: argmax ≥ 0,995 ∧ maks|Δp| ≤ 1e-3 ∧ sürüm farkı (H16.md K-c)",
+         not_="kart 'Durum B beklenir' dedi (ortam Ekim'den farklı); ResNet-18 kollarının 8 kol-seed'i A'da kaldı")
+    ekle("E3-etiket-korluk", "E3 çıkarım koşumlarında resmî test / BCN okunan ya da hat kolu etiketle değerlendirilen "
+         "koşum sayısı (duman + a2 + a3)", "e3_cikarim.py", VS_E3,
+         sum(m["resmi_test_okundu"] + m["bcn_okundu"] + m["hat_etiketle_degerlendirildi"] for m in kos.values()
+             if "resmi_test_okundu" in m), "koşum", "runs/*_e3_*/metrics.json",
+         "resmi_test_okundu, bcn_okundu, hat_etiketle_degerlendirildi, c1_kol", KIP_E3, etiket=ETIKET_E3,
+         n_kosum=sum("resmi_test_okundu" in m for m in kos.values()),
+         c1_kol=sum(m.get("c1_kol", 0) for m in kos.values()),
+         tek_sinif_maks_pay=max(m["hat_tahmin_sinif_maks_pay"] for m in a3m.values()),
+         not_="K-e: hiçbir kol/hatta tek sınıf payı > 0,95 yok; olasılıklar sonlu (hat_tahmin_sonlu)")
+    srm = {json.dumps(jload(f"runs/{k}/config.json")["e3"]["surum"], sort_keys=True) for k in a3m}
+    ksrm = {json.dumps(jload(f"runs/{k}/config.json")["e3"]["kaynak_surum"], sort_keys=True) for k in a3m}
+    if len(srm) != 1 or len(ksrm) != 1:
+        raise SystemExit(f"E3: a3 koşumları arasında sürüm farkı {srm} / {ksrm}")
+    srm, ksrm = json.loads(next(iter(srm))), json.loads(next(iter(ksrm)))
+    cihaz = {m["cihaz"] for m in a3m.values()}
+    ekle("E3-ortam", "E3 çıkarım ortamı (cuDNN; torch/CUDA/timm ve Ekim kaynağı alanlarda)", "20 a3 koşumu", "—",
+         srm["cudnn"], "sürüm", "runs/*_e3_h*_s[0-4]/config.json", "e3.surum, e3.kaynak_surum", KIP_E3, etiket=ETIKET_E3,
+         torch=srm["torch"], cuda=srm["cuda"], timm=srm["timm"], karsi_ekim=ksrm["cudnn"], karsi_ekim_torch=ksrm["torch"],
+         cihaz=sorted(cihaz), not_="yerel GTX 1650, FP32, TF32 kapalı, cudnn deterministik; Durum B'nin nedeni sürüm farkı")
+    i_b, _ = satir_bul(kart_rel, "| Bütçe | **Tahmin ≈ 0,7 yerel GPU-sa (GTX 1650, FP32), kart tavanı 2,0 yerel GPU-sa.**")
+    kq = jload("runs/kuyruklar/e3-onisleme.KUYRUK.done")
+    kv = jload("runs/kuyruklar/e3-veri.KUYRUK.done")
+    if abs(kil["butce_gpu_sa"] - d["a3_denetim"]["butce_gpu_sa"]) > 1e-12 or kq["basarili"] != 26 or kq["basarisiz"] != 0:
+        raise SystemExit("E3: bütçe/kuyruk özeti uyuşmuyor")
+    ekle("E3-butce", "E3 GPU koşum süresi toplamı (K-f; e3-onisleme satırlarının .done sure_sn toplamı)", "H16", "—",
+         round(kil["butce_gpu_sa"], 6), "GPU-sa (yerel GTX 1650)", kil_rel, "butce_gpu_sa", KIP_E3, etiket=ETIKET_E3,
+         kart_tavani=2.0, kart_tahmini=0.7, kart_kaynak=f"{kart_rel} satır {i_b}",
+         kuyruk_duvar_sn=kq["sure_sn"], kuyruk_satir=kq["toplam"], kuyruk_kaynak="runs/kuyruklar/e3-onisleme.KUYRUK.done",
+         a0_cpu_duvar_sn=kv["sure_sn"], a0_kaynak="runs/kuyruklar/e3-veri.KUYRUK.done",
+         uyari=(f"Orkestrasyon (satır {i_an}) '2103,6 s; 0,56 GPU-sa' der: 2103,6 s kuyruk duvar saatidir (≈ 0,58 sa; "
+                "satır arası boşluklar dahil); 0,56 kartın K-f tanımı (koşum süreleri toplamı). İkisi de tavanın (2,0) "
+                "altında. a0 (CPU + ağ, model yok) bu bütçeye girmez."),
+         not_="E1 (L4-sa), E2 (L4-sa) ve K5 bütçesinden ayrı; yerel GPU")
+    kapi = []
+    for a_ in (1, 2):
+        kr = f"sonuclar/beklenti-e3-onisleme-asama{a_}.md"
+        _, bas = satir_bul(kr, "# Beklenti Kapısı")
+        _, zs = satir_bul(kr, "*2026-")
+        kapi.append({"asama": a_, "sonuc": "GEÇTİ" if "GEÇTİ" in bas else "İHLAL", "zaman": _zaman(zs), "dosya": kr})
+    if [k["sonuc"] for k in kapi] != ["GEÇTİ", "GEÇTİ"] or [k["rc"] for k in kq["kapi_raporlari"]] != [0, 0]:
+        raise SystemExit("E3: a1/a2 beklenti kapıları GEÇTİ değil")
+    ekle("E3-kapi", "aşama kapıları (a1 duman, a2 ön-uçuş) GEÇEN sayısı; a0 veri kapısı ayrı (E3-veri-*)", "e3-onisleme",
+         VS_E3, sum(k["sonuc"] == "GEÇTİ" for k in kapi), "kapı", "runs/kuyruklar/e3-onisleme.KUYRUK.done",
+         "kapi_raporlari", KIP_E3, etiket=ETIKET_E3, kapilar=kapi, a0_gecti=bool(a0["gecti"]))
+
+    # (11) önceden yazılmış (mekanik) cümleler → dayandıkları kayıtlar; cümledeki sayılar kayıtlarla denetlenir
+    cm = d["cumleler"]
+    s2r18 = s10["r18_donme_val"] * 100
+    CUM = [
+        ("giris", ["E3-veri-n", "E3-veri-rmse-medyan"], ["1.003", _tr(a0["rmse_hat_medyan"], 2, False)]),
+        ("birincil", ["E3-birincil", "E3-esik-m"],
+         [_tr(dh["nokta"]), f"[{_tr(dh['ga'][0])}; {_tr(dh['ga'][1])}]", "±" + _tr(es["m_sabit"], 2, False)]),
+        ("S1_S2", ["E3-S10-oran", "E3-h02c-uyum", "E3-h08c-uyum", "E3-h10-uyum", "E3-h02c-D", "E3-h10-D"],
+         ["%" + _tr(s2r18, 1, False), "%" + _tr(s10["vit_donme_val"] * 100, 1, False),
+          "H02c " + _tr(d["S1"]["h02c"]["D"]["nokta"]), "H10 " + _tr(d["S1"]["h10"]["D"]["nokta"])]),
+        ("S10", ["E3-S10-oran"], ["%" + _tr(s10["r18_donme_kalibrasyon"] * 100, 1, False),
+                                  _tr(s10["oran"], 1, False) + " katı"]),
+        ("duyarlilik_z125", ["E3-S6-z125"], [_tr(d["S5_S7"]["z125"]["delta"]["nokta"])]),
+        ("sinirlilik", ["E3-kilit"], []),
+    ]
+    for anahtar, ids, sayilar in CUM:
+        metin = cm[anahtar]
+        for s_ in sayilar:
+            if s_ not in metin:
+                raise SystemExit(f"E3: önceden yazılmış cümle '{anahtar}' kayıttaki '{s_}' sayısını taşımıyor")
+        uy = None
+        if anahtar == "S1_S2":
+            uy = ("Yazım: '%4,6'ünde' → '%4,6'sında' (yüzde dört virgül altı-sında). Sayılar kayıtlarla tutarlı; "
+                  "'ResNet-18 kolları' = H02c ve H08c ortalaması, 'DINOv2-B' = H10.")
+        ekle(f"E3-cumle-{anahtar}", f"önceden yazılmış (mekanik) cümle: {anahtar}", "H16", VS_E3, metin, "cümle", rel,
+             f"cumleler.{anahtar}", KIP_E3, etiket=ETIKET_E3, dayanak_id=ids, denetlenen_sayilar=sayilar, uyari=uy,
+             not_="kart Karar kuralının seçtiği metin; sonuçtan sonra yazılmadı (analiz betiği üretti)")
+
+    # (12) ön-kayıt sapma tablosu: E3 gerçekleşen
+    i_u21, _ = satir_bul(un_rel, "1. **Sıra: a0 ayrı kuyrukta, a1–a3 satırları a0'dan sonra.**")
+    i_u22, _ = satir_bul(un_rel, "2. **`test_okundu` → `resmi_test_okundu`.**")
+    ekle("SAP-E3", "E3 / H16 gerçekleşen akış (ön-işleme hattı denetimi; kart koşumdan önce, kullanıcı onaylı; keşifsel, "
+         "sonradan)", "4 arşiv kolu (H16)", VS_E3, "tamamlandı", "durum", "orkestrasyon_durumu.md", f"satır {i_an}",
+         KIP_SAP, zaman=_zaman(s_an), kart_zaman=kart_mtime[:16], kart_mtime=kart_mtime,
+         kosum_baslangic=a0_cfg["baslangic"], kosum_bitis=kil["analiz_zamani"], kuyruk_bitis=kq["bitis"],
+         sapmalar=[{"dosya": un_rel, "satir": i_u21, "ozet": "a0 (CPU + ağ) ayrı kuyrukta; a1–a3 satırları a0 donduktan "
+                    "sonra yazıldı"},
+                   {"dosya": un_rel, "satir": i_u22, "ozet": "metrics anahtarı test_okundu → resmi_test_okundu (aralık "
+                    "aynı; beklenti taslağından tek fark)"},
+                   {"dosya": "orkestrasyon_durumu.md", "satir": i_sk, "ozet": "şef kararı (koşumdan önce): duyarlılık "
+                    "kolları dahil, q_BCN JPEG başlıklarından"},
+                   {"id": "E3-beklenti", "ozet": f"{len(ihl)}/{len(tum)} betimsel beklenti aralık dışında (ViT uyum ve "
+                    "maks|Δp|, GA yarı genişliği, ×0,8 ölçek); İNCELE eşikleri tetiklenmedi"},
+                   {"id": "E3-ozdeslik", "ozet": f"Durum A {durum['A']} + B {durum['B']} (kart 'B beklenir'), C 0"}],
+         kaynaklar=[{"dosya": "orkestrasyon_durumu.md", "satir": i_ok}, {"dosya": "orkestrasyon_durumu.md", "satir": i_sk},
+                    {"dosya": "orkestrasyon_durumu.md", "satir": i_a0}, {"dosya": "orkestrasyon_durumu.md", "satir": i_an},
+                    {"dosya": un_rel, "satir": i_mt}],
+         ilgili_id=["E3-kilit", "E3-kuru", "E3-ozdeslik", "E3-ortam", "E3-butce", "E3-beklenti", "E3-incele",
+                    "E3-birincil", "E3-kapi"])
+
+
 def val_tanim_esleme():
     """Faz 5 tur-2 (review-tur2 K7): aynı kolun iki doğrulama ACC tanımı (yerel seçim ↔ L4 yeniden koşum)."""
     ix = {r["id"]: r for r in KAYIT}
@@ -2099,6 +2540,7 @@ def main():
     sapma_kayitlari()
     e1_kayitlari()
     e2_kayitlari()
+    e3_kayitlari()
     lit_dogrulama_isle()
     # not_ → not (Python anahtar sözcüğü çakışması)
     for r in KAYIT:
@@ -2111,14 +2553,15 @@ def main():
             "donanim": "Colab NVIDIA L4 24 GB; Python 3.13.15, torch 2.11.0+cu130, FP32, TF32 kapalı, deterministik "
                        "(karşılaştırılan tüm test/C1 sayıları). Yerel GTX 1650 yalnız K3 replikasyonu ve Tur 1–3 seçimi. "
                        "E1/H14 (2026-11-07): aynı GPU ve torch 2.11.0+cu130, cuDNN 91900 (Ekim 92700); bkz. E1-ortam-*. "
-                       "E2/H15 (2026-11-08): aynı GPU/torch, cuDNN 91900, yeniden eğitimsiz çıkarım; bkz. E2-ortam.",
+                       "E2/H15 (2026-11-08): aynı GPU/torch, cuDNN 91900, yeniden eğitimsiz çıkarım; bkz. E2-ortam. "
+                       "E3/H16 (2026-11-08): yerel GTX 1650, torch 2.5.1+cu121, cuDNN 90100, yeniden eğitimsiz çıkarım; bkz. E3-ortam.",
             "tarih": "2026-10-12",
             "tekrar_sayisi": 5,
             "kosul": "Ön-kayıtlı; resmî test bir kez açıldı (2026-10-11 21:12, ikinci_acilis null); C-test kol başına bir "
                      "kez; eşleştirilmiş görüntü-bootstrap (B=2000, rng 0) + tek yönlü seed-eşli t + Holm.",
             "birim_notu": "Δ'lar puan (×100). 'oran' = [0,1]. kiyas.* fraksiyonları ×100 ile puana çevrildi (ham_deger alanı).",
             "uretici": "evidence/scripts/build_evidence.py",
-            "kurallar": "Bu üretici test tahmin dosyalarını açmaz (brief madde 13). Tek istisna SENS-LKB-* kayıtlarıdır: kullanıcı onaylı (2026-10-17) test sonrası duyarlılık analizi; tahminleri evidence/scripts/lkb_bootstrap.py okur, bu üretici yalnız onun JSON çıktısını okur. İkinci istisna C1-REV-* kayıtlarıdır: test-sonrası analiz (revizyon 2026-11-03, dış eleştiri M3); yalnız dondurulmuş C1 C-test tahminlerini evidence/scripts/c1_mel_bootstrap.py okur, bu üretici onun JSON çıktısını okur. Üçüncü istisna E1-* kayıtlarıdır: test sonrası keşifsel H14 kolu (revizyon E1, 2026-11-07); tahminleri deney WS scripts/e1_h14_analiz.py okur, bu üretici yalnız sonuclar/e1_h14_sonuc.json ile H14 koşumlarının metrics.json/config.json dosyalarını okur. Dördüncü istisna E2-* kayıtlarıdır: BCN20000 dış merkez değerlendirmesi (revizyon E2, 2026-11-08, H15); BCN tahminlerini ve etiketlerini deney WS scripts/e2_bcn_analiz.py (KİLİT altında bir kez) ve İNCELE betikleri (sonuclar/e2_incele_ek/) okur; bu üretici yalnız sonuclar/e2_bcn_sonuc.json, e2_bcn.KILIT, e2_incele.md, e2_incele_ek/v1-v3.json, data/bcn20000/e2_a0_rapor.json, data/dis_veri_manifest.md ve E2 koşumlarının metrics.json/config.json dosyalarını okur; iç test tahminleri açılmaz. E2-MEK-* kayıtları keşifsel ve sonradandır. KV C1/C2 KURU vekilleri alınmadı.",
+            "kurallar": "Bu üretici test tahmin dosyalarını açmaz (brief madde 13). Tek istisna SENS-LKB-* kayıtlarıdır: kullanıcı onaylı (2026-10-17) test sonrası duyarlılık analizi; tahminleri evidence/scripts/lkb_bootstrap.py okur, bu üretici yalnız onun JSON çıktısını okur. İkinci istisna C1-REV-* kayıtlarıdır: test-sonrası analiz (revizyon 2026-11-03, dış eleştiri M3); yalnız dondurulmuş C1 C-test tahminlerini evidence/scripts/c1_mel_bootstrap.py okur, bu üretici onun JSON çıktısını okur. Üçüncü istisna E1-* kayıtlarıdır: test sonrası keşifsel H14 kolu (revizyon E1, 2026-11-07); tahminleri deney WS scripts/e1_h14_analiz.py okur, bu üretici yalnız sonuclar/e1_h14_sonuc.json ile H14 koşumlarının metrics.json/config.json dosyalarını okur. Dördüncü istisna E2-* kayıtlarıdır: BCN20000 dış merkez değerlendirmesi (revizyon E2, 2026-11-08, H15); BCN tahminlerini ve etiketlerini deney WS scripts/e2_bcn_analiz.py (KİLİT altında bir kez) ve İNCELE betikleri (sonuclar/e2_incele_ek/) okur; bu üretici yalnız sonuclar/e2_bcn_sonuc.json, e2_bcn.KILIT, e2_incele.md, e2_incele_ek/v1-v3.json, data/bcn20000/e2_a0_rapor.json, data/dis_veri_manifest.md ve E2 koşumlarının metrics.json/config.json dosyalarını okur; iç test tahminleri açılmaz. E2-MEK-* kayıtları keşifsel ve sonradandır. Beşinci istisna E3-* kayıtlarıdır: ön-işleme hattı denetimi (revizyon E3, 2026-11-08, H16; keşifsel, sonradan, hakem önerisi); yalnız resmî val kullanılır, test/C-test/BCN etiketi açılmaz; tahminleri deney WS scripts/e3_onisleme_analiz.py (KİLİT altında bir kez) okur; bu üretici yalnız sonuclar/e3_onisleme_sonuc.json, e3_onisleme_kuru_sonuc.json, e3_onisleme.KILIT, beklenti-e3-onisleme-asama*.md, runs/kuyruklar/e3-*.KUYRUK.done ve E3 koşumlarının metrics.json/config.json dosyalarını okur. KV C1/C2 KURU vekilleri alınmadı.",
             "kaynak_sha256": {k: sha(WS / k[len(WS_REL):] if k.startswith(WS_REL) else DW / k) for k in kaynaklar},
         },
         "kayitlar": KAYIT,

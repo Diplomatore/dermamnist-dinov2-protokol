@@ -1,34 +1,35 @@
 {
  "deney_meta": {
   "yazilim": "<WS>",
-  "donanim": "Colab NVIDIA L4 24 GB; Python 3.13.15, torch 2.11.0+cu130, FP32, TF32 kapalı, deterministik (karşılaştırılan tüm test/C1 sayıları). Yerel GTX 1650 yalnız K3 replikasyonu ve Tur 1–3 seçimi. E1/H14 (2026-11-07): aynı GPU ve torch 2.11.0+cu130, cuDNN 91900 (Ekim 92700); bkz. E1-ortam-*. E2/H15 (2026-11-08): aynı GPU/torch, cuDNN 91900, yeniden eğitimsiz çıkarım; bkz. E2-ortam.",
+  "donanim": "Colab NVIDIA L4 24 GB; Python 3.13.15, torch 2.11.0+cu130, FP32, TF32 kapalı, deterministik (karşılaştırılan tüm test/C1 sayıları). Yerel GTX 1650 yalnız K3 replikasyonu ve Tur 1–3 seçimi. E1/H14 (2026-11-07): aynı GPU ve torch 2.11.0+cu130, cuDNN 91900 (Ekim 92700); bkz. E1-ortam-*. E2/H15 (2026-11-08): aynı GPU/torch, cuDNN 91900, yeniden eğitimsiz çıkarım; bkz. E2-ortam. E3/H16 (2026-11-08): yerel GTX 1650, torch 2.5.1+cu121, cuDNN 90100, yeniden eğitimsiz çıkarım; bkz. E3-ortam.",
   "tarih": "2026-10-12",
   "tekrar_sayisi": 5,
   "kosul": "Ön-kayıtlı; resmî test bir kez açıldı (2026-10-11 21:12, ikinci_acilis null); C-test kol başına bir kez; eşleştirilmiş görüntü-bootstrap (B=2000, rng 0) + tek yönlü seed-eşli t + Holm.",
   "birim_notu": "Δ'lar puan (×100). 'oran' = [0,1]. kiyas.* fraksiyonları ×100 ile puana çevrildi (ham_deger alanı).",
   "uretici": "evidence/scripts/build_evidence.py",
-  "kurallar": "Bu üretici test tahmin dosyalarını açmaz (brief madde 13). Tek istisna SENS-LKB-* kayıtlarıdır: kullanıcı onaylı (2026-10-17) test sonrası duyarlılık analizi; tahminleri evidence/scripts/lkb_bootstrap.py okur, bu üretici yalnız onun JSON çıktısını okur. İkinci istisna C1-REV-* kayıtlarıdır: test-sonrası analiz (revizyon 2026-11-03, dış eleştiri M3); yalnız dondurulmuş C1 C-test tahminlerini evidence/scripts/c1_mel_bootstrap.py okur, bu üretici onun JSON çıktısını okur. Üçüncü istisna E1-* kayıtlarıdır: test sonrası keşifsel H14 kolu (revizyon E1, 2026-11-07); tahminleri deney WS scripts/e1_h14_analiz.py okur, bu üretici yalnız sonuclar/e1_h14_sonuc.json ile H14 koşumlarının metrics.json/config.json dosyalarını okur. Dördüncü istisna E2-* kayıtlarıdır: BCN20000 dış merkez değerlendirmesi (revizyon E2, 2026-11-08, H15); BCN tahminlerini ve etiketlerini deney WS scripts/e2_bcn_analiz.py (KİLİT altında bir kez) ve İNCELE betikleri (sonuclar/e2_incele_ek/) okur; bu üretici yalnız sonuclar/e2_bcn_sonuc.json, e2_bcn.KILIT, e2_incele.md, e2_incele_ek/v1-v3.json, data/bcn20000/e2_a0_rapor.json, data/dis_veri_manifest.md ve E2 koşumlarının metrics.json/config.json dosyalarını okur; iç test tahminleri açılmaz. E2-MEK-* kayıtları keşifsel ve sonradandır. KV C1/C2 KURU vekilleri alınmadı.",
+  "kurallar": "Bu üretici test tahmin dosyalarını açmaz (brief madde 13). Tek istisna SENS-LKB-* kayıtlarıdır: kullanıcı onaylı (2026-10-17) test sonrası duyarlılık analizi; tahminleri evidence/scripts/lkb_bootstrap.py okur, bu üretici yalnız onun JSON çıktısını okur. İkinci istisna C1-REV-* kayıtlarıdır: test-sonrası analiz (revizyon 2026-11-03, dış eleştiri M3); yalnız dondurulmuş C1 C-test tahminlerini evidence/scripts/c1_mel_bootstrap.py okur, bu üretici onun JSON çıktısını okur. Üçüncü istisna E1-* kayıtlarıdır: test sonrası keşifsel H14 kolu (revizyon E1, 2026-11-07); tahminleri deney WS scripts/e1_h14_analiz.py okur, bu üretici yalnız sonuclar/e1_h14_sonuc.json ile H14 koşumlarının metrics.json/config.json dosyalarını okur. Dördüncü istisna E2-* kayıtlarıdır: BCN20000 dış merkez değerlendirmesi (revizyon E2, 2026-11-08, H15); BCN tahminlerini ve etiketlerini deney WS scripts/e2_bcn_analiz.py (KİLİT altında bir kez) ve İNCELE betikleri (sonuclar/e2_incele_ek/) okur; bu üretici yalnız sonuclar/e2_bcn_sonuc.json, e2_bcn.KILIT, e2_incele.md, e2_incele_ek/v1-v3.json, data/bcn20000/e2_a0_rapor.json, data/dis_veri_manifest.md ve E2 koşumlarının metrics.json/config.json dosyalarını okur; iç test tahminleri açılmaz. E2-MEK-* kayıtları keşifsel ve sonradandır. Beşinci istisna E3-* kayıtlarıdır: ön-işleme hattı denetimi (revizyon E3, 2026-11-08, H16; keşifsel, sonradan, hakem önerisi); yalnız resmî val kullanılır, test/C-test/BCN etiketi açılmaz; tahminleri deney WS scripts/e3_onisleme_analiz.py (KİLİT altında bir kez) okur; bu üretici yalnız sonuclar/e3_onisleme_sonuc.json, e3_onisleme_kuru_sonuc.json, e3_onisleme.KILIT, beklenti-e3-onisleme-asama*.md, runs/kuyruklar/e3-*.KUYRUK.done ve E3 koşumlarının metrics.json/config.json dosyalarını okur. KV C1/C2 KURU vekilleri alınmadı.",
   "kaynak_sha256": {
    "../../makale_workspace/dermamnist-dinov2-protokol/evidence/c1mel/c1_mel_sonuc.json": "5ca72c7f0d01da603ab75c8c85daa8f99c9e65b61e873583d83aedcbf50db426",
    "../../makale_workspace/dermamnist-dinov2-protokol/evidence/lkb/lkb_bootstrap_sonuc.json": "4a8e64fda09301250b0f9f163d77c06ace49a472729bbe4b3d61babc6d4d2f6a",
    "../../makale_workspace/dermamnist-dinov2-protokol/figures/data/nitel_panel_val.json": "66fc4e0dc4cc8ef1ee11955cb05a62abdf16ff4aa84bc155c9ca01a2cd0bb0d4",
    "../../makale_workspace/dermamnist-dinov2-protokol/notes/elestiri-plani.md": "6173d2bd7b4d2a1fd2c908b52a98dacf82b961d6bcb4425534a133470b4d8186",
    "../../makale_workspace/dermamnist-dinov2-protokol/notes/literature.md": "f350c178ad112496191a2579c55af6e5a502f90e3d03c7fd3f30b1da19284b1f",
-   "../../makale_workspace/dermamnist-dinov2-protokol/notes/orkestrasyon_durumu.md": "119a45301a116a83d447924989062ad984db316ad4968771717922cde71af8da",
+   "../../makale_workspace/dermamnist-dinov2-protokol/notes/orkestrasyon_durumu.md": "7e625e6565f40656fe94a64e5cdd95fee4485c061d96306ef553f41e5ee5c7e9",
    "../../makale_workspace/dermamnist-dinov2-protokol/notes/review.md": "7e8f9aee7fa5f260219594e766b435e0e4683e78691d3c82289436109f8bccff",
    "data/bcn20000/e2_a0_rapor.json": "44e0daf6a190d258221195f12568a5ea7806b4ab3cfa9817a92feaa0a7ec65b7",
    "data/data_manifest.md": "693d212c6af79553a2e507e923b97e66f675d6da941f9aff2a7988d6db11ce12",
    "data/dis_veri_manifest.md": "22ea45a129fb3c15a8a1d650ca69d9f5f9c930e7a4b977797bbceeb7d15859c2",
    "data/splits/dermamnist_c_esleme.csv": "65a3c480be5a2898e2d9ecaf514acdd6ab3ff4f4294a3c49ccf1463edb348e5a",
    "data/splits/dermamnist_lezyon_esleme.csv": "ccd833066d530f8daecc474a3176c2af47c7964738709c2d16687bda8dbd9dfb",
-   "gunluk/deney-gunlugu.md": "d8dca2358d30f09b9c28d1a1115c022ce386d61048dc547f3b999e57739c6585",
+   "gunluk/deney-gunlugu.md": "88479bbd10b287b49b6847b50e86f6a858b98d8fab7b9457dd9e0e781ff16b36",
    "hipotezler/H08.md": "c52e63e77c4ef5bd4874f5994154680f5927d332f3e32f484d64b2eac86144be",
    "hipotezler/H14.md": "1991c2441e2ea8f12f8a52970bb4911369f8d1907d3391e0c948f476f22b5d2a",
    "hipotezler/H15.md": "eeef871456c78ee3686a99958ce6a89d967be6e1ed03ed73489a6cff8ab51b7b",
+   "hipotezler/H16.md": "f3c6998196e0624801979b01da5226747c8f876502bd8e9c785bd5c6d2157109",
    "hipotezler/K5-ONKAYIT.md": "ac8215ead0d6e47c1fcb194e05e8f38542b38aa6b8d1e5a84c6b3fe63a05f9d7",
    "hipotezler/SIRALAMA.md": "e017899affa99c5517c8097f4c3b7e83f0cff254a13948baf44fbe50264c0209",
    "notlar/literatur-cipa.md": "6f277b80e7ed4e59b4eb662bfaed144050c441a324dfaddbfc9a1e24483fb6f9",
-   "orkestrasyon_durumu.md": "b54dc45582bbe2006e604bcf015ea784d108d5522237960e3a8048a7ce3f958c",
+   "orkestrasyon_durumu.md": "508dd1e23dc577035d8a9d0af4b1393250d5cdd54b4a9a0ab7d7b9ee69bebd58",
    "sonuclar/ablasyon.csv": "09cd75a689a88597bb0d18d660bf139d3bb27ca3fa2aae0c4870a4d77632ea3c",
    "sonuclar/basarisiz-onkayitlar.md": "2d0e5f78ef521287f717c4468ac97e9eab8871890f2f24beceecf3295351fe41",
    "sonuclar/beklenti-k5-c1-A-asama1.md": "bd9b71fec8d00bb76aade32ceffdf746f372c8468f1fe0a4f84d92288bb9a5c7",
@@ -44,6 +45,8 @@
    "sonuclar/e2_incele_ek/v1.json": "8831856b71e39663874714ca81b945dc92fa24fc32ab018ec895173837704e0e",
    "sonuclar/e2_incele_ek/v2.json": "b0e93b10e65ac2cc9a97a57c3a4af703aacbf632a3d9b0813dfade96f60e2c38",
    "sonuclar/e2_incele_ek/v3.json": "cb19f5da44ce0335177735a5f65cb00fe958331d3888be24f3b2e441bc86c1d5",
+   "sonuclar/e3_onisleme.KILIT": "7008e573454199137789ba642e61b2fd74a28f1b366e7f49a08b98d9350275ee",
+   "sonuclar/e3_onisleme_sonuc.json": "412ad1cd2d0cec9e8b063f7906634575910bd7907e82ac5ec98f131861e99d8f",
    "sonuclar/hata-kirilim-h10-karsilastirma.csv": "803442ad7b261edc2ae45a16def859c0d2f8e693b9f49e89c253e41d2ce5744e",
    "sonuclar/hata-kirilim-h10-zor-gecis.json": "9360f265a4a5caac1c4b2b9914ecf5180e7757c31314c09d2164c97e4a3ab4bb",
    "sonuclar/hata_kirilim_ozet_baseline_colab.json": "875f5a3535c038df105b29a36c0a1a6c7055fd7281a18015eaf6805f730c0c14",
@@ -33956,6 +33959,3527 @@
     "E2-B1",
     "E2-B2",
     "E2-rakip-dislandi"
+   ]
+  },
+  {
+   "id": "E3-kilit",
+   "metrik": "E3 analizinin açılış sayısı (KİLİT; ikinci açılış yok)",
+   "yontem": "e3_onisleme_analiz.py",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 1,
+   "birim": "açılış",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme.KILIT",
+   "kaynak_alan": "analiz_acilislari, ikinci_acilis",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "kilit_acilis": "2026-11-08T16:27:09",
+   "analiz_zamani": "2026-11-08T16:27:16",
+   "kart_sha256": "f3c6998196e0624801979b01da5226747c8f876502bd8e9c785bd5c6d2157109",
+   "betik_sha256": "fdd35b9f43b15ef05c919a5f43f4853583f8384618c7c7b2def6bf82aaf09c45",
+   "sonuc_sha256": "412ad1cd2d0cec9e8b063f7906634575910bd7907e82ac5ec98f131861e99d8f",
+   "kart_onay": "orkestrasyon_durumu.md satır 283 (KULLANICI KARARI 15)",
+   "kart_mtime": "2026-11-08T15:20:08",
+   "kart_mtime_kaynak": "hipotezler/H16-UYGULAMA-NOTU.md satır 5",
+   "ilk_kosum": "2026-11-08T15:47:13",
+   "ilk_kosum_run": "runs/20261108-154713_e3_a0_veri_s0",
+   "statu": "keşifsel, sonradan (hakem önerisi B3): kart E2 sonuçları görülerek yazıldı (M1 beyanı, H16.md)",
+   "kaynaklar": [
+    {
+     "dosya": "sonuclar/e3_onisleme_sonuc.json",
+     "alan": "kuru, ikinci_acilis, kart_sha256, betik_sha256, kart_onayli"
+    },
+    {
+     "dosya": "sonuclar/e3_onisleme.KILIT",
+     "alan": "analiz_acilislari"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 287
+    }
+   ],
+   "not": "kart mtime (15:20:08) ilk e3 koşumundan (a0, 15:47:13) önce; sonuç dosyası .sha256 ile eşleşir"
+  },
+  {
+   "id": "E3-kuru",
+   "metrik": "K-d kuru koşu: yerel kol val dengelisi ↔ v3 'orijinal' en büyük mutlak fark (4 kol)",
+   "yontem": "e3_onisleme_analiz.py",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.0,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "kuru_kosu.kol.*.fark",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "gecti": true,
+   "tolerans_puan": 0.05,
+   "delta_yerel": {
+    "bu": 8.771503260964636,
+    "v3": 8.77150326096463,
+    "fark": 5.329070518200751e-15,
+    "gecti": true
+   },
+   "oz_sinama": {
+    "nokta": 0.0,
+    "ga": [
+     0.0,
+     0.0
+    ],
+    "gecti": true
+   },
+   "kaynak_vekil": "a3 yerel kol (tahmin_val_yerel.npy)",
+   "kuru_dosya": "sonuclar/e3_onisleme_kuru_sonuc.json",
+   "kuru_dosya_gecti": true,
+   "uygulama_notu": "hipotezler/H16-UYGULAMA-NOTU.md §4"
+  },
+  {
+   "id": "E3-veri-n",
+   "metrik": "yeniden üretilen resmî val görüntüsü (HAM10000 özgün JPEG → BCN hattı; iki kolda da aynı)",
+   "yontem": "e3_ham_val_hazirla.py",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 1003,
+   "birim": "görüntü",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json",
+   "kaynak_alan": "hat_n, n_val",
+   "kip": "veri manifesti",
+   "atif": null,
+   "durum": "gecerli",
+   "lezyon": 970,
+   "sinif_goruntu": {
+    "akiec": 33,
+    "bcc": 52,
+    "bkl": 110,
+    "df": 12,
+    "mel": 111,
+    "nv": 671,
+    "vasc": 14
+   },
+   "sinif_lezyon": {
+    "akiec": 33,
+    "bcc": 51,
+    "bkl": 106,
+    "df": 11,
+    "mel": 103,
+    "nv": 652,
+    "vasc": 14
+   },
+   "tani_uyusmaz_oran": 0.0,
+   "tani_eslenemedi": 0,
+   "lisans": {
+    "CC-BY-NC": 1003
+   },
+   "sure_sn": 261.1,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "veri kapısı (K-a/K-b)"
+   ],
+   "kaynaklar": [
+    {
+     "dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 286
+    }
+   ]
+  },
+  {
+   "id": "E3-veri-eksik",
+   "metrik": "indirilemeyen (dışlanan) val görüntüsü (K-b: > 10 ise DUR)",
+   "yontem": "e3_ham_val_hazirla.py",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0,
+   "birim": "görüntü",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json",
+   "kaynak_alan": "eksik",
+   "kip": "veri manifesti",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "veri kapısı (K-a/K-b)"
+   ],
+   "kaynaklar": [
+    {
+     "dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 286
+    }
+   ]
+  },
+  {
+   "id": "E3-veri-test-kesisim",
+   "metrik": "indirme listesi ∩ resmî test image_id (K-a: ≠ 0 ise DUR); test okunmadı",
+   "yontem": "e3_ham_val_hazirla.py",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0,
+   "birim": "görüntü",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json",
+   "kaynak_alan": "test_kesisim, test_okundu",
+   "kip": "veri manifesti",
+   "atif": null,
+   "durum": "gecerli",
+   "test_okundu": 0,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "veri kapısı (K-a/K-b)"
+   ],
+   "kaynaklar": [
+    {
+     "dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 286
+    }
+   ]
+  },
+  {
+   "id": "E3-veri-qbcn",
+   "metrik": "BCN JPEG kalitesi q_BCN (zip'teki ilk 500 dosyanın nicemleme tablolarından; etiketsiz, piksel çözülmeden)",
+   "yontem": "e3_ham_val_hazirla.py",
+   "veri_seti": "BCN20000 figshare train zip (ilk 500 dosya; yalnız JPEG başlığı)",
+   "deger": 100,
+   "birim": "kalite",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json",
+   "kaynak_alan": "q_bcn, q_bcn_n",
+   "kip": "veri manifesti",
+   "atif": null,
+   "durum": "gecerli",
+   "q_bcn_n": 500,
+   "alt_ornekleme": 2,
+   "alt_ornekleme_kaynak": "sonuclar/e3_onisleme_sonuc.json beklenen_ozet.subsampling (2 = 4:2:0)",
+   "uygulama_notu": "hipotezler/H16-UYGULAMA-NOTU.md §2-5",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "veri kapısı (K-a/K-b)"
+   ],
+   "kaynaklar": [
+    {
+     "dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 286
+    }
+   ]
+  },
+  {
+   "id": "E3-veri-rmse-medyan",
+   "metrik": "görüntü başına RMSE medyanı, BCN-hattı 224 ↔ MedMNIST+ val 224 (K-b: [1; 3] dışı DUR)",
+   "yontem": "birincil hat",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 1.6954,
+   "birim": "gri düzey",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json",
+   "kaynak_alan": "rmse_hat_medyan",
+   "kip": "veri manifesti",
+   "atif": null,
+   "durum": "gecerli",
+   "ort": 1.7692,
+   "p95": 2.317,
+   "min": 1.1663,
+   "n_gt15": 0,
+   "kanal_ort_fark_RGB": [
+    0.046,
+    -0.025,
+    0.045
+   ],
+   "kalibrasyon_rmse_ort": 1.759,
+   "kalibrasyon_id": "E2-veri-cerceve",
+   "ikinci_kaynak": "sonuclar/e3_onisleme_sonuc.json S9.rmse.hat",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "veri kapısı (K-a/K-b)"
+   ],
+   "kaynaklar": [
+    {
+     "dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 286
+    }
+   ],
+   "beklenti": [
+    {
+     "nicelik": "RMSE medyanı (hat ↔ yerel)",
+     "olculen": 1.6954,
+     "aralik": [
+      1.3,
+      2.5
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[0]"
+    }
+   ]
+  },
+  {
+   "id": "E3-veri-rmse-maks",
+   "metrik": "görüntü başına RMSE en büyüğü, BCN-hattı ↔ MedMNIST+ val (K-b: > 15 olan varsa DUR)",
+   "yontem": "birincil hat",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 4.0509,
+   "birim": "gri düzey",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json",
+   "kaynak_alan": "rmse_hat_maks",
+   "kip": "veri manifesti",
+   "atif": null,
+   "durum": "gecerli",
+   "ikinci_kaynak": "sonuclar/e3_onisleme_sonuc.json S9.rmse.hat.maks",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "veri kapısı (K-a/K-b)"
+   ],
+   "kaynaklar": [
+    {
+     "dosya": "runs/20261108-154713_e3_a0_veri_s0/metrics.json"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 286
+    }
+   ]
+  },
+  {
+   "id": "E3-esik-m",
+   "metrik": "eşdeğerlik bandı m = B1 − GA_alt(B1) (Δ_hat etiket eşiği; kartta sabit)",
+   "yontem": "H16 karar kuralı",
+   "veri_seti": "—",
+   "deger": 2.48,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "hipotezler/H16.md",
+   "kaynak_alan": "satır 49",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "kaynak_deger": 2.481274998786864,
+   "kaynak_id": [
+    "E2-B1"
+   ],
+   "turetim": "E2-B1.deger − E2-B1.ga[0]",
+   "tolerans": 0.005,
+   "gecti": true
+  },
+  {
+   "id": "E3-esik-G",
+   "metrik": "büyüme payı G = B1 − Δ_iç,R dengeli (= −e_R dengeli; YORUM DEĞİŞİR eşiği)",
+   "yontem": "H16 karar kuralı",
+   "veri_seti": "—",
+   "deger": 10.31,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "hipotezler/H16.md",
+   "kaynak_alan": "satır 51",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "kaynak_deger": 10.305313177001668,
+   "kaynak_id": [
+    "E2-B1",
+    "E2-S-h10-h02-ic_R_dengeli"
+   ],
+   "turetim": "E2-B1.deger − E2-S-h10-h02-ic_R_dengeli.deger",
+   "tolerans": 0.005,
+   "gecti": true,
+   "etiket_tablosu": "hipotezler/H16.md satır 56–62"
+  },
+  {
+   "id": "E3-birincil",
+   "metrik": "Δ_hat = Δ_deng(H10 − H02c | BCN-hattı val) − Δ_deng(H10 − H02c | yerel val)",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 1.637253,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "birincil.delta_hat",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "birincil nicelik (tek; düzeltmesiz, etiket mekanik)"
+   ],
+   "ga": [
+    -1.899601,
+    4.886491
+   ],
+   "p": 0.33156684331566844,
+   "n_gecerli": 10000,
+   "yari_genislik": 3.3930458720717382,
+   "karar": "KÜÇÜK-BELİRSİZ",
+   "esik_id": [
+    "E3-esik-m",
+    "E3-esik-G"
+   ],
+   "kural": "KÜÇÜK-BELİRSİZ: |nokta| < 2,48 ∧ GA ±2,48 bandının içinde değil (kart Karar kuralı)",
+   "ga_tanim": "iki düzeyli eşleştirilmiş bootstrap (seed + sınıf tabakalı val lezyon kümesi), B = 10.000, rng 0",
+   "onkayitli_cumle": "Ön-işleme hattının farka etkisi nokta kestirimde küçüktü: +1,64 puan [−1,90; +4,89]. Ancak aralık ±2,48 puanlık eşdeğerlik bandını aştığından, hattın dış farkın birkaç puanını açıklaması bu veriyle dışlanamadı. Dış farkın büyük bölümü hat etkisinin aralığının dışında kalır.",
+   "cumle_id": "E3-cumle-birincil",
+   "beklenti": [
+    {
+     "nicelik": "Δ_hat (birincil)",
+     "olculen": 1.6372534358482627,
+     "aralik": [
+      -1.5,
+      4.0
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[17]"
+    },
+    {
+     "nicelik": "Δ_hat GA yarı genişliği",
+     "olculen": 3.3930458720717382,
+     "aralik": [
+      1.0,
+      2.5
+     ],
+     "icinde": false,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[18]"
+    }
+   ],
+   "uyari": "Beklenti ihlali (betimsel; İNCELE değil): Δ_hat GA yarı genişliği = 3.393, ön-kayıtlı aralık [1.0; 2.5]. Aralık 8 HAM eğitim görüntüsündeki kalibrasyondan türetilmişti (E2-incele-kal); görülmemiş val görüntülerinde ViT de hatta duyarlı çıktı. Makalede beyanla verilir (E3-beklenti)."
+  },
+  {
+   "id": "E3-delta-yerel",
+   "metrik": "Δ_deng(H10 − H02c), yerel (MedMNIST+) val girdisi",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 8.771503,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "birincil.delta_yerel",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    3.694564,
+    14.072147
+   ],
+   "p": 0.00039996000399960006,
+   "n_gecerli": 10000
+  },
+  {
+   "id": "E3-delta-bcn-hatti",
+   "metrik": "Δ_deng(H10 − H02c), BCN-hattı val girdisi",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 10.408757,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "birincil.delta_bcn_hatti",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    5.587217,
+    15.277574
+   ],
+   "p": 0.00019998000199980003,
+   "n_gecerli": 10000
+  },
+  {
+   "id": "E3-S8-seedsabit",
+   "metrik": "S8: Δ_hat seed sabit, yalnız lezyon bootstrap'ı (etiket vermez)",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 1.637253,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S8",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık"
+   ],
+   "ga": [
+    -0.58271,
+    3.80889
+   ],
+   "p": 0.1481851814818518,
+   "yari_genislik": 2.1957998277194837
+  },
+  {
+   "id": "E3-h10-D",
+   "metrik": "S1: dengeli doğruluk değişimi D_k = dengeli(hat) − dengeli(yerel)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -1.044938,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h10.D",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "ga": [
+    -3.324492,
+    0.928477
+   ],
+   "p": 0.291970802919708,
+   "yari_genislik": 2.126484719085896,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-B kısmi ince ayar",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "D_k h10",
+     "olculen": -1.044938414961849,
+     "aralik": [
+      -1.5,
+      0.5
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[11]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h10-dengeli_yerel",
+   "metrik": "val dengeli doğruluk, yerel (MedMNIST+) girdi (5 seed ort.)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 79.770305,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h10.dengeli_yerel",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "yon": "yuksek",
+   "duyarlilik": {
+    "akiec": 72.12121212121212,
+    "bcc": 87.30769230769229,
+    "bkl": 74.90909090909092,
+    "df": 64.99999999999999,
+    "mel": 71.35135135135135,
+    "nv": 96.274217585693,
+    "vasc": 91.42857142857143
+   },
+   "v3_id": "E2-MEK-sent-h10-orijinal",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-B kısmi ince ayar",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h10-dengeli_hat",
+   "metrik": "val dengeli doğruluk, BCN-hattı girdi (5 seed ort.)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 78.725367,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h10.dengeli_hat",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "yon": "yuksek",
+   "duyarlilik": {
+    "akiec": 71.51515151515152,
+    "bcc": 85.38461538461539,
+    "bkl": 74.18181818181819,
+    "df": 68.33333333333333,
+    "mel": 70.27027027027027,
+    "nv": 95.67809239940388,
+    "vasc": 85.71428571428571
+   },
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-B kısmi ince ayar",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h10-acc_degisim",
+   "metrik": "S2: ACC değişimi (hat − yerel; 5 seed ort.)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -0.757727,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h10.acc_degisim",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "acc_yerel": 89.47158524426719,
+   "acc_hat": 88.71385842472583,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-B kısmi ince ayar",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h10-nv_pay_degisim",
+   "metrik": "S2: tahmin nv payı değişimi (hat − yerel)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -0.003789,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h10.nv_pay_degisim",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "nv_pay_yerel": 0.6897308075772682,
+   "nv_pay_hat": 0.6859421734795613,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-B kısmi ince ayar",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "nv payı değişimi h10",
+     "olculen": -0.003788634097706911,
+     "aralik": [
+      -0.01,
+      0.01
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[12]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h10-uyum",
+   "metrik": "S2: argmax uyumu hat ↔ yerel (kol-seed ortalaması; en düşüğü alanda)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.966301,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h10.uyum_ort",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "min": 0.9641076769690927,
+   "seed_degerleri": [
+    0.9651046859421735,
+    0.9690927218344965,
+    0.9651046859421735,
+    0.9680957128614157,
+    0.9641076769690927
+   ],
+   "donme_orani": 0.033699,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-B kısmi ince ayar",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "argmax uyumu h10",
+     "olculen": 0.9663010967098703,
+     "aralik": [
+      0.985,
+      1.0
+     ],
+     "icinde": false,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[9]"
+    }
+   ],
+   "uyari": "Beklenti ihlali (betimsel; İNCELE değil): argmax uyumu h10 = 0.9663, ön-kayıtlı aralık [0.985; 1.0]. Aralık 8 HAM eğitim görüntüsündeki kalibrasyondan türetilmişti (E2-incele-kal); görülmemiş val görüntülerinde ViT de hatta duyarlı çıktı. Makalede beyanla verilir (E3-beklenti)."
+  },
+  {
+   "id": "E3-h10-p_maks_fark",
+   "metrik": "S2: maks|Δp| hat ↔ yerel (5 seed içinde en büyüğü)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.817407,
+   "birim": "olasılık",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h10.p_maks_fark",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "seed_degerleri": [
+    0.7548763602972031,
+    0.7549245245754719,
+    0.8174071311950684,
+    0.5187509059906006,
+    0.5187650322914124
+   ],
+   "p_ort_fark": 0.010441903883993782,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-B kısmi ince ayar",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "maks|Δp| h10",
+     "olculen": 0.8174071311950684,
+     "aralik": [
+      0.03,
+      0.5
+     ],
+     "icinde": false,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[10]"
+    }
+   ],
+   "uyari": "Beklenti ihlali (betimsel; İNCELE değil): maks|Δp| h10 = 0.8174, ön-kayıtlı aralık [0.03; 0.5]. Aralık 8 HAM eğitim görüntüsündeki kalibrasyondan türetilmişti (E2-incele-kal); görülmemiş val görüntülerinde ViT de hatta duyarlı çıktı. Makalede beyanla verilir (E3-beklenti)."
+  },
+  {
+   "id": "E3-h10-donme",
+   "metrik": "S2: argmax'ı değişen görüntü (seed ortalaması; dönme matrisi alanda)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 33.8,
+   "birim": "görüntü",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h10.donme_toplam",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "donme_matrisi_seed_ort": [
+    [
+     30.0,
+     0.4,
+     0.4,
+     0.0,
+     0.6,
+     0.0,
+     0.0
+    ],
+    [
+     0.6,
+     48.6,
+     2.2,
+     0.0,
+     1.6,
+     0.6,
+     0.0
+    ],
+    [
+     1.2,
+     0.6,
+     94.6,
+     0.2,
+     2.6,
+     3.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.2,
+     0.0,
+     8.6,
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     0.2,
+     0.2,
+     1.8,
+     0.4,
+     95.4,
+     3.6,
+     0.0
+    ],
+    [
+     0.4,
+     1.2,
+     3.2,
+     0.4,
+     6.4,
+     679.8,
+     0.4
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.4,
+     0.4,
+     12.2
+    ]
+   ],
+   "donme_satir_toplam": [
+    1.3999999999999986,
+    5.000000000000007,
+    8.0,
+    0.3999999999999986,
+    6.199999999999989,
+    12.0,
+    0.8000000000000007
+   ],
+   "donme_nv_sutunu": [
+    0.0,
+    0.6,
+    3.4,
+    0.2,
+    3.6,
+    0.0,
+    0.4
+   ],
+   "satir_sutun_sirasi": [
+    "akiec",
+    "bcc",
+    "bkl",
+    "df",
+    "mel",
+    "nv",
+    "vasc"
+   ],
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-B kısmi ince ayar",
+   "n_seed": 5,
+   "not": "satır: yerel argmax, sütun: hat argmax; nv sütunu = nv'ye dönen"
+  },
+  {
+   "id": "E3-h02c-D",
+   "metrik": "S1: dengeli doğruluk değişimi D_k = dengeli(hat) − dengeli(yerel)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -2.682192,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h02c.D",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "ga": [
+    -4.984223,
+    -0.392232
+   ],
+   "p": 0.024397560243975602,
+   "yari_genislik": 2.2959953513934797,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "D_k h02c",
+     "olculen": -2.6821918508101117,
+     "aralik": [
+      -4.0,
+      1.0
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[3]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h02c-dengeli_yerel",
+   "metrik": "val dengeli doğruluk, yerel (MedMNIST+) girdi (5 seed ort.)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 70.998802,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h02c.dengeli_yerel",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "yon": "yuksek",
+   "duyarlilik": {
+    "akiec": 60.60606060606061,
+    "bcc": 89.6153846153846,
+    "bkl": 70.54545454545453,
+    "df": 56.666666666666664,
+    "mel": 61.261261261261254,
+    "nv": 95.43964232488821,
+    "vasc": 62.857142857142854
+   },
+   "v3_id": "E2-MEK-sent-h02c-orijinal",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h02c-dengeli_hat",
+   "metrik": "val dengeli doğruluk, BCN-hattı girdi (5 seed ort.)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 68.31661,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h02c.dengeli_hat",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "yon": "yuksek",
+   "duyarlilik": {
+    "akiec": 60.0,
+    "bcc": 85.0,
+    "bkl": 68.72727272727272,
+    "df": 51.66666666666667,
+    "mel": 56.756756756756765,
+    "nv": 96.0655737704918,
+    "vasc": 60.0
+   },
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h02c-acc_degisim",
+   "metrik": "S2: ACC değişimi (hat − yerel; 5 seed ort.)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -0.638086,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h02c.acc_degisim",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "acc_yerel": 86.56031904287138,
+   "acc_hat": 85.9222333000997,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h02c-nv_pay_degisim",
+   "metrik": "S2: tahmin nv payı değişimi (hat − yerel)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.014158,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h02c.nv_pay_degisim",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "nv_pay_yerel": 0.7020937188434696,
+   "nv_pay_hat": 0.7162512462612164,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "nv payı değişimi h02c",
+     "olculen": 0.014157527417746785,
+     "aralik": [
+      -0.01,
+      0.03
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[4]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h02c-uyum",
+   "metrik": "S2: argmax uyumu hat ↔ yerel (kol-seed ortalaması; en düşüğü alanda)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.952941,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h02c.uyum_ort",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "min": 0.9351944167497508,
+   "seed_degerleri": [
+    0.9561316051844466,
+    0.9561316051844466,
+    0.9561316051844466,
+    0.9351944167497508,
+    0.9611166500498505
+   ],
+   "donme_orani": 0.047059,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "argmax uyumu h02c",
+     "olculen": 0.9529411764705882,
+     "aralik": [
+      0.94,
+      0.995
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[1]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h02c-p_maks_fark",
+   "metrik": "S2: maks|Δp| hat ↔ yerel (5 seed içinde en büyüğü)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.83668,
+   "birim": "olasılık",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h02c.p_maks_fark",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "seed_degerleri": [
+    0.719531923532486,
+    0.7632390111684799,
+    0.7461398839950562,
+    0.7421561628580093,
+    0.8366795256733894
+   ],
+   "p_ort_fark": 0.012873180540944763,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "maks|Δp| h02c",
+     "olculen": 0.8366795256733894,
+     "aralik": [
+      0.4,
+      0.99
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[2]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h02c-donme",
+   "metrik": "S2: argmax'ı değişen görüntü (seed ortalaması; dönme matrisi alanda)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 47.2,
+   "birim": "görüntü",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h02c.donme_toplam",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "donme_matrisi_seed_ort": [
+    [
+     26.4,
+     0.8,
+     2.0,
+     0.4,
+     0.8,
+     1.2,
+     0.0
+    ],
+    [
+     1.0,
+     51.0,
+     2.2,
+     0.2,
+     0.4,
+     3.2,
+     0.0
+    ],
+    [
+     0.8,
+     0.2,
+     86.6,
+     0.4,
+     2.2,
+     4.6,
+     0.0
+    ],
+    [
+     0.2,
+     0.2,
+     0.2,
+     6.6,
+     0.2,
+     1.0,
+     0.0
+    ],
+    [
+     1.2,
+     0.6,
+     4.0,
+     0.0,
+     79.4,
+     11.2,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     2.4,
+     0.0,
+     4.2,
+     697.0,
+     0.2
+    ],
+    [
+     0.2,
+     0.0,
+     0.2,
+     0.2,
+     0.0,
+     0.2,
+     8.8
+    ]
+   ],
+   "donme_satir_toplam": [
+    5.199999999999999,
+    7.000000000000007,
+    8.200000000000003,
+    1.799999999999999,
+    17.0,
+    7.2000000000000455,
+    0.8000000000000007
+   ],
+   "donme_nv_sutunu": [
+    1.2,
+    3.2,
+    4.6,
+    1.0,
+    11.2,
+    0.0,
+    0.2
+   ],
+   "satir_sutun_sirasi": [
+    "akiec",
+    "bcc",
+    "bkl",
+    "df",
+    "mel",
+    "nv",
+    "vasc"
+   ],
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18",
+   "n_seed": 5,
+   "not": "satır: yerel argmax, sütun: hat argmax; nv sütunu = nv'ye dönen"
+  },
+  {
+   "id": "E3-h08c-D",
+   "metrik": "S1: dengeli doğruluk değişimi D_k = dengeli(hat) − dengeli(yerel)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -2.946565,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h08c.D",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "ga": [
+    -6.010726,
+    -0.625676
+   ],
+   "p": 0.0131986801319868,
+   "yari_genislik": 2.6925251941965382,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18 + D4",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "D_k h08c",
+     "olculen": -2.9465648809911094,
+     "aralik": [
+      -4.0,
+      1.0
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[7]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h08c-dengeli_yerel",
+   "metrik": "val dengeli doğruluk, yerel (MedMNIST+) girdi (5 seed ort.)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 77.626625,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h08c.dengeli_yerel",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "yon": "yuksek",
+   "duyarlilik": {
+    "akiec": 64.84848484848484,
+    "bcc": 93.07692307692307,
+    "bkl": 75.63636363636364,
+    "df": 65.0,
+    "mel": 67.74774774774774,
+    "nv": 95.64828614008943,
+    "vasc": 81.42857142857143
+   },
+   "v3_id": "E2-MEK-sent-h08c-orijinal",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18 + D4",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h08c-dengeli_hat",
+   "metrik": "val dengeli doğruluk, BCN-hattı girdi (5 seed ort.)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 74.68006,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h08c.dengeli_hat",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "yon": "yuksek",
+   "duyarlilik": {
+    "akiec": 60.0,
+    "bcc": 86.15384615384615,
+    "bkl": 76.1818181818182,
+    "df": 61.66666666666666,
+    "mel": 61.621621621621614,
+    "nv": 95.70789865871834,
+    "vasc": 81.42857142857143
+   },
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18 + D4",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h08c-acc_degisim",
+   "metrik": "S2: ACC değişimi (hat − yerel; 5 seed ort.)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -1.13659,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h08c.acc_degisim",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "acc_yerel": 88.65403788634097,
+   "acc_hat": 87.51744765702891,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18 + D4",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h08c-nv_pay_degisim",
+   "metrik": "S2: tahmin nv payı değişimi (hat − yerel)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.013559,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h08c.nv_pay_degisim",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "nv_pay_yerel": 0.6857427716849451,
+   "nv_pay_hat": 0.6993020937188434,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18 + D4",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "nv payı değişimi h08c",
+     "olculen": 0.013559322033898313,
+     "aralik": [
+      -0.01,
+      0.03
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[8]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h08c-uyum",
+   "metrik": "S2: argmax uyumu hat ↔ yerel (kol-seed ortalaması; en düşüğü alanda)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.954536,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h08c.uyum_ort",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "min": 0.9431704885343968,
+   "seed_degerleri": [
+    0.9680957128614157,
+    0.9611166500498505,
+    0.9431704885343968,
+    0.9471585244267199,
+    0.9531405782652044
+   ],
+   "donme_orani": 0.045464,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18 + D4",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "argmax uyumu h08c",
+     "olculen": 0.9545363908275174,
+     "aralik": [
+      0.94,
+      0.995
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[5]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h08c-p_maks_fark",
+   "metrik": "S2: maks|Δp| hat ↔ yerel (5 seed içinde en büyüğü)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.894182,
+   "birim": "olasılık",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h08c.p_maks_fark",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "seed_degerleri": [
+    0.8503604084253311,
+    0.8941819593310356,
+    0.843936063349247,
+    0.8078805059194565,
+    0.862636148929596
+   ],
+   "p_ort_fark": 0.013357032428342366,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18 + D4",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "maks|Δp| h08c",
+     "olculen": 0.8941819593310356,
+     "aralik": [
+      0.4,
+      0.99
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[6]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h08c-donme",
+   "metrik": "S2: argmax'ı değişen görüntü (seed ortalaması; dönme matrisi alanda)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 45.6,
+   "birim": "görüntü",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h08c.donme_toplam",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "donme_matrisi_seed_ort": [
+    [
+     24.6,
+     0.8,
+     3.2,
+     0.4,
+     0.6,
+     0.4,
+     0.0
+    ],
+    [
+     1.2,
+     50.0,
+     2.4,
+     0.2,
+     0.6,
+     3.6,
+     0.2
+    ],
+    [
+     0.6,
+     0.2,
+     92.6,
+     0.0,
+     1.8,
+     5.6,
+     0.0
+    ],
+    [
+     0.6,
+     0.0,
+     0.2,
+     9.2,
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     0.6,
+     0.4,
+     4.4,
+     0.2,
+     87.8,
+     10.4,
+     0.0
+    ],
+    [
+     0.4,
+     0.4,
+     0.6,
+     0.4,
+     4.8,
+     681.2,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.2,
+     0.0,
+     12.0
+    ]
+   ],
+   "donme_satir_toplam": [
+    5.399999999999999,
+    8.20000000000001,
+    8.199999999999989,
+    1.0,
+    16.0,
+    6.600000000000023,
+    0.1999999999999993
+   ],
+   "donme_nv_sutunu": [
+    0.4,
+    3.6,
+    5.6,
+    0.2,
+    10.4,
+    0.0,
+    0.0
+   ],
+   "satir_sutun_sirasi": [
+    "akiec",
+    "bcc",
+    "bkl",
+    "df",
+    "mel",
+    "nv",
+    "vasc"
+   ],
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "ResNet-18 + D4",
+   "n_seed": 5,
+   "not": "satır: yerel argmax, sütun: hat argmax; nv sütunu = nv'ye dönen"
+  },
+  {
+   "id": "E3-h11-D",
+   "metrik": "S1: dengeli doğruluk değişimi D_k = dengeli(hat) − dengeli(yerel)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -0.768207,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h11.D",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "ga": [
+    -1.926829,
+    0.609236
+   ],
+   "p": 0.20837916208379162,
+   "yari_genislik": 1.2680324572995028,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-S tam ince ayar",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "D_k h11",
+     "olculen": -0.7682070445536593,
+     "aralik": [
+      -2.0,
+      0.5
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[15]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h11-dengeli_yerel",
+   "metrik": "val dengeli doğruluk, yerel (MedMNIST+) girdi (5 seed ort.)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 75.760176,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h11.dengeli_yerel",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "yon": "yuksek",
+   "duyarlilik": {
+    "akiec": 64.24242424242424,
+    "bcc": 86.53846153846155,
+    "bkl": 78.0,
+    "df": 58.333333333333336,
+    "mel": 66.66666666666667,
+    "nv": 95.1117734724292,
+    "vasc": 81.42857142857143
+   },
+   "v3_id": "E2-MEK-sent-h11-orijinal",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-S tam ince ayar",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h11-dengeli_hat",
+   "metrik": "val dengeli doğruluk, BCN-hattı girdi (5 seed ort.)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 74.991969,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S1.h11.dengeli_hat",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "yon": "yuksek",
+   "duyarlilik": {
+    "akiec": 65.45454545454545,
+    "bcc": 84.23076923076923,
+    "bkl": 74.36363636363636,
+    "df": 58.333333333333336,
+    "mel": 64.32432432432432,
+    "nv": 95.38002980625932,
+    "vasc": 82.85714285714285
+   },
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-S tam ince ayar",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h11-acc_degisim",
+   "metrik": "S2: ACC değişimi (hat − yerel; 5 seed ort.)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -0.538385,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h11.acc_degisim",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "acc_yerel": 87.99601196410768,
+   "acc_hat": 87.45762711864407,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-S tam ince ayar",
+   "n_seed": 5
+  },
+  {
+   "id": "E3-h11-nv_pay_degisim",
+   "metrik": "S2: tahmin nv payı değişimi (hat − yerel)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.009771,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h11.nv_pay_degisim",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "nv_pay_yerel": 0.6821535393818544,
+   "nv_pay_hat": 0.6919242273180458,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-S tam ince ayar",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "nv payı değişimi h11",
+     "olculen": 0.009770687936191402,
+     "aralik": [
+      -0.01,
+      0.01
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[16]"
+    }
+   ]
+  },
+  {
+   "id": "E3-h11-uyum",
+   "metrik": "S2: argmax uyumu hat ↔ yerel (kol-seed ortalaması; en düşüğü alanda)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.975274,
+   "birim": "oran",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h11.uyum_ort",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "min": 0.9680957128614157,
+   "seed_degerleri": [
+    0.9680957128614157,
+    0.9730807577268196,
+    0.9780658025922233,
+    0.9810568295114656,
+    0.9760717846460618
+   ],
+   "donme_orani": 0.024726,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-S tam ince ayar",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "argmax uyumu h11",
+     "olculen": 0.9752741774675971,
+     "aralik": [
+      0.98,
+      1.0
+     ],
+     "icinde": false,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[13]"
+    }
+   ],
+   "uyari": "Beklenti ihlali (betimsel; İNCELE değil): argmax uyumu h11 = 0.9753, ön-kayıtlı aralık [0.98; 1.0]. Aralık 8 HAM eğitim görüntüsündeki kalibrasyondan türetilmişti (E2-incele-kal); görülmemiş val görüntülerinde ViT de hatta duyarlı çıktı. Makalede beyanla verilir (E3-beklenti)."
+  },
+  {
+   "id": "E3-h11-p_maks_fark",
+   "metrik": "S2: maks|Δp| hat ↔ yerel (5 seed içinde en büyüğü)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.702739,
+   "birim": "olasılık",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h11.p_maks_fark",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "seed_degerleri": [
+    0.7027393132448196,
+    0.6826339811086655,
+    0.6108163148164749,
+    0.5043173357844353,
+    0.6640512198209763
+   ],
+   "p_ort_fark": 0.00794729581122669,
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-S tam ince ayar",
+   "n_seed": 5,
+   "beklenti": [
+    {
+     "nicelik": "maks|Δp| h11",
+     "olculen": 0.7027393132448196,
+     "aralik": [
+      0.03,
+      0.5
+     ],
+     "icinde": false,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[14]"
+    }
+   ],
+   "uyari": "Beklenti ihlali (betimsel; İNCELE değil): maks|Δp| h11 = 0.7027, ön-kayıtlı aralık [0.03; 0.5]. Aralık 8 HAM eğitim görüntüsündeki kalibrasyondan türetilmişti (E2-incele-kal); görülmemiş val görüntülerinde ViT de hatta duyarlı çıktı. Makalede beyanla verilir (E3-beklenti)."
+  },
+  {
+   "id": "E3-h11-donme",
+   "metrik": "S2: argmax'ı değişen görüntü (seed ortalaması; dönme matrisi alanda)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 24.8,
+   "birim": "görüntü",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S2.h11.donme_toplam",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "donme_matrisi_seed_ort": [
+    [
+     29.6,
+     0.4,
+     0.6,
+     0.0,
+     0.2,
+     0.2,
+     0.0
+    ],
+    [
+     0.8,
+     49.0,
+     1.0,
+     0.0,
+     0.0,
+     0.8,
+     0.2
+    ],
+    [
+     1.0,
+     0.0,
+     99.4,
+     0.0,
+     1.8,
+     5.4,
+     0.0
+    ],
+    [
+     0.6,
+     0.0,
+     0.0,
+     10.4,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.4,
+     0.2,
+     0.6,
+     0.0,
+     97.2,
+     6.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.8,
+     0.0,
+     1.2,
+     680.6,
+     0.2
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.2,
+     12.0
+    ]
+   ],
+   "donme_satir_toplam": [
+    1.3999999999999986,
+    2.799999999999997,
+    8.200000000000003,
+    0.5999999999999996,
+    8.0,
+    3.6000000000000227,
+    0.1999999999999993
+   ],
+   "donme_nv_sutunu": [
+    0.2,
+    0.8,
+    5.4,
+    0.0,
+    6.8,
+    0.0,
+    0.2
+   ],
+   "satir_sutun_sirasi": [
+    "akiec",
+    "bcc",
+    "bkl",
+    "df",
+    "mel",
+    "nv",
+    "vasc"
+   ],
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "aile": "DINOv2-S tam ince ayar",
+   "n_seed": 5,
+   "not": "satır: yerel argmax, sütun: hat argmax; nv sütunu = nv'ye dönen"
+  },
+  {
+   "id": "E3-S3-h10-h08c",
+   "metrik": "S3: Δ_hat (H10 − H08c)",
+   "yontem": "H10 − H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 1.901626,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S3.h10-h08c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -1.276691,
+    5.152041
+   ],
+   "p": 0.22897710228977103,
+   "yari_genislik": 3.2143656405597967
+  },
+  {
+   "id": "E3-S3-h11-h02c",
+   "metrik": "S3: Δ_hat (H11 − H02c)",
+   "yontem": "H11 − H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 1.913985,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S3.h11-h02c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -0.634082,
+    4.390978
+   ],
+   "p": 0.135986401359864,
+   "yari_genislik": 2.512529971151165
+  },
+  {
+   "id": "E3-S4-N",
+   "metrik": "S4: Δ_hat, N alt kümesi — görülmemiş lezyon (lezyonunun resmî train'de görüntüsü yok)",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val, N alt kümesi (n=655; 638 lezyon)",
+   "deger": 1.051708,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.N.delta_hat",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -2.563234,
+    4.131421
+   ],
+   "p": 0.5120656853910083,
+   "n_gecerli": 9986,
+   "yari_genislik": 3.3473278250087066,
+   "karar": "KÜÇÜK-BELİRSİZ",
+   "n": 655,
+   "lezyon": 638,
+   "kural": "görülmemiş-lezyon tutucu kuralı: N etiketi birincilden şiddetliyse N cümlesi eklenir; aynı ya da hafifse yalnız birincil cümle",
+   "beklenti": [
+    {
+     "nicelik": "S4 Δ_hat (N)",
+     "olculen": 1.0517080298751202,
+     "aralik": [
+      -2.0,
+      5.0
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[19]"
+    }
+   ]
+  },
+  {
+   "id": "E3-S4-N-h10-D",
+   "metrik": "S4: D_k, N alt kümesi",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val, N alt kümesi (n=655)",
+   "deger": -1.143732,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.N.D.h10",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -3.894339,
+    0.891677
+   ],
+   "p": 0.2907780114148393
+  },
+  {
+   "id": "E3-S4-N-h02c-D",
+   "metrik": "S4: D_k, N alt kümesi",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val, N alt kümesi (n=655)",
+   "deger": -2.19544,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.N.D.h02c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -4.389313,
+    -0.196491
+   ],
+   "p": 0.030840092119755684
+  },
+  {
+   "id": "E3-S4-N-h08c-D",
+   "metrik": "S4: D_k, N alt kümesi",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val, N alt kümesi (n=655)",
+   "deger": -3.106198,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.N.D.h08c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -7.652686,
+    -0.224374
+   ],
+   "p": 0.03224191448883549
+  },
+  {
+   "id": "E3-S4-N-h11-D",
+   "metrik": "S4: D_k, N alt kümesi",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val, N alt kümesi (n=655)",
+   "deger": -0.5018,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.N.D.h11",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -1.867823,
+    1.441272
+   ],
+   "p": 0.4563933113046961
+  },
+  {
+   "id": "E3-S4-S",
+   "metrik": "S4: Δ_hat, S alt kümesi — görülmüş lezyon (betimsel)",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val, S alt kümesi (n=348; 332 lezyon)",
+   "deger": 2.506501,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.S.delta_hat",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -4.164515,
+    8.934515
+   ],
+   "p": 0.44262131065532767,
+   "n_gecerli": 9994,
+   "yari_genislik": 6.549515014167611,
+   "karar": "KISMEN",
+   "n": 348,
+   "lezyon": 332,
+   "kural": "S alt kümesi betimseldir; etiketi karar vermez"
+  },
+  {
+   "id": "E3-S4-S-h10-D",
+   "metrik": "S4: D_k, S alt kümesi",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val, S alt kümesi (n=348)",
+   "deger": -0.998822,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.S.D.h10",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -4.809862,
+    2.416026
+   ],
+   "p": 0.5342671335667833
+  },
+  {
+   "id": "E3-S4-S-h02c-D",
+   "metrik": "S4: D_k, S alt kümesi",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val, S alt kümesi (n=348)",
+   "deger": -3.505323,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.S.D.h02c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -8.28015,
+    1.011048
+   ],
+   "p": 0.12746373186593296
+  },
+  {
+   "id": "E3-S4-S-h08c-D",
+   "metrik": "S4: D_k, S alt kümesi",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val, S alt kümesi (n=348)",
+   "deger": -3.496621,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.S.D.h08c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -8.152894,
+    0.276562
+   ],
+   "p": 0.07263631815907955
+  },
+  {
+   "id": "E3-S4-S-h11-D",
+   "metrik": "S4: D_k, S alt kümesi",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val, S alt kümesi (n=348)",
+   "deger": -1.187986,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S4.S.D.h11",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "ga": [
+    -3.756737,
+    1.129773
+   ],
+   "p": 0.30035017508754375
+  },
+  {
+   "id": "E3-S5-jpeg",
+   "metrik": "S5: Δ (H10 − H02c), JPEG yeniden sıkıştırma (q_BCN) ↔ yerel",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 1.633348,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.jpeg.delta",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -2.196328,
+    4.972366
+   ],
+   "p": 0.37236276372362764,
+   "yari_genislik": 3.5843470685988006,
+   "aralik_etiketi": "KÜÇÜK-BELİRSİZ",
+   "uyum": {
+    "h10": 0.9653040877367897,
+    "h02c": 0.9503489531405782,
+    "h08c": 0.9503489531405782,
+    "h11": 0.9730807577268196
+   },
+   "D": {
+    "h10": {
+     "nokta": -1.048078,
+     "ga": [
+      -3.23264,
+      0.881613
+     ],
+     "p": 0.27877212278772123
+    },
+    "h02c": {
+     "nokta": -2.681427,
+     "ga": [
+      -5.260917,
+      0.071387
+     ],
+     "p": 0.055394460553944605
+    },
+    "h08c": {
+     "nokta": -3.65353,
+     "ga": [
+      -6.824726,
+      -1.246626
+     ],
+     "p": 0.004199580041995801
+    },
+    "h11": {
+     "nokta": -0.948204,
+     "ga": [
+      -2.115179,
+      0.352389
+     ],
+     "p": 0.12718728127187282
+    }
+   },
+   "rmse": {
+    "medyan": 1.6909,
+    "ort": 1.7631,
+    "p95": 2.3083,
+    "maks": 4.0944,
+    "n_gt5": 0,
+    "n_gt15": 0
+   },
+   "kanal_ort_fark_RGB": [
+    0.029,
+    -0.007,
+    0.02
+   ],
+   "beklenti": [
+    {
+     "nicelik": "S5 Δ (JPEG)",
+     "olculen": 1.633348169647919,
+     "aralik": [
+      -1.5,
+      4.0
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[20]"
+    }
+   ]
+  },
+  {
+   "id": "E3-S5-jpeg-h10-D",
+   "metrik": "S5: D_k, JPEG yeniden sıkıştırma (q_BCN)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -1.048078,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.jpeg.D.h10",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -3.23264,
+    0.881613
+   ],
+   "p": 0.27877212278772123,
+   "uyum": 0.9653040877367897
+  },
+  {
+   "id": "E3-S5-jpeg-h02c-D",
+   "metrik": "S5: D_k, JPEG yeniden sıkıştırma (q_BCN)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -2.681427,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.jpeg.D.h02c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -5.260917,
+    0.071387
+   ],
+   "p": 0.055394460553944605,
+   "uyum": 0.9503489531405782
+  },
+  {
+   "id": "E3-S5-jpeg-h08c-D",
+   "metrik": "S5: D_k, JPEG yeniden sıkıştırma (q_BCN)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -3.65353,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.jpeg.D.h08c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -6.824726,
+    -1.246626
+   ],
+   "p": 0.004199580041995801,
+   "uyum": 0.9503489531405782
+  },
+  {
+   "id": "E3-S5-jpeg-h11-D",
+   "metrik": "S5: D_k, JPEG yeniden sıkıştırma (q_BCN)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -0.948204,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.jpeg.D.h11",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -2.115179,
+    0.352389
+   ],
+   "p": 0.12718728127187282,
+   "uyum": 0.9730807577268196
+  },
+  {
+   "id": "E3-S6-z125",
+   "metrik": "S6: Δ (H10 − H02c), ölçek ×1,25 (yakınlaştırma) ↔ yerel",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 7.440067,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z125.delta",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    2.9137,
+    12.339201
+   ],
+   "p": 0.001999800019998,
+   "yari_genislik": 4.7127509627135,
+   "aralik_etiketi": "KISMEN",
+   "uyum": {
+    "h10": 0.9150548354935194,
+    "h02c": 0.902691924227318,
+    "h08c": 0.9072781655034895,
+    "h11": 0.911864406779661
+   },
+   "D": {
+    "h10": {
+     "nokta": 0.82849,
+     "ga": [
+      -2.330163,
+      4.316754
+     ],
+     "p": 0.5977402259774023
+    },
+    "h02c": {
+     "nokta": -6.611577,
+     "ga": [
+      -10.129461,
+      -3.195706
+     ],
+     "p": 0.0007999200079992001
+    },
+    "h08c": {
+     "nokta": -6.228828,
+     "ga": [
+      -10.669166,
+      -2.368603
+     ],
+     "p": 0.0015998400159984002
+    },
+    "h11": {
+     "nokta": -1.710816,
+     "ga": [
+      -6.076627,
+      2.589616
+     ],
+     "p": 0.41075892410758924
+    }
+   },
+   "rmse": {
+    "medyan": 19.3217,
+    "ort": 20.9431,
+    "p95": 37.9164,
+    "maks": 60.8674,
+    "n_gt5": 1003,
+    "n_gt15": 742
+   },
+   "kanal_ort_fark_RGB": [
+    -3.969,
+    -7.396,
+    -8.441
+   ],
+   "beklenti": [
+    {
+     "nicelik": "S6/S7 Δ (z125)",
+     "olculen": 7.440067137959394,
+     "aralik": [
+      -3.0,
+      8.0
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[21]"
+    }
+   ]
+  },
+  {
+   "id": "E3-S6-z125-h10-D",
+   "metrik": "S6: D_k, ölçek ×1,25 (yakınlaştırma)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0.82849,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z125.D.h10",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -2.330163,
+    4.316754
+   ],
+   "p": 0.5977402259774023,
+   "uyum": 0.9150548354935194
+  },
+  {
+   "id": "E3-S6-z125-h02c-D",
+   "metrik": "S6: D_k, ölçek ×1,25 (yakınlaştırma)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -6.611577,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z125.D.h02c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -10.129461,
+    -3.195706
+   ],
+   "p": 0.0007999200079992001,
+   "uyum": 0.902691924227318
+  },
+  {
+   "id": "E3-S6-z125-h08c-D",
+   "metrik": "S6: D_k, ölçek ×1,25 (yakınlaştırma)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -6.228828,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z125.D.h08c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -10.669166,
+    -2.368603
+   ],
+   "p": 0.0015998400159984002,
+   "uyum": 0.9072781655034895
+  },
+  {
+   "id": "E3-S6-z125-h11-D",
+   "metrik": "S6: D_k, ölçek ×1,25 (yakınlaştırma)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -1.710816,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z125.D.h11",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -6.076627,
+    2.589616
+   ],
+   "p": 0.41075892410758924,
+   "uyum": 0.911864406779661
+  },
+  {
+   "id": "E3-S7-z080",
+   "metrik": "S7: Δ (H10 − H02c), ölçek ×0,8 (uzaklaştırma, yansıtmalı dolgu) ↔ yerel",
+   "yontem": "H10 − H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -13.609102,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z080.delta",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -20.055647,
+    -7.439083
+   ],
+   "p": 0.00019998000199980003,
+   "yari_genislik": 6.308282037937467,
+   "aralik_etiketi": "TERS",
+   "uyum": {
+    "h10": 0.8685942173479562,
+    "h02c": 0.9114656031904287,
+    "h08c": 0.9242273180458624,
+    "h11": 0.907876370887338
+   },
+   "D": {
+    "h10": {
+     "nokta": -20.360121,
+     "ga": [
+      -26.325755,
+      -15.142173
+     ],
+     "p": 0.00019998000199980003
+    },
+    "h02c": {
+     "nokta": -6.751018,
+     "ga": [
+      -10.455831,
+      -3.437173
+     ],
+     "p": 0.0005999400059994001
+    },
+    "h08c": {
+     "nokta": -4.755846,
+     "ga": [
+      -8.642644,
+      -1.099951
+     ],
+     "p": 0.0093990600939906
+    },
+    "h11": {
+     "nokta": -4.641686,
+     "ga": [
+      -8.43803,
+      -0.850606
+     ],
+     "p": 0.021397860213978603
+    }
+   },
+   "rmse": {
+    "medyan": 18.0366,
+    "ort": 19.9538,
+    "p95": 36.9085,
+    "maks": 59.1033,
+    "n_gt5": 1003,
+    "n_gt15": 685
+   },
+   "kanal_ort_fark_RGB": [
+    1.09,
+    3.639,
+    4.361
+   ],
+   "beklenti": [
+    {
+     "nicelik": "S6/S7 Δ (z080)",
+     "olculen": -13.609102314020372,
+     "aralik": [
+      -3.0,
+      8.0
+     ],
+     "icinde": false,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[22]"
+    }
+   ],
+   "uyari": "Beklenti ihlali (betimsel; İNCELE değil): S6/S7 Δ (z080) = -13.61, ön-kayıtlı aralık [-3.0; 8.0]. Aralık 8 HAM eğitim görüntüsündeki kalibrasyondan türetilmişti (E2-incele-kal); görülmemiş val görüntülerinde ViT de hatta duyarlı çıktı. Makalede beyanla verilir (E3-beklenti)."
+  },
+  {
+   "id": "E3-S7-z080-h10-D",
+   "metrik": "S7: D_k, ölçek ×0,8 (uzaklaştırma, yansıtmalı dolgu)",
+   "yontem": "H10",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -20.360121,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z080.D.h10",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -26.325755,
+    -15.142173
+   ],
+   "p": 0.00019998000199980003,
+   "uyum": 0.8685942173479562
+  },
+  {
+   "id": "E3-S7-z080-h02c-D",
+   "metrik": "S7: D_k, ölçek ×0,8 (uzaklaştırma, yansıtmalı dolgu)",
+   "yontem": "H02c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -6.751018,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z080.D.h02c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -10.455831,
+    -3.437173
+   ],
+   "p": 0.0005999400059994001,
+   "uyum": 0.9114656031904287
+  },
+  {
+   "id": "E3-S7-z080-h08c-D",
+   "metrik": "S7: D_k, ölçek ×0,8 (uzaklaştırma, yansıtmalı dolgu)",
+   "yontem": "H08c",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -4.755846,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z080.D.h08c",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -8.642644,
+    -1.099951
+   ],
+   "p": 0.0093990600939906,
+   "uyum": 0.9242273180458624
+  },
+  {
+   "id": "E3-S7-z080-h11-D",
+   "metrik": "S7: D_k, ölçek ×0,8 (uzaklaştırma, yansıtmalı dolgu)",
+   "yontem": "H11",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": -4.641686,
+   "birim": "puan",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S5_S7.z080.D.h11",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez",
+    "duyarlılık kolu (karar vermez)"
+   ],
+   "ga": [
+    -8.43803,
+    -0.850606
+   ],
+   "p": 0.021397860213978603,
+   "uyum": 0.907876370887338
+  },
+  {
+   "id": "E3-S9-kanal",
+   "metrik": "S9: BCN − DermaMNIST kanal ortalaması farkı R (G, B alanda; hat − yerel farkıyla aynı tabloda)",
+   "yontem": "—",
+   "veri_seti": "BCN 1.500 rastgele görüntü ↔ DermaMNIST (E2 v1 piksel istatistikleri)",
+   "deger": -47.45,
+   "birim": "gri düzey",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S9.bcn_eksi_dermamnist_kanal",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "bcn_eksi_dermamnist_RGB": [
+    -47.45,
+    -8.01,
+    -19.01
+   ],
+   "kaynak_kanal": "sonuclar/e2_incele_ek/v3_model.py mu_b − mu_d (v1 piksel istatistikleri)",
+   "hat_eksi_yerel_RGB": [
+    0.046,
+    -0.025,
+    0.045
+   ],
+   "ilgili_id": [
+    "E2-MEK-kanal",
+    "E3-veri-rmse-medyan"
+   ]
+  },
+  {
+   "id": "E3-S10-oran",
+   "metrik": "S10: R18 argmax dönme oranı, görülmemiş val (hat ↔ yerel) / 8 eğitim görüntüsü kalibrasyonu",
+   "yontem": "H02c, H08c (ResNet-18)",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 2.467265,
+   "birim": "kat",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "S10.oran",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)",
+    "ön-kayıtlı ikincil, düzeltmesiz, karar vermez"
+   ],
+   "r18_donme_val": 0.04626121635094721,
+   "r18_donme_kalibrasyon": 0.018750000000000044,
+   "kalibrasyon": "3/160",
+   "vit_donme_val": 0.0336989032901297,
+   "vit_kaynak": "H10 (1 − E3-h10-uyum)",
+   "kalibrasyon_id": "E2-incele-kal",
+   "onkayitli_cumle": "Bu oran, daha önce yalnız eğitim görüntülerinde yapılan sınamadakinin (%1,9) 2,5 katıdır.",
+   "cumle_id": "E3-cumle-S10",
+   "beklenti": [
+    {
+     "nicelik": "S10 dönme oranı (görülmemiş / eğitim)",
+     "olculen": 2.467264872050512,
+     "aralik": [
+      1.0,
+      4.0
+     ],
+     "icinde": true,
+     "kaynak": "sonuclar/e3_onisleme_sonuc.json beklenti_icinde[23]"
+    }
+   ]
+  },
+  {
+   "id": "E3-incele",
+   "metrik": "kart 'görülmemiş' (İNCELE) bayrağı açıldı mı (4 madde)",
+   "yontem": "H16",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": false,
+   "birim": "mantıksal",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "gorulmemis",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "maddeler": {
+    "i_delta_hat_gt_8": false,
+    "ii_delta_hat_lt_-6": false,
+    "iii_vit_D_lt_-5": false,
+    "iv_r18_uyum_lt_0_90": false
+   },
+   "acik_madde": 0,
+   "kart_kaynak": "hipotezler/H16.md satır 39",
+   "not": "(i) Δ_hat > 8, (ii) Δ_hat < −6, (iii) ViT D_k < −5, (iv) R18 uyumu < 0,90 — hiçbiri açılmadı"
+  },
+  {
+   "id": "E3-beklenti",
+   "metrik": "ön-kayıtlı betimsel beklentilerden aralık dışında kalan madde sayısı (toplam alanda)",
+   "yontem": "H16",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 6,
+   "birim": "madde",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "beklenti_icinde[*].icinde",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "toplam": 24,
+   "icinde": 18,
+   "ihlaller": [
+    {
+     "nicelik": "argmax uyumu h10",
+     "olculen": 0.9663010967098703,
+     "aralik": [
+      0.985,
+      1.0
+     ],
+     "id": "E3-h10-uyum"
+    },
+    {
+     "nicelik": "maks|Δp| h10",
+     "olculen": 0.8174071311950684,
+     "aralik": [
+      0.03,
+      0.5
+     ],
+     "id": "E3-h10-p_maks_fark"
+    },
+    {
+     "nicelik": "argmax uyumu h11",
+     "olculen": 0.9752741774675971,
+     "aralik": [
+      0.98,
+      1.0
+     ],
+     "id": "E3-h11-uyum"
+    },
+    {
+     "nicelik": "maks|Δp| h11",
+     "olculen": 0.7027393132448196,
+     "aralik": [
+      0.03,
+      0.5
+     ],
+     "id": "E3-h11-p_maks_fark"
+    },
+    {
+     "nicelik": "Δ_hat GA yarı genişliği",
+     "olculen": 3.3930458720717382,
+     "aralik": [
+      1.0,
+      2.5
+     ],
+     "id": "E3-birincil"
+    },
+    {
+     "nicelik": "S6/S7 Δ (z080)",
+     "olculen": -13.609102314020372,
+     "aralik": [
+      -3.0,
+      8.0
+     ],
+     "id": "E3-S7-z080"
+    }
+   ],
+   "maddeler": [
+    {
+     "nicelik": "RMSE medyanı (hat ↔ yerel)",
+     "olculen": 1.6954,
+     "aralik": [
+      1.3,
+      2.5
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "argmax uyumu h02c",
+     "olculen": 0.9529411764705882,
+     "aralik": [
+      0.94,
+      0.995
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "maks|Δp| h02c",
+     "olculen": 0.8366795256733894,
+     "aralik": [
+      0.4,
+      0.99
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "D_k h02c",
+     "olculen": -2.6821918508101117,
+     "aralik": [
+      -4.0,
+      1.0
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "nv payı değişimi h02c",
+     "olculen": 0.014157527417746785,
+     "aralik": [
+      -0.01,
+      0.03
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "argmax uyumu h08c",
+     "olculen": 0.9545363908275174,
+     "aralik": [
+      0.94,
+      0.995
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "maks|Δp| h08c",
+     "olculen": 0.8941819593310356,
+     "aralik": [
+      0.4,
+      0.99
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "D_k h08c",
+     "olculen": -2.9465648809911094,
+     "aralik": [
+      -4.0,
+      1.0
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "nv payı değişimi h08c",
+     "olculen": 0.013559322033898313,
+     "aralik": [
+      -0.01,
+      0.03
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "argmax uyumu h10",
+     "olculen": 0.9663010967098703,
+     "aralik": [
+      0.985,
+      1.0
+     ],
+     "icinde": false
+    },
+    {
+     "nicelik": "maks|Δp| h10",
+     "olculen": 0.8174071311950684,
+     "aralik": [
+      0.03,
+      0.5
+     ],
+     "icinde": false
+    },
+    {
+     "nicelik": "D_k h10",
+     "olculen": -1.044938414961849,
+     "aralik": [
+      -1.5,
+      0.5
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "nv payı değişimi h10",
+     "olculen": -0.003788634097706911,
+     "aralik": [
+      -0.01,
+      0.01
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "argmax uyumu h11",
+     "olculen": 0.9752741774675971,
+     "aralik": [
+      0.98,
+      1.0
+     ],
+     "icinde": false
+    },
+    {
+     "nicelik": "maks|Δp| h11",
+     "olculen": 0.7027393132448196,
+     "aralik": [
+      0.03,
+      0.5
+     ],
+     "icinde": false
+    },
+    {
+     "nicelik": "D_k h11",
+     "olculen": -0.7682070445536593,
+     "aralik": [
+      -2.0,
+      0.5
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "nv payı değişimi h11",
+     "olculen": 0.009770687936191402,
+     "aralik": [
+      -0.01,
+      0.01
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "Δ_hat (birincil)",
+     "olculen": 1.6372534358482627,
+     "aralik": [
+      -1.5,
+      4.0
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "Δ_hat GA yarı genişliği",
+     "olculen": 3.3930458720717382,
+     "aralik": [
+      1.0,
+      2.5
+     ],
+     "icinde": false
+    },
+    {
+     "nicelik": "S4 Δ_hat (N)",
+     "olculen": 1.0517080298751202,
+     "aralik": [
+      -2.0,
+      5.0
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "S5 Δ (JPEG)",
+     "olculen": 1.633348169647919,
+     "aralik": [
+      -1.5,
+      4.0
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "S6/S7 Δ (z125)",
+     "olculen": 7.440067137959394,
+     "aralik": [
+      -3.0,
+      8.0
+     ],
+     "icinde": true
+    },
+    {
+     "nicelik": "S6/S7 Δ (z080)",
+     "olculen": -13.609102314020372,
+     "aralik": [
+      -3.0,
+      8.0
+     ],
+     "icinde": false
+    },
+    {
+     "nicelik": "S10 dönme oranı (görülmemiş / eğitim)",
+     "olculen": 2.467264872050512,
+     "aralik": [
+      1.0,
+      4.0
+     ],
+     "icinde": true
+    }
+   ],
+   "gunluk": "gunluk/deney-gunlugu.md satır 77",
+   "orkestrasyon": "orkestrasyon_durumu.md satır 287",
+   "uyari": "Beklenti ihlalleri (betimsel; İNCELE eşikleri tetiklenmedi): ViT kollarında (H10, H11) argmax uyumu ve maks|Δp| kalibrasyondan türetilen aralığın dışında; Δ_hat GA yarı genişliği > 2,5; ×0,8 ölçek Δ aralık dışında (TERS yönde). Günlük teşhisi: arıza değil, beklenti kaynağı zayıf (8 ezberlenmiş eğitim görüntüsü) — hakem B3'ün öngördüğü yön. Makalede 'ViT ön-işlemeye kayıtsız' yazılamaz; ihlaller beyanla verilir."
+  },
+  {
+   "id": "E3-ozdeslik",
+   "metrik": "K-c val özdeşliği: yerel kolun yeniden çıkarımı arşiv tahmin_val.npy'yi üreten kol-seed",
+   "yontem": "4 kol × 5 seed",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 20,
+   "birim": "kol-seed",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/*_e3_h*_s[0-4]/metrics.json",
+   "kaynak_alan": "ozdeslik_gecti, ozdeslik_durum_kod, ozdeslik_argmax_oran, ozdeslik_p_maks_fark",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "durum_ozet": {
+    "A": 8,
+    "B": 12,
+    "C": 0
+   },
+   "kol_durum": {
+    "h10": "BBBBB",
+    "h02c": "AABAA",
+    "h08c": "AABAA",
+    "h11": "BBBBB"
+   },
+   "argmax_oran_min": 1.0,
+   "p_maks_fark_maks": 0.0001144111156463623,
+   "p_maks_fark_kosum": "20261108-161327_e3_h10_s4",
+   "kilit": "sonuclar/e3_onisleme.KILIT durum_ozet",
+   "kural": "A: argmax 100% ∧ maks|Δp| ≤ 1e-5; B: argmax ≥ 0,995 ∧ maks|Δp| ≤ 1e-3 ∧ sürüm farkı (H16.md K-c)",
+   "not": "kart 'Durum B beklenir' dedi (ortam Ekim'den farklı); ResNet-18 kollarının 8 kol-seed'i A'da kaldı"
+  },
+  {
+   "id": "E3-etiket-korluk",
+   "metrik": "E3 çıkarım koşumlarında resmî test / BCN okunan ya da hat kolu etiketle değerlendirilen koşum sayısı (duman + a2 + a3)",
+   "yontem": "e3_cikarim.py",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 0,
+   "birim": "koşum",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/*_e3_*/metrics.json",
+   "kaynak_alan": "resmi_test_okundu, bcn_okundu, hat_etiketle_degerlendirildi, c1_kol",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "n_kosum": 26,
+   "c1_kol": 0,
+   "tek_sinif_maks_pay": 0.7926221335992024,
+   "not": "K-e: hiçbir kol/hatta tek sınıf payı > 0,95 yok; olasılıklar sonlu (hat_tahmin_sonlu)"
+  },
+  {
+   "id": "E3-ortam",
+   "metrik": "E3 çıkarım ortamı (cuDNN; torch/CUDA/timm ve Ekim kaynağı alanlarda)",
+   "yontem": "20 a3 koşumu",
+   "veri_seti": "—",
+   "deger": 90100,
+   "birim": "sürüm",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/*_e3_h*_s[0-4]/config.json",
+   "kaynak_alan": "e3.surum, e3.kaynak_surum",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "torch": "2.5.1+cu121",
+   "cuda": "12.1",
+   "timm": "1.0.30",
+   "karsi_ekim": 92700,
+   "karsi_ekim_torch": "2.11.0+cu130",
+   "cihaz": [
+    "cuda:0 / NVIDIA GeForce GTX 1650"
+   ],
+   "not": "yerel GTX 1650, FP32, TF32 kapalı, cudnn deterministik; Durum B'nin nedeni sürüm farkı"
+  },
+  {
+   "id": "E3-butce",
+   "metrik": "E3 GPU koşum süresi toplamı (K-f; e3-onisleme satırlarının .done sure_sn toplamı)",
+   "yontem": "H16",
+   "veri_seti": "—",
+   "deger": 0.556639,
+   "birim": "GPU-sa (yerel GTX 1650)",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme.KILIT",
+   "kaynak_alan": "butce_gpu_sa",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "kart_tavani": 2.0,
+   "kart_tahmini": 0.7,
+   "kart_kaynak": "hipotezler/H16.md satır 40",
+   "kuyruk_duvar_sn": 2103.6,
+   "kuyruk_satir": 26,
+   "kuyruk_kaynak": "runs/kuyruklar/e3-onisleme.KUYRUK.done",
+   "a0_cpu_duvar_sn": 261.6,
+   "a0_kaynak": "runs/kuyruklar/e3-veri.KUYRUK.done",
+   "uyari": "Orkestrasyon (satır 287) '2103,6 s; 0,56 GPU-sa' der: 2103,6 s kuyruk duvar saatidir (≈ 0,58 sa; satır arası boşluklar dahil); 0,56 kartın K-f tanımı (koşum süreleri toplamı). İkisi de tavanın (2,0) altında. a0 (CPU + ağ, model yok) bu bütçeye girmez.",
+   "not": "E1 (L4-sa), E2 (L4-sa) ve K5 bütçesinden ayrı; yerel GPU"
+  },
+  {
+   "id": "E3-kapi",
+   "metrik": "aşama kapıları (a1 duman, a2 ön-uçuş) GEÇEN sayısı; a0 veri kapısı ayrı (E3-veri-*)",
+   "yontem": "e3-onisleme",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": 2,
+   "birim": "kapı",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "runs/kuyruklar/e3-onisleme.KUYRUK.done",
+   "kaynak_alan": "kapi_raporlari",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "kapilar": [
+    {
+     "asama": 1,
+     "sonuc": "GEÇTİ",
+     "zaman": "2026-11-08T15:53",
+     "dosya": "sonuclar/beklenti-e3-onisleme-asama1.md"
+    },
+    {
+     "asama": 2,
+     "sonuc": "GEÇTİ",
+     "zaman": "2026-11-08T15:59",
+     "dosya": "sonuclar/beklenti-e3-onisleme-asama2.md"
+    }
+   ],
+   "a0_gecti": true
+  },
+  {
+   "id": "E3-cumle-giris",
+   "metrik": "önceden yazılmış (mekanik) cümle: giris",
+   "yontem": "H16",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": "Dış farkın bir bölümünün BCN20000 görüntülerini hazırlarken kullandığımız ön-işleme hattından gelip gelmediğini sınamak için, resmî doğrulama kümesinin 1.003 görüntüsünü HAM10000 özgün dosyalarından aynı kodla yeniden ürettik. Aynı kolları, yeniden eğitmeden, bu girdide ve MedMNIST+ girdisinde karşılaştırdık. Analiz hakem önerisiyle, E2 sonuçları görüldükten sonra tasarlandı; test kümesi ve BCN etiketleri açılmadı. Piksel farkı küçüktü (görüntü başına RMSE medyanı 1,70 gri düzey).",
+   "birim": "cümle",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "cumleler.giris",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "dayanak_id": [
+    "E3-veri-n",
+    "E3-veri-rmse-medyan"
+   ],
+   "denetlenen_sayilar": [
+    "1.003",
+    "1,70"
+   ],
+   "not": "kart Karar kuralının seçtiği metin; sonuçtan sonra yazılmadı (analiz betiği üretti)"
+  },
+  {
+   "id": "E3-cumle-birincil",
+   "metrik": "önceden yazılmış (mekanik) cümle: birincil",
+   "yontem": "H16",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": "Ön-işleme hattının farka etkisi nokta kestirimde küçüktü: +1,64 puan [−1,90; +4,89]. Ancak aralık ±2,48 puanlık eşdeğerlik bandını aştığından, hattın dış farkın birkaç puanını açıklaması bu veriyle dışlanamadı. Dış farkın büyük bölümü hat etkisinin aralığının dışında kalır.",
+   "birim": "cümle",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "cumleler.birincil",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "dayanak_id": [
+    "E3-birincil",
+    "E3-esik-m"
+   ],
+   "denetlenen_sayilar": [
+    "+1,64",
+    "[−1,90; +4,89]",
+    "±2,48"
+   ],
+   "not": "kart Karar kuralının seçtiği metin; sonuçtan sonra yazılmadı (analiz betiği üretti)"
+  },
+  {
+   "id": "E3-cumle-S1_S2",
+   "metrik": "önceden yazılmış (mekanik) cümle: S1_S2",
+   "yontem": "H16",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": "ResNet-18 kollarının tahminleri görüntülerin %4,6'ünde değişti (DINOv2-B'de %3,4); dengeli doğruluk değişimleri H02c −2,68, H10 −1,04 puandı.",
+   "birim": "cümle",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "cumleler.S1_S2",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "dayanak_id": [
+    "E3-S10-oran",
+    "E3-h02c-uyum",
+    "E3-h08c-uyum",
+    "E3-h10-uyum",
+    "E3-h02c-D",
+    "E3-h10-D"
+   ],
+   "denetlenen_sayilar": [
+    "%4,6",
+    "%3,4",
+    "H02c −2,68",
+    "H10 −1,04"
+   ],
+   "uyari": "Yazım: '%4,6'ünde' → '%4,6'sında' (yüzde dört virgül altı-sında). Sayılar kayıtlarla tutarlı; 'ResNet-18 kolları' = H02c ve H08c ortalaması, 'DINOv2-B' = H10.",
+   "not": "kart Karar kuralının seçtiği metin; sonuçtan sonra yazılmadı (analiz betiği üretti)"
+  },
+  {
+   "id": "E3-cumle-S10",
+   "metrik": "önceden yazılmış (mekanik) cümle: S10",
+   "yontem": "H16",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": "Bu oran, daha önce yalnız eğitim görüntülerinde yapılan sınamadakinin (%1,9) 2,5 katıdır.",
+   "birim": "cümle",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "cumleler.S10",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "dayanak_id": [
+    "E3-S10-oran"
+   ],
+   "denetlenen_sayilar": [
+    "%1,9",
+    "2,5 katı"
+   ],
+   "not": "kart Karar kuralının seçtiği metin; sonuçtan sonra yazılmadı (analiz betiği üretti)"
+  },
+  {
+   "id": "E3-cumle-duyarlilik_z125",
+   "metrik": "önceden yazılmış (mekanik) cümle: duyarlilik_z125",
+   "yontem": "H16",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": "×1,25 ölçek (yakınlaştırma) tek başına Δ_hat'i +7,44 puana çıkarıyor; keşifsel.",
+   "birim": "cümle",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "cumleler.duyarlilik_z125",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "dayanak_id": [
+    "E3-S6-z125"
+   ],
+   "denetlenen_sayilar": [
+    "+7,44"
+   ],
+   "not": "kart Karar kuralının seçtiği metin; sonuçtan sonra yazılmadı (analiz betiği üretti)"
+  },
+  {
+   "id": "E3-cumle-sinirlilik",
+   "metrik": "önceden yazılmış (mekanik) cümle: sinirlilik",
+   "yontem": "H16",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": "Ön-işleme duyarlılığı doğrulama kümesinde ölçüldü. Bu küme epoch seçiminde kullanıldığı için tamamen bağımsız değildir. Ölçülen, yazılım hattının etkisidir; dermatoskop, büyütme ve görüş alanı gibi edinim farkları merkez kaymasının parçası sayıldı ve burada ayrıştırılmadı.",
+   "birim": "cümle",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "sonuclar/e3_onisleme_sonuc.json",
+   "kaynak_alan": "cumleler.sinirlilik",
+   "kip": "keşifsel, sonradan (hakem önerisi B3; revizyon E3, 2026-11-08); H16 kartı koşumdan önce yazıldı (E2 sonuçları görülerek; KULLANICI KARARI 15); resmî val (n=1003) HAM10000 özgün JPEG'lerinden BCN ön-işleme hattıyla yeniden üretildi; H02c/H08c/H10/H11 YENİDEN EĞİTİMSİZ, yerel GTX 1650; analiz KİLİT altında bir kez (ikinci_acilis null); resmî test, C-test ve BCN etiketleri açılmadı; hiçbir Holm ailesine girmez, K5/E2 kararları değişmez",
+   "atif": null,
+   "durum": "gecerli",
+   "etiket": [
+    "keşifsel, sonradan (hakem önerisi; E3/H16)"
+   ],
+   "dayanak_id": [
+    "E3-kilit"
+   ],
+   "denetlenen_sayilar": [],
+   "not": "kart Karar kuralının seçtiği metin; sonuçtan sonra yazılmadı (analiz betiği üretti)"
+  },
+  {
+   "id": "SAP-E3",
+   "metrik": "E3 / H16 gerçekleşen akış (ön-işleme hattı denetimi; kart koşumdan önce, kullanıcı onaylı; keşifsel, sonradan)",
+   "yontem": "4 arşiv kolu (H16)",
+   "veri_seti": "DermaMNIST resmî val (n=1003; 970 lezyon): MedMNIST+ girdisi ↔ HAM10000 özgün JPEG + BCN ön-işleme hattı",
+   "deger": "tamamlandı",
+   "birim": "durum",
+   "kaynak": "yazilim",
+   "kaynak_dosya": "orkestrasyon_durumu.md",
+   "kaynak_alan": "satır 287",
+   "kip": "ön-kayıt ↔ gerçekleşen beyanı (revizyon 2026-11-03; kaynak belgelerden satır düzeyinde)",
+   "atif": null,
+   "durum": "gecerli",
+   "zaman": "2026-11-08T16:27",
+   "kart_zaman": "2026-11-08T15:20",
+   "kart_mtime": "2026-11-08T15:20:08",
+   "kosum_baslangic": "2026-11-08T15:47:13",
+   "kosum_bitis": "2026-11-08T16:27:16",
+   "kuyruk_bitis": "2026-11-08T16:26:55",
+   "sapmalar": [
+    {
+     "dosya": "hipotezler/H16-UYGULAMA-NOTU.md",
+     "satir": 36,
+     "ozet": "a0 (CPU + ağ) ayrı kuyrukta; a1–a3 satırları a0 donduktan sonra yazıldı"
+    },
+    {
+     "dosya": "hipotezler/H16-UYGULAMA-NOTU.md",
+     "satir": 43,
+     "ozet": "metrics anahtarı test_okundu → resmi_test_okundu (aralık aynı; beklenti taslağından tek fark)"
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 284,
+     "ozet": "şef kararı (koşumdan önce): duyarlılık kolları dahil, q_BCN JPEG başlıklarından"
+    },
+    {
+     "id": "E3-beklenti",
+     "ozet": "6/24 betimsel beklenti aralık dışında (ViT uyum ve maks|Δp|, GA yarı genişliği, ×0,8 ölçek); İNCELE eşikleri tetiklenmedi"
+    },
+    {
+     "id": "E3-ozdeslik",
+     "ozet": "Durum A 8 + B 12 (kart 'B beklenir'), C 0"
+    }
+   ],
+   "kaynaklar": [
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 283
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 284
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 286
+    },
+    {
+     "dosya": "orkestrasyon_durumu.md",
+     "satir": 287
+    },
+    {
+     "dosya": "hipotezler/H16-UYGULAMA-NOTU.md",
+     "satir": 5
+    }
+   ],
+   "ilgili_id": [
+    "E3-kilit",
+    "E3-kuru",
+    "E3-ozdeslik",
+    "E3-ortam",
+    "E3-butce",
+    "E3-beklenti",
+    "E3-incele",
+    "E3-birincil",
+    "E3-kapi"
    ]
   }
  ]

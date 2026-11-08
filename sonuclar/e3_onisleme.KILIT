@@ -1,0 +1,153 @@
+{
+ "kart": "H16 (E3)",
+ "sha256": {
+  "kart": "f3c6998196e0624801979b01da5226747c8f876502bd8e9c785bd5c6d2157109",
+  "analiz": "fdd35b9f43b15ef05c919a5f43f4853583f8384618c7c7b2def6bf82aaf09c45",
+  "beklenti": "44f6b052fe2fc241b7517a34bae70d84c40c69ef80c15f6080b8c5045609179b",
+  "beklenen": "7876429e3834e473e1877ded26bb97cd19533829ed236778ec078e994d2bb24a",
+  "e3_cikarim": "ba6ed609049b868af1b5de78c919d95cc64e4f517ef5ea215c42003fb629363d",
+  "e3_ham_val_hazirla": "a602b627716a8ae1a36a13c3e405dd0e7e1c2e94568e9646166dac5e374cbc54",
+  "e2_bcn_analiz": "cdd056f46e2710b1af6a36b573ef04ec54f1e471ea038342aaa163181508302a",
+  "kollar": "0ae04018176076dd04a99fe4ac3ac61a6ad34c56d150e6b14f012104d410dd39"
+ },
+ "kosumlar": {
+  "h10": [
+   {
+    "run": "20261108-155916_e3_h10_s0",
+    "durum": "B",
+    "sure_sn": 208.8
+   },
+   {
+    "run": "20261108-160249_e3_h10_s1",
+    "durum": "B",
+    "sure_sn": 208.8
+   },
+   {
+    "run": "20261108-160621_e3_h10_s2",
+    "durum": "B",
+    "sure_sn": 209.1
+   },
+   {
+    "run": "20261108-160954_e3_h10_s3",
+    "durum": "B",
+    "sure_sn": 209.2
+   },
+   {
+    "run": "20261108-161327_e3_h10_s4",
+    "durum": "B",
+    "sure_sn": 208.9
+   }
+  ],
+  "h02c": [
+   {
+    "run": "20261108-161700_e3_h02c_s0",
+    "durum": "A",
+    "sure_sn": 23.0
+   },
+   {
+    "run": "20261108-161727_e3_h02c_s1",
+    "durum": "A",
+    "sure_sn": 23.5
+   },
+   {
+    "run": "20261108-161754_e3_h02c_s2",
+    "durum": "B",
+    "sure_sn": 23.1
+   },
+   {
+    "run": "20261108-161820_e3_h02c_s3",
+    "durum": "A",
+    "sure_sn": 23.1
+   },
+   {
+    "run": "20261108-161848_e3_h02c_s4",
+    "durum": "A",
+    "sure_sn": 23.1
+   }
+  ],
+  "h08c": [
+   {
+    "run": "20261108-161915_e3_h08c_s0",
+    "durum": "A",
+    "sure_sn": 23.0
+   },
+   {
+    "run": "20261108-161941_e3_h08c_s1",
+    "durum": "A",
+    "sure_sn": 23.4
+   },
+   {
+    "run": "20261108-162009_e3_h08c_s2",
+    "durum": "B",
+    "sure_sn": 23.1
+   },
+   {
+    "run": "20261108-162035_e3_h08c_s3",
+    "durum": "A",
+    "sure_sn": 23.2
+   },
+   {
+    "run": "20261108-162102_e3_h08c_s4",
+    "durum": "A",
+    "sure_sn": 23.0
+   }
+  ],
+  "h11": [
+   {
+    "run": "20261108-162129_e3_h11_s0",
+    "durum": "B",
+    "sure_sn": 61.4
+   },
+   {
+    "run": "20261108-162234_e3_h11_s1",
+    "durum": "B",
+    "sure_sn": 61.5
+   },
+   {
+    "run": "20261108-162340_e3_h11_s2",
+    "durum": "B",
+    "sure_sn": 61.6
+   },
+   {
+    "run": "20261108-162445_e3_h11_s3",
+    "durum": "B",
+    "sure_sn": 61.6
+   },
+   {
+    "run": "20261108-162550_e3_h11_s4",
+    "durum": "B",
+    "sure_sn": 61.6
+   }
+  ]
+ },
+ "durum_ozet": {
+  "B": 12,
+  "A": 8
+ },
+ "disari_kol": [],
+ "butce_gpu_sa": 0.5566388888888888,
+ "kuru": {
+  "gecti": true,
+  "delta_yerel": {
+   "bu": 8.771503260964636,
+   "v3": 8.77150326096463,
+   "fark": 5.329070518200751e-15,
+   "gecti": true
+  },
+  "kol": {
+   "h10": 0.0,
+   "h02c": 0.0,
+   "h08c": 0.0,
+   "h11": 0.0
+  }
+ },
+ "ikinci_acilis": null,
+ "acilis_zamani": "2026-11-08T16:27:09",
+ "analiz_acilislari": [
+  {
+   "zaman": "2026-11-08T16:27:16",
+   "ikinci_acilis": null
+  }
+ ],
+ "analiz_zamani": "2026-11-08T16:27:16"
+}
